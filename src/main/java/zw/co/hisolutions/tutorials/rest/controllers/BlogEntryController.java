@@ -3,43 +3,35 @@ package zw.co.hisolutions.tutorials.rest.controllers;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import zw.co.hisolutions.tutorials.core.entity.BlogEntry;
-import zw.co.hisolutions.tutorials.resources.BlogEntryResource;
-import zw.co.hisolutions.tutorials.resources.asm.BlogEntryResourceAsm;
-import zw.co.hisolutions.tutorials.service.BlogEntryService;
+import zw.co.hisolutions.tutorials.core.entities.BlogEntry;
+import zw.co.hisolutions.tutorials.core.services.BlogEntryService;
 
 @Controller
 public class BlogEntryController {
 
-    //@Autowired
-    public void setBlogEntryService(BlogEntryService blogEntryService) {
-        this.blogEntryService = blogEntryService;
-    }
+    @Autowired
     BlogEntryService blogEntryService;
 
-    @RequestMapping(value = "/rest/blog-entry/{blogEntryId}", method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseEntity<BlogEntryResource> getBlogEntry(@PathVariable Long blogEntryId) {
-
-        BlogEntry blogEntry = blogEntryService.find(blogEntryId);
-        //System.out.println("Pano pa: /rest/blog-entry/" + blogEntryId +", blogEntry.getTitle() : " + blogEntry.getTitle() + ". tasvika !");
-
-        if (blogEntry != null) {
-            BlogEntryResource res = new BlogEntryResourceAsm().toResource(blogEntry);
-            return new ResponseEntity<BlogEntryResource>(res, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<BlogEntryResource>(HttpStatus.NOT_FOUND);
-        }
-    }
+//    @RequestMapping(value = "/rest/blog-entry/{blogEntryId}", method = RequestMethod.GET)
+//    @ResponseBody
+//    public ResponseEntity<BlogEntryResource> getBlogEntry(@PathVariable Long blogEntryId) {
+//
+//        BlogEntry blogEntry = blogEntryService.findBlogEntry(blogEntryId);
+//        //System.out.println("Pano pa: /rest/blog-entry/" + blogEntryId +", blogEntry.getTitle() : " + blogEntry.getTitle() + ". tasvika !");
+//
+//        if (blogEntry != null) {
+//            BlogEntryResource res = new BlogEntryResourceAsm().toResource(blogEntry);
+//            return new ResponseEntity<BlogEntryResource>(res, HttpStatus.OK);
+//        } else {
+//            return new ResponseEntity<BlogEntryResource>(HttpStatus.NOT_FOUND);
+//        }
+//    }
 
     @RequestMapping("/testMnV")
     public ModelAndView indexMapping(ModelAndView mv) {
@@ -53,15 +45,15 @@ public class BlogEntryController {
         return "index";
     }
 
-    @RequestMapping("/testResponseEntity")
-    public ResponseEntity<Object> test() {
-        System.out.println("Pano pa ResponseEntity tasvika!!");
-
-        BlogEntry blogEntry = new BlogEntry();
-        blogEntry.setId(2018L);
-        blogEntry.setTitle("Happy New Year");
-        return new ResponseEntity<Object>(blogEntry, HttpStatus.OK);
-    }
+//    @RequestMapping("/testResponseEntity")
+//    public ResponseEntity<Object> test() {
+//        System.out.println("Pano pa ResponseEntity tasvika!!");
+//
+//        BlogEntry blogEntry = new BlogEntry();
+//        blogEntry.setId(2018L);
+//        blogEntry.setTitle("Happy New Year");
+//        return new ResponseEntity<Object>(blogEntry, HttpStatus.OK);
+//    }
 
     @RequestMapping("/testBlogEntry")
     @ResponseBody

@@ -1,5 +1,9 @@
 ## YAML Template.
 ---
+spring.datasource.url:  jdbc:sqlserver://localhost;databaseName=hisolutions
+spring.datasource.username: saa
+spring.datasource.password: 5p1tf1r3s
+      
 logging:
   level:
     org:
@@ -24,16 +28,17 @@ spring:
       database-platform:  org.hibernate.dialect.SQLServer2012Dialect
       show-sql: true
       use_sql_comments: true
+#      entity-manager-factory-ref: entityManagerFactory 
 #      hibernate.naming-strategy: org.hibernate.cfg.EJB3NamingStrategy
 #      hibernate.naming-strategy: 'org.hibernate.cfg.Defau\u200cltNamingStrategy'
 #      hibernate.ddl-auto: update
 #        dialect:  org.hibernate.dialect.SQLServer2012Dialect
     datasource:
-#      url:  jdbc:sqlserver://192.200.10.110;databaseName=HMSDev
-      url:  jdbc:sqlserver://localhost;databaseName=HMSDev
-      username: HISAdmin
-      password: 5p1tf1r3
+      url:  jdbc:sqlserver://localhost;databaseName=hisolutions
+      username: saa
+      password: 5p1tf1r33
       type: com.zaxxer.hikari.HikariDataSource
+      validationQuery: select 1
       hikari:
         maximum-pool-size: 30
         minimum-idle: 2
