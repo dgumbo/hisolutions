@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.EntityLinks;
+import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.Resource;
-import org.springframework.hateoas.Resources;
 import org.springframework.hateoas.hal.Jackson2HalModule;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -27,6 +27,7 @@ import zw.co.hisolutions.tutorials.services.util.Results;
 
 @Controller
 @RequestMapping("/accounts")
+@ExposesResourceFor(Account.class)
 public class AccountController {
 
     @Autowired
@@ -44,7 +45,7 @@ public class AccountController {
     }
     
     @RequestMapping("/getAll")
-    @ResponseBody
+    //@ResponseBody
     //public List<Account> allAccounts(){ 
     public List<AccountResource> allAccounts(){ 
 
@@ -87,16 +88,17 @@ public class AccountController {
     
     @RequestMapping(value="/get/{id}")
     //@ResponseBody
-    public Account getAccount(@PathVariable Long id){ 
-    //public ResponseEntity<Resource<Account>> getAccount(@PathVariable Long id){        
+    //public Account getAccount(@PathVariable Long id){ 
+    public HttpEntity<Resource<Account>> getAccount(@PathVariable Long id){        
         Account account = accountService.findAccount(id);
         Resource<Account> resource_account = new Resource<>(account);
         
         Link accountLink = linkTo(AccountController.class).slash(account.getId()).withSelfRel();
         resource_account.add(accountLink);
             
-        //return new ResponseEntity<>(resource_account, HttpStatus.OK);
-        return account;
+        ResponseEntity<Resource<Account>> response_entity = new ResponseEntity<>(resource_account, HttpStatus.OK);
+        return response_entity;
+        //return account;
     }
     
     @RequestMapping(value="/new", method=RequestMethod.POST)
