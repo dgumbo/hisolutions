@@ -1,15 +1,22 @@
 package zw.co.hisolutions.tutorials.core.services.jpa;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.Resource;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import zw.co.hisolutions.tutorials.core.entities.Account;
 import zw.co.hisolutions.tutorials.core.entities.Blog;
 import zw.co.hisolutions.tutorials.core.entities.dao.AccountDao;
 import zw.co.hisolutions.tutorials.core.services.AccountService;
+import zw.co.hisolutions.tutorials.rest.controllers.AccountController;
+import zw.co.hisolutions.tutorials.rest.controllers.BlogController;
+import zw.co.hisolutions.tutorials.rest.controllers.BlogEntryController;
 
 @Repository
 @Service
@@ -28,8 +35,19 @@ public class AccountJpa implements AccountService {
     }
 
     @Override
-    public Account createAccount(Account data) throws NullPointerException {
-        return accountDao.save(data);
+    public Account createAccount(Account account) throws NullPointerException, Exception  {
+        if (account.getBlogEntries() == null) account.setBlogEntries(new ArrayList<>());
+        if (account.getBlogs() == null) account.setBlogs(new ArrayList<>());
+        
+        account.getBlogEntries().forEach(blogEntry->{ 
+            blogEntry.setAccount(account);
+        });
+        
+        account.getBlogs().forEach(blog->{ 
+            blog.setAccount(account);
+        });
+        
+        return accountDao.save(account);
     }
 
     @Override
@@ -48,8 +66,37 @@ public class AccountJpa implements AccountService {
     }
 
     @Override
-    public void deleteAccount(Account account) {
+    public void deleteAccount(Account account) throws Exception  {
         accountDao.delete(account);
     }
 
+    @Override
+    public Account updateAccount(Account account) throws Exception {
+        return accountDao.save(account);    
+    }
+
+    @Override
+    public Resource<Account> buildAccountResource(Account account) {
+        if (account == null) return null;
+        
+        Resource<Account> accountResource = new Resource<>(account);
+        Link accountLink = linkTo(AccountController.class).slash(accountResource.getContent().getId()).withSelfRel();
+        accountResource.add(accountLink);
+        Link deleteAccountLink = linkTo(AccountController.class).slash(accountResource.getContent().getId()).slash("delete").withRel("delete").withType("delete");
+        accountResource.add(deleteAccountLink);
+        
+        accountResource.
+        
+        if (accountResource.getContent().getBlogEntries().size() > 0) {
+            Link blogEntriesLink = linkTo(BlogEntryController.class).slash("getAll").withRel("getBlogEntries");
+            accountResource.add(blogEntriesLink);
+        }
+        
+        if (accountResource.getContent().getBlogs().size() > 0) {
+            Link blogsLink = linkTo(BlogController.class).slash("getAll").withRel("getBlogs");
+            accountResource.add(blogsLink);
+        }
+        
+        return accountResource;
+    }
 }

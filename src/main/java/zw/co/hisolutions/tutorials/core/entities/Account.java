@@ -3,6 +3,7 @@ package zw.co.hisolutions.tutorials.core.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -42,9 +43,9 @@ public class Account implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date modifiedDate;    
 
-    @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "account", cascade = CascadeType.PERSIST)
     private List<Blog> blogs;    
 
-    @OneToMany(mappedBy = "account")
+    @OneToMany(mappedBy = "account", cascade = CascadeType.PERSIST)
     private List<BlogEntry> blogEntries;
 }

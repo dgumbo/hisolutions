@@ -34,7 +34,7 @@ public class AccountRepositoryTest {
     @Before
     @Transactional
     @Rollback(false)
-    public void setUp() {
+    public void setUp() throws Exception {
         account = new Account();
         account.setName("name");
         account.setPassword("password");

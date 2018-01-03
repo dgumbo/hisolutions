@@ -3,6 +3,7 @@ package zw.co.hisolutions.tutorials.rest.controllers;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,8 @@ import zw.co.hisolutions.tutorials.core.entities.BlogEntry;
 import zw.co.hisolutions.tutorials.core.services.BlogEntryService;
 
 @Controller
+@RequestMapping("/blogEntries")
+@ExposesResourceFor(BlogEntry.class)
 public class BlogEntryController {
 
     @Autowired
@@ -44,16 +47,6 @@ public class BlogEntryController {
         System.out.println("Pano pa String tasvika!!");
         return "index";
     }
-
-//    @RequestMapping("/testResponseEntity")
-//    public ResponseEntity<Object> test() {
-//        System.out.println("Pano pa ResponseEntity tasvika!!");
-//
-//        BlogEntry blogEntry = new BlogEntry();
-//        blogEntry.setId(2018L);
-//        blogEntry.setTitle("Happy New Year");
-//        return new ResponseEntity<Object>(blogEntry, HttpStatus.OK);
-//    }
 
     @RequestMapping("/testBlogEntry")
     @ResponseBody

@@ -8,7 +8,6 @@ zw\co\hisolutions\tutorials\rest\controllers\BlogEntryController.class
 zw\co\hisolutions\tutorials\services\util\BlogEntryList.class
 zw\co\hisolutions\tutorials\rest\controllers\BlogController.class
 zw\co\hisolutions\MvcConfiguration.class
-zw\co\hisolutions\tutorials\resources\AccountResource.class
 zw\co\hisolutions\tutorials\core\entities\BlogEntry.class
 zw\co\hisolutions\tutorials\services\util\DBActionResult.class
 zw\co\hisolutions\tutorials\Calculator.class
@@ -21,7 +20,6 @@ zw\co\hisolutions\tutorials\core\services\AccountService.class
 zw\co\hisolutions\tutorials\services\exceptions\BlogExistsException.class
 zw\co\hisolutions\tutorials\services\exceptions\BlogNotFoundException.class
 zw\co\hisolutions\tutorials\core\services\jpa\BlogEntryJpa.class
-zw\co\hisolutions\tutorials\resources\BlogResource.class
 zw\co\hisolutions\tutorials\rest\controllers\AccountController.class
 zw\co\hisolutions\tutorials\core\entities\Blog.class
 zw\co\hisolutions\tutorials\core\entities\dao\AccountDao.class

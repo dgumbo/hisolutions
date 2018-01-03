@@ -9,13 +9,11 @@ E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolu
 E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\tutorials\core\services\AccountService.java
 E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\tutorials\rest\controllers\AccountController.java
 E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\MvcConfiguration.java
-E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\tutorials\resources\BlogResource.java
 E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\tutorials\core\entities\dao\BlogEntryDao.java
 E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\tutorials\services\util\Results.java
 E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\tutorials\services\exceptions\BlogExistsException.java
 E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\tutorials\core\entities\dao\BlogDao.java
 E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\tutorials\rest\controllers\BlogController.java
-E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\tutorials\resources\BlogEntryResource.java
 E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\controllers\MainController.java
 E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\tutorials\core\services\jpa\BlogJpa.java
 E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\AppConfig.java
@@ -25,12 +23,10 @@ E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolu
 E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\spring\configs\TestsPreConfiguration.java
 E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\tutorials\core\entities\Account.java
 E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\tutorials\Engine.java
-E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\tutorials\resources\AccountResource.java
 E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\tutorials\core\entities\dao\AccountDao.java
 E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\tutorials\core\services\jpa\AccountJpa.java
 E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\tutorials\services\util\BlogEntryList.java
 E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\HiSolutionsApplication.java
 E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\tutorials\services\exceptions\AccountExistsException.java
 E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\tutorials\rest\controllers\BlogEntryController.java
-E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\tutorials\resources\asm\BlogEntryResourceAsm.java
 E:\Heritage Inovative Solutions\www.hisolutions.co.zw\src\main\java\zw\co\hisolutions\tutorials\services\exceptions\BlogNotFoundException.java
