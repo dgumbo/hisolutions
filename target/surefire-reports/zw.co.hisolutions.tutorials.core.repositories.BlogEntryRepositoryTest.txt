@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: zw.co.hisolutions.tutorials.core.repositories.BlogEntryRepositoryTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.559 sec - in zw.co.hisolutions.tutorials.core.repositories.BlogEntryRepositoryTest

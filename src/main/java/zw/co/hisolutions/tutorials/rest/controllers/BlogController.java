@@ -98,4 +98,3 @@ public class BlogController {
         return results;
     }
 }
-
