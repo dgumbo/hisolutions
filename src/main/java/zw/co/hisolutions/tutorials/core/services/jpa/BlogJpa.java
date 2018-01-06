@@ -3,11 +3,15 @@ package zw.co.hisolutions.tutorials.core.services.jpa;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.Resource;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import zw.co.hisolutions.tutorials.core.entities.Blog;
 import zw.co.hisolutions.tutorials.core.entities.dao.BlogDao;
 import zw.co.hisolutions.tutorials.core.services.BlogService;
+import zw.co.hisolutions.tutorials.rest.controllers.BlogController;
 
 @Repository
 @Service
@@ -36,8 +40,29 @@ public class BlogJpa implements BlogService {
     }
 
     @Override
-    public List<Blog> findAllBlogs() {
+    public Resource<Blog> buildBlogResource(Blog blog) {
+        Resource<Blog> blog_resource = new Resource<>(blog);
+        Link selectlink = linkTo(BlogController.class).slash(blog_resource.getContent().getId()).withSelfRel().withType("get");;
+        Link deletelink = linkTo(BlogController.class).slash(blog_resource.getContent().getId()).slash("delete").withRel("delete").withType("delete");;
+        blog_resource.add(selectlink);
+        blog_resource.add(deletelink);
+
+        return blog_resource;
+    }
+
+    @Override
+    public Blog updateBlog(Blog blog) {
+        return blogDao.save(blog);
+    }
+
+    @Override
+    public List<Blog> getAllBlogs() {
         return (List<Blog>) blogDao.findAll();
+    }
+
+    @Override
+    public void deleteBlog(Blog blog) {
+        blogDao.delete(blog);
     }
 
 }

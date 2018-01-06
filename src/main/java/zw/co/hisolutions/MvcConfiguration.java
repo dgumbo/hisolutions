@@ -12,8 +12,8 @@ public class MvcConfiguration {
     @Bean
     public InternalResourceViewResolver setupViewResolver()  {
         InternalResourceViewResolver resolver =  new InternalResourceViewResolver();
-        resolver.setPrefix ("/WEB-INF/jsp/");
-        resolver.setSuffix (".jsp");
+        resolver.setPrefix ("/WEB-INF/html/");
+        resolver.setSuffix (".html");
         resolver.setViewClass (JstlView.class);
         return resolver;
     }

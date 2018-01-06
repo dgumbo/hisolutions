@@ -12,13 +12,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.transaction.annotation.Transactional;
-import zw.co.hisolutions.spring.configs.TestsPreConfiguration;
+import zw.co.hisolutions.spring.configs_test.TestsPreConfiguration_HISolutions;
 import zw.co.hisolutions.tutorials.core.entities.Account;
 import zw.co.hisolutions.tutorials.core.services.AccountService;
 
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {TestsPreConfiguration.class}
+@ContextConfiguration(classes = {TestsPreConfiguration_HISolutions.class}
         , loader = AnnotationConfigContextLoader.class
         , initializers = { ConfigFileApplicationContextInitializer.class }) 
 public class AccountRepositoryTest {
@@ -34,13 +34,13 @@ public class AccountRepositoryTest {
     @Before
     @Transactional
     @Rollback(false)
-    public void setUp() {
+    public void setUp() throws Exception {
         account = new Account();
         account.setName("name");
         account.setPassword("password");
         account = accountRepository.createAccount(account);
-    }
-    
+    }    
+
     @Test
     @Transactional
     public void testFind(){
