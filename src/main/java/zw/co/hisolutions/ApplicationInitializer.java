@@ -1,12 +1,5 @@
 package zw.co.hisolutions;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
-import org.springframework.web.WebApplicationInitializer;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-import org.springframework.web.servlet.DispatcherServlet;
-
     /*
 https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/web/support/SpringBootServletInitializer.html
     this is already implemented on HisSolutionsApplication

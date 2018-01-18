@@ -8,7 +8,7 @@ import zw.co.hisolutions.tutorials.core.entities.Blog;
 
 public interface AccountService {
     public Account findAccount(Long id) throws NoSuchElementException;
-    public Account findAccountByName(String accountName);
+    public Account findAccountByUsername(String username);
     
     public Account createAccount(Account data) throws Exception;
     public Account updateAccount(Account account) throws Exception;

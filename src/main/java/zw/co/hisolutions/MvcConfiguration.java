@@ -2,10 +2,10 @@ package zw.co.hisolutions;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 public class MvcConfiguration extends  WebMvcConfigurationSupport {
@@ -13,33 +13,36 @@ public class MvcConfiguration extends  WebMvcConfigurationSupport {
     @Bean
     public InternalResourceViewResolver setupViewResolver()  {
         InternalResourceViewResolver resolver =  new InternalResourceViewResolver();
-        resolver.setPrefix ("/WEB-INF/jsp/");
-        resolver.setSuffix (".jsp");
-        resolver.setViewClass (JstlView.class);
+        //resolver.set
+        resolver.setPrefix ("");
+        resolver.setSuffix ("");
+        //resolver.setViewClass (JstlView.class);
+        //resolver.setViewClass (mvc. HTMLView.class);
+	//resolver.setViewClass(viewClass); //setTemplateMode("HTML5");
         return resolver;
-    }  
-    
-//    @Bean
-//    public InternalResourceViewResolver htmlViewResolver() {
-//        System.out.println("htmlViewResolver tatanga");
-//        InternalResourceViewResolver bean = new InternalResourceViewResolver();
-//        bean.setPrefix("/WEB-INF/html/");
-//        bean.setSuffix(".html");
-//        bean.setOrder(2);
-//        System.out.println("htmlViewResolver Resolved to : " + bean.toString());
-//        return bean;
-//    }
+    }   
 
-//    @Bean
-//    public MultipartResolver multipartResolver() {
-//        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-//        multipartResolver.setMaxUploadSize(5242880);
-//        return multipartResolver;
-//    }
-//    
+//	@Bean
+//	@Description("Thymeleaf Template Resolver")
+//	public ServletContextTemplateResolver templateResolver() {
+//	    ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();
+//	    templateResolver.setPrefix("/WEB-INF/html/");
+//	    templateResolver.setSuffix(".html");
+//	    templateResolver.setTemplateMode("HTML5");
+//	 
+//	    return templateResolver;
+//	}
+    
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/app/**").addResourceLocations("/app/build/");
+        //registry.addResourceHandler("**").addResourceLocations("/WEB-INF/html/");
+        registry.addResourceHandler("**").addResourceLocations("/WEB-INF/html/");
         //registry.addResourceHandler("/WEB-INF/app/**").addResourceLocations("/app/build/");
+    }
+    
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH");
     }
 }

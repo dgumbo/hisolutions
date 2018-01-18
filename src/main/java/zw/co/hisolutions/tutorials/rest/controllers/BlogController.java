@@ -31,8 +31,8 @@ public class BlogController {
     }
     private BlogService blogService;
 
-    @RequestMapping(value = "/getAll", produces = {MediaType.APPLICATION_JSON_VALUE, "application/hal+json"})
-    public ResponseEntity<List<Resource<Blog>>> allBlogs() {
+    @RequestMapping(value = "", produces = {MediaType.APPLICATION_JSON_VALUE, "application/hal+json"})
+    public ResponseEntity<List<Resource<Blog>>> getAllBlogs() {
         List<Resource<Blog>> blogResourceList = new ArrayList();
 
         blogService.getAllBlogs().forEach(blog -> {
@@ -50,7 +50,7 @@ public class BlogController {
         return new ResponseEntity<>(blogResource, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/new", method = RequestMethod.PUT, produces = {MediaType.APPLICATION_JSON_VALUE, "application/hal+json"})
+    @RequestMapping(value = "", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE, "application/hal+json"})
     public ResponseEntity<Resource<Blog>> createBlog(@RequestBody Resource<Blog> blogResource) throws Exception {
         Blog blog = blogResource.getContent();
 //        System.out.println("\nBlog B4 Save : " + blogResource.getContent() + "\n");
@@ -69,7 +69,7 @@ public class BlogController {
         return new ResponseEntity<>(blogResource, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE, "application/hal+json"})
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT, produces = {MediaType.APPLICATION_JSON_VALUE, "application/hal+json"})
     public ResponseEntity<Resource<Blog>> editBlog(@PathVariable Long id, @RequestBody Resource<Blog> blogResource) {
         Blog blog = blogResource.getContent();
         try {
@@ -82,7 +82,7 @@ public class BlogController {
         return new ResponseEntity<>(blogResource, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{id}/delete", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public Results deleteBlog(@PathVariable Long id) {
         Results results;

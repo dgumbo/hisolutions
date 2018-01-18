@@ -35,8 +35,8 @@ public class BlogJpa implements BlogService {
     }
 
     @Override
-    public Blog findBlogByName(String blogName) {
-        return blogDao.getByName(blogName);
+    public Blog findBlogByTitle(String title) {
+        return blogDao.getByTitle(title);
     }
 
     @Override

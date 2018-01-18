@@ -7,6 +7,6 @@ import zw.co.hisolutions.tutorials.core.entities.Blog;
 @Repository
 public interface BlogDao extends CrudRepository<Blog, Long> {
     
-    public Blog getByName(String blogName);
+    public Blog getByTitle(String title);
     
 }

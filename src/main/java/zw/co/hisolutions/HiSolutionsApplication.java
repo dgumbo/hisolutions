@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication(scanBasePackages = {"zw.co.hisolutions"})
 @EnableJpaRepositories(basePackages = {"zw.co.hisolutions"})
 @EnableAutoConfiguration
-@ComponentScan
+@ComponentScan(basePackages = {"zw.co.hisolutions"})
 public class HiSolutionsApplication extends SpringBootServletInitializer {
 
     @Override

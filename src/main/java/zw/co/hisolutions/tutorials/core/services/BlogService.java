@@ -6,7 +6,7 @@ import zw.co.hisolutions.tutorials.core.entities.Blog;
 
 public interface BlogService {
     public Blog findBlog(Long id);
-    public Blog findBlogByName(String blogName); 
+    public Blog findBlogByTitle(String blogName); 
     public Blog createBlog(Blog data) throws Exception;    
 
     public Resource<Blog> buildBlogResource(Blog blog);

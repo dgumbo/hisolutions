@@ -7,7 +7,7 @@ import zw.co.hisolutions.tutorials.core.entities.Account;
 @Repository
 public interface AccountDao extends CrudRepository<Account, Long> {
 
-    public Account getByName(String accountName);   
+    public Account getByUsername(String accountName);   
 
     public Account getById(Long id);
 }

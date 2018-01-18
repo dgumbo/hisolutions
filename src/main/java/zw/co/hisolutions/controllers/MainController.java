@@ -11,7 +11,7 @@ public class MainController {
     @RequestMapping("/")
     public ModelAndView indexMapping(ModelAndView mv) {
         System.out.println("Pano tasvika!!");
-        mv.setViewName("index");
+        mv.setViewName("index.html");
         return mv;
     }
     
