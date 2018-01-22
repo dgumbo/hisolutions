@@ -92,10 +92,10 @@ public class BaseEntity implements Serializable {
 
     @PreUpdate
     public void preUpdate() {
-        Account account = accountUserDetails.getAccount();
+//        Account account = accountUserDetails.getAccount();
         
         this.modificationTime = dtf.format(LocalDateTime.now());
-        this.modifiedByUser = account.getUsername() ;// usernameAuditorAware.getCurrentAuditor();
+        this.modifiedByUser = "test" ;//account.getUsername() ;// usernameAuditorAware.getCurrentAuditor();
     }
 
     @Override

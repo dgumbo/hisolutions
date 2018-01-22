@@ -1,6 +1,9 @@
 package zw.co.hisolutions.tutorials.core.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -20,16 +23,16 @@ import zw.co.hisolutions.core.entities.basic.BaseEntity;
 @Entity
 @Data
 @RequiredArgsConstructor
-public class Blog  extends BaseEntity {       
+public class Blog  extends BaseEntity  implements Serializable{       
     @NotNull
     private String title; 
     
     @NotNull
-    private String content; 
+    private String content;  
     
+    @JsonBackReference
     @NotNull
     @JoinColumn(referencedColumnName = "id", name = "account_id") 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
     private Account account ;        
 }
