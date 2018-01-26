@@ -2,7 +2,7 @@ package zw.co.hisolutions.tutorials.core.services;
 
 import java.util.List;
 import org.springframework.hateoas.Resource;
-import zw.co.hisolutions.tutorials.core.entities.Blog;
+import zw.co.hisolutions.tutorials.core.entity.Blog;
 
 public interface BlogService {
     public Blog findBlog(Long id);

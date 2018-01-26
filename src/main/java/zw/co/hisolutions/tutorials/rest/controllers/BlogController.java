@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import zw.co.hisolutions.tutorials.core.entities.Blog;
-import zw.co.hisolutions.tutorials.core.services.BlogService;
-import zw.co.hisolutions.tutorials.services.util.DBActionResult;
-import zw.co.hisolutions.tutorials.services.util.Results;
+import org.springframework.web.bind.annotation.ResponseBody; 
+import zw.co.hisolutions.common.util.Results;
+import zw.co.hisolutions.common.util.Results.DBActionResult;
+import zw.co.hisolutions.tutorials.core.entity.Blog;
+import zw.co.hisolutions.tutorials.core.services.BlogService; 
 
 @Controller
 @RequestMapping("/blogs")
