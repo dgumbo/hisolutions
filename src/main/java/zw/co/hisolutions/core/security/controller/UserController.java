@@ -15,24 +15,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import zw.co.hisolutions.authentication.entity.User;
-import zw.co.hisolutions.authentication.service.UserService;
-import zw.co.hisolutions.common.util.Results;
-import zw.co.hisolutions.common.util.Results.DBActionResult; 
-import zw.co.hisolutions.tutorials.core.services.BlogService; 
+import zw.co.hisolutions.core.security.entity.User;
+import zw.co.hisolutions.core.security.service.UserService;
+import zw.co.hisolutions.core.common.util.Results;
+import zw.co.hisolutions.core.common.util.Results.DBActionResult;
+import zw.co.hisolutions.tutorials.core.services.BlogService;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
-    @Autowired
-    private UserService userService;
-    @Autowired
-    BlogService blogService;
 
-    @RequestMapping(value = "", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE, "application/hal+json"} )
+    @Autowired
+    private UserService userService; 
+
+    @RequestMapping(value = "", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE, "application/hal+json"})
     public ResponseEntity<List<Resource<User>>> getAllUsers() {
 //        System.out.println("/users/getall : entering");
-        
+
         List<Resource<User>> userResourceList = new ArrayList();
 
         userService.findAll().forEach(user -> {
@@ -41,7 +40,7 @@ public class UserController {
             userResourceList.add(userService.buildUserResource(user));
         });
 
-        return new ResponseEntity<>(userResourceList, HttpStatus.OK) ;
+        return new ResponseEntity<>(userResourceList, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{username}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE, "application/hal+json"})
@@ -51,22 +50,22 @@ public class UserController {
         Resource<User> userResource = userService.buildUserResource(user);
 
         return new ResponseEntity<>(userResource, HttpStatus.OK);
-    } 
+    }
 
     @RequestMapping(value = "", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE, "application/hal+json"})
     public ResponseEntity<Resource<User>> createUser(@RequestBody Resource<User> userResource) throws Exception {
-        
+
         System.out.println("\nUser B4 Create : " + userResource.getContent() + "\n");
         User user = userResource.getContent();
 //        try {
-            user = userService.save(user);
+        user = userService.save(user);
 //        } catch (Exception ex) {
 //            System.out.println(ex.getMessage());
 //            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
 //        } 
-        
+
         userResource = userService.buildUserResource(user);
-        
+
         return new ResponseEntity<>(userResource, HttpStatus.OK);
     }
 
@@ -80,7 +79,7 @@ public class UserController {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }
         userResource = userService.buildUserResource(user);
-        
+
         return new ResponseEntity<>(userResource, HttpStatus.OK);
     }
 

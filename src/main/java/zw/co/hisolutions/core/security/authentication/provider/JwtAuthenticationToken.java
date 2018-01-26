@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package zw.co.hisolutions.core.security.authentication.provider;
+ package zw.co.hisolutions.core.security.authentication.provider;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
@@ -12,12 +7,12 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
  * @author denzil
  */
 public class JwtAuthenticationToken extends UsernamePasswordAuthenticationToken {
-    
+
     private String token;
-    
+
     public JwtAuthenticationToken(String token) {
         super(null, null);
-        this.token=token;
+        this.token = token;
     }
 
     public String getToken() {

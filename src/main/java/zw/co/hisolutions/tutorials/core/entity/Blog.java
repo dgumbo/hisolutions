@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import zw.co.hisolutions.authentication.entity.User;
+import zw.co.hisolutions.core.security.entity.User;
 import zw.co.hisolutions.common.basic.entity.BaseEntity;
 
 @Entity

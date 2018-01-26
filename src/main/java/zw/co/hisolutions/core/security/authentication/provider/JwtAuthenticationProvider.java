@@ -9,7 +9,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-import zw.co.hisolutions.authentication.entity.User;
+import zw.co.hisolutions.core.security.entity.User;
 import zw.co.hisolutions.core.security.JwtUserDetails;
 
 /**

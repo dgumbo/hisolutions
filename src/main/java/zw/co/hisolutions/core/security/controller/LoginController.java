@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView; 
-import zw.co.hisolutions.authentication.entity.User;
-import zw.co.hisolutions.authentication.entity.UserLogin;
-import zw.co.hisolutions.authentication.service.MenuGroupService;
-import zw.co.hisolutions.authentication.service.SecurityService;
-import zw.co.hisolutions.authentication.service.UserService;
+import zw.co.hisolutions.core.security.entity.User;
+import zw.co.hisolutions.core.security.entity.UserLogin;
+import zw.co.hisolutions.core.security.service.MenuGroupService;
+import zw.co.hisolutions.core.security.service.SecurityService;
+import zw.co.hisolutions.core.security.service.UserService;
 
 @Controller
 @Slf4j

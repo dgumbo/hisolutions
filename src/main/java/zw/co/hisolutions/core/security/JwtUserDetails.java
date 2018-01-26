@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import zw.co.hisolutions.authentication.entity.UserLogin;
+import zw.co.hisolutions.core.security.entity.UserLogin;
 
 /**
  *
@@ -32,7 +32,7 @@ public class JwtUserDetails implements UserDetails {
         return authorities;
     }
     
-    public UserLogin getAccount() {
+    public UserLogin getUserLogin() {
         return userLogin;
     }
 

@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package zw.co.hisolutions.common.basic.entity;
+ package zw.co.hisolutions.common.basic.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.gson.Gson;
@@ -26,7 +21,7 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.Version;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener; 
-import zw.co.hisolutions.core.security.JwtUserDetails;
+//import zw.co.hisolutions.core.security.JwtUserDetails;
 
 /**
  *
@@ -37,10 +32,10 @@ import zw.co.hisolutions.core.security.JwtUserDetails;
 @Data
 @EqualsAndHashCode(of = "id")
 public class BaseEntity implements Serializable {
-    
-    @Autowired
-    @JsonIgnore
-    JwtUserDetails userDetails;
+//    
+//    @Autowired
+//    @JsonIgnore
+//    JwtUserDetails userDetails;
 
    // private static final UsernameAuditorAware usernameAuditorAware = new UsernameAuditorAware();
     private static final Gson gson= new Gson();
