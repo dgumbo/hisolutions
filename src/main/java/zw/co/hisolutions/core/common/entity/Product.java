@@ -48,7 +48,7 @@ public class Product extends BaseEntity implements Serializable{
     private List<Audiance> audiances;
     
     @OneToMany
-    private List<CourseTopic> topics;
+    private List<CourseTopic> courseTopics;
     
     @OneToMany
     private List<DistributionMethod> distributionMethods;   
