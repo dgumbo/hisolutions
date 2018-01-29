@@ -6,7 +6,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode; 
-import zw.co.hisolutions.common.basic.entity.BaseEntity;
+import zw.co.hisolutions.core.common.basic.entity.BaseEntity;
 
 /**
  *

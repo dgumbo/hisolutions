@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package zw.co.hisolutions.core.security.entity;
+package zw.co.hisolutions.core.entity;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import zw.co.hisolutions.core.common.basic.entity.BaseEntity;
 
 /**
@@ -19,12 +19,9 @@ import zw.co.hisolutions.core.common.basic.entity.BaseEntity;
  */
 @Entity
 @Data
-@EqualsAndHashCode(callSuper = true)
-@Table(name = "location")
-public class Location extends BaseEntity {
-
+@AllArgsConstructor
+public class DurationType extends BaseEntity implements Serializable{
+    @Column
     @NotNull
-    @Column(unique = true)
-    public String name; 
-    
+    private String name;     
 }

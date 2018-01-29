@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
-import zw.co.hisolutions.common.basic.entity.BaseEntity;
+import zw.co.hisolutions.core.common.basic.entity.BaseEntity;
 
 @Entity
 @Data

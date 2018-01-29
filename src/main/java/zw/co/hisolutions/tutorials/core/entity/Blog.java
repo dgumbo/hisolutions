@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import zw.co.hisolutions.core.security.entity.User;
-import zw.co.hisolutions.common.basic.entity.BaseEntity;
+import zw.co.hisolutions.core.common.basic.entity.BaseEntity;
 
 @Entity
 @Data
