@@ -3,14 +3,14 @@ package zw.co.hisolutions.core.controllers.rest;
 import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import zw.co.hisolutions.core.common.basic.controllers.rest.BaseRestController;
+import zw.co.hisolutions.core.common.basic.controller.rest.BasicRestController;
 import zw.co.hisolutions.core.entity.Skill; 
-import zw.co.hisolutions.core.common.basic.service.BasicService;
-import zw.co.hisolutions.core.entity.service.SkillService;
+import zw.co.hisolutions.core.service.SkillService;
+import zw.co.hisolutions.core.common.basic.service.GenericService;
 
 @RestController
 @RequestMapping("/rest/skills")
-public class SkillController extends BaseRestController<Skill>{
+public class SkillController extends BasicRestController<Skill, Long>{
 
     private  SkillService skillService;
     
@@ -20,7 +20,7 @@ public class SkillController extends BaseRestController<Skill>{
     }
 
     @Override
-    public BasicService getService() {
+    public GenericService getService() {
         return this.skillService ;
     }
 

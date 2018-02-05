@@ -4,8 +4,11 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OrderColumn;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,7 +22,7 @@ import zw.co.hisolutions.core.common.basic.entity.BaseEntity;
 @Entity
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor 
 public class Product extends BaseEntity implements Serializable{
     @NotNull
     @Column
@@ -33,26 +36,39 @@ public class Product extends BaseEntity implements Serializable{
     private double price;  
     
     @NotNull
+    @ManyToOne(targetEntity = ProductType.class)
     @JoinColumn(name = "product_type_id", referencedColumnName = "id" )    
-    private ProductType type;   
+    private ProductType productType;   
     
     @NotNull
+    @ManyToOne(targetEntity = Vendor.class)
     @JoinColumn(name = "vendor_id", referencedColumnName = "id" )    
     private Vendor vendor;         
-    
-    @OneToMany
-    private List<Skill> skillsToGain;
-    
-    @OneToMany
-    private List<PreRequisite> preRequisites;
-    
-    @OneToMany
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @OrderColumn 
     private List<Audiance> audiances;
     
-    @OneToMany
+   // @Transient
+    @ManyToMany(fetch = FetchType.EAGER )
+    @OrderColumn 
+    private List<Skill> skillsToGain;    
+    
+   //@Transient 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @OrderColumn 
+    private List<PreRequisite> preRequisites;
+    
+    
+   // @Transient 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @OrderColumn 
     private List<CourseTopic> courseTopics;
     
-    @OneToMany
-    private List<DistributionMethod> distributionMethods;   
+    
+  //  @Transient 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @OrderColumn 
+    private List<DistributionMethod> distributionMethods;  
     
 }

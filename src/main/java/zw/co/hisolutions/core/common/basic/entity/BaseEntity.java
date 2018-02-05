@@ -16,6 +16,7 @@ import javax.persistence.PreUpdate;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.Proxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -39,8 +40,7 @@ public class BaseEntity implements Serializable {
 
    // private static final UsernameAuditorAware usernameAuditorAware = new UsernameAuditorAware();
     private static final Gson gson= new Gson();
-
-
+    
    private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
    
    @JsonIgnore
@@ -55,10 +55,12 @@ public class BaseEntity implements Serializable {
     @Version
     private long version = 1L;
 
+    @NotNull
     @Column(name = "created_by_user", updatable = false)
     @CreatedBy 
     private String createdByUser;
     
+    @NotNull
     @Column(name = "creation_time", updatable = false)
     private String creationTime;
 
@@ -118,7 +120,5 @@ public class BaseEntity implements Serializable {
             return false;
         }
         return true;
-    }
-
-    
+    }    
 }

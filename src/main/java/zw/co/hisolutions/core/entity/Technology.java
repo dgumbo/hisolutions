@@ -12,15 +12,19 @@ import javax.persistence.JoinColumn;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Proxy;
 import zw.co.hisolutions.core.common.basic.entity.BaseEntity;
 
 /**
  *
  * @author denzil
  */
-@Entity
+@Entity 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
+@Proxy(lazy = false)
 public class Technology extends BaseEntity implements Serializable{
     
     @NotNull

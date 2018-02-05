@@ -3,10 +3,14 @@
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Proxy;
 import zw.co.hisolutions.core.common.basic.entity.BaseEntity;
 
 /**
@@ -16,6 +20,7 @@ import zw.co.hisolutions.core.common.basic.entity.BaseEntity;
 @Entity
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Duration extends BaseEntity implements Serializable{
     
     @NotNull
@@ -23,6 +28,7 @@ public class Duration extends BaseEntity implements Serializable{
     private String name;
     
     @NotNull
-    @JoinColumn(name = "duration_type", referencedColumnName = "id" )    
-    private DurationType type;    
+    @ManyToOne(targetEntity = DurationType.class/*, fetch = FetchType.LAZY*/)
+    @JoinColumn(name = "duration_type_id", referencedColumnName = "id" )    
+    private DurationType durationType;    
 }

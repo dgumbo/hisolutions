@@ -3,14 +3,14 @@ package zw.co.hisolutions.core.controllers.rest;
 import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import zw.co.hisolutions.core.common.basic.controllers.rest.BaseRestController;
-import zw.co.hisolutions.core.common.basic.service.BasicService;
+import zw.co.hisolutions.core.common.basic.controller.rest.BasicRestController;
 import zw.co.hisolutions.core.entity.Vendor;
-import zw.co.hisolutions.core.entity.service.VendorService; 
+import zw.co.hisolutions.core.service.VendorService; 
+import zw.co.hisolutions.core.common.basic.service.GenericService;
 
 @RestController
-@RequestMapping("/test/vendors")
-public class VendorController extends BaseRestController<Vendor>{
+@RequestMapping("/rest/vendors")
+public class VendorController extends BasicRestController<Vendor, Long>{
 
     private final  VendorService vendorService;
     
@@ -20,7 +20,7 @@ public class VendorController extends BaseRestController<Vendor>{
     }
 
     @Override
-    public BasicService getService() {
+    public GenericService getService() {
         return this.vendorService;
     }
 
