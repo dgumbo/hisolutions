@@ -55,7 +55,7 @@ public abstract class BasicRestController<T extends BaseEntity, ID extends Seria
 
     @PostMapping(value = "", produces = {MediaType.APPLICATION_JSON_VALUE, "application/hal+json"})
     public ResponseEntity<T> create(@RequestBody T entity) throws Exception {
-//        System.out.println("\nT  B4 Save : " + entity.getContent() + "\n");
+      //  System.out.println("\nT  B4 Save : " + entity + "\n");
 
         ResponseEntity responseEntity;
         HttpStatus httpStatus;

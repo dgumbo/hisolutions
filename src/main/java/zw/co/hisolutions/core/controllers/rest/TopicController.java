@@ -4,24 +4,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import zw.co.hisolutions.core.common.basic.controller.rest.BasicRestController;
-import zw.co.hisolutions.core.entity.CourseTopic;
-import zw.co.hisolutions.core.service.CourseTopicService; 
+import zw.co.hisolutions.core.entity.Topic;
 import zw.co.hisolutions.core.common.basic.service.GenericService;
+import zw.co.hisolutions.core.service.TopicService;
 
 @RestController
-@RequestMapping("/rest/coursetopics")
-public class CourseTopicController extends BasicRestController<CourseTopic, Long>{
+@RequestMapping("/rest/topics")
+public class TopicController extends BasicRestController<Topic, Long>{
 
-    private final  CourseTopicService courseTopicService;
+    private final  TopicService topicService;
     
     @Autowired
-    public CourseTopicController  (CourseTopicService courseTopicService) {
-        this.courseTopicService = courseTopicService;        
+    public TopicController  (TopicService courseTopicService) {
+        this.topicService = courseTopicService;        
     }
 
     @Override
     public GenericService getService() {
-        return this.courseTopicService;
+        return this.topicService;
     }
 
     @Override

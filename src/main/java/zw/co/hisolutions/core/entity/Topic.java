@@ -18,7 +18,7 @@ import zw.co.hisolutions.core.common.basic.entity.BaseEntity;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor 
-public class CourseTopic extends BaseEntity implements Serializable{
+public class Topic extends BaseEntity implements Serializable{
     @Column
     @NotNull
     private String name;     

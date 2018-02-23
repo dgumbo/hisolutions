@@ -24,6 +24,7 @@ import zw.co.hisolutions.core.common.basic.entity.BaseEntity;
 @AllArgsConstructor
 @NoArgsConstructor 
 public class Product extends BaseEntity implements Serializable{
+    
     @NotNull
     @Column
     private String name;
@@ -34,6 +35,18 @@ public class Product extends BaseEntity implements Serializable{
     
     @Column
     private double price;  
+        
+    @Column(name="display_content")
+    @NotNull
+    private String displayContent;   /*  display content . may contain html code  */
+    
+    @Column 
+    private String imageUrl;
+        
+    @NotNull
+    @ManyToOne(targetEntity = ServiceCategory.class)
+    @JoinColumn(name = "service_category_type_id", referencedColumnName = "id" )  
+    private ServiceCategory serviceCategory;
     
     @NotNull
     @ManyToOne(targetEntity = ProductType.class)
@@ -63,7 +76,7 @@ public class Product extends BaseEntity implements Serializable{
    // @Transient 
     @ManyToMany(fetch = FetchType.EAGER)
     @OrderColumn 
-    private List<CourseTopic> courseTopics;
+    private List<Topic> courseTopics;
     
     
   //  @Transient 

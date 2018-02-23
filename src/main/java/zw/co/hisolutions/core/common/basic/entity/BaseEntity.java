@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
@@ -62,14 +63,16 @@ public class BaseEntity implements Serializable {
     
     @NotNull
     @Column(name = "creation_time", updatable = false)
-    private String creationTime;
+    private Date creationTime;
 
+    @NotNull
     @Column(name = "modified_by_user")
     @LastModifiedBy
     private String modifiedByUser;
 
+    @NotNull
     @Column(name = "modification_time")
-    private String modificationTime;
+    private Date modificationTime;
     
     @NotNull
     @Column(name = "active_status")
@@ -77,8 +80,11 @@ public class BaseEntity implements Serializable {
 
     @PrePersist
     public void prePersist() {
-        this.creationTime = dtf.format(LocalDateTime.now());
-        this.modificationTime = dtf.format(LocalDateTime.now());
+//        this.creationTime = dtf.format(LocalDateTime.now());
+//        this.modificationTime = dtf.format(LocalDateTime.now());        
+        
+        this.creationTime =  new Date();
+        this.modificationTime =  new Date();
         
      //   Account account =   accountUserDetails.getAccount();
         
@@ -90,7 +96,8 @@ public class BaseEntity implements Serializable {
     public void preUpdate() {
 //        Account account = accountUserDetails.getAccount();
         
-        this.modificationTime = dtf.format(LocalDateTime.now());
+        //this.modificationTime = dtf.format(LocalDateTime.now());
+        this.modificationTime = new Date();
         this.modifiedByUser = "test" ;//account.getUsername() ;// usernameAuditorAware.getCurrentAuditor();
     }
 

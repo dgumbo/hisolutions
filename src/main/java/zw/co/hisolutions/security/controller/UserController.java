@@ -18,8 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import zw.co.hisolutions.security.entity.User;
 import zw.co.hisolutions.security.service.UserService;
 import zw.co.hisolutions.core.common.util.Results;
-import zw.co.hisolutions.core.common.util.Results.DBActionResult;
-import zw.co.hisolutions.tutorials.core.services.BlogService;
+import zw.co.hisolutions.core.common.util.Results.DBActionResult; 
 
 @Controller
 @RequestMapping("/user")

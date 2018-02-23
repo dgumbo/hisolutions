@@ -12,25 +12,27 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import zw.co.hisolutions.core.entity.Audiance;
-import zw.co.hisolutions.core.entity.CourseTopic;
+import zw.co.hisolutions.core.entity.Topic;
 import zw.co.hisolutions.core.entity.DistributionMethod;
 import zw.co.hisolutions.core.entity.Duration;
 import zw.co.hisolutions.core.entity.DurationType;
 import zw.co.hisolutions.core.entity.PreRequisite;
 import zw.co.hisolutions.core.entity.Product;
 import zw.co.hisolutions.core.entity.ProductType;
+import zw.co.hisolutions.core.entity.ServiceCategory;
 import zw.co.hisolutions.core.entity.Skill;
 import zw.co.hisolutions.core.entity.Vendor;
 import zw.co.hisolutions.core.service.AudianceService;
-import zw.co.hisolutions.core.service.CourseTopicService;
 import zw.co.hisolutions.core.service.DistributionMethodService;
 import zw.co.hisolutions.core.service.DurationService;
 import zw.co.hisolutions.core.service.DurationTypeService;
 import zw.co.hisolutions.core.service.PreRequisiteService;
 import zw.co.hisolutions.core.service.ProductService;
 import zw.co.hisolutions.core.service.ProductTypeService;
+import zw.co.hisolutions.core.service.ServiceCategoryService;
 import zw.co.hisolutions.core.service.SkillService;
 import zw.co.hisolutions.core.service.VendorService;
+import zw.co.hisolutions.core.service.TopicService;
 
 /**
  *
@@ -54,11 +56,13 @@ public class InitializeStartData {
     @Autowired
     VendorService vendorService;
     @Autowired
-    CourseTopicService courseTopicService;
+    TopicService courseTopicService;
     @Autowired
     PreRequisiteService preRequisiteService;
     @Autowired
     SkillService skillService;
+    @Autowired
+    ServiceCategoryService serviceCategoryService;
 
     private DurationType durationType1;
     private DurationType durationType2;
@@ -74,11 +78,14 @@ public class InitializeStartData {
     private Vendor vendor2;
     private Product product2;
     private PreRequisite preRequisite2;
-    private CourseTopic courseTopic2;
+    private Topic courseTopic2;
     private PreRequisite preRequisite1;
-    private CourseTopic courseTopic1;
+    private Topic courseTopic1;
     private Skill skill2;
     private Skill skill1;
+    private ServiceCategory serviceCategory1;
+    private ServiceCategory serviceCategory2;
+    private ServiceCategory serviceCategory3;
 
     public void init() {
         initDurationType();
@@ -90,6 +97,7 @@ public class InitializeStartData {
         initCourseTopic();
         initPreRequisites();
         initSkillsToGain();
+        initServiceCategories();
         initProduct();
     }
 
@@ -264,7 +272,7 @@ public class InitializeStartData {
         String courseTopic1Name = "SQL Server";
         this.courseTopic1 = courseTopicService.findByName(courseTopic1Name);
         if (courseTopic1 == null) {
-            this.courseTopic1 = new CourseTopic(courseTopic1Name, 0.7);
+            this.courseTopic1 = new Topic(courseTopic1Name, 0.7);
             try {
                 courseTopic1 = courseTopicService.create(courseTopic1);
             } catch (Exception ex) {
@@ -275,7 +283,7 @@ public class InitializeStartData {
         String courseTopic2Name = "PRINCE2";
         this.courseTopic2 = courseTopicService.findByName(courseTopic2Name);
         if (courseTopic2 == null) {
-            this.courseTopic2 = new CourseTopic(courseTopic2Name, 0.6);
+            this.courseTopic2 = new Topic(courseTopic2Name, 0.6);
             try {
                 courseTopic2 = courseTopicService.create(courseTopic2);
             } catch (Exception ex) {
@@ -310,7 +318,6 @@ public class InitializeStartData {
     }
 
     private void initSkillsToGain() {
-     
         String skill1Name = "Web Development using AngularJS";
         this.skill1 = skillService.findByName(skill1Name);
         if (skill1 == null) {
@@ -334,6 +341,53 @@ public class InitializeStartData {
         }
     }
 
+    private void initServiceCategories() {
+        String serviceCategory1Name = "Web Development using AngularJS";
+        this.serviceCategory1 = serviceCategoryService.findByName(serviceCategory1Name);
+        if (serviceCategory1 == null) {
+            this.serviceCategory1 = new ServiceCategory();
+            serviceCategory1.setName(serviceCategory1Name);
+            serviceCategory1.setImageUrl(serviceCategory1Name);
+            serviceCategory1.setDescription(serviceCategory1Name);
+            serviceCategory1.setDisplayContent("<p>" + serviceCategory1Name + "</p>");
+            try {
+                serviceCategory1 = serviceCategoryService.create(serviceCategory1);
+            } catch (Exception ex) {
+                Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        String serviceCategory2Name = "Database Administration";
+        this.serviceCategory2 = serviceCategoryService.findByName(serviceCategory2Name);
+        if (serviceCategory2 == null) {
+            this.serviceCategory2 = new ServiceCategory();
+            serviceCategory2.setName(serviceCategory2Name);
+            serviceCategory2.setImageUrl(serviceCategory2Name);
+            serviceCategory2.setDescription(serviceCategory2Name);
+            serviceCategory2.setDisplayContent("<p>" + serviceCategory2Name + "</p>");
+            try {
+                serviceCategory2 = serviceCategoryService.create(serviceCategory2);
+            } catch (Exception ex) {
+                Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        String serviceCategory3Name = "Database Administration";
+        this.serviceCategory3 = serviceCategoryService.findByName(serviceCategory3Name);
+        if (this.serviceCategory3 == null) {
+            this.serviceCategory3 = new ServiceCategory();
+            serviceCategory3.setName(serviceCategory3Name);
+            serviceCategory3.setImageUrl(serviceCategory3Name);
+            serviceCategory3.setDescription(serviceCategory3Name);
+            serviceCategory3.setDisplayContent("<p>" + serviceCategory3Name + "</p>" );
+            try {
+                this.serviceCategory3 = serviceCategoryService.create(serviceCategory3);
+            } catch (Exception ex) {
+                Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
     private void initProduct() {
 
         String product1Name = "Web Development";
@@ -341,7 +395,10 @@ public class InitializeStartData {
         if (product1 == null) {
             product1 = new Product();
             product1.setName(product1Name);
+            product1.setImageUrl(product1Name);
             product1.setProductType(productType1);
+            product1.setDisplayContent("<p>" + product1Name + "</p>");
+            product1.setServiceCategory(serviceCategory1);
             product1.setDescription(product1Name);
             product1.setPrice(1L);
             product1.setVendor(vendor1);
@@ -363,6 +420,9 @@ public class InitializeStartData {
         if (product2 == null) {
             product2 = new Product();
             product2.setName(product2Name);
+            product2.setImageUrl(product2Name);
+            product2.setDisplayContent("<p>" + product2Name + "</p>");
+            product2.setServiceCategory(serviceCategory2);
             product2.setProductType(productType2);
             product2.setDescription(product2Name);
             product2.setPrice(1L);
@@ -371,7 +431,7 @@ public class InitializeStartData {
             product2.setDistributionMethods(Arrays.asList(distributionMethod2));
             product2.setCourseTopics(Arrays.asList(courseTopic1));
             product2.setPreRequisites(Arrays.asList(preRequisite2));
-            product1.setSkillsToGain(Arrays.asList(  skill2));
+            product2.setSkillsToGain(Arrays.asList(skill2));
 
             try {
                 product2 = productService.create(product2);

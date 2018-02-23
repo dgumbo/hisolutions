@@ -18,7 +18,7 @@ public class MvcConfiguration extends  WebMvcConfigurationSupport {
         resolver.setSuffix ("");
         //resolver.setViewClass (JstlView.class);
         //resolver.setViewClass (mvc. HTMLView.class);
-	//resolver.setViewClass(viewClass); //setTemplateMode("HTML5");
+	//resolver.setViewClass(viewClass); //setTemplateMode("HTML5"); 
         return resolver;
     }   
 

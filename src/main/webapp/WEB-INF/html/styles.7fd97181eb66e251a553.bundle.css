@@ -16,12 +16,12 @@
  * Copyright 2013-2017 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-small-business/blob/master/LICENSE)
  */html{position:relative;min-height:98%}body{font:15px/1.5 Arial,Helvetica,sans-serif;padding:0;margin:0;background-color:#f4f4f4;
-  
-  /* Margin bottom by footer height */margin-bottom:60px}
+
+    /* Margin bottom by footer height */margin-bottom:60px}
 
 /* Global */.container{width:80%;margin:auto;overflow:hidden}ul{margin:0;padding:0}.dark{padding:15px;margin-top:10px;margin-bottom:10px}
 
-/* Header **/.dark,header{background:#35424a;color:#fff}header{padding-top:30px;min-height:70px;border-bottom:2px solid #e8491d}header a{color:#fff;text-decoration:none;text-transform:uppercase;font-size:16px}header li{float:left;display:inline;padding:0 20px 0 20px}header #branding{float:left;-webkit-box-align:center;-ms-flex-align:center;align-items:center}header #branding h1 a{font-size:20px}header #branding h1{margin:0}header nav{float:right;margin-top:10px}header .highlight{color:#e8491d;font-weight:700}header a:hover{color:#ccc;font-weight:700}header a.current{color:#e04010;font-weight:700} 
+/* Header **/.dark,header{background:#35424a;color:#fff}header{padding-top:30px;min-height:70px;border-bottom:2px solid #e8491d;padding-bottom:20px}header a{color:#fff;text-decoration:none;text-transform:uppercase;font-size:16px}header li{float:left;display:inline;padding:0 20px 0 20px}header #branding,header #branding2{float:left;-webkit-box-align:center;-ms-flex-align:center;align-items:center}#nnav-bar{float:left}header #branding2 h1 a,header #branding h1 a{font-size:20px}header #branding2 h1,header #branding h1{margin:0}header nav{float:left;margin-top:10px}header .highlight{color:#e8491d;font-weight:700}header a:hover{color:#ccc;font-weight:700}header a.current{color:#e04010;font-weight:700} 
 
 
 /* Footer */footer{clear:both;position:absolute;bottom:0;width:100%;
@@ -40,4 +40,4 @@
 
 /* Services */ul#services li{list-style:none;padding:20px;border:1px solid #ccc;margin-bottom:5px;background:#e6e6e6} 
 
-/* Media Queries */@media(max-width:768px){#boxes .box,#newsletter form,#newsletter h1,article#main-col,aside#sidebar,header #branding,header nav,header nav li{float:none;text-align:center;width:100%}header{padding-bottom:20px}#showcase h1{margin-top:40px}#newsletter button,.quote button{display:block;width:100%}#newsletter form input[type=email],.quote input,.quote textarea{width:100%;margin-bottom:5px}}
+/* Media Queries */@media(max-width:768px){#boxes .box,#newsletter form,#newsletter h1,article#main-col,aside#sidebar,header #branding,header nav,header nav li{float:none;text-align:center;width:100%}#showcase h1{margin-top:40px}#newsletter button,.quote button{display:block;width:100%}#newsletter form input[type=email],.quote input,.quote textarea{width:100%;margin-bottom:5px}}
