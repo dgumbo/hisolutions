@@ -5,10 +5,12 @@
  */
 package zw.co.hisolutions.init;
 
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import zw.co.hisolutions.core.entity.Audiance;
@@ -33,6 +35,8 @@ import zw.co.hisolutions.core.service.ServiceCategoryService;
 import zw.co.hisolutions.core.service.SkillService;
 import zw.co.hisolutions.core.service.VendorService;
 import zw.co.hisolutions.core.service.TopicService;
+import zw.co.hisolutions.documents.entity.DocumentMetadata;
+import zw.co.hisolutions.documents.service.FileSystemDocumentStorageService;
 
 /**
  *
@@ -63,6 +67,8 @@ public class InitializeStartData {
     SkillService skillService;
     @Autowired
     ServiceCategoryService serviceCategoryService;
+    @Autowired
+    FileSystemDocumentStorageService fileSystemDocumentStorageService;
 
     private DurationType durationType1;
     private DurationType durationType2;
@@ -86,8 +92,15 @@ public class InitializeStartData {
     private ServiceCategory serviceCategory1;
     private ServiceCategory serviceCategory2;
     private ServiceCategory serviceCategory3;
+    private DocumentMetadata documenMetadata1;
+    private DocumentMetadata documenMetadata2;
+    private DocumentMetadata documenMetadata3;
+    private DocumentMetadata documenMetadata4;
+    private DocumentMetadata documenMetadata5;
+    private List<DocumentMetadata> docs;
 
     public void init() {
+        scanFileServerDirectory();
         initDurationType();
         initDuration();
         initDistributionMethod();
@@ -99,6 +112,25 @@ public class InitializeStartData {
         initSkillsToGain();
         initServiceCategories();
         initProduct();
+    }
+
+    private void scanFileServerDirectory() {
+        docs = fileSystemDocumentStorageService.scanServerDirectory();
+        if (docs.size() >= 1) {
+            documenMetadata1 = docs.get(0);
+        }
+        if (docs.size() >= 2) {
+            documenMetadata2 = docs.get(1);
+        }
+        if (docs.size() >= 3) {
+            documenMetadata3 = docs.get(2);
+        }
+        if (docs.size() >= 4) {
+            documenMetadata4 = docs.get(3);
+        }
+        if (docs.size() >= 5) {
+            documenMetadata5 = docs.get(4);
+        }
     }
 
     private void initDurationType() {
@@ -342,12 +374,25 @@ public class InitializeStartData {
     }
 
     private void initServiceCategories() {
-        String serviceCategory1Name = "Web Development using AngularJS";
+        String serviceCategory1Name = "Affordable Professional Web Design";
         this.serviceCategory1 = serviceCategoryService.findByName(serviceCategory1Name);
         if (serviceCategory1 == null) {
+            DocumentMetadata sd1 = null;
+            if (docs.stream().anyMatch(p -> p.getFilename().contains("showcase.jpg"))) {
+                  sd1 = docs.stream().filter(p -> p.getFilename().contains("showcase.jpg")).findAny().get();
+            } else {
+                sd1 = documenMetadata1;
+            }
+            DocumentMetadata st1 = null;
+            if (docs.stream().anyMatch(p -> p.getFilename().contains("html5"))) {
+                  st1 = docs.stream().filter(p -> p.getFilename().contains("html5")).findAny().get();
+            } else {
+                st1 = documenMetadata1;
+            }
             this.serviceCategory1 = new ServiceCategory();
             serviceCategory1.setName(serviceCategory1Name);
-            serviceCategory1.setImageUrl(serviceCategory1Name);
+            serviceCategory1.setImageMetadata(sd1);
+            serviceCategory1.setThumbnailMetadata(st1);
             serviceCategory1.setDescription(serviceCategory1Name);
             serviceCategory1.setDisplayContent("<p>" + serviceCategory1Name + "</p>");
             try {
@@ -362,7 +407,7 @@ public class InitializeStartData {
         if (serviceCategory2 == null) {
             this.serviceCategory2 = new ServiceCategory();
             serviceCategory2.setName(serviceCategory2Name);
-            serviceCategory2.setImageUrl(serviceCategory2Name);
+            serviceCategory2.setImageMetadata(documenMetadata4);
             serviceCategory2.setDescription(serviceCategory2Name);
             serviceCategory2.setDisplayContent("<p>" + serviceCategory2Name + "</p>");
             try {
@@ -377,9 +422,9 @@ public class InitializeStartData {
         if (this.serviceCategory3 == null) {
             this.serviceCategory3 = new ServiceCategory();
             serviceCategory3.setName(serviceCategory3Name);
-            serviceCategory3.setImageUrl(serviceCategory3Name);
+            serviceCategory3.setImageMetadata(documenMetadata5);
             serviceCategory3.setDescription(serviceCategory3Name);
-            serviceCategory3.setDisplayContent("<p>" + serviceCategory3Name + "</p>" );
+            serviceCategory3.setDisplayContent("<p>" + serviceCategory3Name + "</p>");
             try {
                 this.serviceCategory3 = serviceCategoryService.create(serviceCategory3);
             } catch (Exception ex) {
@@ -393,9 +438,15 @@ public class InitializeStartData {
         String product1Name = "Web Development";
         this.product1 = productService.findProductByName(product1Name);
         if (product1 == null) {
+            DocumentMetadata d1 = null;
+            if (docs.stream().anyMatch(p -> p.getFilename().contains("css3"))) {
+                d1 = docs.stream().filter(p -> p.getFilename().contains("css3")).findAny().get();
+            } else {
+                d1 = documenMetadata1;
+            }
             product1 = new Product();
             product1.setName(product1Name);
-            product1.setImageUrl(product1Name);
+            product1.setImageMetadata(d1);
             product1.setProductType(productType1);
             product1.setDisplayContent("<p>" + product1Name + "</p>");
             product1.setServiceCategory(serviceCategory1);
@@ -418,9 +469,16 @@ public class InitializeStartData {
         String product2Name = "Office Suite";
         this.product2 = productService.findProductByName(product2Name);
         if (product2 == null) {
+            DocumentMetadata d2 = null;
+            if (docs.stream().anyMatch(p -> p.getFilename().contains("html5"))) {
+                d2 = docs.stream().filter(p -> p.getFilename().contains("html5")).findAny().get();
+            } else {
+                d2 = documenMetadata2;
+            }
+
             product2 = new Product();
             product2.setName(product2Name);
-            product2.setImageUrl(product2Name);
+            product2.setImageMetadata(d2);
             product2.setDisplayContent("<p>" + product2Name + "</p>");
             product2.setServiceCategory(serviceCategory2);
             product2.setProductType(productType2);

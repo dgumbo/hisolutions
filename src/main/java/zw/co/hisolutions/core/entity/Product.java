@@ -14,6 +14,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import zw.co.hisolutions.core.common.basic.entity.BaseEntity;
+import zw.co.hisolutions.documents.Document;
+import zw.co.hisolutions.documents.entity.DocumentMetadata;
 
 /**
  *
@@ -36,16 +38,18 @@ public class Product extends BaseEntity implements Serializable{
     @Column
     private double price;  
         
-    @Column(name="display_content")
+    @Column(name="display_content",length = 5000)
     @NotNull
     private String displayContent;   /*  display content . may contain html code  */
-    
-    @Column 
-    private String imageUrl;
+     
+    @NotNull
+    @ManyToOne(targetEntity = DocumentMetadata.class)
+    @JoinColumn(name = "image_metadata_id", referencedColumnName = "id" )  
+    private DocumentMetadata imageMetadata;
         
     @NotNull
     @ManyToOne(targetEntity = ServiceCategory.class)
-    @JoinColumn(name = "service_category_type_id", referencedColumnName = "id" )  
+    @JoinColumn(name = "service_category_id", referencedColumnName = "id" )  
     private ServiceCategory serviceCategory;
     
     @NotNull

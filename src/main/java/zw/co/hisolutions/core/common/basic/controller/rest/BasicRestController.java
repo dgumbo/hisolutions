@@ -29,7 +29,8 @@ import zw.co.hisolutions.core.common.basic.service.GenericService;
 public abstract class BasicRestController<T extends BaseEntity, ID extends Serializable> {
 
     public abstract GenericService getService();
-    public abstract Class getControllerClass();
+    public abstract Class getControllerClass(); 
+  //  private static final org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(getControllerClass());
 
     @GetMapping(value = "", produces = {MediaType.APPLICATION_JSON_VALUE, "application/hal+json"})
     public ResponseEntity<List<T>> getAll() {
