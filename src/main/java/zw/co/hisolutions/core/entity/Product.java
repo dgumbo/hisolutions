@@ -27,6 +27,8 @@ import zw.co.hisolutions.documents.entity.DocumentMetadata;
 @NoArgsConstructor 
 public class Product extends BaseEntity implements Serializable{
     
+    //@Enumerated(EnumType.STRING)
+    
     @NotNull
     @Column
     private String name;
