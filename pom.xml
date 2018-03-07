@@ -6,7 +6,7 @@
     <artifactId>hisolutions</artifactId>
     <version>1.0.0</version>
     <packaging>war</packaging>
-<!--    <packaging>jar</packaging>-->
+    <!--    <packaging>jar</packaging>-->
 
     <name>hisolutions-backend</name>
 
@@ -45,6 +45,11 @@
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>

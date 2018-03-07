@@ -110,8 +110,8 @@ public class InitializeStartData {
         initCourseTopic();
         initPreRequisites();
         initSkillsToGain();
-        initServiceCategories();
-        initProduct();
+        //initServiceCategories();
+        //initProduct();
     }
 
     private void scanFileServerDirectory() {
