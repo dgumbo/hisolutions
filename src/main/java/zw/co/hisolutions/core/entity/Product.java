@@ -14,7 +14,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import zw.co.hisolutions.core.common.basic.entity.BaseEntity;
-import zw.co.hisolutions.documents.Document;
 import zw.co.hisolutions.documents.entity.DocumentMetadata;
 
 /**
@@ -44,7 +43,7 @@ public class Product extends BaseEntity implements Serializable{
     @NotNull
     private String displayContent;   /*  display content . may contain html code  */
      
-    @NotNull
+    //@NotNull
     @ManyToOne(targetEntity = DocumentMetadata.class)
     @JoinColumn(name = "image_metadata_id", referencedColumnName = "id" )  
     private DocumentMetadata imageMetadata;
