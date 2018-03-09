@@ -105,6 +105,13 @@ public class InitializeStartData {
         initSkillsToGain();
         initServiceCategories();
         initProduct();
+        testToDelete();
+    }
+
+    void testToDelete() {
+        org.hibernate.dialect.H2Dialect h2Dialect;
+        org.hibernate.dialect.MySQLDialect mySQLDialect;
+        com.mysql.jdbc.Driver driver;
     }
 
     private void scanFileServerDirectory() {
@@ -372,13 +379,13 @@ public class InitializeStartData {
         if (serviceCategory1 == null) {
             DocumentMetadata sd1 = null;
             if (docs.stream().anyMatch(p -> p.getFilename().contains("showcase.jpg"))) {
-                  sd1 = docs.stream().filter(p -> p.getFilename().contains("showcase.jpg")).findAny().get();
+                sd1 = docs.stream().filter(p -> p.getFilename().contains("showcase.jpg")).findAny().get();
             } else {
                 sd1 = documenMetadata1;
             }
             DocumentMetadata st1 = null;
             if (docs.stream().anyMatch(p -> p.getFilename().contains("html5"))) {
-                  st1 = docs.stream().filter(p -> p.getFilename().contains("html5")).findAny().get();
+                st1 = docs.stream().filter(p -> p.getFilename().contains("html5")).findAny().get();
             } else {
                 st1 = documenMetadata1;
             }
