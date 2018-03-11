@@ -1,11 +1,10 @@
-package zw.co.hisolutions.core.common.controllers;
+package zw.co.hisolutions.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import zw.co.hisolutions.core.common.basic.entity.BaseEntity;
 import zw.co.hisolutions.core.common.basic.service.GenericService;
 import zw.co.hisolutions.core.entity.Audiance;
 import zw.co.hisolutions.core.service.DistributionMethodService;
@@ -34,7 +33,7 @@ public class MainController {
     public ModelAndView indexMapping(ModelAndView mv) {
         System.out.println("Pano tasvika!!");
         
-        initializeStartData.init();
+        //   initializeStartData.init();
         
         mv.setViewName("index.html");
         return mv;

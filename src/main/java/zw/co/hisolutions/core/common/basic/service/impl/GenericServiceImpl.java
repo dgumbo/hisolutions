@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import zw.co.hisolutions.core.common.basic.dao.GenericDao;
 import zw.co.hisolutions.core.common.basic.entity.BaseEntity;
 import zw.co.hisolutions.core.common.basic.service.GenericService;
-import zw.co.hisolutions.core.common.controllers.MainController;
+import zw.co.hisolutions.controllers.MainController;
 
 /**
  * @author denzil
