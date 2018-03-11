@@ -14,31 +14,36 @@ import zw.co.hisolutions.init.InitializeStartData;
 
 @Controller
 public class MainController {
-    private DurationService durationService;
-    private DurationTypeService durationTypeService;
-    private DistributionMethodService distributionMethodService;
-    private GenericService genericService;
-    
-    @Autowired
-    public MainController(GenericService<Audiance, Long> genericService, DistributionMethodService distributionMethodService, DurationService durationService, DurationTypeService durationTypeService) {
-        this.durationService = durationService;
-        this.durationTypeService = durationTypeService;
-        this.distributionMethodService = distributionMethodService;
-        this.genericService = genericService;
-    }
 
-    @Autowired InitializeStartData initializeStartData;
-    
+    private final InitializeStartData initializeStartData;
+
+    @Autowired
+    public MainController(InitializeStartData initializeStartData) {
+       this.initializeStartData = initializeStartData;
+    }
+ 
+
     @RequestMapping("/")
     public ModelAndView indexMapping(ModelAndView mv) {
         System.out.println("Pano tasvika!!");
-        
+
         //   initializeStartData.init();
-        
         mv.setViewName("index.html");
         return mv;
     }
-    
+
+    @RequestMapping("/init")
+    public @ResponseBody
+    String init() {
+        System.out.println("Now Initializing Initial Data!!");
+
+        initializeStartData.init();
+
+        System.out.println("Initial Data Initialized Successifully !!");
+
+        return "Initial Data Initialized Successifully !!";
+    }
+
     @RequestMapping("/t")
     @ResponseBody
     public String index() {
