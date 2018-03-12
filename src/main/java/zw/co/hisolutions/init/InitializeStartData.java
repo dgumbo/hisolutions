@@ -36,32 +36,38 @@ import zw.co.hisolutions.documents.service.FileSystemDocumentStorageService;
  * @author denzil
  */
 @Component
-public class InitializeStartData {
+public class InitializeStartData { 
+
+    private final DurationService durationService;
+    private final DurationTypeService durationTypeService;
+    private final DistributionMethodService distributionMethodService;
+    private final AudianceService audianceService;
+    private final ProductService productService;
+    private final ProductTypeService productTypeService;
+    private final VendorService vendorService;
+    private final TopicService courseTopicService;
+    private final PreRequisiteService preRequisiteService;
+    private final SkillService skillService;
+    private final ServiceCategoryService serviceCategoryService;
+    private final FileSystemDocumentStorageService fileSystemDocumentStorageService;
 
     @Autowired
-    DurationService durationService;
-    @Autowired
-    DurationTypeService durationTypeService;
-    @Autowired
-    DistributionMethodService distributionMethodService;
-    @Autowired
-    AudianceService audianceService;
-    @Autowired
-    ProductService productService;
-    @Autowired
-    ProductTypeService productTypeService;
-    @Autowired
-    VendorService vendorService;
-    @Autowired
-    TopicService courseTopicService;
-    @Autowired
-    PreRequisiteService preRequisiteService;
-    @Autowired
-    SkillService skillService;
-    @Autowired
-    ServiceCategoryService serviceCategoryService;
-    @Autowired
-    FileSystemDocumentStorageService fileSystemDocumentStorageService;
+    public InitializeStartData(DurationService durationService, DurationTypeService durationTypeService, DistributionMethodService distributionMethodService, AudianceService audianceService, ProductService productService, ProductTypeService productTypeService, VendorService vendorService, TopicService courseTopicService, PreRequisiteService preRequisiteService, SkillService skillService, ServiceCategoryService serviceCategoryService, FileSystemDocumentStorageService fileSystemDocumentStorageService) {
+        this.durationService = durationService;
+        this.durationTypeService = durationTypeService;
+        this.distributionMethodService = distributionMethodService;
+        this.audianceService = audianceService;
+        this.productService = productService;
+        this.productTypeService = productTypeService;
+        this.vendorService = vendorService;
+        this.courseTopicService = courseTopicService;
+        this.preRequisiteService = preRequisiteService;
+        this.skillService = skillService;
+        this.serviceCategoryService = serviceCategoryService;
+        this.fileSystemDocumentStorageService = fileSystemDocumentStorageService;
+    }
+    
+    
 
     private DurationType durationType1;
     private DurationType durationType2;

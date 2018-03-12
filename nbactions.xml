@@ -8,7 +8,7 @@
             <goals>
                 <goal>process-classes</goal>  
                 <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>  
-                <goal>spring.profile.active:test</goal>
+                <goal>Pdevelopment</goal> 
             </goals>
             <properties>
                 <exec.args>-classpath %classpath zw.co.hisolutions.HiSolutionsApplication</exec.args>
@@ -23,6 +23,7 @@
             <goals>
                 <goal>process-classes</goal>
                 <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
+                <goal>Pdevelopment</goal> 
             </goals>
             <properties>
                 <exec.args>-classpath %classpath ${packageClassName}</exec.args>

@@ -50,6 +50,7 @@ public class FileSystemDocumentStorageServiceImpl implements FileSystemDocumentS
 
         // Creating the directory to store file
         String rootPath = System.getProperty("catalina.home");
+        
         String pt = rootPath + File.separator + "document_store";
 
         File dir = new File(pt);
@@ -197,9 +198,7 @@ public class FileSystemDocumentStorageServiceImpl implements FileSystemDocumentS
             BufferedInputStream inputStream = new BufferedInputStream(fis);
             bytes = IOUtils.toByteArray(inputStream);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            //throw new Exception(e);
+            throw new StorageException("Could not convert document", e);
         }
         return bytes;
     }
