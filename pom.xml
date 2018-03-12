@@ -266,8 +266,7 @@
             <artifactId>spring-boot-devtools</artifactId>
             <version>1.5.9.RELEASE</version>
         </dependency> -->
-        
-        
+         
     </dependencies>
     
     <profiles>
@@ -337,6 +336,20 @@
                             <execution>
                                 <id>0</id>
                                 <phase>test</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <tasks>
+                                        <echo>Using env.test.properties</echo>
+                                        <copy file="src/main/resources/env.test.properties"
+                                              tofile="${project.build.outputDirectory}/application.properties"/>
+                                    </tasks>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>2</id>
+                                <phase>initialize</phase>
                                 <goals>
                                     <goal>run</goal>
                                 </goals>
