@@ -3,6 +3,7 @@ package zw.co.hisolutions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,7 +17,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableAutoConfiguration
 //@EnableConfigurationProperties(StorageProperties.class)
 @ComponentScan(basePackages = {"zw.co.hisolutions"})
-public class HiSolutionsApplication extends SpringBootServletInitializer {
+public class HiSolutionsApplication extends SpringBootServletInitializer implements CommandLineRunner {
 
     private static final Logger logger = LoggerFactory.getLogger(HiSolutionsApplication.class);
     
@@ -32,12 +33,9 @@ public class HiSolutionsApplication extends SpringBootServletInitializer {
 
     @Override
     public void run(String... args) throws Exception {
-        logger.info("\n\nApplication Name : {},\n Username : {}\n",applicationName,username);
+        logger.info("\n\nApplication Name : {}.\n ",applicationName);
     }
     
     @Value("${application.name}")
-    private String applicationName ;
-    
-    @Value("${username}")
-    private String username ;
+    private String applicationName ; 
 }
