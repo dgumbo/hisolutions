@@ -9,7 +9,7 @@ import zw.co.hisolutions.core.service.ServiceCategoryService;
 import zw.co.hisolutions.core.common.basic.service.GenericService; 
 
 @RestController
-@RequestMapping("/rest/servicecategory")
+@RequestMapping("/rest/servicecategories")
 public class ServiceCategoryController extends BasicRestController<ServiceCategory, Long> {
 
     private final ServiceCategoryService serviceCategoryService;

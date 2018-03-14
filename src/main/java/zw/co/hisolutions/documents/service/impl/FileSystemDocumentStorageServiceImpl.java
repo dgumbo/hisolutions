@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
-import javax.transaction.Transactional; 
+import javax.transaction.Transactional;
 import org.apache.tika.Tika;
 import org.apache.tika.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +26,11 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import zw.co.hisolutions.documents.Status;
 import zw.co.hisolutions.documents.entity.DocumentMetadata;
-import zw.co.hisolutions.documents.exceptions.StorageException;
-import zw.co.hisolutions.documents.exceptions.StorageFileNotFoundException;
+import zw.co.hisolutions.documents.exceptions.NullFilenameException; 
 import zw.co.hisolutions.documents.service.DocumentMetadataService;
 import zw.co.hisolutions.documents.service.FileSystemDocumentStorageService;
+import zw.co.hisolutions.documents.storage.exceptions.StorageException;
+import zw.co.hisolutions.documents.storage.exceptions.StorageFileNotFoundException;
 
 /**
  *
@@ -50,7 +51,7 @@ public class FileSystemDocumentStorageServiceImpl implements FileSystemDocumentS
 
         // Creating the directory to store file
         String rootPath = System.getProperty("catalina.home");
-        
+
         String pt = rootPath + File.separator + "document_store";
 
         File dir = new File(pt);
@@ -117,9 +118,9 @@ public class FileSystemDocumentStorageServiceImpl implements FileSystemDocumentS
                 DocumentMetadata documentMetadata = getMetadata(file.toFile().getName());
                 if (documentMetadata == null) {
                     String sp = file.getFileName().toUri().toString();
-                     System.out.println("sp : " + sp);
-                     File f = new File(sp);
-                    String mimeType ="";// tika.detect(documentToByteArray(f));
+                    System.out.println("sp : " + sp);
+                    File f = new File(sp);
+                    String mimeType = "";// tika.detect(documentToByteArray(f));
                     documentMetadata = new DocumentMetadata();
                     documentMetadata.setActiveStatus(true);
                     documentMetadata.setFilename(file.toFile().getName());
@@ -183,10 +184,15 @@ public class FileSystemDocumentStorageServiceImpl implements FileSystemDocumentS
     }
 
     @Override
-    public File getDocument(String filename) {
-        DocumentMetadata documentMetadata = getMetadata(filename);
-        File file = new File(documentMetadata.getFilePath());
-        return file;
+    public File getDocument(String filename) throws NullPointerException {
+        System.out.println("filename : " + (filename == null ? "null." : filename));
+        try {
+            DocumentMetadata documentMetadata = getMetadata(filename);
+            File file = new File(documentMetadata.getFilePath());
+            return file;
+        } catch (NullPointerException e) {
+            throw new NullFilenameException("Filename Supplied is null.", e);
+        }
     }
 
     @Override

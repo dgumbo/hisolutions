@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.OutputStream;
 import java.nio.file.Path;
 import java.util.List;
-import java.util.stream.Stream;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,17 +35,18 @@ public class DocumentController {
 
     @PostMapping(value = "/upload") //, produces = {MediaType.APPLICATION_JSON_VALUE, "application/hal+json"})
     public ResponseEntity<DocumentMetadata> Upload(
-            @RequestParam(value = "file", required = true) MultipartFile file,
-            @RequestParam(value = "filename") String filename
+            @RequestParam("file") MultipartFile file,
+            @RequestParam("filename") String filename
     ) {
-//        System.out.println("zw.co.hisolutions.core.controllers.rest.ServiceCategoryController.getResource()");
-//
-//        String fileName = file.getOriginalFilename();
-//        System.out.println(fileName);
-//        System.out.println("file.getSize() : " + file.getSize());
-//        System.out.println("file.getContentType() : " + file.getContentType());
-        //System.out.println("\n T B4 Save : " + "entity" + "\n" + "Entity class : " + entity.getClass().getName() + "\n enity is null : " + (entity == null));
+        System.out.println("zw.co.hisolutions.core.controllers.rest.ServiceCategoryController.getResource()");
 
+        System.out.println("filename : " + filename);
+        
+        String fileName = file.getOriginalFilename();
+        System.out.println(fileName);
+        System.out.println("file.getSize() : " + file.getSize());
+        System.out.println("file.getContentType() : " + file.getContentType());
+       
         DocumentMetadata documentMetadata = fileSystemDocumentStorageService.store(file);
 
         return new ResponseEntity<>(documentMetadata, HttpStatus.OK);

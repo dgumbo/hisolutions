@@ -1,53 +1,75 @@
-package zw.co.hisolutions;
+//package zw.co.hisolutions;
+////
+////import org.springframework.context.annotation.Bean;
 //
 //import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-//import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-//import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-//import org.springframework.web.servlet.view.InternalResourceViewResolver;
+//import org.springframework.context.annotation.Configuration;
+//import org.springframework.core.annotation.Order;
+//import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+//import org.springframework.web.multipart.support.MultipartFilter;
+//import org.springframework.web.servlet.config.annotation.CorsRegistry;
+////import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+////import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+//import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+////import org.springframework.web.servlet.view.InternalResourceViewResolver;
+////
 //
-@Configuration
-public class MvcConfiguration extends WebMvcConfigurationSupport {
-
-//    @Bean
-//    public InternalResourceViewResolver setupViewResolver() {
-//        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-//        //resolver.set
-//        resolver.setPrefix("");
-//        resolver.setSuffix("");
-//        //resolver.setViewClass (JstlView.class);
-//        //resolver.setViewClass (mvc. HTMLView.class);
-//        //resolver.setViewClass(viewClass); //setTemplateMode("HTML5"); 
-//        return resolver;
-//    }
+//@Configuration
+//public class MvcConfiguration extends WebMvcConfigurationSupport {
 //
-////	@Bean
-////	@Description("Thymeleaf Template Resolver")
-////	public ServletContextTemplateResolver templateResolver() {
-////	    ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();
-////	    templateResolver.setPrefix("/WEB-INF/html/");
-////	    templateResolver.setSuffix(".html");
-////	    templateResolver.setTemplateMode("HTML5");
-////	 
-////	    return templateResolver;
-////	}
+//////    @Bean
+//////    public InternalResourceViewResolver setupViewResolver() {
+//////        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+//////        //resolver.set
+//////        resolver.setPrefix("");
+//////        resolver.setSuffix("");
+//////        //resolver.setViewClass (JstlView.class);
+//////        //resolver.setViewClass (mvc. HTMLView.class);
+//////        //resolver.setViewClass(viewClass); //setTemplateMode("HTML5"); 
+//////        return resolver;
+//////    }
+//////
+////////	@Bean
+////////	@Description("Thymeleaf Template Resolver")
+////////	public ServletContextTemplateResolver templateResolver() {
+////////	    ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();
+////////	    templateResolver.setPrefix("/WEB-INF/html/");
+////////	    templateResolver.setSuffix(".html");
+////////	    templateResolver.setTemplateMode("HTML5");
+////////	 
+////////	    return templateResolver;
+////////	}
+////////    @Override
+////////    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+////////        registry.addResourceHandler("**").addResourceLocations("/WEB-INF/html/");
+////////        //registry.addResourceHandler("**").addResourceLocations("/templates/");
+////////        //registry.addResourceHandler("/WEB-INF/app/**").addResourceLocations("/app/build/");
+////////    }
+//////    @Override
+//////    public void addViewControllers(final ViewControllerRegistry registry) {
+//////        super.addViewControllers(registry);
+//////        registry.addViewController("/**").setViewName("forward:/");
+//////    }
+////
 ////    @Override
-////    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-////        registry.addResourceHandler("**").addResourceLocations("/WEB-INF/html/");
-////        //registry.addResourceHandler("**").addResourceLocations("/templates/");
-////        //registry.addResourceHandler("/WEB-INF/app/**").addResourceLocations("/app/build/");
+////    public void addCorsMappings(CorsRegistry registry) {
+////        registry.addMapping("/**")
+////                .allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH");
 ////    }
-//    @Override
-//    public void addViewControllers(final ViewControllerRegistry registry) {
-//        super.addViewControllers(registry);
-//        registry.addViewController("/**").setViewName("forward:/");
+//
+//    @Bean
+//    public CommonsMultipartResolver multipartResolver() {
+//        CommonsMultipartResolver multipart = new CommonsMultipartResolver();
+//        multipart.setMaxUploadSize(3 * 1024 * 1024);
+//        return multipart;
 //    }
 //
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH");
-    }
-}
+//    @Bean
+//    @Order(0)
+//    public MultipartFilter multipartFilter() {
+//        MultipartFilter multipartFilter = new MultipartFilter();
+//        multipartFilter.setMultipartResolverBeanName("multipartResolver");
+//        return multipartFilter;
+//    }
+//
+//}

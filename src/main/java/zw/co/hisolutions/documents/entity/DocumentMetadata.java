@@ -7,16 +7,13 @@ package zw.co.hisolutions.documents.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.util.MimeType;
 import zw.co.hisolutions.core.common.basic.entity.BaseEntity;
-import zw.co.hisolutions.documents.SaveResults;
 import zw.co.hisolutions.documents.Status;
 
 /**
