@@ -1562,7 +1562,8 @@ var FileUploaderService = (function (_super) {
     function FileUploaderService(httpClient) {
         var _this = _super.call(this) || this;
         _this.httpClient = httpClient;
-        _this.uploadUrl = '/documents/upload';
+        //private uploadUrl: string = '/documents/upload';
+        _this.uploadUrl = "/storage/upload";
         return _this;
     }
     FileUploaderService.prototype.uploadFile = function (file /*, filename:string*/) {
@@ -1573,7 +1574,7 @@ var FileUploaderService = (function (_super) {
         documentData.append("file", file, file.name);
         documentData.append("filename", file.name);
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]();
-        headers.append('Content-Type', 'multipart/form-data');
+        //headers.append('Content-Type', 'multipart/form-data');
         headers.append('boundary', '--01-2--3---2--1-01-2--3---');
         return this.httpClient.post(_url, documentData, { headers: headers })
             .subscribe(function (result) {
