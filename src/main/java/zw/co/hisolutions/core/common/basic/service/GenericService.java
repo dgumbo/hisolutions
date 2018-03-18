@@ -3,10 +3,7 @@ package zw.co.hisolutions.core.common.basic.service;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional; 
-import org.springframework.data.jpa.repository.JpaRepository; 
-import org.springframework.hateoas.Link;
-import org.springframework.hateoas.Resource;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import org.springframework.data.jpa.repository.JpaRepository;  
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -50,15 +47,15 @@ public interface GenericService<T extends BaseEntity, ID extends Serializable> {
         return entity ;
     }
 
-    default Resource<T> buildResource(T entity) {
-        Resource<T> entity_resource = new Resource<>(entity);
-        Link selectlink = linkTo(getController()).slash(entity_resource.getContent().getId()).withSelfRel().withType("get");
-        Link deletelink = linkTo(getController()).slash(entity_resource.getContent().getId()).slash("delete").withRel("delete").withType("delete");;
-        entity_resource.add(selectlink);
-        entity_resource.add(deletelink);
-
-        return entity_resource;
-    }
+//    default Resource<T> buildResource(T entity) {
+//        Resource<T> entity_resource = new Resource<>(entity);
+//        Link selectlink = linkTo(getController()).slash(entity_resource.getContent().getId()).withSelfRel().withType("get");
+//        Link deletelink = linkTo(getController()).slash(entity_resource.getContent().getId()).slash("delete").withRel("delete").withType("delete");;
+//        entity_resource.add(selectlink);
+//        entity_resource.add(deletelink);
+//
+//        return entity_resource;
+//    }
 
     public JpaRepository<T, ID> getDao();
     public Class getController();

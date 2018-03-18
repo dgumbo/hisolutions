@@ -3,7 +3,6 @@ package zw.co.hisolutions.storage.service.impl;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import zw.co.hisolutions.storage.service.StorageService;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
@@ -12,10 +11,11 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.stream.Stream;
 import org.apache.tika.Tika;
 import org.apache.tika.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -23,19 +23,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
-import zw.co.hisolutions.documents.Status;
-import zw.co.hisolutions.documents.entity.DocumentMetadata;
 import zw.co.hisolutions.documents.service.DocumentMetadataService;
-import zw.co.hisolutions.documents.service.impl.FileSystemDocumentStorageServiceImpl;
+import zw.co.hisolutions.storage.Status;
+import zw.co.hisolutions.storage.entity.DocumentMetadata;
 import zw.co.hisolutions.storage.exceptions.StorageException;
 import zw.co.hisolutions.storage.exceptions.StorageFileNotFoundException;
 import zw.co.hisolutions.storage.properties.StorageProperties;
+import zw.co.hisolutions.storage.service.StorageService;
 
 /**
  *
- * @author denzil
+ * @author dgumbo
  */
-@Service
+ @Service
 public class StorageServiceImpl implements StorageService {
 
     private final Path rootLocation;
@@ -157,8 +157,8 @@ public class StorageServiceImpl implements StorageService {
         } catch (IOException e) {
             throw new StorageException("Failed to store file " + filename, e);
         } catch (Exception ex) {
-            Logger.getLogger(FileSystemDocumentStorageServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-            throw new StorageException("Failed to store file " + filename, ex);
+                java.util.logging.Logger.getLogger(StorageServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+                    throw new StorageException("Failed to store file " + filename, ex);
         }
 
         return documentMetadata;
@@ -191,18 +191,19 @@ public class StorageServiceImpl implements StorageService {
                         mimeType = tika.detect(filePath);
                     } catch (IOException ex) {
                         mimeType = "";
-                        Logger.getLogger(StorageServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+                        java.util.logging.Logger.getLogger(StorageServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    
                     documentMetadata = new DocumentMetadata();
                     documentMetadata.setActiveStatus(true);
                     documentMetadata.setFilename(file.toFile().getName());
                     documentMetadata.setFilePath(this.rootLocation.resolve(file.getFileName()).toString());
                     documentMetadata.setStatus(Status.Success);
                     documentMetadata.setMimeType(mimeType);
-                    try {
+                    try { 
                         documentMetadataService.create(documentMetadata);
                     } catch (Exception ex) {
-                        Logger.getLogger(FileSystemDocumentStorageServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+                        java.util.logging.Logger.getLogger(StorageServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             });

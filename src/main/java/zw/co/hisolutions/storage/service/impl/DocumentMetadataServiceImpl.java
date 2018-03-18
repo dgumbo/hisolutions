@@ -1,11 +1,11 @@
-package zw.co.hisolutions.documents.service.impl;
+package zw.co.hisolutions.storage.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Service;
-import zw.co.hisolutions.documents.entity.DocumentMetadata;
-import zw.co.hisolutions.documents.entity.dao.DocumentMetadataDao;
+import org.springframework.stereotype.Service; 
 import zw.co.hisolutions.documents.service.DocumentMetadataService;
+import zw.co.hisolutions.storage.entity.DocumentMetadata;
+import zw.co.hisolutions.storage.entity.dao.DocumentMetadataDao;
 
 /**
  *

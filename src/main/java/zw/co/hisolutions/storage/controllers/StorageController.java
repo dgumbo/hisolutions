@@ -1,141 +1,71 @@
 package zw.co.hisolutions.storage.controllers;
 
-import java.io.IOException;
-import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import zw.co.hisolutions.documents.entity.DocumentMetadata;
-import zw.co.hisolutions.storage.exceptions.StorageFileNotFoundException;
+
 import zw.co.hisolutions.storage.service.StorageService;
 
 /**
  *
- * @author denzil
+ * @author dgumbo
  */
-@RestController
-@RequestMapping("/storage")
+@Controller
+@RequestMapping("storage")
 public class StorageController {
-     /**
-     * Injected just so we can return information about it.  If Spring's multipart support is enabled in
-     * {@code application.properties}, and/or we add back CommonsMultipartResolver in our configuration,
-     * re-autowire this so we get more information.
-     */ 
-    
-//    @Autowired
-//    CommonsMultipartResolver commonsMultipartResolver;
-    
-    private final MultipartResolver multipartResolver;
-    private final StorageService storageService;
 
     @Autowired
-    public StorageController(StorageService storageService, MultipartResolver multipartResolver) {
-        this.storageService = storageService;
-        this.multipartResolver = multipartResolver;
+    StorageService storageService;
+
+    List<String> files = new ArrayList<>();
+
+    @PostMapping("/upload")
+    public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
+        String message = "";
+        try {
+            storageService.store(file);
+            files.add(file.getOriginalFilename());
+
+            message = "You successfully uploaded " + file.getOriginalFilename() + "!";
+            return ResponseEntity.status(HttpStatus.OK).body(message);
+        } catch (Exception e) {
+            message = "FAIL to upload " + file.getOriginalFilename() + "!";
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
+        }
     }
 
-    @GetMapping("/")
-    @ResponseBody
-    public String StorageIndexHandler() {
-        return "<p>Storage Service Storage Location : " + storageService.getStorageLocation() + "</p>";
-    }
-
-    @GetMapping("/list")
-    public ResponseEntity<?> listUploadedFiles(Model model) throws IOException {
-        List<String> files = storageService.loadAll().map(
-                path -> MvcUriComponentsBuilder.fromMethodName(StorageController.class,
-                        "serveFile", path.getFileName().toString()).build().toString())
+    @GetMapping("/getallfiles")
+    public ResponseEntity<List<String>> getListFiles(Model model) {
+        List<String> fileNames = files
+                .stream().map(fileName -> MvcUriComponentsBuilder
+                .fromMethodName(StorageController.class, "getFile", fileName).build().toString())
                 .collect(Collectors.toList());
 
-        return new ResponseEntity<>(files, HttpStatus.OK);
+        return ResponseEntity.ok().body(fileNames);
     }
 
-    @GetMapping("/viewfile/{filename:.+}")
+    @GetMapping("/files/{filename:.+}")
     @ResponseBody
-    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
-
+    public ResponseEntity<Resource> getFile(@PathVariable String filename) {
         Resource file = storageService.loadAsResource(filename);
-
-        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
-    }
-
-    @PostMapping(value = "/upload") //, produces = {MediaType.APPLICATION_JSON_VALUE, "application/hal+json"})
-    public ResponseEntity<DocumentMetadata> UploadFile(
-            @RequestParam("file") MultipartFile file,
-            @RequestParam("filename") String filename
-    ) {
-        System.out.println("zw.co.hisolutions.core.controllers.rest.ServiceCategoryController.getResource()");
-
-        System.out.println("filename : " + filename);
-
-        String fileName = file.getOriginalFilename();
-        System.out.println(fileName);
-        System.out.println("file.getSize() : " + file.getSize());
-        System.out.println("file.getContentType() : " + file.getContentType());
-
-        DocumentMetadata documentMetadata = storageService.store(file);
-
-        return new ResponseEntity<>(documentMetadata, HttpStatus.OK);
-    }
-
-    @PostMapping(path = "/uploadfile"
-            /*, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE}
-            , produces = {MediaType.APPLICATION_JSON_VALUE, "application/hal+json"} */
-    )
-    public String handleFileUpload(@RequestParam("file") MultipartFile file,
-            @RequestParam("filename") String filename,
-            RedirectAttributes redirectAttributes) {
-
-        storageService.store(file);
-        redirectAttributes.addFlashAttribute("message",
-                "You successfully uploaded " + file.getOriginalFilename() + "!");
-
-        return "redirect:/";
-    }
-
-    @ExceptionHandler(StorageFileNotFoundException.class)
-    public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
-        return ResponseEntity.notFound().build();
-    }
-    
-    @GetMapping(value = "/getmetadata/{filename}", produces = {MediaType.APPLICATION_JSON_VALUE, "application/hal+json"})
-    public ResponseEntity<Object> getMetadata(@RequestParam(value = "filename") String filename) {
-        //System.out.println("zw.co.hisolutions.core.controllers.rest.ServiceCategoryController.getAllFiles()");
-
-        Path data =  storageService.load(filename);
-
-        return new ResponseEntity<>(data, HttpStatus.OK);
-
-        // return new ResponseEntity<>("entity", HttpStatus.OK);
-    }
-    
-    @GetMapping(value = "/getallmetadata", produces = {MediaType.APPLICATION_JSON_VALUE, "application/hal+json"})
-    public ResponseEntity<Object> getAllMetadata() {
-        //System.out.println("zw.co.hisolutions.core.controllers.rest.ServiceCategoryController.getAllFiles()");
-        //Stream<Path> data = fileSystemDocumentStorageService.loadAll();
-
-        List<DocumentMetadata> data = storageService.getAllMetadata();
-        return new ResponseEntity<>(data, HttpStatus.OK);
-
-        // return new ResponseEntity<>("entity", HttpStatus.OK);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"")
+                .body(file);
     }
 }

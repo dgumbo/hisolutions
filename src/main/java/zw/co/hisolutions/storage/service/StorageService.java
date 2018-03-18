@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.stream.Stream;
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
-import zw.co.hisolutions.documents.entity.DocumentMetadata;
+import zw.co.hisolutions.storage.entity.DocumentMetadata;
 
 /**
  *
- * @author denzil
+ * @author dgumbo
  */
 public interface StorageService {
 
@@ -33,5 +33,4 @@ public interface StorageService {
     public byte[] documentToByteArray(File document);
 
     public List<DocumentMetadata> getAllMetadata();
-    
 }
