@@ -5,6 +5,7 @@
  */
 package zw.co.hisolutions.documents.storage.controllers;
 
+import zw.co.hisolutions.storage.controllers.StorageController;
 import com.google.gson.JsonArray;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
@@ -29,8 +30,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import zw.co.hisolutions.documents.entity.DocumentMetadata;
-import zw.co.hisolutions.documents.storage.exceptions.StorageFileNotFoundException;
-import zw.co.hisolutions.documents.storage.service.StorageService;
+import zw.co.hisolutions.storage.exceptions.StorageFileNotFoundException;
+import zw.co.hisolutions.storage.service.StorageService;
 
 import org.hamcrest.Matchers;
 import org.json.JSONArray;
