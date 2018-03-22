@@ -4,6 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import zw.co.hisolutions.init.InitializeStartData;
 import zw.co.hisolutions.storage.service.StorageService;
 
 @SpringBootApplication//(scanBasePackages = {"zw.co.hisolutions"})
@@ -15,11 +16,12 @@ public class HiSolutionsApplication {
     }
 
     @Bean
-    CommandLineRunner init(StorageService storageService) {
+    CommandLineRunner init(StorageService storageService, InitializeStartData initializeStartData ) {
         return (args) -> {
             storageService.deleteAll();
             storageService.init();
             storageService.scanServerDirectory();
+            initializeStartData.init();
         };
     } 
 }

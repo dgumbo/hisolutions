@@ -2,10 +2,11 @@ package zw.co.hisolutions.storage.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Service; 
-import zw.co.hisolutions.documents.service.DocumentMetadataService;
+import org.springframework.stereotype.Service;  
+import zw.co.hisolutions.storage.controller.StorageController;
 import zw.co.hisolutions.storage.entity.DocumentMetadata;
 import zw.co.hisolutions.storage.entity.dao.DocumentMetadataDao;
+import zw.co.hisolutions.storage.service.DocumentMetadataService;
 
 /**
  *
@@ -27,7 +28,7 @@ public class DocumentMetadataServiceImpl implements DocumentMetadataService{
 
     @Override
     public Class getController() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return StorageController.class;
     } 
 
     @Override

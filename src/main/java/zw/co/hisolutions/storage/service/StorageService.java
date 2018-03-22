@@ -1,10 +1,12 @@
 package zw.co.hisolutions.storage.service;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Stream;
 import org.springframework.core.io.Resource;
+import org.springframework.http.MediaType;
 import org.springframework.web.multipart.MultipartFile;
 import zw.co.hisolutions.storage.entity.DocumentMetadata;
 
@@ -30,7 +32,10 @@ public interface StorageService {
     
     void scanServerDirectory();
     
-    public byte[] documentToByteArray(File document);
+    byte[] documentToByteArray(File document);
 
-    public List<DocumentMetadata> getAllMetadata();
+    List<DocumentMetadata> getAllMetadata();
+
+    String getMimeType(byte[] bytes);
+    String getMimeType(Resource file) throws IOException;
 }
