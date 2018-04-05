@@ -113,8 +113,11 @@ public class InitializeStartData {
     void verifyIfDBDependenciesIncludedInPom() {
         org.hibernate.dialect.H2Dialect h2Dialect;
         org.hibernate.dialect.MySQLDialect mySQLDialect;
+        org.hibernate.dialect.SQLServer2012Dialect sQLServer2012Dialect;
         com.mysql.jdbc.Driver mysqlDriver;
+        //com.microsoft.sqlserver.jdbc.SQLServerDriver sQLServerDriver ;
         org.h2.Driver h2Driver;
+        
     }
 
     private void scanFileServerDirectory() {

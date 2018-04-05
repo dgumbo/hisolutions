@@ -20,8 +20,8 @@
         <spring.version>5.0.2.RELEASE</spring.version>
         <spring-data.version>Kay-SR2</spring-data.version>
         <java.version>1.8</java.version>
-<!--        <skipTests>false</skipTests>
-        <failIfNoTests>false</failIfNoTests>-->
+        <skipTests>true</skipTests>
+<!--        <failIfNoTests>false</failIfNoTests>-->
     </properties>
     
     <dependencyManagement>
@@ -121,6 +121,13 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId> 
+        </dependency>
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>6.1.0.jre7</version>
+            <type>jar</type>
+            <scope>test</scope>
         </dependency>
 
         <!-- End Database Depencencies Declerations -->
