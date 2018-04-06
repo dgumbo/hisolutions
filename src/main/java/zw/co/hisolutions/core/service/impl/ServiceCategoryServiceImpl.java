@@ -33,4 +33,9 @@ public class ServiceCategoryServiceImpl implements ServiceCategoryService {
     public Class getController() {
        return ServiceCategoryController.class;
     }
+
+    @Override
+    public ServiceCategory findByShortName(String shortName) {    
+        return serviceCategoryDao.getByShortName(shortName);
+    }
 }

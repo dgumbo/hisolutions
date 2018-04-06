@@ -21,9 +21,13 @@ import zw.co.hisolutions.storage.entity.DocumentMetadata;
 @AllArgsConstructor
 @NoArgsConstructor 
 public class ServiceCategory extends BaseEntity implements Serializable{
-    @Column
-    @NotNull
+    @Column(unique = true)
+    @NotNull 
     private String name;   /*  Web Development, Training Services, Web Hosting  */
+    
+    @Column(unique = true)
+    @NotNull 
+    private String shortName;   /*  webdesign, training, hardware  */
     
     @Column
     @NotNull

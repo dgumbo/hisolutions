@@ -120,6 +120,16 @@ public class InitializeStartData {
         
     }
 
+    private void initServiceCategories() {
+        InitServiceCategories initSC = new InitServiceCategories(serviceCategoryService, docs);
+        
+        List<ServiceCategory> serviceCategories = initSC.init();
+        
+         this.serviceCategory3= serviceCategories.get(0);
+         this.serviceCategory3= serviceCategories.get(1);
+         this.serviceCategory3= serviceCategories.get(2);
+    }
+
     private void scanFileServerDirectory() {
         if (docs != null) {
             if (docs.size() >= 1) {
@@ -374,66 +384,6 @@ public class InitializeStartData {
             this.skill2 = new Skill(skill2Name);
             try {
                 skill2 = skillService.create(skill2);
-            } catch (Exception ex) {
-                Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
-
-    private void initServiceCategories() {
-        String serviceCategory1Name = "Affordable Professional Web Design";
-        this.serviceCategory1 = serviceCategoryService.findByName(serviceCategory1Name);
-        if (serviceCategory1 == null) {
-            DocumentMetadata sd1 = null;
-            if (docs!=null && docs.stream().anyMatch(p -> p.getFilename().contains("showcase.jpg"))) {
-                sd1 = docs.stream().filter(p -> p.getFilename().contains("showcase.jpg")).findAny().get();
-            } else {
-                sd1 = documenMetadata1;
-            }
-            DocumentMetadata st1 = null;
-            if (docs!=null && docs.stream().anyMatch(p -> p.getFilename().contains("html5"))) {
-                st1 = docs.stream().filter(p -> p.getFilename().contains("html5")).findAny().get();
-            } else {
-                st1 = documenMetadata1;
-            }
-            this.serviceCategory1 = new ServiceCategory();
-            serviceCategory1.setName(serviceCategory1Name);
-            serviceCategory1.setImageMetadata(sd1);
-            serviceCategory1.setThumbnailMetadata(st1);
-            serviceCategory1.setDescription(serviceCategory1Name);
-            serviceCategory1.setDisplayContent("<p>" + serviceCategory1Name + "</p>");
-            try {
-                serviceCategory1 = serviceCategoryService.create(serviceCategory1);
-            } catch (Exception ex) {
-                Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-        String serviceCategory2Name = "Database Administration";
-        this.serviceCategory2 = serviceCategoryService.findByName(serviceCategory2Name);
-        if (serviceCategory2 == null) {
-            this.serviceCategory2 = new ServiceCategory();
-            serviceCategory2.setName(serviceCategory2Name);
-            serviceCategory2.setImageMetadata(documenMetadata4);
-            serviceCategory2.setDescription(serviceCategory2Name);
-            serviceCategory2.setDisplayContent("<p>" + serviceCategory2Name + "</p>");
-            try {
-                serviceCategory2 = serviceCategoryService.create(serviceCategory2);
-            } catch (Exception ex) {
-                Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-        String serviceCategory3Name = "Database Administration";
-        this.serviceCategory3 = serviceCategoryService.findByName(serviceCategory3Name);
-        if (this.serviceCategory3 == null) {
-            this.serviceCategory3 = new ServiceCategory();
-            serviceCategory3.setName(serviceCategory3Name);
-            serviceCategory3.setImageMetadata(documenMetadata5);
-            serviceCategory3.setDescription(serviceCategory3Name);
-            serviceCategory3.setDisplayContent("<p>" + serviceCategory3Name + "</p>");
-            try {
-                this.serviceCategory3 = serviceCategoryService.create(serviceCategory3);
             } catch (Exception ex) {
                 Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
             }

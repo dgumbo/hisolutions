@@ -5,4 +5,6 @@ import zw.co.hisolutions.common.service.GenericService;
 
 public interface ServiceCategoryService extends GenericService<ServiceCategory, Long>{
     public ServiceCategory findByName(String name);   
+
+    public ServiceCategory findByShortName(String shortName);
 }
