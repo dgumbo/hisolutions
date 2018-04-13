@@ -34,17 +34,17 @@ public class InitServiceCategories {
     }
 
     public ServiceCategory initWebDesignSC() {
-        String serviceCategoryName = "Affordable Professional Web Design and Hosting Services";
-        String scShortName = "webdesign";
+        String serviceCategoryName = "Web Design and Hosting";
+        String scShortDescription = "Affordable Professional Web Design and Hosting Services";
 
         ServiceCategory serviceCategory = serviceCategoryService.findByName(serviceCategoryName);
         if (serviceCategory == null) {
             serviceCategory = new ServiceCategory();
             serviceCategory.setName(serviceCategoryName);
-            serviceCategory.setShortName(scShortName);
-            serviceCategory.setDescription("<p>We offer proffesional and affordable web design and web hosting services."
+            serviceCategory.setShortDescription(scShortDescription);
+            serviceCategory.setDescription("We offer proffesional and affordable web design and web hosting services."
                     + " We use the latest models and frameworks to give your visitors that user expirience that will see "
-                    + " your products get the proper advetisement needed.</p>");
+                    + " your products get the proper advetisement needed.");
             serviceCategory.setDisplayContent("<p>We offer proffesional and affordable web design and web hosting services."
                     + " We use the latest models and frameworks to give your visitors that user expirience that will see "
                     + " your products get the proper advetisement needed.</p>"
@@ -73,14 +73,14 @@ public class InitServiceCategories {
     }
 
     public ServiceCategory initTrainingSC() {
-        String serviceCategoryName = "Training Services for IT Related Products and Technologies";
-        String scShortName = "training";
+        String serviceCategoryName = "Training Services";
+        String scShortDescription = "Training Services for IT Related Products and Technologies";
 
         ServiceCategory serviceCategory = serviceCategoryService.findByName(serviceCategoryName);
         if (serviceCategory == null) {
             serviceCategory = new ServiceCategory();
             serviceCategory.setName(serviceCategoryName);
-            serviceCategory.setShortName(scShortName);
+            serviceCategory.setShortDescription(scShortDescription);
             serviceCategory.setDescription(serviceCategoryName);
             serviceCategory.setDisplayContent("<p>" + serviceCategory + "</p>");
 
@@ -97,14 +97,14 @@ public class InitServiceCategories {
     }
 
     public ServiceCategory initHardwareSC() {
-        String serviceCategoryName = "Database Administration";
-        String scShortName = "hardware";
+        String serviceCategoryName = "Hardware and Accessories Supply";
+        String scShortDescription = "ICT Hardware and Accessories Sales";
 
         ServiceCategory serviceCategory = serviceCategoryService.findByName(serviceCategoryName);
         if (serviceCategory == null) {
             serviceCategory = new ServiceCategory();
             serviceCategory.setName(serviceCategoryName);
-            serviceCategory.setShortName(scShortName);
+            serviceCategory.setShortDescription(scShortDescription);
             serviceCategory.setDescription(serviceCategoryName);
             serviceCategory.setDisplayContent("<p>" + serviceCategoryName + "</p>");
 
@@ -120,14 +120,14 @@ public class InitServiceCategories {
     }
 
     public ServiceCategory initConsultancySC() {
-        String serviceCategoryName = "Database Administration";
-        String scShortName = "consultancy";
+        String serviceCategoryName = "Consultancy Services";
+        String scShortDescription = "We Offer various consultancy services which include Database Administration, General ICT Support, MIS Systems implementations";
 
         ServiceCategory serviceCategory = serviceCategoryService.findByName(serviceCategoryName);
         if (serviceCategory == null) {
             serviceCategory = new ServiceCategory();
             serviceCategory.setName(serviceCategoryName);
-            serviceCategory.setShortName(scShortName);
+            serviceCategory.setShortDescription(scShortDescription);
             serviceCategory.setDescription(serviceCategoryName);
             serviceCategory.setDisplayContent("<p>" + serviceCategoryName + "</p>");
 

@@ -34,9 +34,9 @@ public class ServiceCategoryController extends BasicRestController<ServiceCatego
         return this.getClass();
     } 
 
-    @GetMapping(value = "/getByShortName/{shortName}", produces = {MediaType.APPLICATION_JSON_VALUE, "application/hal+json"})
-    public ResponseEntity<?> getByShortName (@PathVariable String shortName) {
-        ServiceCategory serviceCategory = serviceCategoryService.findByShortName(shortName);
+    @GetMapping(value = "/getByName/{name}", produces = {MediaType.APPLICATION_JSON_VALUE, "application/hal+json"})
+    public ResponseEntity<?> getByName (@PathVariable String name) {
+        ServiceCategory serviceCategory = serviceCategoryService.findByName(name);
         //Resource resource = getService().buildResource(entity);
         //System.out.println("\n T B4 Save : " + resource.getContent() + "\n");
         return new ResponseEntity<>(serviceCategory, HttpStatus.OK);

@@ -48,6 +48,7 @@ public class InitializeStartData {
     private final PreRequisiteService preRequisiteService;
     private final SkillService skillService;
     private final ServiceCategoryService serviceCategoryService;
+    private Product product3;
 
     @Autowired
     public InitializeStartData(DurationService durationService, DurationTypeService durationTypeService, DistributionMethodService distributionMethodService, AudianceService audianceService, ProductService productService, ProductTypeService productTypeService, VendorService vendorService, TopicService courseTopicService, PreRequisiteService preRequisiteService, SkillService skillService, ServiceCategoryService serviceCategoryService) {
@@ -125,8 +126,8 @@ public class InitializeStartData {
         
         List<ServiceCategory> serviceCategories = initSC.init();
         
-         this.serviceCategory3= serviceCategories.get(0);
-         this.serviceCategory3= serviceCategories.get(1);
+         this.serviceCategory1= serviceCategories.get(0);
+         this.serviceCategory2= serviceCategories.get(1);
          this.serviceCategory3= serviceCategories.get(2);
     }
 
@@ -422,6 +423,7 @@ public class InitializeStartData {
                 Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
 
         String product2Name = "Office Suite";
         this.product2 = productService.findProductByName(product2Name);
@@ -450,6 +452,38 @@ public class InitializeStartData {
 
             try {
                 product2 = productService.create(product2);
+            } catch (Exception ex) {
+                Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        String product3Name = "Web Hosting";
+        this.product3 = productService.findProductByName(product3Name);
+        if (product3 == null) {
+            DocumentMetadata d2 = null;
+            if (docs!=null && docs.stream().anyMatch(p -> p.getFilename().contains("html5"))) {
+                d2 = docs.stream().filter(p -> p.getFilename().contains("html5")).findAny().get();
+            } else {
+                d2 = documenMetadata2;
+            }
+
+            product3 = new Product();
+            product3.setName(product3Name);
+            product3.setImageMetadata(d2);
+            product3.setDisplayContent("<p>" + product3Name + "</p>");
+            product3.setServiceCategory(serviceCategory1);
+            product3.setProductType(productType2);
+            product3.setDescription(product3Name);
+            product3.setPrice(1L);
+            product3.setVendor(vendor1);
+            product3.setAudiances(Arrays.asList(audiance2));
+            product3.setDistributionMethods(Arrays.asList(distributionMethod1));
+            product3.setCourseTopics(Arrays.asList(courseTopic1));
+            product3.setPreRequisites(Arrays.asList(preRequisite2));
+            product3.setSkillsToGain(Arrays.asList(skill1));
+
+            try {
+                product3 = productService.create(product3);
             } catch (Exception ex) {
                 Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
             }

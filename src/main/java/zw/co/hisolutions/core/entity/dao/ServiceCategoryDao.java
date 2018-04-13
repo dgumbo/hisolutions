@@ -11,8 +11,6 @@ import zw.co.hisolutions.core.entity.ServiceCategory;
 @Repository
 public interface ServiceCategoryDao extends JpaRepository<ServiceCategory, Long>{ 
 
-    public ServiceCategory getByName(String name); 
-
-    public ServiceCategory getByShortName(String shortName);
+    public ServiceCategory getByName(String name);    
     
 }
