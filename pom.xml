@@ -21,7 +21,7 @@
         <spring-data.version>Kay-SR2</spring-data.version>
         <java.version>1.8</java.version>
         <skipTests>true</skipTests>
-<!--        <failIfNoTests>false</failIfNoTests>-->
+        <!--        <failIfNoTests>true</failIfNoTests>-->
     </properties>
     
     <dependencyManagement>
@@ -59,7 +59,7 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>-->
-<!--        <dependency>
+        <!--        <dependency>
             <groupId>org.springframework.hateoas</groupId>
             <artifactId>spring-hateoas</artifactId> 
         </dependency> 
@@ -163,52 +163,126 @@
                         <useStartStopDaemon>false</useStartStopDaemon>
                     </embeddedLaunchScriptProperties>
                 </configuration>
-            </plugin>
-            <!--            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <compilerArguments>
-                        <endorseddirs>${endorsed.dir}</endorseddirs>
-                    </compilerArguments>
-                </configuration>
-            </plugin>-->
-            <!--            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.1.1</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>-->
-            <!--            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.1</version>
-                <executions>
-                    <execution>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${endorsed.dir}</outputDirectory>
-                            <silent>true</silent>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>javax</groupId>
-                                    <artifactId>javaee-endorsed-api</artifactId>
-                                    <version>6.0</version>
-                                    <type>jar</type>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>-->
+            </plugin> 
         </plugins>
     </build>
+    
+    <profiles>
+        <profile>
+            <id>production</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>1.1</version>
+                        <executions>                      
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <tasks>
+                                        <echo>Using env.production.properties</echo>
+                                        <copy file="src/main/resources/env.production.properties"
+                                              tofile="${project.build.outputDirectory}/application.properties"/>
+                                    </tasks>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>development</id>
+            <properties>
+                <spring.profiles.active>development</spring.profiles.active>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>1.1</version>
+                        <executions>
+                            <execution>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <tasks>
+                                        <echo>Using env.development.properties</echo>
+                                        <copy file="src/main/resources/env.development.properties"
+                                              tofile="${project.build.outputDirectory}/application.properties"/>
+                                    </tasks>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>test</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>1.1</version>
+                        <executions>
+                            <execution>
+                                <id>0</id>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <tasks>
+                                        <echo>Using env.test.properties</echo>
+                                        <copy file="src/main/resources/env.test.properties"
+                                              tofile="${project.build.outputDirectory}/application.properties"/>
+                                    </tasks>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>2</id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <tasks>
+                                        <echo>Using env.test.properties</echo>
+                                        <copy file="src/main/resources/env.test.properties"
+                                              tofile="${project.build.outputDirectory}/application.properties"/>
+                                    </tasks>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>1</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <tasks>
+                                        <echo>Using env.test.properties</echo>
+                                        <copy file="src/main/resources/env.test.properties"
+                                              tofile="${project.build.outputDirectory}/application.properties"/>
+                                    </tasks>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

@@ -6,11 +6,12 @@ import zw.co.hisolutions.core.entity.Product;
 import zw.co.hisolutions.core.entity.ServiceCategory;
 
 public interface ProductService extends GenericService<Product, Long> {
-
-    Product findProductByName(String productName);
+ 
+    Product findByName(String name);
 
     void deleteProduct(Product product);
 
     List<Product> findProductByServiceCategory(Long serviceCategoryId);
     List<Product> findProductByServiceCategory(ServiceCategory serviceCategory);
+
 }

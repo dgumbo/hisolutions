@@ -18,7 +18,7 @@ public class HiSolutionsApplication {
     @Bean
     CommandLineRunner init(StorageService storageService, InitializeStartData initializeStartData ) {
         return (args) -> {
-            storageService.deleteAll();
+            //storageService.deleteAll();
             storageService.init();
             storageService.scanServerDirectory();
             initializeStartData.init();

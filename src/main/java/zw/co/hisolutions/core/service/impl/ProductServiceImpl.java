@@ -20,13 +20,12 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     public ProductServiceImpl(ProductDao productDao) {
         this.productDao = productDao;
-    }
- 
+    } 
 
     @Override
-    public Product findProductByName(String name) {
+    public Product findByName(String name) {
         return productDao.getByName(name);
-    } 
+    }
  
     @Override
     public void deleteProduct(Product product) {

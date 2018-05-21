@@ -82,7 +82,8 @@ public class InitServiceCategories {
             serviceCategory.setName(serviceCategoryName);
             serviceCategory.setShortDescription(scShortDescription);
             serviceCategory.setDescription(serviceCategoryName);
-            serviceCategory.setDisplayContent("<p>" + serviceCategory + "</p>");
+            serviceCategory.setDisplayContent("<p>" + serviceCategory + "</p>" + "<p>Lorem ipsum dolor sit amet, te mea aperiam deleniti antiopam, ridens maluisset molestiae cu eos. Malis laoreet fabellas eum ei, mel ei prima deserunt democritum. Vis saperet adipisci eu. Eu est natum debitis, et autem delectus iracundia his. Elit persequeris usu ei, at ignota impetus blandit nam, saperet offendit id nam. Duo ex impetus consequat. Mucius maluisset cu sit, case cotidieque eum ut.</p>\n" +
+"<p>Nec at mutat comprehensam. Blandit postulant ocurreret qui et, melius complectitur cu sea, eripuit alienum intellegat no sit. Ius nibh habeo atqui te, pri phaedrum perpetua ne. In est verterem incorrupte dissentiet, congue causae convenire mei et. Ad vim vero lorem persius, est an soluta sanctus. Eos an liber zril decore. Quis animal corrumpit an nam, quo ne dicit legimus periculis.</p>");
 
             serviceCategory.setImageMetadata(getDocumentMetadata("showcase.jpg"));
             serviceCategory.setThumbnailMetadata(getDocumentMetadata("html5"));
@@ -106,7 +107,8 @@ public class InitServiceCategories {
             serviceCategory.setName(serviceCategoryName);
             serviceCategory.setShortDescription(scShortDescription);
             serviceCategory.setDescription(serviceCategoryName);
-            serviceCategory.setDisplayContent("<p>" + serviceCategoryName + "</p>");
+            serviceCategory.setDisplayContent("<p>" + serviceCategoryName + "</p>" + "<p>Lorem ipsum dolor sit amet, te mea aperiam deleniti antiopam, ridens maluisset molestiae cu eos. Malis laoreet fabellas eum ei, mel ei prima deserunt democritum. Vis saperet adipisci eu. Eu est natum debitis, et autem delectus iracundia his. Elit persequeris usu ei, at ignota impetus blandit nam, saperet offendit id nam. Duo ex impetus consequat. Mucius maluisset cu sit, case cotidieque eum ut.</p>\n" +
+"<p>Nec at mutat comprehensam. Blandit postulant ocurreret qui et, melius complectitur cu sea, eripuit alienum intellegat no sit. Ius nibh habeo atqui te, pri phaedrum perpetua ne. In est verterem incorrupte dissentiet, congue causae convenire mei et. Ad vim vero lorem persius, est an soluta sanctus. Eos an liber zril decore. Quis animal corrumpit an nam, quo ne dicit legimus periculis.</p>");
 
             serviceCategory.setImageMetadata(getDocumentMetadata("showcase.jpg"));
             serviceCategory.setThumbnailMetadata(getDocumentMetadata("html5"));
@@ -129,7 +131,8 @@ public class InitServiceCategories {
             serviceCategory.setName(serviceCategoryName);
             serviceCategory.setShortDescription(scShortDescription);
             serviceCategory.setDescription(serviceCategoryName);
-            serviceCategory.setDisplayContent("<p>" + serviceCategoryName + "</p>");
+            serviceCategory.setDisplayContent("<p>" + serviceCategoryName + "</p>" + "<p>Lorem ipsum dolor sit amet, te mea aperiam deleniti antiopam, ridens maluisset molestiae cu eos. Malis laoreet fabellas eum ei, mel ei prima deserunt democritum. Vis saperet adipisci eu. Eu est natum debitis, et autem delectus iracundia his. Elit persequeris usu ei, at ignota impetus blandit nam, saperet offendit id nam. Duo ex impetus consequat. Mucius maluisset cu sit, case cotidieque eum ut.</p>\n" +
+"<p>Nec at mutat comprehensam. Blandit postulant ocurreret qui et, melius complectitur cu sea, eripuit alienum intellegat no sit. Ius nibh habeo atqui te, pri phaedrum perpetua ne. In est verterem incorrupte dissentiet, congue causae convenire mei et. Ad vim vero lorem persius, est an soluta sanctus. Eos an liber zril decore. Quis animal corrumpit an nam, quo ne dicit legimus periculis.</p>");
 
             serviceCategory.setImageMetadata(getDocumentMetadata("showcase.jpg"));
             serviceCategory.setThumbnailMetadata(getDocumentMetadata("html5"));

@@ -40,7 +40,5 @@ public class ServiceCategoryController extends BasicRestController<ServiceCatego
         //Resource resource = getService().buildResource(entity);
         //System.out.println("\n T B4 Save : " + resource.getContent() + "\n");
         return new ResponseEntity<>(serviceCategory, HttpStatus.OK);
-    }
-
- 
+    } 
 }

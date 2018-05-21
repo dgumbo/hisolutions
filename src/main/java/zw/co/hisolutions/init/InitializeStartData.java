@@ -114,7 +114,7 @@ public class InitializeStartData {
     void verifyIfDBDependenciesIncludedInPom() {
         org.hibernate.dialect.H2Dialect h2Dialect;
         org.hibernate.dialect.MySQLDialect mySQLDialect;
-        org.hibernate.dialect.SQLServer2012Dialect sQLServer2012Dialect;
+        org.hibernate.dialect.SQLServerDialect sQLServer2012Dialect;
         com.mysql.jdbc.Driver mysqlDriver;
         //com.microsoft.sqlserver.jdbc.SQLServerDriver sQLServerDriver ;
         org.h2.Driver h2Driver;
@@ -394,7 +394,7 @@ public class InitializeStartData {
     private void initProduct() {
 
         String product1Name = "Web Development";
-        this.product1 = productService.findProductByName(product1Name);
+        this.product1 = productService.findByName(product1Name);
         if (product1 == null) {
             DocumentMetadata d1 = null;
             if (docs!=null && docs.stream().anyMatch(p -> p.getFilename().contains("css3"))) {
@@ -406,7 +406,8 @@ public class InitializeStartData {
             product1.setName(product1Name);
             product1.setImageMetadata(d1);
             product1.setProductType(productType1);
-            product1.setDisplayContent("<p>" + product1Name + "</p>");
+            product1.setDisplayContent("<p>" + product1Name + "</p>" + "<p>Lorem ipsum dolor sit amet, te mea aperiam deleniti antiopam, ridens maluisset molestiae cu eos. Malis laoreet fabellas eum ei, mel ei prima deserunt democritum. Vis saperet adipisci eu. Eu est natum debitis, et autem delectus iracundia his. Elit persequeris usu ei, at ignota impetus blandit nam, saperet offendit id nam. Duo ex impetus consequat. Mucius maluisset cu sit, case cotidieque eum ut.</p>\n" +
+"<p>Nec at mutat comprehensam. Blandit postulant ocurreret qui et, melius complectitur cu sea, eripuit alienum intellegat no sit. Ius nibh habeo atqui te, pri phaedrum perpetua ne. In est verterem incorrupte dissentiet, congue causae convenire mei et. Ad vim vero lorem persius, est an soluta sanctus. Eos an liber zril decore. Quis animal corrumpit an nam, quo ne dicit legimus periculis.</p>");
             product1.setServiceCategory(serviceCategory1);
             product1.setDescription(product1Name);
             product1.setPrice(1L);
@@ -426,7 +427,7 @@ public class InitializeStartData {
         
 
         String product2Name = "Office Suite";
-        this.product2 = productService.findProductByName(product2Name);
+        this.product2 = productService.findByName(product2Name);
         if (product2 == null) {
             DocumentMetadata d2 = null;
             if (docs!=null && docs.stream().anyMatch(p -> p.getFilename().contains("html5"))) {
@@ -438,7 +439,8 @@ public class InitializeStartData {
             product2 = new Product();
             product2.setName(product2Name);
             product2.setImageMetadata(d2);
-            product2.setDisplayContent("<p>" + product2Name + "</p>");
+            product2.setDisplayContent("<p>" + product2Name + "</p>" + "<p>Lorem ipsum dolor sit amet, te mea aperiam deleniti antiopam, ridens maluisset molestiae cu eos. Malis laoreet fabellas eum ei, mel ei prima deserunt democritum. Vis saperet adipisci eu. Eu est natum debitis, et autem delectus iracundia his. Elit persequeris usu ei, at ignota impetus blandit nam, saperet offendit id nam. Duo ex impetus consequat. Mucius maluisset cu sit, case cotidieque eum ut.</p>\n" +
+"<p>Nec at mutat comprehensam. Blandit postulant ocurreret qui et, melius complectitur cu sea, eripuit alienum intellegat no sit. Ius nibh habeo atqui te, pri phaedrum perpetua ne. In est verterem incorrupte dissentiet, congue causae convenire mei et. Ad vim vero lorem persius, est an soluta sanctus. Eos an liber zril decore. Quis animal corrumpit an nam, quo ne dicit legimus periculis.</p>");
             product2.setServiceCategory(serviceCategory2);
             product2.setProductType(productType2);
             product2.setDescription(product2Name);
@@ -458,7 +460,7 @@ public class InitializeStartData {
         }
 
         String product3Name = "Web Hosting";
-        this.product3 = productService.findProductByName(product3Name);
+        this.product3 = productService.findByName(product3Name);
         if (product3 == null) {
             DocumentMetadata d2 = null;
             if (docs!=null && docs.stream().anyMatch(p -> p.getFilename().contains("html5"))) {
@@ -470,7 +472,8 @@ public class InitializeStartData {
             product3 = new Product();
             product3.setName(product3Name);
             product3.setImageMetadata(d2);
-            product3.setDisplayContent("<p>" + product3Name + "</p>");
+            product3.setDisplayContent("<p>" + product3Name + "</p>" + "<p>Lorem ipsum dolor sit amet, te mea aperiam deleniti antiopam, ridens maluisset molestiae cu eos. Malis laoreet fabellas eum ei, mel ei prima deserunt democritum. Vis saperet adipisci eu. Eu est natum debitis, et autem delectus iracundia his. Elit persequeris usu ei, at ignota impetus blandit nam, saperet offendit id nam. Duo ex impetus consequat. Mucius maluisset cu sit, case cotidieque eum ut.</p>\n" +
+"<p>Nec at mutat comprehensam. Blandit postulant ocurreret qui et, melius complectitur cu sea, eripuit alienum intellegat no sit. Ius nibh habeo atqui te, pri phaedrum perpetua ne. In est verterem incorrupte dissentiet, congue causae convenire mei et. Ad vim vero lorem persius, est an soluta sanctus. Eos an liber zril decore. Quis animal corrumpit an nam, quo ne dicit legimus periculis.</p>");
             product3.setServiceCategory(serviceCategory1);
             product3.setProductType(productType2);
             product3.setDescription(product3Name);
