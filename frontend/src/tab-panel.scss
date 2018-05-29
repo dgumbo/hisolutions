@@ -1,0 +1,16 @@
+/*!
+ * HiSolution.scss v1.0.0 
+ * Copyright 2018 Heritage Innovative Solutions 
+ * Tab Panel Style
+ * Author     : dgumbo
+ */  
+
+@import './theme.scss' ; 
+
+.tab {
+    border-left: $tab-border;
+    border-right: $tab-border;
+    border-bottom: $tab-border;
+    padding: 15px 25px;
+    display: block;
+}
