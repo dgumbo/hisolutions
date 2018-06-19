@@ -24,7 +24,7 @@
     <dependencies>        
         <dependency>
             <groupId>zw.co.hisolutions</groupId>
-            <artifactId>core</artifactId>
+            <artifactId>hisolutions-core</artifactId>
             <version>${parent.version}</version>
         </dependency>   
         <dependency>
