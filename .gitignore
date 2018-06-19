@@ -3,7 +3,8 @@
 /backend/nbproject/
 /backend/target/
 /frontend/target/
-/ui-src/
+/frontend/ui-src/
+/frontend/node/
 ui-src/
 
 # compiled output

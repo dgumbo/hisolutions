@@ -18,8 +18,7 @@ import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.Version;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener; 
-//import zw.co.hisolutions.core.security.JwtUserDetails;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;  
 
 /**
  *
@@ -30,14 +29,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Data
 @EqualsAndHashCode(of = "id") 
 public abstract class BaseEntity implements Serializable {
-//    
-//    @Autowired
-//    @JsonIgnore
-//    JwtUserDetails userDetails;
 
-   // private static final UsernameAuditorAware usernameAuditorAware = new UsernameAuditorAware();
-   // private static final Gson gson= new Gson();
-    
    private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
    
    @JsonIgnore

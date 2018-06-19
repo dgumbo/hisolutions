@@ -1,4 +1,4 @@
-package zw.co.hisolutions.common.entity.impl;
+package zw.co.hisolutions.common.service.impl;
 
 //package zw.co.hisolutions.core.common.basic.service.impl;
 //
