@@ -152,7 +152,7 @@ public class JwtUtil {
             // the database compellingly. Again it's up to you ;)
             if (validateToken(authToken, userDetails)) {
                 logger.info("authorizated user '{}', setting security context", username);
-                userDetails.setJwtUserToken(authToken);
+                userDetails.setJwtToken(authToken);
                 return userDetails;
             }
         }

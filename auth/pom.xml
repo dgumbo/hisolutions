@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>zw.co.hisolutions</groupId>
-    <artifactId>auth</artifactId> 
-    <packaging>war</packaging>
+    <artifactId>hisolutions-auth</artifactId> 
+    <packaging>jar</packaging>
 
     <name>hisolutions-auth</name>
     <description>HiSolutions - Authentication Module</description>
@@ -27,7 +27,7 @@
         <dependency>
             <groupId>zw.co.hisolutions</groupId>
             <artifactId>hisolutions-core</artifactId>
-            <version>${parent.version}</version>
+            <version>${project.parent.version}</version>
         </dependency>     
         
         <dependency>
@@ -46,12 +46,7 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-taglibs</artifactId>
-        </dependency> 
-        <dependency>
-            <groupId>org.springframework.security.oauth</groupId>
-            <artifactId>spring-security-oauth2</artifactId>  
-            <version>2.3.3.RELEASE</version>
-        </dependency>
+        </dependency>  
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
@@ -64,24 +59,30 @@
         </dependency>
         
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
-        <dependency>
+<!--        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId> 
-            <!--<version>5.0.6.RELEASE</version>-->
+            <version>5.0.6.RELEASE</version>
         </dependency> 
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId> 
-        </dependency>
+        </dependency>-->
     </dependencies>
-
+    
     <build>
-        <plugins>
+<!--        <resources>       
+            <resource>
+                <directory>/resources/META-INF/resources/WEB-INF/jsp/</directory>
+            </resource> 
+        </resources>-->
+
+<!--    <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-        </plugins>
+        </plugins>-->
     </build>
 
 

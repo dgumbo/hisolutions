@@ -3,6 +3,8 @@ package zw.co.hisolutions.auth.jwt.filters;
 import java.io.IOException; 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.core.Authentication;
@@ -43,4 +45,21 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
         super.successfulAuthentication(request, response, chain, authResult); 
         chain.doFilter(request, response); 
     } 
+
+    @Override
+    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException,
+            ServletException {
+        HttpServletResponse httpResp = (HttpServletResponse) resp;
+        HttpServletRequest httpReq = (HttpServletRequest) req;
+
+        httpResp.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, OPTIONS");
+        httpResp.setHeader("Access-Control-Allow-Origin", "*");
+        if (httpReq.getMethod().equalsIgnoreCase("OPTIONS")) {
+            httpResp.setHeader("Access-Control-Allow-Headers",
+                    httpReq.getHeader("Access-Control-Request-Headers"));
+        }
+        chain.doFilter(req, resp);
+    }
+    
+    
 }

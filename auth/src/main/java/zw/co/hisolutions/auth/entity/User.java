@@ -1,5 +1,6 @@
 package zw.co.hisolutions.auth.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List; 
@@ -8,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OrderColumn;
+import javax.persistence.Temporal;
 import javax.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,12 +30,17 @@ public class User extends BaseEntity  implements UserDetails{
     
     @Column(unique = true)
     private String username;
+    
+    @JsonIgnore
     private String password;
     private boolean enabled ; 
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date lastPasswordResetDate ;
     
     @Transient
-    private String jwtUserToken ;
+    //@JsonIgnore
+    private String jwtToken ;
       
     @ManyToMany( fetch = FetchType.EAGER )
     @OrderColumn 

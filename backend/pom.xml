@@ -25,12 +25,18 @@
         <dependency>
             <groupId>zw.co.hisolutions</groupId>
             <artifactId>hisolutions-core</artifactId>
-            <version>${parent.version}</version>
-        </dependency>   
+            <version>${project.parent.version}</version>
+        </dependency>  
+        <dependency>
+            <groupId>zw.co.hisolutions</groupId>
+            <artifactId>hisolutions-auth</artifactId>
+            <version>${project.parent.version}</version>
+            <!--<type>pom</type>-->
+        </dependency>  
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>frontend</artifactId>
-            <version>${project.version}</version>
+            <artifactId>hisolutions-frontend</artifactId>
+            <version>${project.parent.version}</version>
             <type>pom</type>
         </dependency> 
     

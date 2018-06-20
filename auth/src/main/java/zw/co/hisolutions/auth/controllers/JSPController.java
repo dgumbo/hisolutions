@@ -27,7 +27,7 @@ public class JSPController {
     @Autowired
     UserAndRoleService userService;
     
-    @GetMapping("/")
+    @GetMapping("/home")
     public ModelAndView IndexJspSpring(HttpServletRequest request, ModelAndView model, Principal principal, Authentication auth){
         System.out.println("zw.co.hisolutions.auth.controllers.JSPController.IndexJspSpring()");
         
@@ -60,6 +60,7 @@ public class JSPController {
     public String test(CsrfToken csrf) {
 
         String returnString = "<p>Test Succesiful</p>";
+        returnString += "<p><a href=\"/home\">Home Page</a></p>";
         returnString += "<form action='logout' method='post'>";
         returnString += "<input type='submit' value='logout' />";
         returnString += csrf == null ? "" : "<input type='hidden' name='" + csrf.getParameterName() + "' value='" + csrf.getToken() + "' />";
@@ -76,7 +77,7 @@ public class JSPController {
             return mav; 
     }
     
-    @GetMapping("init")
+    @GetMapping("/init/users")
     @ResponseBody
     public String init(){
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();

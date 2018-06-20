@@ -18,16 +18,7 @@
         <main.basedir>${project.parent.basedir}</main.basedir>
         <checkstyle.skip>true</checkstyle.skip>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-    
-    <!-- <dependencies>
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>8.0</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies> -->
+    </properties> 
 
     <build>
         <sourceDirectory>./src</sourceDirectory>      
@@ -71,8 +62,7 @@
                     <npmVersion>v6.0.1</npmVersion> 
                 </configuration>
         
-                <executions>
-
+                <executions> 
                     <execution>
                         <id>install node and npm</id>
                         <goals>
@@ -104,10 +94,8 @@
                         <configuration>
                             <arguments>run build</arguments>
                         </configuration>
-                    </execution>     
-
-                </executions>
-        
+                    </execution>      
+                </executions> 
             </plugin>
         </plugins>
     </build>
