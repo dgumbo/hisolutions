@@ -6,11 +6,11 @@
 /frontend/ui-src/
 /frontend/node/
 */upload-dir/
-*/frontend/node/
-*/ui-src/
-*/ui-src/*
-*/upload-dir/*
-*/package-lock.json
+*frontend/node*
+*/ui-src
+*ui-src*
+*upload-dir*
+*package-lock.json
 
 # compiled output
 dist
