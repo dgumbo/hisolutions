@@ -1,11 +1,16 @@
 /target/
 /nbproject/
 /backend/nbproject/
-/backend/target/
+*/target/
 /frontend/target/
 /frontend/ui-src/
 /frontend/node/
-ui-src/
+*/upload-dir/
+*/frontend/node/
+*/ui-src/
+*/ui-src/*
+*/upload-dir/*
+*/package-lock.json
 
 # compiled output
 dist
@@ -14,6 +19,7 @@ out-tsc
 bin/
 # dependencies
 node_modules/
+*/node_modules/*
 node/
 target/
 
