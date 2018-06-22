@@ -30,8 +30,7 @@
         <dependency>
             <groupId>zw.co.hisolutions</groupId>
             <artifactId>hisolutions-auth</artifactId>
-            <version>${project.parent.version}</version>
-            <!--<type>pom</type>-->
+            <version>${project.parent.version}</version> 
         </dependency>  
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -114,6 +113,21 @@
     <build>
         <plugins> 
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.1</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <webResources>
+                        <resource>
+                            <directory>../frontend/ui-src/</directory> 
+                            <targetPath>WEB-INF/ng</targetPath>
+                        </resource> 
+                    </webResources>
+                </configuration>
+            </plugin>
+            
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
@@ -125,20 +139,6 @@
                     </embeddedLaunchScriptProperties> 
                 </configuration>
             </plugin>  
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.2.1</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <webResources>
-                        <resource>
-                            <directory>../frontend/ui-src/</directory>
-                        </resource>
-                    </webResources>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
     

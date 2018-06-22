@@ -20,12 +20,12 @@ import zw.co.hisolutions.auth.service.UserAndRoleService;
  */
 @RestController
 @RequestMapping("/rest")
-public class RestTestController {
+public class TestRestController {
     
     private final UserAndRoleService userService ;
     
     @Autowired
-    public RestTestController(UserAndRoleService userService) {
+    public TestRestController(UserAndRoleService userService) {
         this.userService = userService;
     } 
     

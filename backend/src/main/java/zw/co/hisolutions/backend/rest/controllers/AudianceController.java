@@ -1,31 +1,32 @@
-package zw.co.hisolutions.backend.web.controllers.rest;
+package zw.co.hisolutions.backend.rest.controllers;
  
 import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import zw.co.hisolutions.common.controllers.rest.BasicRestController;
-import zw.co.hisolutions.backend.web.entity.Duration;
-import zw.co.hisolutions.backend.web.service.DurationService; 
+import zw.co.hisolutions.backend.web.entity.Audiance;
+import zw.co.hisolutions.backend.web.service.AudianceService; 
 import zw.co.hisolutions.common.service.GenericService;
 
 @RestController
-@RequestMapping("/rest/durations")
-public class DurationController extends BasicRestController<Duration, Long>{
+@RequestMapping("/rest/audiances")
+public class AudianceController extends BasicRestController<Audiance, Long >{
 
-    private final  DurationService durationService;
+    private final  AudianceService audianceService;
     
     @Autowired
-    public DurationController  (DurationService durationService) {
-        this.durationService = durationService;        
+    public AudianceController  (AudianceService audianceService) {
+        this.audianceService = audianceService;        
     }
 
     @Override
     public GenericService getService() {
-        return this.durationService;
+        return this.audianceService;
     }
 
     @Override
     public Class getControllerClass() {
        return this.getClass();
-    } 
+    }
+
 }

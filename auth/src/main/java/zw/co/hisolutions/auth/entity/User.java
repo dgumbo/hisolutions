@@ -1,6 +1,7 @@
 package zw.co.hisolutions.auth.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List; 
@@ -29,9 +30,7 @@ import zw.co.hisolutions.common.entity.BaseEntity;
 public class User extends BaseEntity  implements UserDetails{
     
     @Column(unique = true)
-    private String username;
-    
-    @JsonIgnore
+    private String username;     
     private String password;
     private boolean enabled ; 
     
@@ -54,6 +53,17 @@ public class User extends BaseEntity  implements UserDetails{
     public void setAuthorities(List<UserRole> roles) {        
         //this. roles = roles; 
     }  
+     
+    @JsonIgnore
+    @Override
+    public String getPassword() {
+       return password;
+    }
+
+    @JsonProperty
+    public void setPassword(String password) {
+       this.password = password;
+    }
 
     @Override
     public boolean isAccountNonExpired() {

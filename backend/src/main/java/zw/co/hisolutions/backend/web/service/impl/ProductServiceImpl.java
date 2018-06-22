@@ -5,7 +5,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
-import zw.co.hisolutions.backend.web.controllers.rest.ProductController;
+import zw.co.hisolutions.backend.rest.controllers.ProductController;
 import zw.co.hisolutions.backend.web.entity.Product;
 import zw.co.hisolutions.backend.web.entity.ServiceCategory;
 import zw.co.hisolutions.backend.web.entity.dao.ProductDao;

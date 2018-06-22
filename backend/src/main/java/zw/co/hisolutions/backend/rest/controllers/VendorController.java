@@ -1,27 +1,27 @@
-package zw.co.hisolutions.backend.web.controllers.rest;
+package zw.co.hisolutions.backend.rest.controllers;
  
 import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import zw.co.hisolutions.common.controllers.rest.BasicRestController;
-import zw.co.hisolutions.backend.web.entity.Audiance;
-import zw.co.hisolutions.backend.web.service.AudianceService; 
+import zw.co.hisolutions.backend.web.entity.Vendor;
+import zw.co.hisolutions.backend.web.service.VendorService; 
 import zw.co.hisolutions.common.service.GenericService;
 
 @RestController
-@RequestMapping("/rest/audiances")
-public class AudianceController extends BasicRestController<Audiance, Long >{
+@RequestMapping("/rest/vendors")
+public class VendorController extends BasicRestController<Vendor, Long>{
 
-    private final  AudianceService audianceService;
+    private final  VendorService vendorService;
     
     @Autowired
-    public AudianceController  (AudianceService audianceService) {
-        this.audianceService = audianceService;        
+    public VendorController  (VendorService vendorService) {
+        this.vendorService = vendorService;        
     }
 
     @Override
     public GenericService getService() {
-        return this.audianceService;
+        return this.vendorService;
     }
 
     @Override

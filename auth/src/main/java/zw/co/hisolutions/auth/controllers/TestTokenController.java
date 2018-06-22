@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController; 
-import zw.co.hisolutions.auth.entity.User;
-import zw.co.hisolutions.auth.jwt.util.JwtUtil;
+import zw.co.hisolutions.auth.entity.User; 
 import zw.co.hisolutions.auth.service.UserAndRoleService;
 
 /**
@@ -17,15 +16,15 @@ import zw.co.hisolutions.auth.service.UserAndRoleService;
  */
 @RestController
 @RequestMapping("/token")
-public class TokenController {
+public class TestTokenController {
     
     private final UserAndRoleService userService;
-    private final JwtUtil util;
+    //private final JwtUtil util;
 
     @Autowired
-    public TokenController(UserAndRoleService userService, JwtUtil util) {
+    public TestTokenController(UserAndRoleService userService/*, JwtUtil util*/) {
         this.userService = userService;
-        this.util = util ;
+        //this.util = util ;
     }  
     
     @PostMapping("/generate")
@@ -36,7 +35,7 @@ public class TokenController {
             System.out.println("Role : " + action.getRole());
         });
         
-        String token = util.generateToken(user);
+        String token = "util.generateToken(user)";
         
         return token;        
     } 

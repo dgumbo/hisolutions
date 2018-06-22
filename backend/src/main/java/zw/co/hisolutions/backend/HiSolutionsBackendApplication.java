@@ -3,21 +3,14 @@ package zw.co.hisolutions.backend;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean; 
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Import; 
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import zw.co.hisolutions.auth.AuthenticationModuleApplication; 
+import org.springframework.context.annotation.Bean;  
 import zw.co.hisolutions.auth.AuthenticationModuleComponent;
 import zw.co.hisolutions.backend.init.InitializeStartData;
 import zw.co.hisolutions.backend.storage.service.StorageService;
 
 @SpringBootApplication(scanBasePackages = {"zw.co.hisolutions"})
-@ComponentScan (basePackages = "zw.co.hisolutions")
-@EnableJpaRepositories(basePackages = {"zw.co.hisolutions"})
-//@Import ( AuthenticationModuleApplication.class ) 
+//@ComponentScan (basePackages = "zw.co.hisolutions")
+//@EnableJpaRepositories(basePackages = {"zw.co.hisolutions"}) 
 @AuthenticationModuleComponent
 public class HiSolutionsBackendApplication {
     //@SuppressWarnings("resource")
@@ -31,14 +24,12 @@ public class HiSolutionsBackendApplication {
             //storageService.deleteAll();
             storageService.init();
             //storageService.scanServerDirectory();
-            //initializeStartData.init();
-            
-            //FormsSecurityConfig test;
+            //initializeStartData.init(); 
         };
     } 
     
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 }

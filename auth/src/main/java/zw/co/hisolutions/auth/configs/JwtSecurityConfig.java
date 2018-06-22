@@ -9,23 +9,22 @@
 //import org.springframework.security.authentication.AuthenticationManager;
 //import org.springframework.security.authentication.AuthenticationProvider;
 //import org.springframework.security.authentication.ProviderManager;
+//import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 //import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 //import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 //import org.springframework.security.config.http.SessionCreationPolicy;
 //import org.springframework.security.core.userdetails.UserDetailsService;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //import org.springframework.security.crypto.password.PasswordEncoder;
-//import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter; 
-//import zw.co.hisolutions.auth.jwt.entrypoints.JwtAuthenticationEntryPoint;
-//import zw.co.hisolutions.auth.jwt.filters.JwtAuthenticationFilter;
-//import zw.co.hisolutions.auth.jwt.handlers.JwtSuccessHandler;
-//import zw.co.hisolutions.auth.jwt.providers.JwtAuthenticationProvider;
+//import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;   
 //
 ///**
 // *
 // * @author dgumbo
 // */
 //@Configuration
-////@EnableWebSecurity
+//@EnableWebSecurity
 //@Order(2)
 //////@EnableGlobalMethodSecurity(prePostEnabled = true)
 //public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -42,10 +41,18 @@
 //        this.authenticationProvider = authenticationProvider;
 //        this.entryPoint = entryPoint;
 //    }
+//    
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder authBuilder) throws Exception {
+//        authBuilder
+//                .userDetailsService(userDetailsService) 
+//                .passwordEncoder(passwordEncoder)
+//                ; 
+//    }
 //
 //    @Bean
-//    public JwtAuthenticationFilter authenticationTokenFilter() {
-//        JwtAuthenticationFilter authFilter = new JwtAuthenticationFilter();
+//    public JwtAuthenticationFilter authenticationTokenFilter() throws Exception {
+//        JwtAuthenticationFilter authFilter = new JwtAuthenticationFilter( );
 //        authFilter.setAuthenticationManager(authenticationManager());
 //        authFilter.setAuthenticationSuccessHandler(new JwtSuccessHandler());
 //        //authFilter.setAuthenticationFailureHandler(new JwtFailureHandler()) ;
@@ -53,23 +60,35 @@
 //        return authFilter;
 //    } 
 //
+//  
+////    @Bean
+////    @Override
+////    public AuthenticationManager authenticationManager() {
+////        return new ProviderManager(Collections.singletonList(authenticationProvider));
+////    } 
+//
+//    @Bean
+//    public PasswordEncoder passwordEncoderBean() {
+//        return new BCryptPasswordEncoder();
+//    }
+//
 //    @Bean
 //    @Override
-//    public AuthenticationManager authenticationManager() {
-//        List<AuthenticationProvider> providers = Collections.singletonList(authenticationProvider);
-//        AuthenticationManager authManager = new ProviderManager(providers);
-//        return authManager;
+//    public AuthenticationManager authenticationManager() throws Exception {
+//        return super.authenticationManagerBean();
 //    }
+//
 //
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
 //
 //        http
 //                .csrf().disable()
-//                    .authorizeRequests()
-//                        .antMatchers("/token", "/token/**").permitAll()
+//                    .authorizeRequests() 
+//                        .antMatchers("/jwtauth", "/jwtauth/**","/token", "/token/**", "/login", "/logout", "index.html", "/index.html").permitAll()
 //                        .antMatchers("/rest/**").authenticated() 
 //                .and()
+//                //.authenticationProvider(authenticationProvider)
 //                .exceptionHandling().authenticationEntryPoint(entryPoint)
 //                .and()
 //                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -77,40 +96,4 @@
 //        http.addFilterBefore(authenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 //        http.headers().cacheControl();
 //    }
-//
-////    @Override
-////    protected void configure(HttpSecurity http) throws Exception {
-////        http.csrf().disable()
-////                
-////                .antMatcher("/rest/**")
-////                    .authorizeRequests() 
-////                        .anyRequest()
-////                            .hasRole("ADMIN")
-////                //.antMatchers("/rest/**").authenticated()
-////                .and()
-////                .antMatcher("**").authorizeRequests().anyRequest().permitAll()
-////                .and()
-////                .antMatcher("/login").authorizeRequests().anyRequest().permitAll()
-////                .and()
-////                .exceptionHandling().authenticationEntryPoint(authenticationEntryPoint)
-////                .and()
-////                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-////                ;
-////        
-////        http.addFilterBefore(authenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class)
-////                ;
-////        http.headers().cacheControl();
-////    }
-////    @Bean
-////    public TokenStore tokenStore() {
-////        return new JwtTokenStore(accessTokenConverter());
-////    }
-////     
-////    
-////    @Bean
-////    public JwtAccessTokenConverter accessTokenConverter() {
-////        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-////        converter.setSigningKey("123");
-////        return converter;
-////    }
 //}

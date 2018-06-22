@@ -1,4 +1,4 @@
-package zw.co.hisolutions.backend.web.controllers.rest;
+package zw.co.hisolutions.backend.rest.controllers;
  
 import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -23,7 +23,7 @@ import zw.co.hisolutions.auth.service.UserAndRoleService;
  * @author dgumbo
  */
 @Controller
-public class JSPController {
+public class TestJSPController {
     @Autowired
     UserAndRoleService userService;
     
