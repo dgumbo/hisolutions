@@ -121,7 +121,7 @@
                     <webResources>
                         <resource>
                             <directory>../frontend/ui-src/</directory> 
-                            <targetPath>WEB-INF/ng</targetPath>
+                            <targetPath>static</targetPath>
                         </resource> 
                     </webResources>
                 </configuration>

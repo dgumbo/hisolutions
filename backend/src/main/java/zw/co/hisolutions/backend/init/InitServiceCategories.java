@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import zw.co.hisolutions.backend.web.entity.ServiceCategory;
-import zw.co.hisolutions.backend.web.service.ServiceCategoryService;
+import zw.co.hisolutions.backend.core.entity.ServiceCategory;
+import zw.co.hisolutions.backend.core.service.ServiceCategoryService;
 import zw.co.hisolutions.backend.storage.entity.DocumentMetadata;
 
 /**

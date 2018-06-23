@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import zw.co.hisolutions.common.controllers.rest.BasicRestController;
-import zw.co.hisolutions.backend.web.entity.ServiceCategory;
-import zw.co.hisolutions.backend.web.service.ServiceCategoryService;
+import zw.co.hisolutions.backend.core.entity.ServiceCategory;
+import zw.co.hisolutions.backend.core.service.ServiceCategoryService;
 import zw.co.hisolutions.common.service.GenericService; 
 
 @RestController

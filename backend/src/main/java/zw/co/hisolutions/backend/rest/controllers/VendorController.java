@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import zw.co.hisolutions.common.controllers.rest.BasicRestController;
-import zw.co.hisolutions.backend.web.entity.Vendor;
-import zw.co.hisolutions.backend.web.service.VendorService; 
+import zw.co.hisolutions.backend.core.entity.Vendor;
+import zw.co.hisolutions.backend.core.service.VendorService; 
 import zw.co.hisolutions.common.service.GenericService;
 
 @RestController

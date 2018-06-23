@@ -8,9 +8,7 @@ import zw.co.hisolutions.auth.AuthenticationModuleComponent;
 import zw.co.hisolutions.backend.init.InitializeStartData;
 import zw.co.hisolutions.backend.storage.service.StorageService;
 
-@SpringBootApplication(scanBasePackages = {"zw.co.hisolutions"})
-//@ComponentScan (basePackages = "zw.co.hisolutions")
-//@EnableJpaRepositories(basePackages = {"zw.co.hisolutions"}) 
+@SpringBootApplication(scanBasePackages = {"zw.co.hisolutions"}) 
 @AuthenticationModuleComponent
 public class HiSolutionsBackendApplication {
     //@SuppressWarnings("resource")
@@ -26,10 +24,6 @@ public class HiSolutionsBackendApplication {
             //storageService.scanServerDirectory();
             //initializeStartData.init(); 
         };
-    } 
+    }  
     
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
 }

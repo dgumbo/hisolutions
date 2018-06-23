@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import zw.co.hisolutions.common.controllers.rest.BasicRestController;
-import zw.co.hisolutions.backend.web.entity.PreRequisite;
-import zw.co.hisolutions.backend.web.service.PreRequisiteService; 
+import zw.co.hisolutions.backend.core.entity.PreRequisite;
+import zw.co.hisolutions.backend.core.service.PreRequisiteService; 
 import zw.co.hisolutions.common.service.GenericService;
 
 @RestController

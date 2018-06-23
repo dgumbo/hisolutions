@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import zw.co.hisolutions.common.controllers.rest.BasicRestController; 
 import zw.co.hisolutions.common.service.GenericService;
-import zw.co.hisolutions.backend.web.entity.Product;
-import zw.co.hisolutions.backend.web.service.ProductService; 
+import zw.co.hisolutions.backend.core.entity.Product;
+import zw.co.hisolutions.backend.core.service.ProductService; 
 
 @Controller
 @RequestMapping("/rest/products")

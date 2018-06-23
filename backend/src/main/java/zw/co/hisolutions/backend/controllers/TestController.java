@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class TestController {
     
-    @GetMapping("")
+    @GetMapping("/h")
     public String HomeMapping(){
         System.out.println("zw.co.hisolutions.backend.controllers.TestController.HomeMapping()");
         return "index";

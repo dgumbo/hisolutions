@@ -10,13 +10,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import zw.co.hisolutions.auth.entity.UserRole;
 import zw.co.hisolutions.auth.entity.User;
-import zw.co.hisolutions.auth.service.UserAndRoleService;
+import zw.co.hisolutions.auth.service.UsersService;
 
 /**
  *
@@ -25,7 +23,7 @@ import zw.co.hisolutions.auth.service.UserAndRoleService;
 @Controller
 public class TestJSPController {
     @Autowired
-    UserAndRoleService userService;
+    UsersService userService;
     
     @GetMapping("/home")
     public ModelAndView IndexJspSpring(HttpServletRequest request, ModelAndView model, Principal principal, Authentication auth){
@@ -67,15 +65,7 @@ public class TestJSPController {
         returnString += "</form>";
 
         return returnString;
-    }
-    
-    @RequestMapping(value="/{error}") 
-    public ModelAndView loginErrorView(@PathVariable("error") String error) {
-            ModelAndView mav = new ModelAndView();
-            mav.setViewName("login");
-            mav.addObject("error", error);
-            return mav; 
-    }
+    } 
     
     @GetMapping("/init/users")
     @ResponseBody
