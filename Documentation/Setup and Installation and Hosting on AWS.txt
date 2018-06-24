@@ -14,6 +14,18 @@
    $ sudo add-apt-repository ppa:webupd8team/java
    $ sudo apt-get update
 
+   $ sudo update-alternatives --config java
+   $ sudo nano /etc/environment
+
+   # set java home variable like below from alternatives above.
+     JAVA_HOME=""
+
+   # reload sources paths
+   $ source /etc/environment
+
+   # check for java_home
+   $ echo $JAVA_HOME
+
 ## install Maven
 4. $ sudo apt-get install maven
 
