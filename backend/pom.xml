@@ -153,7 +153,22 @@
                         <version>1.1</version>
                         <executions>                      
                             <execution>
+                                <id>0</id>
                                 <phase>package</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <tasks>
+                                        <echo>Using env.production.properties</echo>
+                                        <copy file="src/main/resources/env.production.properties"
+                                              tofile="${project.build.outputDirectory}/application.properties"/>
+                                    </tasks>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>1</id>
+                                <phase>initialize</phase>
                                 <goals>
                                     <goal>run</goal>
                                 </goals>

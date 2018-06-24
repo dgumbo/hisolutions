@@ -1,0 +1,36 @@
+#############    Prepare Environment For Setup.    #############
+
+1. $ sudo apt-get update && sudo apt-get upgrade
+
+## enable search history searches by page up/down
+2. $ sudo nano /etc/inputrc
+# uncomment lines below
+# under	# alternate mappings for "page up" and "page down" to search the history
+ 	"\e[5~": history-search-backward
+ 	"\e[6~": history-search-forward
+
+## install Java 8
+3. $ sudo apt-get install default-jdk
+   $ sudo add-apt-repository ppa:webupd8team/java
+   $ sudo apt-get update
+
+## install Maven
+4. $ sudo apt-get install maven
+
+## install NodeJS latest >=v10 && Node Package Manager npm
+5. $ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+   $ sudo apt-get install -y nodejs
+   $ sudo apt-get install -y build-essential
+
+## install Node Package Manager npm
+6. $ npm install -g @angular/cli
+
+7. $ sudo apt-get update && sudo apt-get upgrade
+8. $ sudo reboot
+
+
+##################     Setup the Application If Environment Ready      #####################
+
+mvn clean package --pl backend -P production && java -jar backend/target/hisolutions-backend-1.0.0.war
+
+ 
