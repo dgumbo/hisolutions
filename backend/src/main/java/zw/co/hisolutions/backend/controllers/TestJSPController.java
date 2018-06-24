@@ -1,4 +1,4 @@
-package zw.co.hisolutions.auth.controllers;
+package zw.co.hisolutions.backend.controllers;
 
 import java.security.Principal;
 import java.util.ArrayList;

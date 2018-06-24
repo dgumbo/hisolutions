@@ -8,6 +8,7 @@ import {SiteModule} from './site/site.module';
 import {CoreModule} from './core/core.module';
 import {SharedModule} from './shared/shared.module'; 
 import {AdminModule} from './admin/admin.module';
+import {AuthModule} from './auth/auth.module';
 
 @NgModule({
     declarations: [
@@ -19,8 +20,9 @@ import {AdminModule} from './admin/admin.module';
         BrowserModule, 
         AppRoutingModule
         
-//        , SiteModule
-//        , AdminModule
+        , AuthModule
+        , SiteModule
+        , AdminModule
     ],
     providers: [ ],
     

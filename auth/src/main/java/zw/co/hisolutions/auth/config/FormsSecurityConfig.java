@@ -1,4 +1,4 @@
-package zw.co.hisolutions.auth.configs;
+package zw.co.hisolutions.auth.config;
 
 import java.util.List;
 import java.util.logging.Level;

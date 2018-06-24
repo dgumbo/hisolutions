@@ -59,7 +59,7 @@
                 <version>1.6</version>
                 <configuration>
                     <nodeVersion>v8.9.0</nodeVersion>
-                    <npmVersion>v6.0.1</npmVersion> 
+                    <npmVersion>v6.1.0</npmVersion> 
                 </configuration>
         
                 <executions> 

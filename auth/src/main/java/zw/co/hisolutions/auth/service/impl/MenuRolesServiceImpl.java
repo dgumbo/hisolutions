@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import zw.co.hisolutions.auth.entity.dao.RoleMenuDao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
-import zw.co.hisolutions.auth.controllers.FormsLoginController;
+import zw.co.hisolutions.auth.controller.FormsLoginController;
 import zw.co.hisolutions.auth.entity.MenuRoles;
 import zw.co.hisolutions.auth.service.MenuRolesService;
 

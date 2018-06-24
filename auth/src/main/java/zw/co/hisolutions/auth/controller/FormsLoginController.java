@@ -1,4 +1,4 @@
-package zw.co.hisolutions.auth.controllers;
+package zw.co.hisolutions.auth.controller;
  
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;

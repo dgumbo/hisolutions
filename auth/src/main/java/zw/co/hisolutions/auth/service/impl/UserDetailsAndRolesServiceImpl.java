@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails; 
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;  
-import zw.co.hisolutions.auth.controllers.FormsLoginController;
+import zw.co.hisolutions.auth.controller.FormsLoginController;
 import zw.co.hisolutions.auth.entity.UserRole;
 import zw.co.hisolutions.auth.entity.User;
 import zw.co.hisolutions.auth.entity.dao.UserDao;

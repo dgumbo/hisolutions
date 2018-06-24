@@ -1,4 +1,4 @@
-package zw.co.hisolutions.auth.configs;
+package zw.co.hisolutions.auth.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

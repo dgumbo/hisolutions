@@ -1,4 +1,4 @@
-package zw.co.hisolutions.auth.controllers;
+package zw.co.hisolutions.auth.controller;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.SignatureException;

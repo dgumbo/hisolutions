@@ -1,4 +1,4 @@
-package zw.co.hisolutions.auth.configs;
+package zw.co.hisolutions.auth.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +23,7 @@ import zw.co.hisolutions.auth.jwt.filters.JwtAuthenticationFilter;
  */
 @Configuration
 @EnableWebSecurity
-@Order( 1  )
+@Order(1)
 ////@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -55,7 +55,7 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http
-                //.csrf().disable()
+                .csrf().disable()
                     .authorizeRequests() 
                         .antMatchers(MATCHERS.PUBLIC_UNPROTECTED).permitAll()
                         .anyRequest().authenticated() 
