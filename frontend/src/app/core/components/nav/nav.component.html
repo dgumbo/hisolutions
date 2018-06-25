@@ -31,7 +31,7 @@ Header
                 <li class="nav-item">
                     <a class="nav-link" routerLinkActive="active current" routerLink="/" >Home</a>
                 </li>  
-                <li *ngIf="production==false && globals.serviceCategories && globals.serviceCategories.length >= 1" routerLinkActive="active current" class="nav-item dropdown">
+                <li *ngIf="globals.serviceCategories && globals.serviceCategories.length >= 1" routerLinkActive="active current" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Our Services
                     </a>

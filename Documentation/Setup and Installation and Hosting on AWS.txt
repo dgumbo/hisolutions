@@ -53,48 +53,46 @@
 
 ##################     Setup the Application If Environment Ready      #####################
 
-## increase mvn virtual memory
-1. $ export MAVEN_OPTS="-Xmx2048m"
-   $ export _JAVA_OPTIONS="-Xms1024m -Xmx1024m -XX:MaxMetaspaceSize=512m"
-   $ npm rebuild node-sass
-
 ## clone project from git
-2. $ git clone https://github.com/dgumbo/hisolutions.git 
-   $ cd hisolutions
+1. $ git clone https://github.com/dgumbo/hisolutions.git 
 
-## check if project builds correctly.
-3. mvn clean install
-
-## check if project runs - backend project - using java -jar
-4. $ cd frontend
+## build angular project
+2. $ cd hisolutions/frontend
+   $ npm install
+   $ npm rebuild node-sass
    $ ng build --prod
    $ cd ..
-   $ mvn clean install -P production
+
+## browse to project target folder
+3. $ sudo adduser his
+     # use password : his
+
+## create upload dir under user his directory
+4. $ sudo mkdir /home/his/upload-dir
+
+## increase mvn virtual memory
+5. $ export _JAVA_OPTIONS="-Xms1024m -Xmx1024m -XX:MaxMetaspaceSize=512m"
+
+## compile and buil project and check if project runs - backend project - using java -jar
+6. $ mvn clean install -P production
    $ mvn clean package -P production --pl backend
    $ java -jar backend/target/hisolutions-backend-1.0.0.war
 
-## browse to project target folder
-$ sudo adduser his
-  # use password : his
-
-$ sudo mkdir /var/hisolutions
-$ sudo rm -rf /var/hisolutions/hisolutions-backend-1.0.0.war
-$ sudo cp backend/target/hisolutions-backend-1.0.0.war /var/hisolutions/
-$ sudo chown his:his /var/hisolutions/hisolutions-backend-1.0.0.war
-$ sudo chmod 500 /var/hisolutions/hisolutions-backend-1.0.0.war
- 
-$ sudo ln -s /var/hisolutions/hisolutions-backend-1.0.0.war /etc/init.d/hisolutions
-$ sudo service hisolutions start
+## prepare for the deployement of application
+7. $ sudo systemctl stop hisolutions.service
+   $ sudo systemctl disable hisolutions.service
+   $ sudo mkdir /var/hisolutions
+   $ sudo rm -rf /var/hisolutions/hisolutions-backend-1.0.0.war
+   $ sudo cp backend/target/hisolutions-backend-1.0.0.war /var/hisolutions/
+   $ sudo chown his:his /var/hisolutions/hisolutions-backend-1.0.0.war
+   $ sudo chmod 500 /var/hisolutions/hisolutions-backend-1.0.0.war 
 
 
-## upgrade all upgradable nodejs packages
-   $ npm install i -g npm-check-updates
-   $ ncu -u
+##  create service for the application
+   $ sudo nano /etc/systemd/system/hisolutions.service
+   # copy all content below
 
-
-##  sudo nano /etc/systemd/system/hisolutions.service
-
-
+# Content Start
 [Unit]
 Description=HiSolutions Web App Service
 
@@ -117,6 +115,7 @@ RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
+# Content End
 
 
 ## 
@@ -124,5 +123,10 @@ $ sudo systemctl enable hisolutions.service
 $ sudo systemctl start hisolutions.service
 $ journalctl -u hisolutions.service -f
 
+ 
+
+## upgrade all upgradable nodejs packages on development computer
+#   $ npm install i -g npm-check-updates
+#   $ ncu -u
 
 
