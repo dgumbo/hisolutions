@@ -1,23 +1,29 @@
 #############    Prepare Environment For Setup.    #############
 
-1. $ sudo apt-get update && sudo apt-get upgrade
-
 ## enable search history searches by page up/down
-2. $ sudo nano /etc/inputrc
+1. $ sudo nano /etc/inputrc
 # uncomment lines below
 # under	# alternate mappings for "page up" and "page down" to search the history
  	"\e[5~": history-search-backward
  	"\e[6~": history-search-forward
 
+## update system with latest updates
+2. $ sudo apt-get update && sudo apt-get upgrade
+
 ## install Java 8
 3. $ sudo apt-get install default-jdk
    $ sudo add-apt-repository ppa:webupd8team/java
    $ sudo apt-get update
+   $ sudo apt-get install oracle-java8-installer
+
+   # check for java_home
+   $ echo $JAVA_HOME
 
    $ sudo update-alternatives --config java
    $ sudo nano /etc/environment
 
    # set java home variable like below from alternatives above.
+   # most likely path is:        JAVA_HOME="/usr/lib/jvm/java-8-oracle/jre/bin/java"
      JAVA_HOME=""
 
    # reload sources paths
@@ -35,7 +41,7 @@
    $ sudo apt-get install -y build-essential
 
 ## install Node Package Manager npm
-6. $ npm install -g @angular/cli
+6. $ sudo npm install -g @angular/cli
 
 ## configure routing and port fowarding.
 7. $ sudo iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080
@@ -49,7 +55,7 @@
 
 ## increase mvn virtual memory
 1. $ export MAVEN_OPTS="-Xmx2048m"
-   $ export _JAVA_OPTIONS="-Xms1024m -Xmx1024m -XX:MaxPermSize=512m"
+   $ export _JAVA_OPTIONS="-Xms1024m -Xmx1024m -XX:MaxMetaspaceSize=512m"
 
 ## clone project from git
 2. $ git clone https://github.com/dgumbo/hisolutions.git 
