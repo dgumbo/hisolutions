@@ -106,7 +106,7 @@ export class ProductViewComponent implements OnInit, OnDestroy {
 
     
     getProductByName(name: String) {
-        this._productService.getByProperty("Name", name)
+        this._productService.getViewByProperty("Product","Name", name)
             .subscribe((result :Product)=> {
             this.product = result; 
             // this.loadServiceCategoryImages(this.serviceCategory);

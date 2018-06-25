@@ -66,7 +66,11 @@
 3. mvn clean install
 
 ## check if project runs - backend project - using java -jar
-4. $ mvn clean package --pl backend -P production
+4. $ cd frontend
+   $ ng build --prod
+   $ cd ..
+   $ mvn clean install -P production
+   $ mvn clean package -P production --pl backend
    $ java -jar backend/target/hisolutions-backend-1.0.0.war
 
 ## browse to project target folder
@@ -74,6 +78,7 @@ $ sudo adduser his
   # use password : his
 
 $ sudo mkdir /var/hisolutions
+$ sudo rm -rf /var/hisolutions/hisolutions-backend-1.0.0.war
 $ sudo cp backend/target/hisolutions-backend-1.0.0.war /var/hisolutions/
 $ sudo chown his:his /var/hisolutions/hisolutions-backend-1.0.0.war
 $ sudo chmod 500 /var/hisolutions/hisolutions-backend-1.0.0.war
@@ -115,8 +120,8 @@ WantedBy=multi-user.target
 
 
 ## 
-$ systemctl enable hisolutions.service
-$ systemctl start hisolutions.service
+$ sudo systemctl enable hisolutions.service
+$ sudo systemctl start hisolutions.service
 $ journalctl -u hisolutions.service -f
 
 

@@ -15,20 +15,17 @@ import {NotFoundError} from '../components/error-pages/not-found-error';
 export class DataService  {
     private headers: HttpHeaders; 
     private url: string
+    private viewsUrl: string;
+    private viewsResourcePath: string =  '/views/rest';
 
     constructor(private httpClient: HttpClient, resourcePath: string) {  
         this.url = environment.apiUrl + resourcePath;
+        this.viewsUrl = environment.apiUrl + this.viewsResourcePath;
         this.httpClient = httpClient;
         //alert (this.url) ;        
 
         this.headers = new HttpHeaders();
         this.headers = this.headers.set('Content-Type', 'application/json; charset=utf-8');
-    }
-
-    public getAll() {
-        return this.httpClient.get(this.url)
-            .retry(3)
-            .catch(this.handleError);
     }
 
     public create(resource: any) {
@@ -44,8 +41,36 @@ export class DataService  {
             .catch(this.handleError);
     }
 
-    public getByProperty(CapitalizedPropertyName: string, propertyValue: any) {
-        return this.httpClient.get(this.url + '/getBy' + CapitalizedPropertyName + '/' + propertyValue)
+    public getView(capitalizedModelName: string, id: any) {
+        console.log(this.viewsUrl + '/get' + capitalizedModelName + 'ById' + id);
+        return this.httpClient.get(this.viewsUrl + '/get' + capitalizedModelName + 'ById' + id)
+            .retry(3)
+            .catch(this.handleError);
+    }
+
+    public getAll() {
+        console.log(this.url);
+        return this.httpClient.get(this.url)
+            .retry(3)
+            .catch(this.handleError);
+    }
+
+    public getAllViews(capitalizedModelName: string) {
+        console.log(this.viewsUrl + '/getAll' + capitalizedModelName);
+        return this.httpClient.get(this.viewsUrl + '/getAll' + capitalizedModelName )
+            .retry(3)
+            .catch(this.handleError);
+    }
+
+    public getByProperty(capitalizedPropertyName: string, propertyValue: any) {
+        return this.httpClient.get(this.url + '/getBy' + capitalizedPropertyName + '/' + propertyValue)
+            .retry(3)
+            .catch(this.handleError);
+    }
+
+    public getViewByProperty(capitalizedModelName: string, capitalizedPropertyName: string, propertyValue: any ) {
+        console.log(this.viewsUrl + '/get'+ capitalizedModelName +'By' + capitalizedPropertyName + '/' + propertyValue);
+        return this.httpClient.get(this.viewsUrl + '/get'+ capitalizedModelName +'By' + capitalizedPropertyName + '/' + propertyValue)
             .retry(3)
             .catch(this.handleError);
     }

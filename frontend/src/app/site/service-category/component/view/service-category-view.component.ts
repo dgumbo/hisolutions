@@ -107,7 +107,7 @@ export class ServiceCategoryViewComponent implements OnInit , OnDestroy{
     }
     
     getServiceCategoryByName(name: String) {
-        this._serviceCategoryService.getByProperty("Name", name)
+        this._serviceCategoryService.getViewByProperty("ServiceCategory", "Name", name)
             .subscribe((result :ServiceCategory)=> {
             this.serviceCategory = result;
             this.getServiceCategoryProducts(this.serviceCategory.id);
@@ -116,7 +116,7 @@ export class ServiceCategoryViewComponent implements OnInit , OnDestroy{
     }
 
     getServiceCategoryProducts(serviceCategoryID: number) {
-        this._productService.getByProperty("ServiceCategoryID", serviceCategoryID)
+        this._productService.getViewByProperty("ServiceCategory", "ServiceCategoryID", serviceCategoryID)
             .subscribe((result :Product[])=> {
             this.serviceCategoryProducts = result;
             // this.loadServiceCategoryImages(this.serviceCategory);

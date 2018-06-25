@@ -11,6 +11,8 @@ import org.springframework.http.HttpMethod;
 public class MATCHERS {
 
     public static final String[] PUBLIC_UNPROTECTED = { 
+        "/views/rest/**",
+        "/storage/**",
         "/login",
         "/logout", 
         "/**.css",

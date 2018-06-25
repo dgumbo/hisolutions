@@ -24,7 +24,7 @@ export class SiteGlobals  extends Globals  {
     
     public setServiceCategories  () {  
         //console.log("num run time");
-        this._serviceCategoryService.getAll() 
+        this._serviceCategoryService.getAllViews("ServiceCategory") 
         .subscribe((res: ServiceCategory[]) =>  this.serviceCategories = res );
     } 
 }

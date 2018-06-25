@@ -24,7 +24,7 @@ export class ServiceCategoryComponent implements OnInit {
     
     getServiceCategories  () {
         //console.log("num run time");
-        this._serviceCategoryService.getAll().subscribe((scs : ServiceCategory[])=> 
+        this._serviceCategoryService.getAllViews("ServiceCategory").subscribe((scs : ServiceCategory[])=> 
         { this.serviceCategories = scs; this.loaded = true ;});
     }
 
