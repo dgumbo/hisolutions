@@ -37,12 +37,40 @@
 ## install Node Package Manager npm
 6. $ npm install -g @angular/cli
 
-7. $ sudo apt-get update && sudo apt-get upgrade
-8. $ sudo reboot
+## configure routing and port fowarding.
+7. $ sudo iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080
+8. $ sudo apt-get install iptables-persistent
+
+9. $ sudo apt-get update && sudo apt-get upgrade
+10. $ sudo reboot
 
 
 ##################     Setup the Application If Environment Ready      #####################
 
-mvn clean package --pl backend -P production && java -jar backend/target/hisolutions-backend-1.0.0.war
+## increase mvn virtual memory
+1. $ export MAVEN_OPTS="-Xmx2048m"
+   $ export _JAVA_OPTIONS="-Xms1024m -Xmx1024m -XX:MaxPermSize=512m"
 
- 
+## clone project from git
+2. $ git clone https://github.com/dgumbo/hisolutions.git 
+   $ cd hisolutions
+
+## check if project builds correctly.
+3. mvn clean install
+
+## check if project runs - backend project - using java -jar
+4. $ mvn clean package --pl backend -P production && java -jar backend/target/hisolutions-backend-1.0.0.war
+
+## browse to project folder
+adduser his
+password his
+
+sudo chown his:his hisolutions-backend-1.0.0.war
+
+
+## upgrade all upgradable nodejs packages
+   $ npm install i -g npm-check-updates
+   $ ncu -u
+
+
+

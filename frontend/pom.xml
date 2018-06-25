@@ -21,7 +21,7 @@
     </properties> 
 
     <build>
-        <sourceDirectory>./src</sourceDirectory>      
+        <sourceDirectory>.</sourceDirectory>      
     
         <resources>      
             <resource>
@@ -56,11 +56,7 @@
             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
-                <version>1.6</version>
-                <configuration>
-                    <nodeVersion>v10.5.0</nodeVersion>
-                    <npmVersion>v6.1.0</npmVersion> 
-                </configuration>
+                <version>1.6</version> 
         
                 <executions> 
                     <execution>
@@ -69,9 +65,9 @@
                             <goal>install-node-and-npm</goal>
                         </goals>
                         <configuration>
-                            <!-- See https://nodejs.org/en/download/ for latest node and npm (lts) versions -->
-                            <nodeVersion>v8.11.2</nodeVersion>
-                            <npmVersion>6.0.1</npmVersion>
+                            <!-- See https://nodejs.org/en/download/ for latest node and npm (lts) versions -->                             
+                            <nodeVersion>v10.5.0</nodeVersion>
+                            <npmVersion>6.1.0</npmVersion> 
                         </configuration>
                     </execution>
 
