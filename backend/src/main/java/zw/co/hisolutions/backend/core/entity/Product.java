@@ -15,6 +15,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import zw.co.hisolutions.common.entity.BaseEntity; 
 import zw.co.hisolutions.backend.storage.entity.DocumentMetadata;
+import zw.co.hisolutions.common.entity.EntityWithName;
 
 /**
  *
@@ -24,7 +25,7 @@ import zw.co.hisolutions.backend.storage.entity.DocumentMetadata;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor 
-public class Product extends BaseEntity implements Serializable{
+public class Product extends BaseEntity implements EntityWithName, Serializable{
     
     //@Enumerated(EnumType.STRING)
     

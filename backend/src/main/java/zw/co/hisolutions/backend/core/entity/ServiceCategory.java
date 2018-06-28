@@ -11,6 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor; 
 import zw.co.hisolutions.common.entity.BaseEntity; 
 import zw.co.hisolutions.backend.storage.entity.DocumentMetadata;
+import zw.co.hisolutions.common.entity.EntityWithName;
 
 /**
  *
@@ -20,7 +21,7 @@ import zw.co.hisolutions.backend.storage.entity.DocumentMetadata;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor 
-public class ServiceCategory extends BaseEntity implements Serializable{
+public class ServiceCategory extends BaseEntity implements EntityWithName, Serializable{
     @Column(unique = true)
     @NotNull 
     private String name;   /*  Web Development and Hosting Services, Training Services, Hardware and Accessories Supply  */

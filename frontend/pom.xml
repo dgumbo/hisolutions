@@ -31,22 +31,54 @@
         </resources>
     
         <plugins>
-       	      <plugin>
-		 <artifactId>maven-clean-plugin</artifactId>
-		 <version>3.1.0</version>
-		 <configuration>
-		   <filesets>
-<!--		     <fileset>
-		       <directory>ui-src</directory>
-		       <includes>
-		         <include>*</include>
-		       </includes>
-		     </fileset>-->
-		   </filesets>
-		 </configuration>
-	       </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>ui-src</directory>
+                            <includes>
+                                <include>*</include>
+                            </includes>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <fork>true</fork>
+                    <meminitial>128m</meminitial>
+                    <maxmem>512m</maxmem>
+                    <compilerArgs>
+                        <arg>-XX:MaxPermSize=256m</arg>
+                        <arg>-XX:MaxMetaspaceSize=256m</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.5.2</version>
+                <configuration>
+                    <fork>true</fork>
+                    <meminitial>128m</meminitial>
+                    <maxmem>512m</maxmem>
+                    <compilerArgs>
+                        <arg>-XX:MaxPermSize=256m</arg>
+                        <arg>-XX:MaxMetaspaceSize=256m</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin> 
 
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.2.2</version>
                 <configuration>
@@ -54,7 +86,7 @@
                 </configuration>
             </plugin>
             
-<!--            <plugin>
+            <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
                 <version>1.6</version> 
@@ -66,7 +98,7 @@
                             <goal>install-node-and-npm</goal>
                         </goals>
                         <configuration>
-                             See https://nodejs.org/en/download/ for latest node and npm (lts) versions                              
+                            <!--See https://nodejs.org/en/download/ for latest node and npm (lts) versions-->                              
                             <nodeVersion>v10.5.0</nodeVersion>
                             <npmVersion>6.1.0</npmVersion> 
                         </configuration>
@@ -77,7 +109,7 @@
                         <goals>
                             <goal>npm</goal>
                         </goals>
-                         Optional configuration which provides for running any npm command 
+                        <!--Optional configuration which provides for running any npm command--> 
                         <configuration>
                             <arguments>install</arguments>
                         </configuration>
@@ -93,7 +125,7 @@
                         </configuration>
                     </execution>      
                 </executions> 
-            </plugin>-->
+            </plugin>
         </plugins>
     </build>
 

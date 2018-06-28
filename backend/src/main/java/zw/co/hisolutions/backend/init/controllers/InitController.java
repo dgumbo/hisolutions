@@ -1,5 +1,6 @@
 package zw.co.hisolutions.backend.init.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,17 +11,17 @@ import zw.co.hisolutions.backend.init.InitializeStartData;
  *
  * @author dgumbo
  */
-@Controller
-@RequestMapping("init")
+@Controller 
 public class InitController { 
 
     private final InitializeStartData initializeStartData;
 
+    @Autowired
     public InitController(InitializeStartData initializeStartData) {
         this.initializeStartData = initializeStartData;
     }
     
-    @GetMapping("")
+    @GetMapping("/init/services")
     @ResponseBody
     public String initData(){
         initializeStartData.init();
