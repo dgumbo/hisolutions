@@ -9,6 +9,7 @@ import {AboutUsComponent} from 'core/components/about-us/about-us.component';
 import {ContactUsComponent} from 'core/components/contact-us/contact-us.component';
 import {OurPortfolioComponent} from 'core/components/our-portfolio/our-portfolio.component';
 import { AgmCoreModule } from '@agm/core';
+import { LandingComponent } from './components/landing/landing.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { AgmCoreModule } from '@agm/core';
         FooterComponent,
         AboutUsComponent,
         ContactUsComponent,
-        OurPortfolioComponent],
+        OurPortfolioComponent,
+        LandingComponent],
     providers: [
         CoreGlobals 
     ]

@@ -13,14 +13,14 @@
     text-align: left;
     margin-bottom: 0;
     padding: 7px 0 0 10px;
-    background: $primary;
+    background: $primary-color;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
 
     li {
       display: inline-block;
       color: white;
-      background: $primary-tint-1;
+      background: $primary-color-light;
       padding: 2px 20px;
       cursor: pointer;
       border-top-left-radius: 4px;
