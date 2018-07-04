@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router'; 
-import {LocationStrategy, HashLocationStrategy} from '@angular/common';   
+import {Routes, RouterModule} from '@angular/router';  
 import {ProductsComponent} from './components/products/products.component';
 import {ProductFormComponent} from './components/products/product-form/product-form.component';
 import {ProductTypesComponent} from './components/product-types/product-types.component';
@@ -18,7 +17,12 @@ import {DistributionMethodFormComponent} from './components/distribution-methods
 import {ServiceCategoryComponent} from './components/service-category/service-category.component';
 import {ServiceCategoryFormComponent} from './components/service-category/service-category-form/service-category-form.component';
 
-const adminRoutes: Routes = [  
+const adminRoutes: Routes = [ 
+
+    /* Service Categories */
+    {path: 'admin/servicecategories', component: ServiceCategoryComponent},
+    {path: 'admin/servicecategories/new', component: ServiceCategoryFormComponent},
+    {path: 'admin/servicecategories/:id', component: ServiceCategoryFormComponent}, 
  
     /* Product */
     {path: 'admin/products', component: ProductsComponent},
@@ -54,18 +58,12 @@ const adminRoutes: Routes = [
     {path: 'admin/distributionmethods', component: DistributionMethodsComponent},
     {path: 'admin/distributionmethods/new', component: DistributionMethodFormComponent},
     {path: 'admin/distributionmethods/:id', component: DistributionMethodFormComponent},
-
-    /* Service Categories */
-    {path: 'admin/servicecategories', component: ServiceCategoryComponent},
-    {path: 'admin/servicecategories/new', component: ServiceCategoryFormComponent},
-    {path: 'admin/servicecategories/:id', component: ServiceCategoryFormComponent},
  
 ];
 
 @NgModule({
     imports: [RouterModule.forChild(adminRoutes)],
-    exports: [RouterModule],
-    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}]
+    exports: [RouterModule], 
 })
 
 export class AdminRoutingModule {}

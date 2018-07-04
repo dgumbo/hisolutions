@@ -39,6 +39,9 @@ public class Product extends BaseEntity implements EntityWithName, Serializable{
     
     @Column
     private double price;  
+    
+    @Column
+    private String  faIcon;
         
     @Column(name="display_content",length = 5000)
     @NotNull

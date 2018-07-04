@@ -16,13 +16,13 @@ import {AuthModule} from './auth/auth.module';
     ],
     imports: [
         CoreModule,
+        AuthModule,
+        SiteModule,
+        AdminModule,
+        
         SharedModule, 
         BrowserModule, 
-        AppRoutingModule
-        
-        , AuthModule
-        , SiteModule
-        , AdminModule
+        AppRoutingModule,        
     ],
     providers: [ ],
     

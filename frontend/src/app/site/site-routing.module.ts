@@ -1,10 +1,7 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router'; 
-import {LocationStrategy, HashLocationStrategy} from '@angular/common';  
+import {Routes, RouterModule} from '@angular/router';   
 import {ProductViewComponent} from './product/component/view/product-view.component';
-import {ServiceCategoryViewComponent} from './service-category/component/view/service-category-view.component';
-//import {ProductViewComponent} from './components/product/product-view.component';
-//import {ServiceCategoryViewComponent} from './components/service-category/service-category-view.component';
+import {ServiceCategoryViewComponent} from './service-category/component/view/service-category-view.component'; 
 
 const mainRoutes: Routes = [ 
 
@@ -18,8 +15,7 @@ const mainRoutes: Routes = [
 
 @NgModule({
     imports: [RouterModule.forChild(mainRoutes)],
-    exports: [RouterModule],
-    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}]
+    exports: [RouterModule], 
 })
 
 export class SiteRoutingModule {}

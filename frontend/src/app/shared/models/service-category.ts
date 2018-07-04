@@ -15,5 +15,6 @@ export interface ServiceCategory extends BasicInterface {
     displayContent?: string;
     imageMetadata?: DocumentMetadata;
     thumbnailMetadata?: DocumentMetadata; 
+    faIcon?: string; 
 }
 

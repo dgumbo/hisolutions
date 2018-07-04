@@ -34,6 +34,9 @@ public class ServiceCategory extends BaseEntity implements EntityWithName, Seria
     @NotNull
     private String description;   /*  plain text description  */
     
+    @Column
+    private String faIcon;
+    
     @Column(name="display_content",length = 5000)
     @NotNull
     private String displayContent;   /*  display content describing service. may contain html code  */

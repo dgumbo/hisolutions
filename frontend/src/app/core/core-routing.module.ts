@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router'; 
-import {LocationStrategy, HashLocationStrategy} from '@angular/common';  
+import {Routes, RouterModule} from '@angular/router';   
 import {HomeComponent} from './components/home/home.component'; 
 import {AboutUsComponent} from 'core/components/about-us/about-us.component';
 import {ContactUsComponent} from 'core/components/contact-us/contact-us.component';
@@ -21,8 +20,7 @@ const coreRoutes: Routes = [
 
 @NgModule({
     imports: [RouterModule.forChild(coreRoutes)],
-    exports: [RouterModule],
-    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}]
+    exports: [RouterModule], 
 })
 
 export class CoreRoutingModule {}

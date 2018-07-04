@@ -33,6 +33,7 @@ import {VendorsComponent} from 'admin/components/vendors/vendors.component';
     SharedModule,
     AdminRoutingModule 
   ],
+  
   declarations: [
     /* Product */
    ProductsComponent,
