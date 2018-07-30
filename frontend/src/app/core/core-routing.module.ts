@@ -24,3 +24,11 @@ const coreRoutes: Routes = [
 })
 
 export class CoreRoutingModule {}
+
+export const coreRoutedComponents = [
+    HomeComponent,
+    LandingComponent,
+    AboutUsComponent, 
+    ContactUsComponent, 
+    OurPortfolioComponent
+];

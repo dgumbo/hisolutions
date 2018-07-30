@@ -6,7 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import zw.co.hisolutions.backend.core.entity.ServiceCategory;
 import zw.co.hisolutions.backend.core.service.ServiceCategoryService;
-import zw.co.hisolutions.backend.storage.entity.DocumentMetadata;
+import zw.co.hisolutions.storage.entity.DocumentMetadata;
 
 /**
  *

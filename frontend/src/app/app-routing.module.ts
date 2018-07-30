@@ -18,3 +18,8 @@ const appRoutes: Routes = [
 })
 
 export class AppRoutingModule {}
+
+export const routedComponents = [
+    NoAccessComponent,
+    RequestNotFoundComponent,
+];

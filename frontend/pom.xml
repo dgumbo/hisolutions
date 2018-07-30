@@ -100,7 +100,7 @@
                         </goals>
                         <configuration>
                             <!--See https://nodejs.org/en/download/ for latest node and npm (lts) versions-->                              
-                            <nodeVersion>v10.5.0</nodeVersion>
+                            <nodeVersion>v10.7.0</nodeVersion>
                             <npmVersion>6.1.0</npmVersion> 
                         </configuration>
                     </execution>

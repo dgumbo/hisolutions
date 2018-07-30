@@ -1,8 +1,7 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {CoreGlobals} from '../../core-globals';
 import * as WOW from "wowjs";
-
-
+ 
 declare var $: any
 declare var WOW: any
 

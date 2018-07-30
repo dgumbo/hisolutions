@@ -1,6 +1,6 @@
-import { NgModule, ErrorHandler } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgModule, ErrorHandler} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {NoAccessComponent} from './components/error-pages/no-access/no-access.component';
 import {RequestNotFoundComponent} from './components/error-pages/request-not-found/request-not-found.component';
@@ -18,27 +18,37 @@ import {SharedGlobals} from './shared-globals';
 import {AppErrorHandler} from './components/error-pages/app-error-handler';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {FooterComponent} from 'core/components/footer/footer.component';
+import {NavComponent} from 'core/components/nav/nav.component';
+import {RouterModule} from '@angular/router';
 
 //import { FadeInOut } from './components/animations/fade-in-out';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,  
-    HttpClientModule,
-    BrowserAnimationsModule
-  ],
-  declarations: [
-        RequestNotFoundComponent, 
-        NoAccessComponent
-         ],
-  exports: [
+    imports: [
         CommonModule,
         FormsModule,
-    
-        RequestNotFoundComponent, 
-        NoAccessComponent ],
-  providers: [  
+        HttpClientModule,
+        BrowserAnimationsModule,
+        RouterModule,
+    ],
+    declarations: [
+        RequestNotFoundComponent,
+        NoAccessComponent,
+
+        NavComponent,
+        FooterComponent,
+    ],
+    exports: [
+        CommonModule,
+        FormsModule, 
+
+        RequestNotFoundComponent,
+        NoAccessComponent,
+
+        NavComponent,
+        FooterComponent,],
+    providers: [
         ProductTypeService,
         ProductService,
         VendorService,
@@ -49,7 +59,7 @@ import {HttpClientModule} from '@angular/common/http';
         DistributionMethodService,
         ServiceCategoryService,
         FileUploadService,
-        { provide: ErrorHandler, useClass: AppErrorHandler },
-        SharedGlobals ]
+        {provide: ErrorHandler, useClass: AppErrorHandler},
+        SharedGlobals]
 })
-export class SharedModule { }
+export class SharedModule {}

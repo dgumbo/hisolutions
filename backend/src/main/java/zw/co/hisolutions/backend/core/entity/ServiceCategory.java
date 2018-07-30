@@ -10,7 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor; 
 import zw.co.hisolutions.common.entity.BaseEntity; 
-import zw.co.hisolutions.backend.storage.entity.DocumentMetadata;
+import zw.co.hisolutions.storage.entity.DocumentMetadata;
 import zw.co.hisolutions.common.entity.EntityWithName;
 
 /**

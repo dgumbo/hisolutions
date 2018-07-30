@@ -34,6 +34,11 @@
         </dependency>  
         <dependency>
             <groupId>${project.groupId}</groupId>
+            <artifactId>hisolutions-storage</artifactId>
+            <version>${project.parent.version}</version> 
+        </dependency> 
+        <dependency>
+            <groupId>${project.groupId}</groupId>
             <artifactId>hisolutions-frontend</artifactId>
             <version>${project.parent.version}</version>
             <type>pom</type>
@@ -61,19 +66,6 @@
             </exclusions>
         </dependency>
         
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>  
-        </dependency>
-        <!--        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId> 
-        </dependency>-->
-        <dependency>
-            <groupId>org.apache.tika</groupId>
-            <artifactId>tika-parsers</artifactId>
-            <version>1.17</version> 
-        </dependency> 
         
         <dependency>
             <groupId>mysql</groupId>
@@ -144,7 +136,7 @@
     
     <profiles>
         <profile>
-            <id>production</id>
+            <id>production</id> 
             <build>
                 <plugins>
                     <plugin>
@@ -160,8 +152,8 @@
                                 </goals>
                                 <configuration>
                                     <tasks>
-                                        <echo>Using env.production.properties</echo>
-                                        <copy file="src/main/resources/env.production.properties"
+                                        <echo>Using production properties</echo>
+                                        <copy file="src/main/resources/application-production.properties"
                                               tofile="${project.build.outputDirectory}/application.properties"/>
                                     </tasks>
                                 </configuration>
@@ -174,8 +166,8 @@
                                 </goals>
                                 <configuration>
                                     <tasks>
-                                        <echo>Using env.production.properties</echo>
-                                        <copy file="src/main/resources/env.production.properties"
+                                        <echo>Using production properties</echo>
+                                        <copy file="src/main/resources/application-production.properties"
                                               tofile="${project.build.outputDirectory}/application.properties"/>
                                     </tasks>
                                 </configuration>
@@ -207,8 +199,8 @@
                                 </goals>
                                 <configuration>
                                     <tasks>
-                                        <echo>Using env.development.properties</echo>
-                                        <copy file="src/main/resources/env.development.properties"
+                                        <echo>Using development properties</echo>
+                                        <copy file="src/main/resources/application-development.properties"
                                               tofile="${project.build.outputDirectory}/application.properties"/>
                                     </tasks>
                                 </configuration>
@@ -219,7 +211,7 @@
             </build>
         </profile>
         <profile>
-            <id>test</id>
+            <id>test</id> 
             <build>
                 <plugins>
                     <plugin>
@@ -235,8 +227,8 @@
                                 </goals>
                                 <configuration>
                                     <tasks>
-                                        <echo>Using env.test.properties</echo>
-                                        <copy file="src/main/resources/env.test.properties"
+                                        <echo>Using test properties</echo>
+                                        <copy file="src/main/resources/application-test.properties"
                                               tofile="${project.build.outputDirectory}/application.properties"/>
                                     </tasks>
                                 </configuration>

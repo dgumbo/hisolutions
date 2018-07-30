@@ -31,17 +31,23 @@ public interface GenericService<T extends BaseEntity, ID extends Serializable> {
     }
 
     @Transactional(isolation = Isolation.READ_UNCOMMITTED, propagation = Propagation.REQUIRED)
-    default T create(T data) throws Exception {
+    default T create(T data) throws IllegalArgumentException {
         T entity = getDao().save(data);
         return entity;
     }
 
-    default void delete(ID id) throws Exception {
+    @Transactional(isolation = Isolation.READ_UNCOMMITTED, propagation = Propagation.REQUIRED)
+    default T save(T data) throws IllegalArgumentException {
+        T entity = getDao().save(data);
+        return entity;
+    }
+
+    default void delete(ID id) throws IllegalArgumentException {
         T entity = find(id);
         getDao().delete(entity);
     }
 
-    default T update(Long id, T data) throws Exception {
+    default T update(Long id, T data) throws IllegalArgumentException {
         data.setId(id);
         T entity = getDao().save(data);
         return entity;

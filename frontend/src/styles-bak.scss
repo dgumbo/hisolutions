@@ -1,5 +1,4 @@
-@import "./theme.scss";
-@import "./grid.scss";
+@import "./styles-theme.scss"; 
 @import  "~bootstrap/scss/bootstrap";
 $fa-font-path: "~font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome";
@@ -98,11 +97,7 @@ h1, h2, h3, h4, h5, h6 {
 .back-to-top:hover {
     background: $primary-color;
     color: #fff;
-}
-
-
-
-
+} 
 
 
 /*--------------------------------------------------------------
@@ -118,6 +113,13 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
 
     color: #fff;
+
+    background-color: #000e25;
+    background-image: url(/assets/images/bg-svg1.svg)  ; 
+    background-size: 100vw;
+    background-size: auto;
+    background-position: center;
+    background-attachment: fixed
 }
 
 #hero .hero-container {  
@@ -149,27 +151,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     line-height: 56px;
     text-transform: uppercase;
-}
-
-/*#hero .hero-h1{
-  color: #fff;  
-  text-shadow: 0 0 5px $primary-color, 0 0 5px #fff ; 
-}
-
-#hero a{
-  color: #fff;  
-  text-shadow: 0 0 5px $primary-color, 0 0 5px #fff ; 
-}
-
-#hero h2{
-  color: #fff;  
-  text-shadow: 0 0 0.5px $primary-color, 0 0 0.5px #fff, 0 0 0.5px #000 ; 
-}
-
-#hero p{
-  color: #111;  
-  text-shadow: 0 0 0.2px $primary-color, 0 0 0.2px #fff, 0 0 0.2px #000 ; 
-}*/ 
+} 
 
 #hero .hero-products { 
     display: table-cell;  
@@ -208,25 +190,6 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-#hero .btn-get-started {
-    font-family: "Poppins", sans-serif;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 16px;
-    letter-spacing: 1px;
-    display: inline-block;
-    padding: 8px 28px;
-    border-radius: 50px;
-    transition: 0.5s;
-    margin: 10px;
-    border: 2px solid #fff;
-    color: #fff;
-}
-
-#hero .btn-get-started:hover {
-    background: $primary-color;
-    border: 2px solid $primary-color;
-}
 
 
 
@@ -237,18 +200,18 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Facts Section
 --------------------------------*/
-#facts {
+#facts-section {
     background: #f7f7f7;
     padding: 80px 0 60px 0;
 }
 
-#facts .counters span {
+#facts-section .counters span {
     font-size: 48px;
     display: block;
     color: $primary-color;
 }
 
-#facts .counters p {
+#facts-section .counters p {
     padding: 0;
     margin: 0 0 20px 0;
     font-family: "Poppins", sans-serif;
@@ -324,31 +287,31 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Call To Action Section
 --------------------------------*/
-#call-to-action {
+#call-to-action-section {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/assets/images/call-to-action-bg.jpg) fixed center center;
     background-size: cover;
     padding: 80px 0;
 }
 
-#call-to-action .cta-title {
+#call-to-action-section .cta-title {
     color: #fff;
     font-size: 28px;
     font-weight: 700;
 }
 
-#call-to-action .cta-text {
+#call-to-action-section .cta-text {
     color: #fff;
 }
 
 @media (min-width: 769px) {
-    #call-to-action .cta-btn-container {
+    #call-to-action-section .cta-btn-container {
         display: flex;
         align-items: center;
         justify-content: flex-end;
     }
 }
 
-#call-to-action .cta-btn {
+#call-to-action-section .cta-btn {
     font-family: "Poppins", sans-serif;
     text-transform: uppercase;
     font-weight: 500;
@@ -364,12 +327,12 @@ h1, h2, h3, h4, h5, h6 {
     text-shadow: 0 0 5px $primary-color, 0 0 5px #fff ; 
 }
 
-#call-to-action .cta-btn:hover {
+#call-to-action-section .cta-btn:hover {
     background: $primary-color;
     border: 2px solid $primary-color;
 }
 
-#call-to-action label {
+#call-to-action-section label {
     padding-top: 15px;
     color: #fff;
     text-shadow: 0 0 5px $primary-color, 0 0 5px #fff ; 
