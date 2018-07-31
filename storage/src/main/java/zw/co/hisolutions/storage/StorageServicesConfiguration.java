@@ -8,15 +8,14 @@ import com.amazonaws.services.s3.transfer.TransferManager;
 import com.amazonaws.services.s3.transfer.TransferManagerBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import zw.co.hisolutions.storage.properties.StorageProperties;
 import zw.co.hisolutions.storage.service.StorageService;
 
-@SpringBootApplication
+@Configuration
 public class StorageServicesConfiguration {
-
     private final String clientRegion;
     
     @Autowired
@@ -29,36 +28,34 @@ public class StorageServicesConfiguration {
         return (args) -> {
             //storageService.deleteAll();
            storageService.init();
-           storageService.scanServerDirectory();
-            //initializeStartData.init(); 
+           storageService.scanServerDirectory(); 
         };
-    }
+    } 
 
-
-    @Bean//("transferManagerTest")
+    @Bean//("transferManagerTestEnvironment")
     @Profile("test")
-    TransferManager transferManagerTest() {
-        AmazonS3 s3ClientTest = AmazonS3ClientBuilder.standard()
+    TransferManager transferManagerTestEnvironment() {
+        AmazonS3 s3ClientTestEnvironment = AmazonS3ClientBuilder.standard()
                 .withRegion(clientRegion)
                 .withCredentials(new ProfileCredentialsProvider())
                 .build();
         
         TransferManager transferManager = TransferManagerBuilder.standard()
-                .withS3Client(s3ClientTest)
+                .withS3Client(s3ClientTestEnvironment)
                 .build();
         return transferManager;
     }
 
-    @Bean//("transferManagerProduction")
+    @Bean//("transferManagerProductionEnvironment")
     @Profile("production")
-    TransferManager transferManagerProduction() {
-        AmazonS3 s3ClientProduction = AmazonS3ClientBuilder.standard()
+    TransferManager transferManagerProductionEnvironment() {
+        AmazonS3 s3ClientProductionEnvironment = AmazonS3ClientBuilder.standard()
                 .withRegion(clientRegion)
                 .withCredentials(new InstanceProfileCredentialsProvider(false))
                 .build();
         
         TransferManager transferManager = TransferManagerBuilder.standard()
-                .withS3Client(s3ClientProduction)
+                .withS3Client(s3ClientProductionEnvironment)
                 .build();
         return transferManager;
     }

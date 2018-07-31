@@ -16,9 +16,9 @@ import com.amazonaws.services.s3.transfer.Download;
 import com.amazonaws.services.s3.transfer.TransferManager;
 import com.amazonaws.services.s3.transfer.Upload;
 import java.io.IOException;
-import java.io.InputStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
+import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
@@ -50,6 +50,7 @@ public class AwsS3StorageServiceImpl implements StorageService {
     private final String s3BucketName;
     private final DocumentMetadataService documentMetadataService;
     private final String STORAGE_FOLDER = "Uploaded/";
+    private final Path rootLocation = Paths.get(STORAGE_FOLDER);
     private final TransferManager transferManager;
 
     public AwsS3StorageServiceImpl(TransferManager transferManager, StorageProperties storageProperties, DocumentMetadataService documentMetadataService) {
@@ -313,19 +314,25 @@ public class AwsS3StorageServiceImpl implements StorageService {
         }
     }
 
-    @Override
+     @Override
     public Stream<Path> loadAll() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        try {
+            return Files.walk(this.rootLocation, 1)
+                    .filter(path -> !path.equals(this.rootLocation))
+                    .map(path -> this.rootLocation.relativize(path));
+        } catch (IOException e) {
+            throw new StorageException("Failed to read stored files", e);
+        }
     }
 
     @Override
     public Path load(String filename) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return rootLocation.resolve(filename);
     }
 
     @Override
     public String getStorageLocation() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return rootLocation.toString();
     }
  
 
