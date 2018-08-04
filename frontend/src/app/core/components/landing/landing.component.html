@@ -1,32 +1,73 @@
 <header>
-    <nav>
-        <div class="row">
-            <img class="logo" src="/assets/images/logo.png" alt="his logo" title="Heritage Innovative Solutions" />
+<!--    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <ul class="main-nav"> 
-                <li>
-                    <a   routerLinkActive="active current" routerLink="/home" >
-                        Home
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
                     </a>
-                </li> 
-                <li>
-                    <a   routerLinkActive="active current" routerLink="/our-portfolio" >
-                        Our Portfolio
-                    </a>
-                </li> 
-                <li >
-                    <a  routerLinkActive="active current" routerLink="/contact-us" >
-                        Contact Us
-                    </a>
-                </li> 
-                <li>
-                    <a  routerLinkActive="active current" routerLink="/about-us" >
-                        About Us
-                    </a>
-                </li>  
-            </ul>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+            </ul> 
         </div>
-    </nav>
+    </nav>-->
+    <!--    <nav>
+            <div class="row">
+                <img class="logo" src="/assets/images/logo.png" alt="his logo" title="Heritage Innovative Solutions" />
+    
+                <ul class="main-nav"> 
+                    <li>
+                        <a   routerLinkActive="active current" routerLink="/home" >
+                            Home
+                        </a>
+                    </li> 
+                    <li>
+                        <a   routerLinkActive="active current" routerLink="/our-portfolio" >
+                            Our Portfolio
+                        </a>
+                    </li> 
+                    <li >
+                        <a  routerLinkActive="active current" routerLink="/contact-us" >
+                            Contact Us
+                        </a>
+                    </li> 
+                    <li>
+                        <a  routerLinkActive="active current" routerLink="/about-us" >
+                            About Us
+                        </a>
+                    </li>  
+                    <li >
+                        <a  routerLinkActive="active current" routerLink="/contact-us" >
+                            Contact Us
+                        </a>
+                    </li> 
+                    <li>
+                        <a  routerLinkActive="active current" routerLink="/about-us" >
+                            About Us
+                        </a>
+                    </li>    
+                </ul>
+            </div>
+        </nav>-->
 
     <div class="hero-container">     
         <div class="hero-title">        
@@ -53,8 +94,8 @@
                     <div *ngFor="let sc of globals.serviceCategories; let i = index" 
                         class="carousel-item {{ i==0 ? 'active' : '' }}"  >
                         <div class="hero-services-carousel-caption carousel-caption d-none d-md-block" >
-                            <h1 class="hero-services-h1">We Offer <span [innerHtml]="sc.name"></span>.</h1>
-                            <p class="hero-services-p" [innerHtml]="sc.description"></p> 
+                            <h1 >We Offer - {{ sc.name }}.</h1>
+                            <p class="hero-p" [innerHtml]="sc.description"></p> 
                         </div>
                     </div> 
                 </div>
@@ -81,12 +122,12 @@
     <div class="container wow fadeIn">
         <div class="section-header">
             <h3 class="section-title">What we offer.</h3>
-            <p class="long-copy">
+            <p class="section-description">
                 We are continuously growing and expanding our internal capabilities and our industry relationship partners so that when combined, we offer one of the broadest and most experienced range of services. 
             </p>
         </div>
         <div class="row">
-            <div class="col col-lg-4 col-md-6  wow fadeInUp"
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 wow fadeInUp"
                  data-wow-delay="0.2s"
                  *ngFor="let sc of globals.serviceCategories" >
                  <div class="box">
@@ -112,22 +153,22 @@
         </div>
         <div class="row counters">
 
-            <div class="col-lg-3 col-6 text-center">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 text-center">
                 <span data-toggle="counter-up">5</span>
                 <p>Clients</p>
             </div>
 
-            <div class="col-lg-3 col-6 text-center">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 text-center">
                 <span data-toggle="counter-up">15</span>
                 <p>Projects</p>
             </div>
 
-            <div class="col-lg-3 col-6 text-center">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 text-center">
                 <span data-toggle="counter-up">463</span>
                 <p>Hours Of Support</p>
             </div>
 
-            <div class="col-lg-3 col-6 text-center">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 text-center">
                 <span data-toggle="counter-up">5</span>
                 <p>Hard Workers</p>
             </div>

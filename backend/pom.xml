@@ -9,7 +9,7 @@
     </parent> 
  
     <artifactId>hisolutions-backend</artifactId> 
-    <packaging>war</packaging>
+    <packaging>war</packaging> 
     
     <name>hisolutions-backend</name>
     
@@ -19,11 +19,59 @@
         <java.version>1.8</java.version>
         <!--<skipTests>true</skipTests>-->
         <!-- <failIfNoTests>true</failIfNoTests>--> 
-        <spring.profiles.active>${SPRING_PROFILES_ACTIVE}</spring.profiles.active>         
+        <spring.profiles.active>${SPRING_PROFILES_ACTIVE}</spring.profiles.active>    
+         
+        <jettyVersion>9.4.12.RC1</jettyVersion>     
+        
+                <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+                <beanstalk.versionLabel>${maven.build.timestamp}</beanstalk.versionLabel> 
+                <maven.test.skip>true</maven.test.skip>
+                <maven.install.skip>true</maven.install.skip>
+                <maven.deploy.skip>true</maven.deploy.skip>
+
+                <maven.compiler.source>1.8</maven.compiler.source>
+                <maven.compiler.target>1.8</maven.compiler.target>
+
+                <beanstalker.region>${AWS_REGION}</beanstalker.region>
+
+                <mainApplication>zw.co.hisolutions.application</mainApplication>
+                <environmentName>${project.artifactId}-prod</environmentName>
+
+                <beanstalk.applicationName>${project.groupId}${project.artifactId}</beanstalk.applicationName>
+                <beanstalk.environmentName>${environmentName}</beanstalk.environmentName>
+                <beanstalk.cnamePrefix>${environmentName}</beanstalk.cnamePrefix>
+                <beanstalk.environmentRef>${environmentName}.elasticbeanstalk.com</beanstalk.environmentRef>
+ 
+                <beanstalk.useStagingDirectory>true</beanstalk.useStagingDirectory> 
+                <!-- review src/main/webapp/.ebextensions/java7.config if you change this setting
+                -->
+                <beanstalk.instanceType>t2.micro</beanstalk.instanceType>
+                <beanstalk.environmentType>SingleInstance</beanstalk.environmentType>
+                <beanstalk.solutionStack>64bit Amazon Linux * running Tomcat 7</beanstalk.solutionStack>
+            <!--<beanstalk.solutionStack>64bit Amazon Linux * running Java 8</beanstalk.solutionStack>-->
+                <!-- switch to .../health/check when you set iamInstanceProfile below -->
+                <beanstalk.applicationHealthCheckURL>/services/api/v1/debug</beanstalk.applicationHealthCheckURL>
+                
+                <beanstalk.s3Bucket>${project.groupId}.bucket</beanstalk.s3Bucket>
+                <beanstalk.s3Key>${project.artifactId}/${project.artifactId}-${project.version}-${beanstalk.versionLabel}.zip</beanstalk.s3Key>
+                   
+                <beanstalk.keyName>aws-ireland-keypair-june-2018-cert</beanstalk.keyName>
+                <beanstalk.iamInstanceProfile>s3-role-dgumbo</beanstalk.iamInstanceProfile> 
+                
+                <beanstalk.availabilityZones>${AWS_REGION}a, ${AWS_REGION}b, ${AWS_REGION}c, ${AWS_REGION}d</beanstalk.availabilityZones>
+                
+                <!--<beanstalk.blockDeviceMappings>/dev/sdb=ephemeral0</beanstalk.blockDeviceMappings>
+		--> 
+        
     </properties>     
     
 
-    <dependencies>        
+    <dependencies>   
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>${jettyVersion}</version>
+        </dependency>     
         <dependency>
             <groupId>zw.co.hisolutions</groupId>
             <artifactId>hisolutions-core</artifactId>
@@ -93,20 +141,22 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <!--<version>4.12</version>-->
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-core</artifactId>
-            <version>1.3</version>
+            <!--<version>1.3</version>-->
             <scope>test</scope>
-        </dependency>
-    </dependencies>
+        </dependency> 
 
-    <build>  
-        
-        <plugins> 
+    </dependencies> 
+
+
+    <build>   
+        <plugins>  
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -134,10 +184,359 @@
                     </embeddedLaunchScriptProperties> 
                 </configuration>
             </plugin>  
+ 
+            
         </plugins>
+ 
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.7.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.2.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.8.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>br.com.ingenieux</groupId>
+                    <artifactId>beanstalk-maven-plugin</artifactId>
+                    <inherited>true</inherited>
+                    <version>1.5.0</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        
     </build>
     
-<!--    
+
+
+    <profiles>
+        <profile>
+            <id>deploy</id>
+            <build>
+                <defaultGoal>deploy</defaultGoal>
+                <plugins>
+                    <plugin>
+                        <groupId>br.com.ingenieux</groupId>
+                        <artifactId>beanstalk-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>deploy</id>
+                                <phase>deploy</phase>
+                                <goals>
+                                    <goal>fast-deploy</goal>
+                                    <goal>replace-environment</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <skipEnvironmentUpdate>true</skipEnvironmentUpdate>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>fast-deploy</id>
+            <build>
+                <defaultGoal>deploy</defaultGoal>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>default-war</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>exploded</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>br.com.ingenieux</groupId>
+                        <artifactId>beanstalk-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>deploy</id>
+                                <phase>deploy</phase>
+                                <goals>
+                                    <goal>fast-deploy</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>worker</id>
+            <properties>
+                <beanstalk.environmentTierName>Worker</beanstalk.environmentTierName>
+                <beanstalk.sqsdHttpPath>/services/api/v1/sqsd</beanstalk.sqsdHttpPath>
+                
+                 <beanstalk.environmentName>${environmentName}-worker</beanstalk.environmentName>
+                 <beanstalk.environmentRef>${environmentName}-worker</beanstalk.environmentRef>
+ 
+            </properties>
+        </profile>
+        <profile>
+            <id>s3-deploy</id>
+            <properties>
+                <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+                <beanstalk.versionLabel>${maven.build.timestamp}</beanstalk.versionLabel>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>br.com.ingenieux</groupId>
+                        <artifactId>beanstalk-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>deploy</id>
+                                <phase>deploy</phase>
+                                <goals>
+                                    <goal>upload-source-bundle</goal>
+                                    <goal>create-application-version</goal>
+                                    <!-- replace to replace-environment or blue-green
+                                         if you want zero downtime or blue-green -->
+                                    <goal>replace-environment</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>bluegreen-s3-deploy</id>
+            <properties>
+                <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+                <beanstalk.versionLabel>${maven.build.timestamp}</beanstalk.versionLabel>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>br.com.ingenieux</groupId>
+                        <artifactId>beanstalk-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>deploy</id>
+                                <phase>deploy</phase>
+                                <goals>
+                                    <goal>upload-source-bundle</goal>
+                                    <goal>create-application-version</goal>
+                                    <!-- replace to replace-environment or blue-green
+                                         if you want zero downtime or blue-green -->
+                                    <goal>blue-green</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+    
+<!--            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>package-jar</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                             This must be set as false so as to override the original jar file. 
+                            <appendAssemblyId>false</appendAssemblyId>
+                            
+                            <archive>
+                                <manifest>
+                                    <mainClass>${mainApplication}</mainClass>
+                                </manifest>
+                            </archive>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>package-zip</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration> 
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <descriptors>
+                                <descriptor>src/main/assembly/zip.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>-->
+            
+
+<!--            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId> 
+                <executions> 
+                    <execution> 
+                        <id>package-war</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal> 
+                        </goals>
+                        <configuration>
+                            <formats><format>war</format></formats>
+                            <failOnMissingWebXml>false</failOnMissingWebXml>
+                            <webResources>
+                                <resource>
+                                    <directory>../frontend/ui-src/</directory> 
+                                    <targetPath>static</targetPath>
+                                </resource> 
+                            </webResources>
+                             This must be set as false so as to override the original jar file. 
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <archive>
+                                <manifest>
+                                    <mainClass>${mainApplication}</mainClass>
+                                </manifest>
+                            </archive>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>package-zip</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>false</appendAssemblyId> 
+                            <failOnMissingWebXml>false</failOnMissingWebXml>
+                            <webResources>
+                                <resource>
+                                    <directory>../frontend/ui-src/</directory> 
+                                    <targetPath>static</targetPath>
+                                </resource> 
+                            </webResources>
+                            <descriptors>
+                                <descriptor>src/main/assembly/zip.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <plugin>
+                <groupId>br.com.ingenieux</groupId>
+                <artifactId>beanstalk-maven-plugin</artifactId>
+            </plugin>-->
+             
+
+<!--        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>br.com.ingenieux</groupId>
+                    <artifactId>beanstalk-maven-plugin</artifactId>
+                    <inherited>true</inherited>
+                    <version>1.5.0</version>
+                    <configuration>
+                        <tags>
+                            <Uses>ingenieux Beanstalker at http://beanstalker.ingenieux.com.br/
+                            </Uses>
+                        </tags>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>-->
+
+<!--    <profiles>
+        <profile>
+            <id>s3-deploy</id>
+            <properties>
+                <mainApplication>zw.co.hisolutions</mainApplication>
+        
+                <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+                <beanstalk.versionLabel>${maven.build.timestamp}</beanstalk.versionLabel>
+                <maven.test.skip>true</maven.test.skip>
+                <maven.install.skip>true</maven.install.skip>
+                <maven.deploy.skip>true</maven.deploy.skip>
+
+                <beanstalker.region>${AWS_REGION}</beanstalker.region>
+
+                <environmentName>${project.artifactId}-prod</environmentName>
+
+                <beanstalk.applicationName>${project.artifactId}</beanstalk.applicationName>
+
+                <beanstalk.environmentName>${environmentName}</beanstalk.environmentName>
+                <beanstalk.cnamePrefix>${environmentName}</beanstalk.cnamePrefix>
+                <beanstalk.environmentRef>${environmentName}.elasticbeanstalk.com</beanstalk.environmentRef>
+
+                <beanstalk.versionLabel>v1</beanstalk.versionLabel>
+
+                <beanstalk.mainJar>${project.build.finalName}.war</beanstalk.mainJar>
+                <beanstalk.sourceBundle>${project.build.finalName}.zip</beanstalk.sourceBundle>
+                <beanstalk.artifactFile>${project.build.directory}/${beanstalk.sourceBundle}</beanstalk.artifactFile>
+                 If you want to use a non-default bucket, override this variable 
+		
+                <beanstalk.s3Bucket>${project.groupId}.bucket</beanstalk.s3Bucket>		
+                <beanstalk.s3Key>${project.artifactId}/${project.artifactId}-${project.version}-${beanstalk.versionLabel}.zip</beanstalk.s3Key>
+                
+                <beanstalk.solutionStack>64bit Amazon Linux * running Java 8</beanstalk.solutionStack>
+                <beanstalk.environmentType>SingleInstance</beanstalk.environmentType>
+                <beanstalk.instanceType>t2.micro</beanstalk.instanceType>
+                <beanstalk.keyName>aws-ireland-keypair-june-2018-cert</beanstalk.keyName>
+                <beanstalk.iamInstanceProfile>s3-role-dgumbo</beanstalk.iamInstanceProfile>  
+                 
+                <activatedProperties>production</activatedProperties>
+                <build.profile.id>production</build.profile.id>
+
+                
+                <beanstalk.availabilityZones>us-east-1d</beanstalk.availabilityZones>
+                <beanstalk.blockDeviceMappings>/dev/sdb=ephemeral0</beanstalk.blockDeviceMappings>
+                
+            </properties>
+
+            <build> 
+                <plugins>
+                    <plugin>
+                        <groupId>br.com.ingenieux</groupId>
+                        <artifactId>beanstalk-maven-plugin</artifactId> 
+                        <executions>
+                            <execution>
+                                <id>deploy</id>
+                                <phase>deploy</phase>
+                                <goals>
+                                    <goal>upload-source-bundle</goal>
+                                    <goal>create-application-version</goal>
+                                     replace to replace-environment or blue-green
+                                    if you want zero downtime or blue-green 
+                                    <goal>replace-environment</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+    -->
+    <!--    
     <profiles>        
         <profile>
             <id>production</id> 

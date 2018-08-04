@@ -2,8 +2,7 @@
 $fa-font-path: "~font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome";
 @import  "~animate.css/animate.min.css";
-@import "./styles-theme.scss";  
-@import "./styles-media-queries.scss";  
+@import "./styles-theme.scss";   
 
 /*!
  * HiSolution Main SCSS v1.0.0 
@@ -76,8 +75,8 @@ body{
 
 /*----- HEADINGS -----*/ 
 
-section{
-    padding: 80px 0;
+section{ 
+    padding: 55px 0;
 }
 
 .section-header {
@@ -109,6 +108,12 @@ section{
     margin-top: 15px;
 }
 
+.section-description { 
+    line-height: 145%;
+    margin: 0 auto;
+    width: 800px; 
+}  
+
 .hero-h1 {
     margin-top: 0;
     margin-bottom: 20px; 
@@ -116,7 +121,7 @@ section{
     word-spacing: 5px;
     letter-spacing: 1px;
     text-transform: uppercase;
-}
+} 
 
 .hero-h2 {
     margin-top: 0;
@@ -125,12 +130,12 @@ section{
     text-transform: uppercase;
 }
 
-/*----- PARAGHRAPHS -----*/
-.long-copy{
-    line-height: 145%;
-    width: 70%;
-    margin: 0 auto;
+.hero-p {  
+    font-size: 115%;
+    min-height: 130px;
 }
+
+/*----- PARAGHRAPHS -----*/
 
 /*----- BUTTONS -----*/
 .btn:link,
@@ -209,20 +214,22 @@ header {
     background-size: auto;
     background-position: center;
     background-attachment: fixed;
-    height: 100vh; 
+    min-height: 100vh; 
+    height: 620px; 
 }
 
 .hero-container{
     position: absolute;
-    width: 100%;
-    top: 50%; 
-    transform: translateY(-50%); 
+    width: 98vw;
+    /*top: 50%;*/
+    /*transform: translateY(-50%);*/ 
+    /*padding-top: 200px;*/
 }
 
 .hero-title{
     position: relative;
-    margin-top : 200px;
-    margin-bottom : 60px;
+    padding-top : 30px;
+    margin-bottom : 20px;
     //margin-left: 30%;
     transform: translateX(-5%); 
     text-align: center;
@@ -231,26 +238,12 @@ header {
 }
 
 .hero-services{
-    margin-top : 100px;
-    margin-bottom : 50px;
+    padding-top : 20px;
+    /*padding-bottom : 50px;*/
     color: #fff;    
     
     text-align: center;  
     width: 70%;
-}
-
-.hero-services-h1 {
-    margin-top: 0;
-    margin-bottom: 20px; 
-    font-size: 150%;   
-    word-spacing: 5px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.hero-services-p {  
-    font-size: 115%;
-    min-height: 150px;
 }
 
 .hero-services-carousel-slide{  
@@ -263,6 +256,11 @@ header {
 
 .hero-services-carousel-caption{
     position:static;
+}
+
+.hero-services h1{
+    //text-transform: uppercase; 
+    margin-bottom: 10px ;
 }
 
 .logo{
@@ -302,22 +300,24 @@ header {
 /* Sections Header
 --------------------------------*/ 
 
-
 #services-section {
     background-size: cover;
-    padding: 50px 0 60px 0;
 }
 
-#services-section .box  {
-    padding: 50px 20px;
+#services-section .box  { 
     margin-bottom: 50px;
+    padding: 50px 20px;
     text-align: center;
     //border: 1px solid #e6e6e6;
     border: 1px solid $primary-color-light;
     height: 240px;
     position: relative;
-    background: #fafafa;
-}
+    background: #f2f2f2;
+}//#f2f2f2
+
+#services-section .box:hover  {  
+    background: #e9e9e9;
+} 
 
 #services-section .icon {
     position: absolute;
@@ -365,7 +365,7 @@ header {
 
 #services-section .title {
     font-weight: 700;
-    font-size: 90%;
+    font-size: 90%; 
     margin-bottom: 15px;
     text-transform: uppercase;
 }
@@ -382,9 +382,7 @@ header {
 
 /* Facts Section
 --------------------------------*/
-#facts-section {
-    //background: #f7f7f7;
-    padding: 50px 0 60px 0;
+#facts-section { 
     background-image: 
         linear-gradient(to bottom
         , rgba(red($primary-color), green($primary-color), blue($primary-color), 0.2)
@@ -414,8 +412,7 @@ header {
 --------------------------------*/
 #call-to-action-section {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/assets/images/call-to-action-bg.jpg) fixed center center;
-    background-size: cover;
-    padding: 50px 0;
+    background-size: cover; 
 }
 
 #call-to-action-section .section-header {
@@ -436,8 +433,8 @@ header {
 #get-in-touch-section  {
     font-size: 80%;
     color: $primary-color-dark;
-    padding: 80px 0;
-    margin-top: 80px;
+    margin-top: 20px;
+    padding-top: 80px;
     background-image: 
         linear-gradient(to bottom
         , rgba(red($primary-color), green($primary-color), blue($primary-color), 0.2)
@@ -611,15 +608,20 @@ header {
     margin-bottom: 10px;
 }
 
-.btn-light{
+    .btn-light, #newsletterEmail{  
+    height: 40px;
     border-width: 2px;
+    }
+
+.btn-light{
+    border-left-width: 0.8px;
     border-color: $primary-color-dark;
     background-color: rgba(red($primary-color-dark), green($primary-color-dark), blue($primary-color-dark), 0.5);  
 }
 
 #newsletterEmail{
-    border-width: 1px;
-    border-color: $primary-color-light;    
+    border-right-width: 0.8px;
+    border-color: $primary-color-light;  
 }
 
 .contact-details h4
