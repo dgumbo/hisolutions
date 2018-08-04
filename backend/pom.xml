@@ -47,8 +47,9 @@
                 -->
                 <beanstalk.instanceType>t2.micro</beanstalk.instanceType>
                 <beanstalk.environmentType>SingleInstance</beanstalk.environmentType>
-                <beanstalk.solutionStack>64bit Amazon Linux * running Tomcat 7</beanstalk.solutionStack>
-            <!--<beanstalk.solutionStack>64bit Amazon Linux * running Java 8</beanstalk.solutionStack>-->
+                <beanstalk.solutionStack>64bit Amazon Linux 2018.03 v3.0.1 running Tomcat 8.5 Java 8</beanstalk.solutionStack>
+            <!--    <beanstalk.solutionStack>64bit Amazon Linux running Tomcat 7</beanstalk.solutionStack>
+            <beanstalk.solutionStack>64bit Amazon Linux * running Java 8</beanstalk.solutionStack>-->
                 <!-- switch to .../health/check when you set iamInstanceProfile below -->
                 <beanstalk.applicationHealthCheckURL>/services/api/v1/debug</beanstalk.applicationHealthCheckURL>
                 
@@ -58,7 +59,7 @@
                 <beanstalk.keyName>aws-ireland-keypair-june-2018-cert</beanstalk.keyName>
                 <beanstalk.iamInstanceProfile>s3-role-dgumbo</beanstalk.iamInstanceProfile> 
                 
-                <beanstalk.availabilityZones>${AWS_REGION}a, ${AWS_REGION}b, ${AWS_REGION}c, ${AWS_REGION}d</beanstalk.availabilityZones>
+                <beanstalk.availabilityZones>${AWS_REGION}a, ${AWS_REGION}b, ${AWS_REGION}c</beanstalk.availabilityZones>
                 
                 <!--<beanstalk.blockDeviceMappings>/dev/sdb=ephemeral0</beanstalk.blockDeviceMappings>
 		--> 
