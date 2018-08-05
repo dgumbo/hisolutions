@@ -61,7 +61,7 @@
                 <beanstalk.keyName>aws-ireland-keypair-june-2018-cert</beanstalk.keyName>
                 <beanstalk.iamInstanceProfile>s3-role-dgumbo</beanstalk.iamInstanceProfile> 
                 
-                <beanstalk.availabilityZones>${AWS_REGION}a, ${AWS_REGION}b, ${AWS_REGION}c</beanstalk.availabilityZones>
+                <!--<beanstalk.availabilityZones>${AWS_REGION}a, ${AWS_REGION}b, ${AWS_REGION}c</beanstalk.availabilityZones>-->
                 
                 <!--<beanstalk.blockDeviceMappings>/dev/sdb=ephemeral0</beanstalk.blockDeviceMappings>
 		--> 
