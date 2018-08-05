@@ -19,7 +19,8 @@ import zw.co.hisolutions.common.entity.BaseEntity;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Audiance extends BaseEntity implements Serializable{
-    @Column
-    @NotNull
+    
+    @Column(unique = true)
+    @NotNull 
     private String name;     
 }

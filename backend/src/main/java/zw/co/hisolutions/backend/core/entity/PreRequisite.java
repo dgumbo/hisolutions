@@ -25,7 +25,7 @@ import zw.co.hisolutions.common.entity.BaseEntity;
 @NoArgsConstructor
 @Proxy(lazy = false)
 public class PreRequisite extends BaseEntity implements Serializable{
-    @Column
-    @NotNull
+    @Column(unique = true)
+    @NotNull 
     private String name;     
 }

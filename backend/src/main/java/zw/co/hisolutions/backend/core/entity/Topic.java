@@ -19,8 +19,9 @@ import zw.co.hisolutions.common.entity.BaseEntity;
 @AllArgsConstructor
 @NoArgsConstructor 
 public class Topic extends BaseEntity implements Serializable{
-    @Column
-    @NotNull
+    
+    @Column(unique = true)
+    @NotNull 
     private String name;     
     
     @NotNull

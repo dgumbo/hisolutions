@@ -20,8 +20,8 @@ import zw.co.hisolutions.common.entity.BaseEntity;
 @NoArgsConstructor
 @Proxy(lazy = false)
 public class Skill extends BaseEntity implements Serializable{
-    
-    @Column(nullable = false)
-    @NotNull
+     
+    @Column(unique = true)
+    @NotNull 
     private String name;     
 }

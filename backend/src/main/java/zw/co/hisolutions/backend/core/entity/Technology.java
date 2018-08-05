@@ -27,8 +27,8 @@ import zw.co.hisolutions.common.entity.BaseEntity;
 @Proxy(lazy = false)
 public class Technology extends BaseEntity implements Serializable{
     
-    @NotNull
-    @Column
+    @Column(unique = true)
+    @NotNull 
     private String name;
     
     @NotNull

@@ -29,8 +29,8 @@ public class Product extends BaseEntity implements EntityWithName, Serializable{
     
     //@Enumerated(EnumType.STRING)
     
-    @NotNull
-    @Column
+    @Column(unique = true)
+    @NotNull 
     private String name;
     
     @NotNull

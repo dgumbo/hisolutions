@@ -25,7 +25,8 @@ import zw.co.hisolutions.common.entity.BaseEntity;
 @AllArgsConstructor
 @NoArgsConstructor  
 public class Vendor extends BaseEntity implements Serializable{
-    @Column
-    @NotNull
+    
+    @Column(unique = true)
+    @NotNull 
     private String name;     
 }
