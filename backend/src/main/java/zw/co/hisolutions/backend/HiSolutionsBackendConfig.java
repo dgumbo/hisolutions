@@ -17,10 +17,4 @@ public class HiSolutionsBackendConfig {
 //        System.out.println("Spring Profiles Loaded : " + springProfilesActive + "\n\n\n\n\n\n\n\n\n\n");
 //    }
     
-    @Bean
-    CommandLineRunner init(InitializeStartData initializeStartData) {
-        return (args) -> {
-            initializeStartData.init();
-        };
-    }
 }
