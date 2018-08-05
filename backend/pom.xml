@@ -9,9 +9,7 @@
     </parent> 
  
     <artifactId>hisolutions-backend</artifactId> 
-    <packaging>war</packaging> 
-    
-    <name>hisolutions-backend</name>
+    <packaging>war</packaging>  
     
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -34,10 +32,10 @@
 
                 <beanstalker.region>${AWS_REGION}</beanstalker.region>
 
-                <mainApplication>zw.co.hisolutions.application</mainApplication>
+                <mainApplication>zw.co.hisolutions.www</mainApplication>
                 <environmentName>${project.artifactId}-prod</environmentName>
 
-                <beanstalk.applicationName>${project.groupId}${project.artifactId}</beanstalk.applicationName>
+                <beanstalk.applicationName>${project.groupId}.www</beanstalk.applicationName>
                 <beanstalk.environmentName>${environmentName}</beanstalk.environmentName>
                 <beanstalk.cnamePrefix>${environmentName}</beanstalk.cnamePrefix>
                 <beanstalk.environmentRef>${environmentName}.elasticbeanstalk.com</beanstalk.environmentRef>
@@ -65,7 +63,7 @@
                 
                 <!--<beanstalk.blockDeviceMappings>/dev/sdb=ephemeral0</beanstalk.blockDeviceMappings>
 		--> 
-        
+        <!--Environment properties"-->
     </properties>     
     
 

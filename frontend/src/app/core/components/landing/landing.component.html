@@ -1,35 +1,35 @@
 <header>
-<!--    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul> 
-        </div>
-    </nav>-->
+    <!--    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                </ul> 
+            </div>
+        </nav>-->
     <!--    <nav>
             <div class="row">
                 <img class="logo" src="/assets/images/logo.png" alt="his logo" title="Heritage Innovative Solutions" />
@@ -76,7 +76,7 @@
             <a class="btn-get-started" href="#">Show Me More !</a>
         </div> 
 
-        <div class="hero-services" 
+        <div class="hero-services d-none d-sm-block" 
              *ngIf="globals.serviceCategories && globals.serviceCategories.length >= 1" >      
 
             <div id="serviceCategoryCarousel" class="hero-services-carousel-slide carousel slide"  align="center" 
@@ -93,8 +93,8 @@
                 <div class="hero-services-carousel-inner carousel-inner" >
                     <div *ngFor="let sc of globals.serviceCategories; let i = index" 
                         class="carousel-item {{ i==0 ? 'active' : '' }}"  >
-                        <div class="hero-services-carousel-caption carousel-caption d-none d-md-block" >
-                            <h1 >We Offer - {{ sc.name }}.</h1>
+                        <div class="hero-services-carousel-caption carousel-caption d-none d-sm-block" >
+                            <h1 class="hero-services-h1">We Offer - {{ sc.name }}.</h1>
                             <p class="hero-p" [innerHtml]="sc.description"></p> 
                         </div>
                     </div> 
@@ -201,48 +201,42 @@ Get In Touch Section
             <div class="get-in-touch-ribbon">
                 <span>Get in Touch</span>
             </div>
-            <div class="col-xl-5 col-lg-4 col-md-8">
-                <div class="newsletter">
-                    <h4>Newsletter</h4>
-                    <p>Keep up on our always evolving product features and technology. Enter your e-mail and subscribe to our newsletter.</p>
+            <div class="get-in-touch-col newsletter col-xl-5 col-lg-4 col-md-6 col-sm-12">
+                <h4>Newsletter</h4>
+                <p>Keep up on our always evolving product features and technology. Enter your e-mail and subscribe to our newsletter.</p>
 
-                    <div class="alert alert-success d-none" id="newsletterSuccess">
-                        <strong>Success!</strong> You've been added to our email list.
+                <div class="alert alert-success d-none" id="newsletterSuccess">
+                    <strong>Success!</strong> You've been added to our email list.
+                </div>
+
+                <div class="alert alert-danger d-none" id="newsletterError"></div>
+
+                <form id="newsletterForm" action="php/newsletter-subscribe.php" method="POST" novalidate="novalidate">
+                    <div class="input-group">
+                        <input class="form-control form-control-sm" placeholder="Email Address" name="newsletterEmail" id="newsletterEmail" type="text">
+                        <span class="input-group-append">
+                            <button class="btn btn-light" type="submit">Go!</button>
+                        </span>
                     </div>
-
-                    <div class="alert alert-danger d-none" id="newsletterError"></div>
-
-                    <form id="newsletterForm" action="php/newsletter-subscribe.php" method="POST" novalidate="novalidate">
-                        <div class="input-group">
-                            <input class="form-control form-control-sm" placeholder="Email Address" name="newsletterEmail" id="newsletterEmail" type="text">
-                            <span class="input-group-append">
-                                <button class="btn btn-light" type="submit">Go!</button>
-                            </span>
-                        </div>
-                    </form>
-                </div>
+                </form> 
             </div> 
-            <div class="col-xl-5 col-lg-5 col-md-8">
-                <div class="contact-details">
-                    <h4>Contact Us</h4>
-                    <ul class="contact">
-                        <li><p><i class="fa fa-map-marker"></i> <strong>Address : </strong> 14657 Galloway Park, Norton, Zimbabwe</p></li>
-                        <li><p><i class="fa fa-envelope"></i> <strong>Email : </strong> <a href="mailto:info@hisolutions.co.zw">info@hisolutions.co.zw</a></p></li>
-                        <li><p><i class="fa fa-phone"></i> <strong>Phone : </strong>(+263) 783 989 510, (+236) 782 734 708 </p></li>  
-                    </ul>
-                </div>
+            <div class="get-in-touch-col contact-details col-xl-5 col-lg-5 col-md-6 col-sm-6">
+                <h4>Contact Us</h4>
+                <ul class="contact">
+                    <li><p><i class="fa fa-map-marker"></i> <strong>Address : </strong> 14657 Galloway Park, Norton, Zimbabwe</p></li>
+                    <li><p><i class="fa fa-envelope"></i> <strong>Email : </strong> <a href="mailto:info@hisolutions.co.zw">info@hisolutions.co.zw</a></p></li>
+                    <li><p><i class="fa fa-phone"></i> <strong>Phone : </strong>(+263) 783 989 510, (+236) 782 734 708 </p></li>  
+                </ul> 
             </div>
-            <div class="col-xl-2 col-lg-3 col-md-6">
-                <div class="follow-us">
-                    <h4>Follow Us</h4>
-                    <ul class="social-icons">
-                        <li class="social-icons-facebook"><a href="#" target="_blank" title="Facebook"><i class="fa fa-facebook"></i>&nbsp;&nbsp;&nbsp; hisolutions</a></li>
-                        <li class="social-icons-twitter"><a href="#" target="_blank" title="Twitter"><i class="fa fa-twitter"></i>&nbsp;&nbsp; @hisolutions</a></li>
-                        <li class="social-icons-linkedin"><a href="#" target="_blank" title="Linkedin"><i class="fa fa-linkedin"></i>&nbsp;&nbsp; hisolutions</a></li>                     
-                        <li class="social-icons-linkedin"><a href="#" target="_blank" title="Instagram"><i class="fa fa-instagram"></i>&nbsp;&nbsp; #hisolutions</a></li>
-                        <li class="social-icons-linkedin"><a href="#" target="_blank" title="Google-Plus"><i class="fa fa-google-plus"></i>&nbsp; @hisolutions</a></li> 
-                    </ul> 
-                </div>
+            <div class="get-in-touch-col follow-us col-xl-2 col-lg-3 col-md-6 col-sm-6">
+                <h4>Follow Us</h4>
+                <ul class="social-icons">
+                    <li class="social-icons-facebook"><a href="#" target="_blank" title="Facebook"><i class="fa fa-facebook"></i>&nbsp;&nbsp;&nbsp; hisolutions</a></li>
+                    <li class="social-icons-twitter"><a href="#" target="_blank" title="Twitter"><i class="fa fa-twitter"></i>&nbsp;&nbsp; @hisolutions</a></li>
+                    <li class="social-icons-linkedin"><a href="#" target="_blank" title="Linkedin"><i class="fa fa-linkedin"></i>&nbsp;&nbsp; hisolutions</a></li>                     
+                    <li class="social-icons-linkedin"><a href="#" target="_blank" title="Instagram"><i class="fa fa-instagram"></i>&nbsp;&nbsp; #hisolutions</a></li>
+                    <li class="social-icons-linkedin"><a href="#" target="_blank" title="Google-Plus"><i class="fa fa-google-plus"></i>&nbsp; @hisolutions</a></li> 
+                </ul>  
             </div>
         </div>
     </div>

@@ -6,6 +6,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration 
 @ComponentScan (basePackages = "zw.co.hisolutions.auth")
-public @interface StorageServicesModuleComponent {
+public @interface StorageServicesComponent {
    
 }

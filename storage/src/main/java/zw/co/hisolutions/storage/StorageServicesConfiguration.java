@@ -46,7 +46,7 @@ public class StorageServicesConfiguration {
         return transferManager;
     }
 
-    @Bean//("transferManagerProductionEnvironment")
+    @Bean 
     @Profile("production")
     TransferManager transferManagerProductionEnvironment() {
         AmazonS3 s3ClientProductionEnvironment = AmazonS3ClientBuilder.standard()

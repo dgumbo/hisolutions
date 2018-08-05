@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Profile;
  *
  * @author denzil
  */
-@Configuration
 //@ConfigurationProperties("storage")
+@Configuration
 @Data
 @Profile("production")
 public class StoragePropertiesProduction  implements StorageProperties{
