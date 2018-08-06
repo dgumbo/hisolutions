@@ -16,22 +16,26 @@ export class LandingComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        $('#header').addClass('header-bg-purple');
+        $('.nav-container').addClass('nav-container-fixed');
+        $('.nav-container').removeClass('nav-container-scrolled');
         // Unbind Scroll Event
         $(window).unbind("scroll");
     }
 
     ngOnInit() {
-        $('#header').removeClass('header-bg-purple');
+        $('.nav-container').addClass('nav-container-fixed');
+        $('.nav-container').removeClass('nav-container-scrolled');
 
         // Header fixed and Back to top button
         $(window).scroll(function () {
             if ($(this).scrollTop() > 100) {
                 $('.back-to-top').fadeIn('slow');
-                $('#header').addClass('header-fixed');
+                $('.nav-container').addClass('nav-container-scrolled');
+                $('.nav-container').removeClass('nav-container-fixed');
             } else {
                 $('.back-to-top').fadeOut('slow');
-                $('#header').removeClass('header-fixed');
+                $('.nav-container').removeClass('nav-container-scrolled');
+                $('.nav-container').addClass('nav-container-fixed');
             }
         });
         $('.back-to-top').click(function () {
@@ -58,10 +62,10 @@ export class LandingComponent implements OnInit, OnDestroy {
                 if (target.length) {
                     var top_space = 0;
 
-                    if ($('#header').length) {
-                        top_space = $('#header').outerHeight();
+                    if ($('.nav-container').length) {
+                        top_space = $('.nav-container').outerHeight();
 
-                        if (!$('#header').hasClass('header-fixed')) {
+                        if (!$('.nav-container').hasClass('nav-container-scrolled')) {
                             top_space = top_space - 20;
                         }
                     }
