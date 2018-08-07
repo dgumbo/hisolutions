@@ -17,6 +17,7 @@ export class LandingComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         $('.nav-container').addClass('nav-container-fixed');
+        $('.nav-container').addClass('nav-container-bg');
         $('.nav-container').removeClass('nav-container-scrolled');
         // Unbind Scroll Event
         $(window).unbind("scroll");
@@ -24,6 +25,7 @@ export class LandingComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         $('.nav-container').addClass('nav-container-fixed');
+        $('.nav-container').removeClass('nav-container-bg');
         $('.nav-container').removeClass('nav-container-scrolled');
 
         // Header fixed and Back to top button

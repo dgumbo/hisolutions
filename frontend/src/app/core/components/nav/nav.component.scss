@@ -1,104 +1,129 @@
+
+@import "./../../../../styles-theme.scss";   
+
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/ 
 
-#header {
-  padding: 15px 0;
-  height: 90px;
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  transition: all 0.5s;
-  z-index: 997; 
+.navbar{ padding: 0px; }
+
+.nav-container{
+    padding: 8px 16px; 
+    height: 65px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    transition: all 0.5s;
+    z-index: 997; 
 }
 
-#header.header-fixed {
-  background: #3F26BB;
-  opacity: 0.75;
-  padding: 3px 0;
-  height: 65px;
-  transition: all 0.5s;
+.nav-container-bg { 
+/*    background: $primary-color-dark;
+    opacity: 0.75;*/
 }
 
-.header-background{
-  background: #3F26BB;
-  opacity: 0.75;
+.nav-container-scrolled{
+    padding-top: 2px; 
+    padding-bottom: 2px; 
+/*    background: $primary-color;
+    opacity: 0.7;*/
+    height: 50px;
+}  
+
+ .nav-container-bg .navbar-nav { 
+/*    background: $primary-color-dark;
+    opacity: 0.75;*/
+    
+    background: rgba(
+          red($primary-color-dark)
+        , green($primary-color-dark)
+        , blue($primary-color-dark)
+        , 0.75 ) ;
+}   
+
+ .nav-container-scrolled .navbar-nav {   
+    background: rgba(
+          red($primary-color)
+        , green($primary-color)
+        , blue($primary-color)
+        , 0.7 ) ;
+}    
+
+.nav-item :hover { 
+    background:  $primary-color  ;
 }
 
-.header-bg-purple{ 
-    background: #42009E;
-    opacity: 0.75;
+.nav-item:after{
+    display: block;
+    content: " "; 
+    transform: translateY(-5px) ;
+    height: 3px;
+    background-color: $primary-color-dark;
+    margin: 0 5%;
 }
 
-#header #logo {
-  float: left;
+.nav-container .nav-item  a {
+    color: #fff;
+    font-weight: bold;
+    transition: 0.2s all;
+    text-transform: uppercase;
 }
 
-#header #logo h1 {
-  font-size: 36px;
-  margin: 0;
-  padding: 4px 0;
-  line-height: 1;
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+ .nav-container .nav-item .dropdown-menu {    
+    background: rgba(
+          red($primary-color-light)
+        , green($primary-color-light)
+        , blue($primary-color-light)
+        , 0.7 ) ;
+} 
+
+.nav-container.nav-container-scrolled .nav-item .dropdown-menu {   
+    background: rgba(
+          red($primary-color-light)
+        , green($primary-color-light)
+        , blue($primary-color-light)
+        , 0.7 ) ;
+} 
+
+.nav-container .nav-item .dropdown-item:hover {
+    background: $primary-color-dark;
+} 
+
+.nav-container .nav-item { 
+    font-weight: bold;
+    -webkit-text-stroke-color: #fff;
+    -webkit-text-stroke-color: #e8491d;
+    text-shadow: $primary-color-dark 0 0 2px;
 }
 
-#header #logo h1 a, #header #logo h1 a:hover {
-  color: #fff;
+.fa.fa-navicon {
+    color:white;
 }
 
-#header #logo img {
-  padding: 0;
-  margin: 0;
+  .nav-container-scrolled .fa.fa-navicon
+, .nav-container-bg .fa.fa-navicon {
+    color:$primary-color-dark;
 }
 
-#header .nav-item a{
-  color: #fff;
-/*  font-size: 1.1em;*/
-  font-weight: bold;  
-  transition: 0.2s all; 
-  text-transform: uppercase;
+.navbar-brand { 
+    width: 150px; 
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-right: 0;
 }
 
-#header .nav-item .dropdown-item{ 
-  background: #966dd6;
-  opacity: 0.75;
+.navbar-brand-wrapper{ 
+    height: 50px;
 }
 
 @media (max-width: 768px) {
-  #header #logo h1 {
-    font-size: 26px;
-  }
-  #header #logo img {
-    max-height: 40px;
-  }
+    #header #logo h1 {
+        font-size: 26px;
+    }
+    #header #logo img {
+        max-height: 40px;
+    }
 }
 
 .my-nav{z-index: 200; background-color: transparent;}
-
-.highlight-red {
-    color:#e8491d; 
-    -webkit-text-stroke-color: #391773;
-   text-shadow: #391773 0 0 2px;
-}
-
-.highlight-purple {
-    color:#391773; 
-    -webkit-text-stroke-color: #fff;
-   text-shadow: #fff 0 0 2px;
-}
-
-.highlight-white {
-    color:#fff; 
-    -webkit-text-stroke-color: #e8491d;
-   text-shadow: #e8491d 0 0 2px;
-}
-
-.highlight-red, .highlight-purple, .highlight-white {
-   font-weight: bold;
-   font-size: 150%;
-/*   -webkit-text-stroke-width: .1px; */
-}
