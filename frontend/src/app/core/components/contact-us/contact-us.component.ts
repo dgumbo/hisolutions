@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ScriptService} from 'shared/services/script.service'; 
 
 declare var $: any
@@ -13,7 +13,7 @@ import { AgmCoreModule } from '@agm/core';
     styleUrls: ['./contact.component.scss'],
     providers: [ScriptService]
 })
-export class ContactUsComponent implements OnInit , OnDestroy{
+export class ContactUsComponent implements OnInit {
     lat: number = -17.818358;
     lng: number = 31.049104;
     markerLat: number = -17.818358;
@@ -22,11 +22,10 @@ export class ContactUsComponent implements OnInit , OnDestroy{
 
     constructor() {}
 
-    ngOnDestroy(): void { 
-        $('.nav-container').removeClass('nav-container-bg'); 
+    ngOnInit() {   
     }
-
-    ngOnInit() { 
-        $('.nav-container').addClass('nav-container-bg');   
+    
+    public onChooseLocation(event:any) {
+        
     }
 }

@@ -62,8 +62,8 @@
                  data-wow-delay="0.2s"
                  *ngFor="let sc of globals.serviceCategories" >
                  <div class="box">
-                    <div class="icon"><a [routerLink]="'/services/+sc.name'"><i class="fa {{sc.faIcon}}"></i></a></div>
-                    <h3 class="title"><a [routerLink]="'/services/+sc.name'" >{{sc.name}}</a></h3> 
+                    <div class="icon"><a ><i class="fa {{sc.faIcon}}"></i></a></div>
+                    <h3 class="title"><a >{{sc.name}}</a></h3> 
                     <p class="description" [innerHtml]="sc.shortDescription"></p>
                 </div>
             </div>  

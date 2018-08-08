@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core'; 
+import { Component, OnInit } from '@angular/core'; 
 
 declare var $: any
 declare var WOW: any
@@ -8,15 +8,10 @@ declare var WOW: any
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.scss']
 })
-export class OurPortfolioComponent implements OnInit, OnDestroy {
+export class OurPortfolioComponent implements OnInit {
 
   constructor() { }
 
-    ngOnDestroy(): void { 
-        $('.nav-container').removeClass('nav-container-bg'); 
-    }
-
-    ngOnInit() { 
-        $('.nav-container').addClass('nav-container-bg');   
+    ngOnInit() {   
     }
 }
