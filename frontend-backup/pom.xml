@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>zw.co.hisolutions</groupId>
+        <artifactId>hisolutions-parent</artifactId> 
+        <version>1.0.0</version>
+    </parent> 
+
+    <groupId>zw.co.hisolutions</groupId>
+    <artifactId>hisolutions-frontend-backup</artifactId>  
+    <packaging>war</packaging> 
+
+    <name>hisolutions-frontend-backup</name>
+
+    <properties>
+        <main.basedir>${project.parent.basedir}</main.basedir>
+        <checkstyle.skip>true</checkstyle.skip>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <argLine>-XX:MaxMetaspaceSize=256m</argLine>
+    </properties> 
+
+    <build>
+        <sourceDirectory>./src</sourceDirectory>     
+        <testSourceDirectory>.</testSourceDirectory>
+    
+        <resources>      
+            <resource>
+                <directory>ui-src</directory>
+            </resource> 
+        </resources>
+    
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>ui-src</directory>
+                            <includes>
+                                <include>*</include>
+                            </includes>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+            
+<!--            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <fork>true</fork>
+                    <meminitial>128m</meminitial>
+                    <maxmem>256m</maxmem>  
+                    <compilerArgs>
+                        <arg>-XX:MaxPermSize=256m</arg>
+                        <arg>-XX:MaxMetaspaceSize=256m</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.5.2</version>
+                <configuration>
+                    <fork>true</fork>
+                    <meminitial>128m</meminitial>
+                    <maxmem>512m</maxmem>
+                    <compilerArgs> 
+                        <arg>-XX:MaxPermSize=256m</arg>
+                        <arg>-XX:MaxMetaspaceSize=256m</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin> -->
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.2</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>1.6</version> 
+        
+                <executions> 
+                    <execution>
+                        <id>install node and npm</id>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                        <configuration>
+                            <!--See https://nodejs.org/en/download/ for latest node and npm (lts) versions-->                              
+                            <nodeVersion>v10.7.0</nodeVersion>
+                            <npmVersion>6.1.0</npmVersion> 
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>npm install</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <!--Optional configuration which provides for running any npm command--> 
+                        <configuration>
+                            <arguments>install</arguments>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>npm run build</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>run build</arguments>
+                        </configuration>
+                    </execution>      
+                </executions> 
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

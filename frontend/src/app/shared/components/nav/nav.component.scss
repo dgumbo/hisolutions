@@ -1,0 +1,129 @@
+@import "~superfish/dist/css/superfish.css" ;
+@import "src/styles-theme.scss";   
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/ 
+
+.navbar{ padding: 0px; }
+
+.nav-container{
+    padding: 8px 16px; 
+    height: 65px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    transition: all 0.5s;
+    z-index: 997; 
+}
+
+.nav-container-bg { 
+/*    background: $primary-color-dark;
+    opacity: 0.75;*/
+}
+
+.nav-container-scrolled{
+    padding-top: 2px; 
+    padding-bottom: 2px; 
+/*    background: $primary-color;
+    opacity: 0.7;*/
+    height: 50px;
+}  
+
+ .nav-container-bg .navbar-nav { 
+/*    background: $primary-color-dark;
+    opacity: 0.75;*/
+    
+    background: rgba(
+          red($primary-color-dark)
+        , green($primary-color-dark)
+        , blue($primary-color-dark)
+        , 0.75 ) ;
+}   
+
+ .nav-container-scrolled .navbar-nav {   
+    background: rgba(
+          red($primary-color)
+        , green($primary-color)
+        , blue($primary-color)
+        , 0.7 ) ;
+}    
+
+.nav-item :hover { 
+    background:  $primary-color  ;
+}
+
+.nav-item:after{
+    display: block;
+    content: " "; 
+    transform: translateY(-5px) ;
+    height: 3px;
+    background-color: $primary-color-dark;
+    margin: 0 5%;
+}
+
+.nav-container .nav-item  a {
+    color: #fff;
+    font-weight: bold;
+    transition: 0.2s all;
+    text-transform: uppercase;
+}
+
+ .nav-container .nav-item .dropdown-menu {    
+    background: rgba(
+          red($primary-color-light)
+        , green($primary-color-light)
+        , blue($primary-color-light)
+        , 0.7 ) ;
+} 
+
+.nav-container.nav-container-scrolled .nav-item .dropdown-menu {   
+    background: rgba(
+          red($primary-color-light)
+        , green($primary-color-light)
+        , blue($primary-color-light)
+        , 0.7 ) ;
+} 
+
+.nav-container .nav-item .dropdown-item:hover {
+    background: $primary-color-dark;
+} 
+
+.nav-container .nav-item { 
+    font-weight: bold;
+    -webkit-text-stroke-color: #fff;
+    -webkit-text-stroke-color: #e8491d;
+    text-shadow: $primary-color-dark 0 0 2px;
+}
+
+.fa.fa-navicon {
+    color:white;
+}
+
+  .nav-container-scrolled .fa.fa-navicon
+, .nav-container-bg .fa.fa-navicon {
+    color:$primary-color-dark;
+}
+
+.navbar-brand { 
+    width: 150px; 
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-right: 0;
+}
+
+.navbar-brand-wrapper{ 
+    height: 50px;
+}
+
+@media (max-width: 768px) {
+    #header #logo h1 {
+        font-size: 26px;
+    }
+    #header #logo img {
+        max-height: 40px;
+    }
+}
+
+.my-nav{z-index: 200; background-color: transparent;}

@@ -1,0 +1,35 @@
+<!--==========================
+    Footer
+  ============================-->
+<footer id="footer">
+    <div class="footer-copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-2 col col-lg-2 col-md-2 col-sm-3 footer-img">
+                    <a routerLink="/" class="logo">
+                        <img alt="Heritage Innovative Solutions" class="img-fluid" src="../assets/images/logo.png">
+                    </a>
+                </div>
+
+                <div class="copyright-col col col-xl-8 col-lg-8 col-md-8 col-sm-7">
+                    <div class="copyright">
+                        &copy; Copyright <strong>2018</strong>. All Rights Reserved
+                    </div>
+                    <div class="credits"> 
+                        Website Designed by <a href="mailto:dgumbo@hisolutions.co.zw" >dgumbo@hisolutions.co.zw</a>
+                    </div>
+                </div> 
+
+                <div class="sub-menu-col col col-xl-2 col-lg-2 col-md-2 col-sm-2">
+                    <nav id="sub-menu">
+                        <ul>
+                            <li><a *ngIf="production==false" routerLink="page-faq">FAQ's</a></li>
+                            <li><a *ngIf="production==false" routerLink="site-map">Sitemap</a></li>
+                            <li><a routerLink="contact-us">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div> 
+    </div>
+</footer>

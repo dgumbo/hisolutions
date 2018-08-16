@@ -42,10 +42,9 @@ public class FileSystemStorageServiceImpl implements StorageService {
 
     @Autowired
     public FileSystemStorageServiceImpl(StorageProperties properties, DocumentMetadataService documentMetadataService) {
-        this.rootLocation = Paths.get(properties.getLocation());
-        this.documentMetadataService = documentMetadataService;
-        
-        System.out.println("\n\n\n\n\n\n\n Development Profile : Loading !!! \n\n\n\n\n\n\n\n\n\n");
+        // System.out.println("\n\n\n\n\n\n\n Development Profile : Loading !!! \n\n\n\n\n\n\n\n\n\n");
+       this.rootLocation = Paths.get(properties.getLocation());
+        this.documentMetadataService = documentMetadataService;        
     }
 
     @Override

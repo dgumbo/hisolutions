@@ -1,25 +1,32 @@
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule, PreloadAllModules} from '@angular/router'; 
-import {LocationStrategy, HashLocationStrategy} from '@angular/common'; 
-import {NoAccessComponent} from './shared/components/error-pages/no-access/no-access.component';
-import {RequestNotFoundComponent} from './shared/components/error-pages/request-not-found/request-not-found.component';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+//import {AdminModule} from './admin/admin.module';
+//import {WelcomeModule} from './welcome/welcome.module';
 
-
-const appRoutes: Routes = [
-    /* Error Handlers */
-    {path: 'no-access', component: NoAccessComponent},
-    {path: '**', component: RequestNotFoundComponent}
+const routes: Routes = [
+  {
+    path: 'welcome',
+    loadChildren: './welcome/welcome.module#WelcomeModule'
+  },
+  {
+    path: 'admin', 
+    loadChildren: './admin/admin.module#AdminModule'
+  },
+  {
+    path: 'auth', 
+    loadChildren: './auth/auth.module#AuthModule'
+  },
+  {
+    path: '',
+    redirectTo: 'welcome',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules})],
-    exports: [RouterModule],
-    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}]
 })
-
-export class AppRoutingModule {}
-
-export const routedComponents = [
-    NoAccessComponent,
-    RequestNotFoundComponent,
-];
+export class AppRoutingModule { }

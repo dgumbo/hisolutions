@@ -100,8 +100,8 @@
                         </goals>
                         <configuration>
                             <!--See https://nodejs.org/en/download/ for latest node and npm (lts) versions-->                              
-                            <nodeVersion>v10.7.0</nodeVersion>
-                            <npmVersion>6.1.0</npmVersion> 
+                            <nodeVersion>v10.8.0</nodeVersion>
+                            <npmVersion>6.3.0</npmVersion> 
                         </configuration>
                     </execution>
 
@@ -113,6 +113,7 @@
                         <!--Optional configuration which provides for running any npm command--> 
                         <configuration>
                             <arguments>install</arguments>
+                            <arguments>audit fix</arguments>
                         </configuration>
                     </execution>
 
@@ -122,7 +123,7 @@
                             <goal>npm</goal>
                         </goals>
                         <configuration>
-                            <arguments>run build</arguments>
+                            <arguments>run build-prod</arguments>
                         </configuration>
                     </execution>      
                 </executions> 

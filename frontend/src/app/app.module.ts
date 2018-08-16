@@ -1,31 +1,23 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import {AppComponent} from './app.component';
-import {AppRoutingModule} from './app-routing.module'; 
-  
-import {SiteModule} from './site/site.module'; 
-import {CoreModule} from './core/core.module';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import {SharedModule} from './shared/shared.module'; 
-import {AdminModule} from './admin/admin.module';
-import {AuthModule} from './auth/auth.module';
+import {SharedGlobals} from './shared/shared-globals';
 
 @NgModule({
-    declarations: [
-        AppComponent 
+  declarations: [
+    AppComponent, 
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SharedModule
+  ], 
+    providers: [
+        SharedGlobals
     ],
-    imports: [
-        CoreModule,
-        AuthModule,
-        SiteModule,
-        AdminModule,
-        
-        SharedModule, 
-        BrowserModule, 
-        AppRoutingModule,        
-    ],
-    providers: [ ],
-    
-    bootstrap: [AppComponent]
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

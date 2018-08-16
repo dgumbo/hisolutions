@@ -17,11 +17,11 @@
     <description>HiSolutions - Spring Boot / Angular Project</description>
 
     <modules>
-        <module>backend</module>
-        <module>frontend</module>
+        <module>backend</module> 
         <module>auth</module>
         <module>core</module>
         <module>storage</module>
+        <module>frontend</module>
     </modules>
 
     <properties>
