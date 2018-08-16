@@ -32,6 +32,7 @@
               "node_modules/bootstrap/dist/js/bootstrap.js",
               "node_modules/waypoints/lib/jquery.waypoints.js",
               "node_modules/counterup/jquery.counterup.min.js", 
+              "node_modules/jquery.easing/jquery.easing.js", 
               "node_modules/wowjs/dist/wow.js"
                         ]
           },
