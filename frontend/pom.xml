@@ -113,7 +113,7 @@
                         <!--Optional configuration which provides for running any npm command--> 
                         <configuration>
                             <arguments>install</arguments>
-                            <arguments>audit fix</arguments>
+                            <!--<arguments>audit fix</arguments>-->
                         </configuration>
                     </execution>
 
