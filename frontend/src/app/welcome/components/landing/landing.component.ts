@@ -13,48 +13,16 @@ export class LandingComponent implements OnInit, OnDestroy  {
   constructor(public globals: SharedGlobals) { }
  
     ngOnDestroy(): void {
-        $('.nav-container').addClass('nav-container-fixed');
+       // $('.nav-container').addClass('nav-container-fixed');
         $('.nav-container').addClass('nav-container-bg');
         $('.nav-container').removeClass('nav-container-scrolled');
-        // Unbind Scroll Event
-        $(window).unbind("scroll");
-    }
-    
-    
-  ngAfterViewInit() {}
+    } 
  
     ngOnInit() {
-        $('.nav-container').addClass('nav-container-fixed');
+      //  $('.nav-container').addClass('nav-container-fixed');
         $('.nav-container').removeClass('nav-container-bg');
         $('.nav-container').removeClass('nav-container-scrolled');
 
-        // Header fixed and Back to top button
-        $(window).scroll(function () {
-            if ($(this).scrollTop() > 100) { 
-                $('.nav-container').addClass('nav-container-scrolled');
-                $('.nav-container').removeClass('nav-container-fixed');
-            } else { 
-                $('.nav-container').removeClass('nav-container-scrolled');
-                $('.nav-container').addClass('nav-container-fixed');
-            }
-        });
-
-        // Porfolio filter
-        $("#portfolio-flters li").click(function () {
-            $("#portfolio-flters li").removeClass('filter-active');
-            $(this).addClass('filter-active');
-
-            var selectedFilter = $(this).data("filter");
-            $("#portfolio-wrapper").fadeTo(100, 0);
-
-            $(".portfolio-item").fadeOut().css('transform', 'scale(0)');
-
-            setTimeout(function () {
-                $(selectedFilter).fadeIn(100).css('transform', 'scale(1)');
-                $("#portfolio-wrapper").fadeTo(300, 1);
-            }, 300);
-        });
-         
         // jQuery counterUp
         $('[data-toggle="counter-up"]').counterUp({
             delay: 10,
@@ -94,6 +62,23 @@ export class LandingComponent implements OnInit, OnDestroy  {
                 }
             }
         });
+        
+        // Porfolio filter
+        $("#portfolio-flters li").click(function () {
+            $("#portfolio-flters li").removeClass('filter-active');
+            $(this).addClass('filter-active');
+
+            var selectedFilter = $(this).data("filter");
+            $("#portfolio-wrapper").fadeTo(100, 0);
+
+            $(".portfolio-item").fadeOut().css('transform', 'scale(0)');
+
+            setTimeout(function () {
+                $(selectedFilter).fadeIn(100).css('transform', 'scale(1)');
+                $("#portfolio-wrapper").fadeTo(300, 1);
+            }, 300);
+        });
+         
     }
   
 }

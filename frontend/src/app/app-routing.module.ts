@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {LocationStrategy, HashLocationStrategy} from '@angular/common';
-//import {AdminModule} from './admin/admin.module';
-//import {WelcomeModule} from './welcome/welcome.module';
+import {LocationStrategy, HashLocationStrategy} from '@angular/common'; 
 
 const routes: Routes = [
   {
@@ -16,6 +14,10 @@ const routes: Routes = [
   {
     path: 'auth', 
     loadChildren: './auth/auth.module#AuthModule'
+  },
+  {
+    path: 'services', 
+    loadChildren: './products-and-services/products-and-services.module#ProductsAndServicesModule'
   },
   {
     path: '',

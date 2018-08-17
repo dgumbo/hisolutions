@@ -1,0 +1,39 @@
+<div style="padding-top: 90px;" ></div>
+<form #f="ngForm" (ngSubmit)="saveAudiance(audiance)">
+    <div class="row form-group"> 
+        <h2 *ngIf="isNewForm">Create new Audiance</h2>
+        <h2 *ngIf="!isNewForm">Edit Audiance Details</h2>
+    </div>
+
+    <div  *ngIf="!isNewForm" class="row form-group"> 
+        <div class="col col-sm-2" style="text-align: right;">
+            <label for="id" >ID : </label>
+        </div>
+        <div class="col col-sm-8">
+            <input class="form-control"  type="text" id="id" name="id" [(ngModel)]="audiance.id" disabled/> 
+        </div>
+    </div> 
+    <div  class="row form-group"> 
+        <div class="col col-sm-2" style="text-align: right;">
+            <label for="name" >Name : </label>
+        </div>
+        <div class="col col-sm-8">
+            <input class="form-control"  type="text" id="name" name="name" #name="ngModel"  [(ngModel)]="audiance.name"/> 
+        </div>
+    </div>      
+
+    <!--[(ngModel)]="audiance.preRequisites"--> 
+    <div  class="row form-group"> 
+        <div class="col col-sm-2" style="text-align: right;">
+            <button type="submit" class="btn btn-primary"  >
+                <i *ngIf="isNewForm" class="fa fa-plus" aria-hidden="true"> | Save</i>
+                <i *ngIf="!isNewForm" class="fa fa-edit" aria-hidden="true"> | Update</i>
+            </button>  
+        </div>
+        <div class="col col-sm-8">
+            <a routerLink="/audiances" class="btn btn-warning "  >
+                <i class="fa fa-times" aria-hidden="true"> | Cancel</i>
+            </a> 
+        </div>
+    </div>
+</form>  

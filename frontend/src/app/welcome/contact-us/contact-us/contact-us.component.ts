@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { AgmCoreModule } from '@agm/core';
+import { Component, OnInit } from '@angular/core'; 
 
 @Component({
   selector: 'app-contact-us',

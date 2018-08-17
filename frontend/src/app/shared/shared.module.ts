@@ -9,7 +9,8 @@ import {SharedGlobals} from './shared-globals';
 import {ServiceCategoryService} from './services/service-category.service';
 import {HttpClientModule} from '@angular/common/http';
 import {ErrorHandler} from '@angular/core';
-import {AppErrorHandler} from './components/error-pages/app-error-handler';
+import {AppErrorHandler} from './components/error-pages/app-error-handler'; 
+import {NavBakComponent} from 'shared/components/nav-bak/nav-bak.component';
 
 @NgModule({
     imports: [
@@ -22,6 +23,7 @@ import {AppErrorHandler} from './components/error-pages/app-error-handler';
         FooterComponent,
         RequestNotFoundComponent,
         NoAccessComponent,
+        NavBakComponent,
     ],
     exports: [
         NavComponent,

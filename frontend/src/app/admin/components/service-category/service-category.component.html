@@ -1,0 +1,46 @@
+<section class="">
+    <div class="container" style="padding-top: 50px;" >
+        <h2>Service Categories</h2>  
+        <a routerLink="/admin/servicecategories/new" 
+           class="btn btn-info">Create New</a> 
+
+        <div *ngIf="!loaded" class="row" text-align="center"> 
+            <img src="../../assets/images/loading.gif" alt=""/>
+        </div>
+
+        <div *ngIf="loaded" class="row">
+            <table class="table table-stripped">
+                <thead>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>fa-icon</th>
+                        <th>Thumbnail</th>
+                        <th>Background Image</th> 
+                        <th>&nbsp;</th> 
+                    </tr> </thead>
+                <tr *ngFor="let serviceCategory of serviceCategories" >           
+                    <td>
+                        <a [routerLink]="['/admin/servicecategories/', serviceCategory.id, 'view']" class="nav-link">
+                            <i class="fa fa-eye" aria-hidden="true"> {{serviceCategory.id}}</i>            
+                        </a> 
+                    </td>
+                    <td>{{serviceCategory.name}}</td>
+                    <td>{{serviceCategory.description}}</td>
+                    <td><i class="fa {{serviceCategory.faIcon}}" aria-hidden="true"></i></td>
+                    <td> </td> 
+                    <td> </td>
+                    <td> </td>
+                    <td> 
+                        <a [routerLink]="['/admin/servicecategories/', serviceCategory.id]"   class="btn btn-link btn-link-info">
+                            <i class="fa fa-edit" aria-hidden="true"> Edit</i>                
+                        </a>  
+                        <button (click)="deleteServiceCategory(serviceCategory)" class="btn btn-link btn-link-danger">
+                            <i class="fa fa-minus" aria-hidden="true"> Delete</i></button> 
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>

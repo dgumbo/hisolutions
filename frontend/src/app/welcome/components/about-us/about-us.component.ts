@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SharedGlobals} from 'src/app/shared/shared-globals';
+import {SharedGlobals} from 'shared/shared-globals';
 
 @Component({
   selector: 'app-about-us',

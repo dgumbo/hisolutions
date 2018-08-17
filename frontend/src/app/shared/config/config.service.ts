@@ -9,8 +9,8 @@ import {AppError} from '../components/error-pages/app-error';
 //)
 export class ConfigService {
 
-  constructor() { }
-   
+  constructor() {   }
+
     private handleError(error: HttpErrorResponse) { 
         if (error.status === 404)
             return throwError(new NotFoundError());
@@ -31,4 +31,5 @@ export class ConfigService {
         // return an observable with a user-facing error message
         return throwError(new AppError(error));
     }
+
 }

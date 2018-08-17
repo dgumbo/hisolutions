@@ -1,5 +1,5 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {environment} from 'src/environments/environment';
+import {HttpClient, HttpHeaders} from '@angular/common/http'; 
+import {environment} from 'environments/environment';
   
 //import { Injectable } from '@angular/core'; 
 //@Injectable(
@@ -51,6 +51,7 @@ export class DataService {
 
     public getAllViews(capitalizedModelName: string) {
         //console.log(this.viewsUrl + '/getAll' + capitalizedModelName);
+        //console.trace();
         return this.httpClient.get(this.viewsUrl + '/getAll' + capitalizedModelName);
         //            .retry(3)
         //            .catch(this.handleError);

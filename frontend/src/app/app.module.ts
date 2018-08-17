@@ -1,22 +1,24 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {SharedModule} from './shared/shared.module'; 
-import {SharedGlobals} from './shared/shared-globals';
+import { SharedModule } from './shared/shared.module';    
+import { BrowserModule } from '@angular/platform-browser';
+import {CommonModule} from '@angular/common'; 
+import { Routes, RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent, 
   ],
-  imports: [
+  imports: [ 
     BrowserModule,
-    AppRoutingModule,
-    SharedModule
+    CommonModule,
+    AppRoutingModule, 
+    SharedModule, 
+    RouterModule ,
   ], 
-    providers: [
-        SharedGlobals
+    providers: [    
     ],
   bootstrap: [AppComponent]
 })

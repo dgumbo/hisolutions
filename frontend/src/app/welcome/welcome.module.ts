@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core'; 
 import {WelcomeRoutingModule, routedComponents} from './welcome-routing.module';
-import {SharedModule} from '../shared/shared.module';  
+import {SharedModule} from 'shared/shared.module';  
+import {SharedGlobals} from 'shared/shared-globals';
 
 @NgModule({
     imports: [ 
@@ -10,7 +11,10 @@ import {SharedModule} from '../shared/shared.module';
     declarations: [
         ...routedComponents
     ],
-    providers: [
+    providers: [ 
+        SharedGlobals 
     ],
 })
-export class WelcomeModule {}
+export class WelcomeModule {
+    
+}
