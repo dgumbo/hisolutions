@@ -33,7 +33,7 @@ public class HiSolutionsBackendApplication {
     }
  
     @Bean
-    CommandLineRunner init(InitializeStartData initializeStartData) {
+    CommandLineRunner initStartData(InitializeStartData initializeStartData) {
         return (args) -> {
             initializeStartData.init();
         };

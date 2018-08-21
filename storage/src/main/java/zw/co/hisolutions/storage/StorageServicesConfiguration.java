@@ -24,7 +24,7 @@ public class StorageServicesConfiguration {
     }
 
     @Bean
-    CommandLineRunner init(StorageService storageService) {//, InitializeStartData initializeStartData ) {
+    CommandLineRunner initStorage(StorageService storageService) {//, InitializeStartData initializeStartData ) {
         return (args) -> {
             //storageService.deleteAll();
            storageService.init();
