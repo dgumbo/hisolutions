@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SharedGlobals} from 'shared/shared-globals';
+import {Globals} from 'app/globals';
 
 @Component({
   selector: 'app-about-us',
@@ -10,7 +10,7 @@ export class AboutUsComponent implements OnInit {
 
     production: boolean ;
 
-    constructor(globals: SharedGlobals) {
+    constructor(globals: Globals) {
         this.production = globals.production;
     }
 

@@ -37,15 +37,5 @@ export class ServiceCategoryComponent implements OnInit {
                     alert('serviceCategory has already been deleted.');
                 else throw error;
             }); 
-    }
-
-//    private handleError(error: Response) {
-//        if (error.status === 404)
-//            return Observable.throw(new NotFoundError());
-//
-//        else if (error.status === 400)
-//            return Observable.throw(new BadInputError(error));
-//
-//        else return Observable.throw(new AppError(error));
-//    }
+    } 
 } 

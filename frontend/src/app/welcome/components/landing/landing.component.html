@@ -65,7 +65,7 @@
                     <div class="icon"><a href="#"><i class="fa {{sc.faIcon}}"></i></a></div>
                     <h3 class="title"><a href="#">{{sc.name}}</a></h3> 
                     <p class="description" [innerHtml]="sc.shortDescription"></p>
-                    <button routerLink="/services/service/{{sc.name}}">View More</button>
+                    <button *ngIf="globals.production==false" routerLink="/services/service/{{sc.name}}">View More</button>
                 </div>
             </div>  
         </div> 
@@ -108,7 +108,8 @@
         </div>
 
     </div>
-</section><!-- #facts-section -->
+</section>
+<!-- #facts-section -->
 
 
 <!--==========================
@@ -121,7 +122,8 @@ Call To Action Section
             <p class="cta-text">Give us a call and we will show you how! Or give us your details, and we will contact you.</p>        
         </div> 
     </div>
-</section><!-- #call-to-action-section --> 
+</section>
+<!-- #call-to-action-section --> 
 
 
 <!--==========================

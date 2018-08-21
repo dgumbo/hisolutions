@@ -16,7 +16,7 @@ import {PreRequisiteService} from 'admin/services/rest/pre-requisite.service';
 import {SkillService} from 'admin/services/rest/skill.service';
 import {NotFoundError} from 'shared/components/error-pages/not-found-error';
 import {AppError} from 'shared/components/error-pages/app-error';
-import {SharedGlobals} from 'shared/shared-globals';
+import {Globals} from 'app/globals';
  
 
 @Component({
@@ -44,7 +44,7 @@ export class ProductFormComponent implements OnInit {
     constructor(private route: ActivatedRoute
         , private router: Router
         , private scriptService: ScriptService
-        , public globals: SharedGlobals
+        , public globals: Globals
         , private _serviceCategoryService: ServiceCategoryService
         , private _productService: ProductService
         , private _productTypeService: ProductTypeService

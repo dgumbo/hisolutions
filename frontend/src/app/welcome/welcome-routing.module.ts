@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {LandingComponent} from './components/landing/landing.component';
 import {AboutUsComponent} from './components/about-us/about-us.component';
-import {OurPortfolioComponent} from './components/our-portfolio/our-portfolio.component';
+import {OurPortfolioComponent} from './components/our-portfolio/our-portfolio.component'; 
 
 const routes: Routes = [
     {
@@ -19,7 +19,7 @@ const routes: Routes = [
     },
     {
         path: 'contact-us',
-        loadChildren: './contact-us/contact-us.module#ContactUsModule'
+        loadChildren: 'welcome/components/contact-us/contact-us.module#ContactUsModule'
     },
 ];
 
@@ -30,7 +30,7 @@ const routes: Routes = [
 
 export class WelcomeRoutingModule {}
 
-export const routedComponents = [
+export const welcomeModuleRoutedComponents = [
     LandingComponent,
     AboutUsComponent,
     OurPortfolioComponent,

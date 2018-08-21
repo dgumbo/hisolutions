@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>zw.co.hisolutions</groupId>
+    <artifactId>hisolutions-auth-core</artifactId> 
+    <packaging>jar</packaging>
+
+    <name>hisolutions-auth-core</name>
+    <description>HiSolutions - Authentication Core Module</description>
+
+    <parent>
+        <groupId>zw.co.hisolutions</groupId>
+        <artifactId>hisolutions-parent</artifactId>
+        <version>1.0.0</version> 
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version> 
+    </properties>
+
+    <dependencies>     
+        <dependency>
+            <groupId>zw.co.hisolutions</groupId>
+            <artifactId>hisolutions-core</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>     
+        
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+        </dependency>   
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId> 
+        </dependency>        
+    </dependencies> 
+ 
+</project>

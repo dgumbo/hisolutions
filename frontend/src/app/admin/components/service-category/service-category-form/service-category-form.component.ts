@@ -6,7 +6,7 @@ import {FileUploadService} from 'shared/services/file-upload.service';
 import {ScriptService} from 'shared/services/script.service';
 import {ServiceCategory} from 'shared/models/service-category'; 
 import {ServiceCategoryService} from 'admin/services/rest/service-category.service';
-import {SharedGlobals} from 'shared/shared-globals';
+import {Globals} from 'app/globals';
 import {combineLatest} from 'rxjs';
  
 
@@ -44,7 +44,7 @@ export class ServiceCategoryFormComponent implements OnInit {
         private activeRoute: ActivatedRoute,
         private router: Router,
         private _fileUploaderService: FileUploadService,
-        public globals: SharedGlobals) {
+        public globals: Globals) {
 
         this.id = this.activeRoute.snapshot.paramMap.get('id');
         this.serviceCategory = {

@@ -1,4 +1,4 @@
- package zw.co.hisolutions.common.entity;
+package zw.co.hisolutions.common.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
@@ -18,7 +18,7 @@ import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.Version;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;  
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 /**
  *
@@ -27,16 +27,16 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
 @Data
-@EqualsAndHashCode(of = "id") 
+@EqualsAndHashCode(of = "id")
 public abstract class BaseEntity implements Serializable {
 
-   private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-   
-   @JsonIgnore
-   public String getAuditDetails(){
-       return toString();
-   }
-   
+    private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+
+    @JsonIgnore
+    public String getAuditDetails() {
+        return toString();
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long id;
@@ -46,11 +46,11 @@ public abstract class BaseEntity implements Serializable {
 
     @NotNull
     @Column(name = "created_by_user", updatable = false)
-    @CreatedBy 
+    @CreatedBy
     private String createdByUser;
-    
+
     @NotNull
-    @Column(name = "creation_time", updatable = false) 
+    @Column(name = "creation_time", updatable = false)
     private Date creationTime;
 
     @NotNull
@@ -59,9 +59,9 @@ public abstract class BaseEntity implements Serializable {
     private String modifiedByUser;
 
     @NotNull
-    @Column(name = "modification_time") 
+    @Column(name = "modification_time")
     private Date modificationTime;
-    
+
     @NotNull
     @Column(name = "active_status")
     protected boolean activeStatus = true;
@@ -70,23 +70,22 @@ public abstract class BaseEntity implements Serializable {
     public void prePersist() {
 //        this.creationTime = dtf.format(LocalDateTime.now());
 //        this.modificationTime = dtf.format(LocalDateTime.now());        
-        
-        this.creationTime =  new Date();
-        this.modificationTime =  new Date();
-        
-     //   Account account =   accountUserDetails.getAccount();
-        
-        this.createdByUser = "test" ;// account.getUsername();
-        this.modifiedByUser = "test" ;// account.getUsername() ;// usernameAuditorAware.getCurrentAuditor();
+
+        this.creationTime = new Date();
+        this.modificationTime = new Date();
+
+        //   Account account =   accountUserDetails.getAccount();
+        this.createdByUser = "test";// account.getUsername();
+        this.modifiedByUser = "test";// account.getUsername() ;// usernameAuditorAware.getCurrentAuditor();
     }
 
     @PreUpdate
     public void preUpdate() {
 //        Account account = accountUserDetails.getAccount();
-        
+
         //this.modificationTime = dtf.format(LocalDateTime.now());
         this.modificationTime = new Date();
-        this.modifiedByUser = "test" ;//account.getUsername() ;// usernameAuditorAware.getCurrentAuditor();
+        this.modifiedByUser = "test";//account.getUsername() ;// usernameAuditorAware.getCurrentAuditor();
     }
 
     @Override
@@ -101,19 +100,19 @@ public abstract class BaseEntity implements Serializable {
         if (this == obj) {
             return true;
         }
-        
+
         if (obj == null) {
             return false;
         }
-        
+
         if (getClass() != obj.getClass()) {
             return false;
         }
-        
+
         final BaseEntity other = (BaseEntity) obj;
         if (this.id != other.id) {
             return false;
         }
         return true;
-    }    
+    }
 }

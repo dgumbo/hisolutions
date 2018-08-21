@@ -1,0 +1,9 @@
+<br/><br/><br/><br/><br/><br/> 
+<section id="logout-section">
+    <h2>Logout</h2> 
+    <div class="form-group">
+        <button (click)="logout()" class="btn btn-primary">Logout</button>
+    </div>
+
+    <div *ngIf="error" class="alert alert-danger">{{error}}</div> 
+</section>

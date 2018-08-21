@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpRequest, HttpEvent} from '@angular/common/http'; 
-import {SharedGlobals} from '../shared-globals';
+import {SharedGlobals} from 'app/globals';
 import {Observable} from 'rxjs/Observable';
 import {NotFoundError} from '../components/error-pages/not-found-error';
 import {BadInputError} from '../components/error-pages/bad-input-error';

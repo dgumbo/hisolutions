@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpRequest, HttpEvent} from '@angular/common/http'; 
-import {SharedGlobals} from '../shared-globals';  
+import {Globals} from 'app/globals';  
 import {Observable} from 'rxjs';
 //import {Observable} from 'rxjs'; 
 
@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 export class FileUploadService { 
     uploadUrl : string = this.globals.hostUrl + '/storage/upload';
 
-    constructor(private httpClient: HttpClient, private globals:SharedGlobals) {}
+    constructor(private httpClient: HttpClient, private globals:Globals) {}
 
     uploadFileToStorage(file: File): Observable<any> {
         

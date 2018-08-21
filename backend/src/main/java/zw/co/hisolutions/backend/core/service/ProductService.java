@@ -12,6 +12,6 @@ public interface ProductService extends GenericService<Product, Long> {
     void deleteProduct(Product product);
 
     List<Product> findProductByServiceCategory(Long serviceCategoryId);
-    List<Product> findProductByServiceCategory(ServiceCategory serviceCategory);
+    List<Product> findProductByServiceCategory(ServiceCategory serviceCategory); 
 
 }

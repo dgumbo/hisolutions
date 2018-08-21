@@ -15,7 +15,7 @@ import zw.co.hisolutions.backend.core.service.ProductService;
 @Transactional
 public class ProductServiceImpl implements ProductService {
 
-    private ProductDao productDao;
+    private final ProductDao productDao;
 
     @Autowired
     public ProductServiceImpl(ProductDao productDao) {
@@ -50,5 +50,5 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> findProductByServiceCategory(ServiceCategory serviceCategory) {
         return productDao.getByServiceCategory(serviceCategory);
-    }
+    } 
 }

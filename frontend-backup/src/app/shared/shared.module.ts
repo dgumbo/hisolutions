@@ -14,7 +14,7 @@ import {TopicService} from './services/rest/topic.service';
 import {DistributionMethodService} from './services/rest/distribution-method.service';
 import {ServiceCategoryService} from './services/rest/service-category.service';
 import {FileUploadService} from './services/file-upload.service';
-import {SharedGlobals} from './shared-globals';
+import {SharedGlobals} from 'app/globals';
 import {AppErrorHandler} from './components/error-pages/app-error-handler';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';

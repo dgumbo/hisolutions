@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {DataService} from 'shared/services/data.service';
+
+import {RestDataService} from 'shared/services/rest-data.service';
 
 @Injectable()
-export class DistributionMethodService extends DataService  {
+export class DistributionMethodService extends RestDataService  {
 
       constructor(httpClient: HttpClient) {
         const resourcePath =  '/rest/distributionmethods'; 

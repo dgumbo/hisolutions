@@ -1,0 +1,10 @@
+@import "src/styles-theme.scss" ;   
+
+section:first-child{
+    min-height: 100vh ; 
+         
+    background-color: $svg-background-color;
+    background-image: url("/assets/images/jigsaw-2.svg");    
+    background-attachment: fixed;
+    background-size: contain;
+}

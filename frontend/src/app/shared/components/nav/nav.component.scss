@@ -118,7 +118,8 @@
     border-color: #fff;
 }
 
-.nav-container-scrolled .navbar-toggler {
+.nav-container-scrolled .navbar-toggler,
+.nav-container-bg .navbar-toggler {
     color: $primary-color;
     border-color: $primary-color-dark;
 }

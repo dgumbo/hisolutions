@@ -24,6 +24,7 @@
             "admin/*": [ "app/admin/*" ],
             "site/*": [ "app/site/*" ],
             "welcome/*": [ "app/welcome/*" ],
+            "auth/*": [ "app/auth/*" ],
             "products-and-services/*": [ "app/products-and-services/*" ]
             }
   }

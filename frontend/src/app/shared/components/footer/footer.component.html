@@ -26,6 +26,11 @@
                             <li><a *ngIf="production==false" routerLink="page-faq">FAQ's</a></li>
                             <li><a *ngIf="production==false" routerLink="site-map">Sitemap</a></li>
                             <li><a routerLink="contact-us">Contact</a></li>
+                            <!--<li>globals.admin : {{ globals.admin }}</li>-->
+                            <li>
+                                <a *ngIf="!globals.admin" [routerLink]="['/admin']">Admin</a>
+                                <a *ngIf="globals.admin" [routerLink]="['/logout']">Logout</a>
+                            </li>
                         </ul>
                     </nav>
                 </div>

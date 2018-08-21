@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {DataService} from 'shared/services/data.service';
+import {HttpClient} from '@angular/common/http'; 
+import {RestDataService} from 'shared/services/rest-data.service';
 
 @Injectable()
-export class AudianceService extends DataService  {
+export class AudianceService extends RestDataService  {
 
     constructor(httpClient: HttpClient) {
         const resourcePath =  '/rest/audiances'; 

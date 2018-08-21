@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SharedGlobals} from '../../shared-globals';
+import {Globals} from 'app/globals';
 import {Router, NavigationEnd} from '@angular/router';
 import {filter} from 'rxjs/operators';
 
@@ -13,7 +13,7 @@ declare var $: any;
 export class NavComponent implements OnInit { 
     private tog: any; 
 
-    constructor(public globals: SharedGlobals, private router: Router) {
+    constructor(public globals: Globals, private router: Router) {
         this.router.events.pipe(
             filter((event) => event instanceof NavigationEnd)
         ).subscribe(() => {           

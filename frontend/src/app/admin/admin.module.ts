@@ -13,6 +13,11 @@ import {TopicService} from 'admin/services/rest/topic.service';
 import {AudianceService} from 'admin/services/rest/audiance.service';
 import {PreRequisiteService} from 'admin/services/rest/pre-requisite.service';
 import {VendorService} from 'admin/services/rest/vendor.service';
+import {AuthModule} from '../auth/auth.module'; 
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {TokenStorage} from 'auth/storage/token.storage';
+import {JwtInterceptor} from 'auth/interceptors';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 
 @NgModule({
     imports: [
@@ -22,11 +27,15 @@ import {VendorService} from 'admin/services/rest/vendor.service';
         FormsModule,
         ReactiveFormsModule,
         SharedModule,
+        
+        AuthModule,
     ],
     declarations: [
-        ...adminModuleRoutedComponents
+        ...adminModuleRoutedComponents,
+        AdminHomeComponent
     ],
-    providers: [
+    providers: [ 
+    
         ProductTypeService,
         ProductService,
         VendorService,
@@ -37,6 +46,11 @@ import {VendorService} from 'admin/services/rest/vendor.service';
         DistributionMethodService,
         ServiceCategoryService,
         FileUploadService, 
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: JwtInterceptor,
+            multi: true
+        }
     ]
 })
 export class AdminModule {}

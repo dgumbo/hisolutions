@@ -20,7 +20,8 @@ $fa-font-path: "~font-awesome/fonts" ;
 }
 
 body{
-    background-color: #fff;
+    //background-color: #fff;
+    background: #f7f7f7; 
     color:#555; 
     font-family: $font-family;
     font-weight: 300;
@@ -141,6 +142,8 @@ section:last-child{
 .hero-p {  
     font-size: 115%;
     min-height: 130px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 /*----- PARAGHRAPHS -----*/
@@ -230,7 +233,7 @@ header {
     border-width: 20px;
     border-color: red;
     top: 50%;
-    transform: translateY(-50%); 
+    transform: translateY(-50%);  
     /*padding-top: 200px;*/
 }
 
@@ -254,6 +257,10 @@ header {
     width: 70%;
 }
 
+.hero-services h1{ 
+    margin-bottom: 10px ;
+}
+
 .hero-services-carousel-slide{  
     width: 98vw;
 }
@@ -264,11 +271,6 @@ header {
 
 .hero-services-carousel-caption{
     position:static;
-}
-
-.hero-services h1{
-    //text-transform: uppercase; 
-    margin-bottom: 10px ;
 }
 
 .logo{
@@ -684,4 +686,11 @@ header {
 , .newsletter h4
 , .follow-us h4{
     color: $primary-color-dark;
+}
+
+#services-hero-section .hero-container {
+    left: 45%;
+    top: 25%;
+    transform: translateX(-45%);
+    //transform: translateY(-45%);
 }

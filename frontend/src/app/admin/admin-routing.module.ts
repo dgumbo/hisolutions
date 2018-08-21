@@ -25,8 +25,16 @@ import {VendorFormComponent} from 'admin/components/vendors/vendor-form/vendor-f
 import {ServiceCategoryFormComponent} from 'admin/components/service-category/service-category-form/service-category-form.component';
 import {ServiceCategoryComponent} from 'admin/components/service-category/service-category.component';
 import {DistributionMethodViewComponent} from 'admin/components/distribution-methods/distribution-method-view/distribution-method-view.component';
+import {AuthGuard} from 'auth/guards';
+import {AdminHomeComponent} from 'admin/components/admin-home/admin-home.component';
 
 const adminModuleRoutes: Routes = [ 
+    { 
+        path: '', 
+        component: AdminHomeComponent,
+        canActivate: [AuthGuard] 
+    },
+    
     /* Service Categories */
     {path: 'servicecategories', component: ServiceCategoryComponent},
     {path: 'servicecategories/new', component: ServiceCategoryFormComponent},

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {SharedGlobals} from '../../../shared/shared-globals';
+import {Globals} from 'app/globals';
 
 declare var $: any; 
 
@@ -10,7 +10,7 @@ declare var $: any;
 })
 export class LandingComponent implements OnInit, OnDestroy  { 
 
-  constructor(public globals: SharedGlobals) { }
+  constructor(public globals: Globals) { }
  
     ngOnDestroy(): void {
        // $('.nav-container').addClass('nav-container-fixed');

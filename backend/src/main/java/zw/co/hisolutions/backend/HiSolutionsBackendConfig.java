@@ -1,9 +1,6 @@
 package zw.co.hisolutions.backend;
 
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import zw.co.hisolutions.backend.init.InitializeStartData;
 
 @Configuration
 public class HiSolutionsBackendConfig {
