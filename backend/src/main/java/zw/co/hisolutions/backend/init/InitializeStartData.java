@@ -118,6 +118,7 @@ public class InitializeStartData {
         org.hibernate.dialect.MySQLDialect mySQLDialect;
         org.hibernate.dialect.MySQL5Dialect mySQL5Dialect;
         org.hibernate.dialect.SQLServerDialect sQLServer2012Dialect;
+        com.mysql.cj.jdbc.Driver mysqlNewDriver;
         com.mysql.jdbc.Driver mysqlDriver;
         //com.microsoft.sqlserver.jdbc.SQLServerDriver sQLServerDriver ;
         org.h2.Driver h2Driver;
