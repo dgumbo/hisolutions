@@ -116,6 +116,7 @@ public class InitializeStartData {
     void verifyIfDBDependenciesIncludedInPom() {
         org.hibernate.dialect.H2Dialect h2Dialect;
         org.hibernate.dialect.MySQLDialect mySQLDialect;
+        org.hibernate.dialect.MySQL5Dialect mySQL5Dialect;
         org.hibernate.dialect.SQLServerDialect sQLServer2012Dialect;
         com.mysql.jdbc.Driver mysqlDriver;
         //com.microsoft.sqlserver.jdbc.SQLServerDriver sQLServerDriver ;
