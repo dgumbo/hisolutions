@@ -1,15 +1,15 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http'; 
-import {environment} from 'environments/environment';
-import {ViewsDataService} from 'shared/services/views-data.service';
+import {environment} from 'environments/environment'; 
+import {Injectable} from '@angular/core';
    
-export class RestDataService extends ViewsDataService{
+@Injectable () //({providedIn: 'root'})
+export class RestDataService {
 
     private headers: HttpHeaders;
     private url: string
 
-    constructor(private restHttpClient: HttpClient, resourcePath: string) {
-        super(restHttpClient);
-        this.url = environment.apiUrl + resourcePath;
+    constructor(public restHttpClient: HttpClient, public resourcePath: string) { 
+        this.url = environment.apiUrl + this.resourcePath;
         this.restHttpClient = restHttpClient;
         //alert (this.url) ;        
 

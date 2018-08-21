@@ -92,13 +92,13 @@ export class ProductFormComponent implements OnInit {
     }
 
     getProduct(productId) {
-        this._productService.getView("Product",productId)
+        this._productService.get  ( productId)
             //.take(1)
             .subscribe((prod :Product)=> this.product = prod);
     }
 
     getServiceCategories() {
-        this._serviceCategoryService.getAllViews("ServiceCategory")
+        this._serviceCategoryService.getAll ()
             .subscribe((servicecatgrs :ServiceCategory[])=> this.serviceCategories = servicecatgrs);
     }
 

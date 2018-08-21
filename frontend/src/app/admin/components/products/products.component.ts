@@ -20,7 +20,7 @@ export class ProductsComponent implements OnInit {
     } 
 
     getProducts  () {
-        this._productService.getAllViews("Product").subscribe((prods :Product[])=> this.products = prods);
+        this._productService.getAll().subscribe((prods :Product[])=> this.products = prods);
     }
 
     deleteProduct(product) {

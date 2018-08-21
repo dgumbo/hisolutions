@@ -94,11 +94,11 @@
             <version>${project.parent.version}</version>
             <type>pom</type>
         </dependency> 
-        <!--        <dependency>
+        <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
             <version>${jettyVersion}</version>
-        </dependency>   -->
+        </dependency>   
     
         <dependency>
             <groupId>org.springframework.boot</groupId>
