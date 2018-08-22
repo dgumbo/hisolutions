@@ -1,51 +1,84 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
  
+import { FileUploadService } from 'shared/services/file-upload.service'; 
+import { ServiceCategory } from 'shared/models/service-category';
+import { ServiceCategoryService } from 'admin/services/rest/service-category.service';
+import { Globals } from 'app/globals';
  
-import {FileUploadService} from 'shared/services/file-upload.service';
-import {ScriptService} from 'shared/services/script.service';
-import {ServiceCategory} from 'shared/models/service-category'; 
-import {ServiceCategoryService} from 'admin/services/rest/service-category.service';
-import {Globals} from 'app/globals';
-import {combineLatest} from 'rxjs';
- 
+//import 'shared/services/ckeditor.loader';
+//import 'ckeditor';
 
-//import {Quill} from 'quill';
+import {combineLatest} from 'rxjs'; 
 
 @Component({
     selector: 'app-service-category-form',
     templateUrl: './service-category-form.component.html',
-    styleUrls: ['./service-category-form.component.scss'],
-    providers: [FileUploadService,ScriptService]
+    styleUrls: ['./service-category-form.component.scss'] 
 })
-export class ServiceCategoryFormComponent implements OnInit { 
-  
+export class ServiceCategoryFormComponent implements OnInit, OnDestroy {
+    id: String; 
+
+    ngOnDestroy(): void {
+    }
+
+    ngOnInit() {
+        //        if (!this.globals.isCkEditorJsLoaded){
+        //            this.scriptService.load('ckeditor-basic')
+        //                .then(data => { 
+        //                //console.log('script loaded : ', data[0].lo        aded); 
+        //                this.globals.isCkEditorJsLoaded = data[0].loaded;
+        //            }).catch(error => console.log(error) );
+        //        }
+
+        //        if (!this.globals.isCkEditorJsLoaded){
+        //            this.scriptService.loadScript('quill-js')
+        //                .then(data => { 
+        //                console.log('script loaded : ', data ); 
+        //                //this.globals.isCkEditorJsLoaded = data[0].loaded;
+        //                 
+        //                var editor = new Quill('#editor', {
+        //                    modules: {
+        //                      toolbar: [
+        //                        [{ header: [1, 2, false] }],
+        //                        ['bold', 'italic', 'underline'],
+        //                        ['image', 'code-block']
+        //                      ]
+        //                    },
+        //                    placeholder: 'Compose an epic...',
+        //                    theme: 'snow'
+        //                });
+        //                
+        //            }).catch(error => console.log(error) );
+        //        }
+    }
+
+
     backgroundImagePicDisplay: any;
     thumbnailPicDisplay: any;
 
     backgroundImagePicFile: File;
     thumbnailPicFile: File;
 
-    id: string;
+    //id: string;
     serviceCategory: ServiceCategory;
 
     isNewForm: boolean = true;
 
     showSpinner: boolean;
     //picFile: string;
- 
+
     ckeditorContent: string = '';
 
     showBackgroundImageSpinner: any;
     showThumbnailSpinner: any;
 
     constructor(private _serviceCategoryService: ServiceCategoryService,
-        //private scriptService:ScriptService ,
+        //private scriptService: ScriptService,
         private activeRoute: ActivatedRoute,
         private router: Router,
         private _fileUploaderService: FileUploadService,
         public globals: Globals) {
-
         this.id = this.activeRoute.snapshot.paramMap.get('id');
         this.serviceCategory = {
             name: "",
@@ -59,37 +92,6 @@ export class ServiceCategoryFormComponent implements OnInit {
         else {
             this.isNewForm = true;
         }
-    }
-
-    ngOnInit() {
-//        if (!this.globals.isCkEditorJsLoaded){
-//            this.scriptService.load('ckeditor-basic')
-//                .then(data => { 
-//                //console.log('script loaded : ', data[0].loaded); 
-//                this.globals.isCkEditorJsLoaded = data[0].loaded;
-//            }).catch(error => console.log(error) );
-//        }
-        
-//        if (!this.globals.isCkEditorJsLoaded){
-//            this.scriptService.loadScript('quill-js')
-//                .then(data => { 
-//                console.log('script loaded : ', data ); 
-//                //this.globals.isCkEditorJsLoaded = data[0].loaded;
-//                 
-//                var editor = new Quill('#editor', {
-//                    modules: {
-//                      toolbar: [
-//                        [{ header: [1, 2, false] }],
-//                        ['bold', 'italic', 'underline'],
-//                        ['image', 'code-block']
-//                      ]
-//                    },
-//                    placeholder: 'Compose an epic...',
-//                    theme: 'snow'
-//                });
-//                
-//            }).catch(error => console.log(error) );
-//        }
     }
 
     saveServiceCategory(serviceCategory: ServiceCategory) {
@@ -108,44 +110,44 @@ export class ServiceCategoryFormComponent implements OnInit {
 
         //let finalSub = combineLatest(thumbnailSubscription, backgroundImageSubscription);
         let finalSub = combineLatest(thumbnailSubscription, backgroundImageSubscription, (thumbnail: any, background: any) => {return {thumb: thumbnail, back: background}});
-        
-        finalSub.subscribe(result => {    
-            
-                serviceCategory.thumbnailMetadata = JSON.parse(result.thumb);//result[0];
-                //console.log("Finished Upload of File : " + serviceCategory.thumbnailMetadata.filename + "\n" + serviceCategory.thumbnailMetadata);
 
-                serviceCategory.imageMetadata = JSON.parse(result.back);//result[1];
-                //console.log("Finished Upload of File : " + serviceCategory.imageMetadata.filename + "\n" + serviceCategory.imageMetadata);
+        finalSub.subscribe(result => {
 
-                //console.log("\n\n" + JSON.stringify(serviceCategory) + "\n\n");
-                if (this.isNewForm) {
-                    this._serviceCategoryService.create(serviceCategory)
-                        .subscribe(() => {
-                            //this.router.navigate(["/servicecategories");
-                            //$location.path("/servicecategories");
-                            //  document.location.reload() ;
-                            //this.router.navigate(['/servicecategories'], { relativeTo: this.activeRoute });
-                            this.router.navigate(["/admin/servicecategories"]);
-                        });
-                }
-                else {
-                    this._serviceCategoryService.update(this.id, serviceCategory)
-                        .subscribe(() => { 
-                            this.router.navigate(["/admin/servicecategories"]);
-                        });
-                }
-            });
+            serviceCategory.thumbnailMetadata = JSON.parse(result.thumb);//result[0];
+            //console.log("Finished Upload of File : " + serviceCategory.thumbnailMetadata.filename + "\n" + serviceCategory.thumbnailMetadata);
+
+            serviceCategory.imageMetadata = JSON.parse(result.back);//result[1];
+            //console.log("Finished Upload of File : " + serviceCategory.imageMetadata.filename + "\n" + serviceCategory.imageMetadata);
+
+            //console.log("\n\n" + JSON.stringify(serviceCategory) + "\n\n");
+            if (this.isNewForm) {
+                this._serviceCategoryService.create(serviceCategory)
+                    .subscribe(() => {
+                        //this.router.navigate(["/servicecategories");
+                        //$location.path("/servicecategories");
+                        //  document.location.reload() ;
+                        //this.router.navigate(['/servicecategories'], { relativeTo: this.activeRoute });
+                        this.router.navigate(["/admin/servicecategories"]);
+                    });
+            }
+            else {
+                this._serviceCategoryService.update(this.id, serviceCategory)
+                    .subscribe(() => {
+                        this.router.navigate(["/admin/servicecategories"]);
+                    });
+            }
+        });
 
         this.showSpinner = false;
-    } 
+    }
 
     getServiceCategory(id: any) {
         this._serviceCategoryService.get(id)
             .subscribe((sc: ServiceCategory) => {
-            this.serviceCategory = sc;
-            this.isNewForm = false;
-            this.loadServiceCategoryImages(this.serviceCategory);
-        });
+                this.serviceCategory = sc;
+                this.isNewForm = false;
+                this.loadServiceCategoryImages(this.serviceCategory);
+            });
     }
 
     loadServiceCategoryImages(serviceCategory: ServiceCategory) {

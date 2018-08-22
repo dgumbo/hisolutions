@@ -1,9 +1,9 @@
 import {ErrorHandler} from '@angular/core';
 import {HttpErrorResponse} from '@angular/common/http';
 import {throwError} from 'rxjs';
-import {BadInputError} from 'shared/components/error-pages/bad-input-error';
-import {NotFoundError} from 'shared/components/error-pages/not-found-error';
-import {AppError} from 'shared/components/error-pages/app-error';
+import {BadInputError} from 'shared/errors/bad-input-error';
+import {NotFoundError} from 'shared/errors/not-found-error';
+import {AppError} from 'shared/errors/app-error';
 
 /*
  * To change this license header, choose License Headers in Project Properties.

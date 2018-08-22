@@ -14,10 +14,10 @@ import {AudianceService} from 'admin/services/rest/audiance.service';
 import {PreRequisiteService} from 'admin/services/rest/pre-requisite.service';
 import {VendorService} from 'admin/services/rest/vendor.service';
 import {AuthModule} from '../auth/auth.module'; 
-import {HTTP_INTERCEPTORS} from '@angular/common/http';
-import {TokenStorage} from 'auth/storage/token.storage';
-import {JwtInterceptor} from 'auth/interceptors';
-import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import {HTTP_INTERCEPTORS} from '@angular/common/http'; 
+import {JwtInterceptor} from 'auth/interceptors'; 
+
+//import { CKEditorModule } from 'ng2-ckeditor';
 
 @NgModule({
     imports: [
@@ -29,10 +29,10 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
         SharedModule,
         
         AuthModule,
+//        CKEditorModule ,
     ],
     declarations: [
-        ...adminModuleRoutedComponents,
-        AdminHomeComponent
+        ...adminModuleRoutedComponents
     ],
     providers: [ 
     

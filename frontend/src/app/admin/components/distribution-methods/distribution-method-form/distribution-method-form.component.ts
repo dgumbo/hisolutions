@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {DistributionMethodService} from 'admin/services/rest/distribution-method.service';
-import {NotFoundError } from 'shared/components/error-pages/not-found-error';
-import {AppError } from 'shared/components/error-pages/app-error';
+import {NotFoundError } from 'shared/errors/not-found-error';
+import {AppError } from 'shared/errors/app-error';
 import {DistributionMethod} from 'shared/models/distribution-method';
 
 @Component({

@@ -16,7 +16,7 @@
             </tr> </thead>
         <tr *ngFor="let product of products" >           
             <td>
-                <a [routerLink]="['/products/', product.id, 'view']" class="btn btn-link btn-danger">
+                <a [routerLink]="['./', product.id, 'view']" class="btn btn-link btn-danger">
                     <i class="fa fa-eye" aria-hidden="true">{{product.id}}</i>                
                 </a> 
             </td>
@@ -26,7 +26,7 @@
             <td>{{product.productType.name}}</td>
             <td>{{product.vendor.name}}</td>
             <td> 
-                <a [routerLink]="['/admin/products/', product.id]"   class="btn btn-link btn-link-info">
+                <a [routerLink]="['./', product.id]"   class="btn btn-link btn-link-info">
                     <i class="fa fa-edit" aria-hidden="true"> Edit</i>                
                 </a>  
                 <button (click)="deleteProduct(product)" class="btn btn-link btn-link-danger">

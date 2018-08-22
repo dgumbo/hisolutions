@@ -5,8 +5,7 @@ import {AppComponent} from './app.component';
 import {SharedModule} from './shared/shared.module';
 import {BrowserModule} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
-import {RouterModule} from '@angular/router';
-import {TokenStorage} from 'auth/storage/token.storage'; 
+import {RouterModule} from '@angular/router'; 
 import {Globals} from 'app/globals';
 
 @NgModule({

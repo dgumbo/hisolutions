@@ -3,10 +3,9 @@ import {CommonModule} from '@angular/common';
 
 import {AuthRoutingModule, authModuleRoutedComponents} from './auth-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { JwtInterceptor} from './interceptors'; 
-import {TokenStorage} from 'auth/storage/token.storage';
-import {HTTP_INTERCEPTORS} from '@angular/common/http'; 
-import {JwtHelperService} from '@auth0/angular-jwt';
+import { JwtInterceptor, JwtErrorInterceptor} from './interceptors';  
+import {HTTP_INTERCEPTORS} from '@angular/common/http';  
+import {TokenStorageService} from 'auth/services';
 
 @NgModule({
     imports: [
@@ -21,10 +20,15 @@ import {JwtHelperService} from '@auth0/angular-jwt';
          
     ],
     providers: [ 
-         TokenStorage,
+         TokenStorageService,
         {
             provide: HTTP_INTERCEPTORS,
-            useClass: JwtInterceptor,
+            useClass: JwtInterceptor, 
+            multi: true
+        }, 
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: JwtErrorInterceptor,
             multi: true
         }
     ]

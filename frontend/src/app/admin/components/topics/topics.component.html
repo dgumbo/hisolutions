@@ -15,7 +15,7 @@
             </tr> </thead>
         <tr *ngFor="let topic of topics" >           
             <td>
-                <a [routerLink]="['/topics/', topic.id, 'view']" class="btn btn-link btn-danger">
+                <a [routerLink]="['./', topic.id, 'view']" class="btn btn-link btn-danger">
                     <i class="fa fa-eye" aria-hidden="true">{{topic.id}}</i>                
                 </a> 
             </td>
@@ -23,7 +23,7 @@
             <td>{{topic.modificationTime }}</td> 
             <td>{{topic.modifiedByUser}}</td> 
             <td> 
-                <a [routerLink]="['/admin/topics/', topic.id]"   class="btn btn-link btn-link-info">
+                <a [routerLink]="['./', topic.id]"   class="btn btn-link btn-link-info">
                     <i class="fa fa-edit" aria-hidden="true"> Edit</i>                
                 </a>  
                 <button (click)="deletetopic(topic)" class="btn btn-link btn-link-danger">

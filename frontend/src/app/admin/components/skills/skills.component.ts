@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SkillService} from 'admin/services/rest/skill.service';
-import {NotFoundError } from 'shared/components/error-pages/not-found-error';
-import {AppError } from 'shared/components/error-pages/app-error';
+import {NotFoundError } from 'shared/errors/not-found-error';
+import {AppError } from 'shared/errors/app-error';
 import {Skill} from 'shared/models/skill';
 
 @Component({

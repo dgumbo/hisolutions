@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core'; 
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {VendorService} from 'admin/services/rest/vendor.service';
-import {AppError } from 'shared/components/error-pages/app-error';
-import {NotFoundError } from 'shared/components/error-pages/not-found-error';
+import {AppError } from 'shared/errors/app-error';
+import {NotFoundError } from 'shared/errors/not-found-error';
 import {Vendor} from 'shared/models/vendor';
+import {PreviousRouteService} from 'shared/services';
 
 @Component({
   selector: 'app-vendor-form',
@@ -16,7 +17,9 @@ id: string;
 
     isNewForm: boolean = false;
 
-    constructor(private route: ActivatedRoute
+    constructor(private route: ActivatedRoute,
+    private router:  Router,
+    private previousRoute  : PreviousRouteService
         , private _vendorService: VendorService) {
 
 
@@ -49,7 +52,8 @@ id: string;
             this._vendorService.create(vendor)
                 .subscribe(prod => {
                     prod=prod;
-                    document.location.assign("/vendors"); 
+                    //document.location.assign("../"); 
+                    this.previousRoute.navigatePreviousUrl();
                 })
                 ;
         }
@@ -57,7 +61,8 @@ id: string;
             this._vendorService.update(this.id, vendor)
                 .subscribe(prod => {
                     prod=prod;
-                     document.location.assign("/vendors"); 
+                     //document.location.assign("../"); 
+                    this.previousRoute.navigatePreviousUrl();
                 });
         }
     }
@@ -72,5 +77,9 @@ id: string;
                     alert('vendor has already been deleted.');
                 else throw error;
             });
+    }
+    
+    navBack(){
+       // this.router.navigateByUrl(this.p);
     }
 }

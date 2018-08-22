@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AppError } from 'shared/components/error-pages/app-error';
-import {NotFoundError } from 'shared/components/error-pages/not-found-error'; 
+import {AppError } from 'shared/errors/app-error';
+import {NotFoundError } from 'shared/errors/not-found-error'; 
 import {VendorService} from 'admin/services/rest/vendor.service'; 
 import {Vendor} from 'shared/models/vendor';
 
@@ -23,7 +23,7 @@ export class VendorsComponent implements OnInit {
         this._vendorService.getAll().subscribe((prods:Vendor[]) => this.vendors = prods);
     }
 
-    deleteVendor(vendor) {
+    delete (vendor) {
 
         this._vendorService.delete(vendor)
             .subscribe( () => {

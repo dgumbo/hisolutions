@@ -15,7 +15,7 @@
             </tr> </thead>
         <tr *ngFor="let vendor of vendors" >           
             <td>
-                <a [routerLink]="['/vendors/', vendor.id, 'view']" class="btn btn-link btn-danger">
+                <a [routerLink]="['./', vendor.id, 'view']" class="btn btn-link btn-danger">
                     <i class="fa fa-eye" aria-hidden="true">{{vendor.id}}</i>                
                 </a> 
             </td>
@@ -23,10 +23,10 @@
             <td>{{vendor.modificationTime }}</td> 
             <td>{{vendor.modifiedByUser}}</td> 
             <td> 
-                <a [routerLink]="['/admin/vendors/', vendor.id]"   class="btn btn-link btn-link-info">
+                <a [routerLink]="['./', vendor.id]"   class="btn btn-link btn-link-info">
                     <i class="fa fa-edit" aria-hidden="true"> Edit</i>                
                 </a>  
-                <button (click)="deleteProductType(vendor)" class="btn btn-link btn-link-danger">
+                <button (click)="delete(vendor)" class="btn btn-link btn-link-danger">
                     <i class="fa fa-minus" aria-hidden="true"> Delete</i></button> 
             </td>
         </tr>

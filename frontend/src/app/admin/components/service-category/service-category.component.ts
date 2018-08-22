@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core'; 
 import {ServiceCategory} from 'shared/models/service-category';
 import {ServiceCategoryService} from 'admin/services/rest/service-category.service';
-import {AppError} from 'shared/components/error-pages/app-error';
-import {NotFoundError} from 'shared/components/error-pages/not-found-error'; 
+import {AppError} from 'shared/errors/app-error';
+import {NotFoundError} from 'shared/errors/not-found-error'; 
 
 @Component({
     selector: 'app-service-category',

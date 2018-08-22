@@ -25,6 +25,7 @@ export class ScriptService {
 
     loadScript(name: string) {
         return new Promise((resolve, reject) => {
+            console.log("Scripts Loading !!") ;
             //resolve if already loaded 
             if(1>2 ==false){
                 reject() ;

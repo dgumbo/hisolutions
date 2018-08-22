@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core'; 
 import {ActivatedRoute} from '@angular/router'; 
 import {Audiance} from 'shared/models/audiance';
-import {NotFoundError} from 'shared/components/error-pages/not-found-error';
-import {AppError} from 'shared/components/error-pages/app-error';
+//import {NotFoundError} from 'shared/errors/not-found-error';
+//import {AppError} from 'shared/errors/app-error';
 import {AudianceService} from 'admin/services/rest/audiance.service'; 
+import {AppError} from 'shared/errors/app-error';
+import {NotFoundError} from 'shared/errors/not-found-error';
 
 @Component({
     selector: 'app-audiance-form',

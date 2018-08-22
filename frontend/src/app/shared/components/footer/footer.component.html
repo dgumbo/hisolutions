@@ -23,9 +23,9 @@
                 <div class="sub-menu-col col col-xl-2 col-lg-2 col-md-2 col-sm-2">
                     <nav id="sub-menu">
                         <ul>
-                            <li><a *ngIf="production==false" routerLink="page-faq">FAQ's</a></li>
-                            <li><a *ngIf="production==false" routerLink="site-map">Sitemap</a></li>
-                            <li><a routerLink="contact-us">Contact</a></li>
+                            <li *ngIf="production==false"><a routerLink="/page-faq">FAQ's</a></li>
+                            <li *ngIf="production==false"><a routerLink="/site-map">Sitemap</a></li>
+                            <li><a routerLink="/contact-us">Contact</a></li>
                             <!--<li>globals.admin : {{ globals.admin }}</li>-->
                             <li>
                                 <a *ngIf="!globals.admin" [routerLink]="['/admin']">Admin</a>

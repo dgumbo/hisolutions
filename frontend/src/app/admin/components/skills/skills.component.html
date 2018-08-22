@@ -15,7 +15,7 @@
             </tr> </thead>
         <tr *ngFor="let skill of skills" >           
             <td>
-                <a [routerLink]="['/skills/', skill.id, 'view']" class="btn btn-link btn-danger">
+                <a [routerLink]="['./', skill.id, 'view']" class="btn btn-link btn-danger">
                     <i class="fa fa-eye" aria-hidden="true">{{skill.id}}</i>                
                 </a> 
             </td>
@@ -23,7 +23,7 @@
             <td>{{skill.modificationTime }}</td> 
             <td>{{skill.modifiedByUser}}</td> 
             <td> 
-                <a [routerLink]="['/admin/skills/', skill.id]"   class="btn btn-link btn-link-info">
+                <a [routerLink]="['./', skill.id]"   class="btn btn-link btn-link-info">
                     <i class="fa fa-edit" aria-hidden="true"> Edit</i>                
                 </a>  
                 <button (click)="deleteskill(skill)" class="btn btn-link btn-link-danger">

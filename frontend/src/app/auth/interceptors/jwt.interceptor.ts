@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import {TokenStorage} from 'auth/storage/token.storage';
+import { Observable } from 'rxjs'; 
+import {JwtHelperService} from '@auth0/angular-jwt';
+import {TokenStorageService} from 'auth/services';
 
 @Injectable() // ({ providedIn: 'root' })
 export class JwtInterceptor implements HttpInterceptor {
-    constructor(private storage : TokenStorage ){}
+    private jwtHelper: JwtHelperService = new JwtHelperService();
+    
+    constructor(private storage : TokenStorageService ){}
     
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> { 
       //  console.log("intercepting !!") ;
         // add authorization header with jwt token if available 
-        let token = this.storage.getToken();
-        
-//        console.log("currentUser.token:", currentUser.token) ;
-//        console.log("currentUser:", currentUser) ;
-        //console.log("token:", token) ;
+        let token = this.storage.getToken();  
         
         if (token) {
             request = request.clone({

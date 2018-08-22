@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 import {ProductsComponent} from './components/products/products.component';
 import {DistributionMethodFormComponent} from 'admin/components/distribution-methods/distribution-method-form/distribution-method-form.component';
 import {DistributionMethodsComponent} from 'admin/components/distribution-methods/distribution-methods.component';
@@ -19,7 +19,6 @@ import {PreRequisiteViewComponent} from 'admin/components/pre-requisites/pre-req
 import {SkillViewComponent} from 'admin/components/skills/skill-view/skill-view.component';
 import {AudianceViewComponent} from 'admin/components/audiances/audiance-view/audiance-view.component';
 import {VendorsComponent} from 'admin/components/vendors/vendors.component';
-import {VendorViewComponent} from 'admin/components/vendors/vendor-view/vendor-view.component';
 import {TopicViewComponent} from 'admin/components/topics/topic-view/topic-view.component';
 import {VendorFormComponent} from 'admin/components/vendors/vendor-form/vendor-form.component';
 import {ServiceCategoryFormComponent} from 'admin/components/service-category/service-category-form/service-category-form.component';
@@ -27,87 +26,107 @@ import {ServiceCategoryComponent} from 'admin/components/service-category/servic
 import {DistributionMethodViewComponent} from 'admin/components/distribution-methods/distribution-method-view/distribution-method-view.component';
 import {AuthGuard} from 'auth/guards';
 import {AdminHomeComponent} from 'admin/components/admin-home/admin-home.component';
+import {VendorViewComponent} from 'admin/components/vendors/vendor-view/vendor-view.component'; 
+import {ServiceCategoryViewComponent} from 'admin/components/service-category/service-category-view/service-category-view.component';
+import {ProductViewComponent} from 'admin/components/products/product-view/product-view.component';
 
-const adminModuleRoutes: Routes = [ 
-    { 
-        path: '', 
+const adminModuleRoutes: Routes = [
+    {
+        path: '',
         component: AdminHomeComponent,
-        canActivate: [AuthGuard] 
+        canActivate: [AuthGuard]
     },
-    
+
     /* Service Categories */
     {path: 'servicecategories', component: ServiceCategoryComponent},
     {path: 'servicecategories/new', component: ServiceCategoryFormComponent},
-    {path: 'servicecategories/:id', component: ServiceCategoryFormComponent}, 
- 
+    {path: 'servicecategories/:id', component: ServiceCategoryFormComponent},
+    {path: 'servicecategories/:id/view', component: ServiceCategoryViewComponent},
+
     /* Product */
     {path: 'products', component: ProductsComponent},
     {path: 'products/new', component: ProductFormComponent},
     {path: 'products/:id', component: ProductFormComponent},
+    {path: 'products/:id/view', component: ProductViewComponent},
 
     /* Product Type */
     {path: 'producttypes', component: ProductTypesComponent},
     {path: 'producttypes/new', component: ProductTypeFormComponent},
     {path: 'producttypes/:id', component: ProductTypeFormComponent},
+    {path: 'producttypes/:id/view', component: ProductTypeViewComponent},
 
     /* Pre Requisites */
     {path: 'prerequisites', component: PreRequisitesComponent},
     {path: 'prerequisites/new', component: PreRequisiteFormComponent},
     {path: 'prerequisites/:id', component: PreRequisiteFormComponent},
+    {path: 'prerequisites/:id/view', component: PreRequisiteViewComponent},
 
     /* Skills */
     {path: 'skills', component: SkillsComponent},
     {path: 'skills/new', component: SkillFormComponent},
     {path: 'skills/:id', component: SkillFormComponent},
+    {path: 'skills/:id/view', component: SkillViewComponent},
 
     /* Audiances */
     {path: 'audiances', component: AudiancesComponent},
     {path: 'audiances/new', component: AudianceFormComponent},
     {path: 'audiances/:id', component: AudianceFormComponent},
+    {path: 'audiances/:id/view', component: AudianceViewComponent},
 
     /* Topics */
     {path: 'topics', component: TopicsComponent},
     {path: 'topics/new', component: TopicFormComponent},
     {path: 'topics/:id', component: TopicFormComponent},
+    {path: 'topics/:id/view', component: TopicViewComponent},
 
     /* Distribution Methods */
     {path: 'distributionmethods', component: DistributionMethodsComponent},
     {path: 'distributionmethods/new', component: DistributionMethodFormComponent},
     {path: 'distributionmethods/:id', component: DistributionMethodFormComponent},
- 
+    {path: 'distributionmethods/:id/view', component: DistributionMethodViewComponent},
+
+    /* Distribution Methods */
+    {path: 'vendors', component: VendorsComponent},
+    {path: 'vendors/new', component: VendorFormComponent},
+    {path: 'vendors/:id', component: VendorFormComponent},
+    {path: 'vendors/:id/view', component: VendorViewComponent},
+
 ];
 
 
 @NgModule({
-  imports: [RouterModule.forChild(adminModuleRoutes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(adminModuleRoutes)],
+    exports: [RouterModule]
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {}
 
-export const adminModuleRoutedComponents = [    
-   ProductsComponent,
-   ProductFormComponent,
-   ProductTypesComponent,
-   ProductTypeFormComponent,
-   ProductTypeViewComponent,
-   PreRequisitesComponent,
-   PreRequisiteFormComponent,
-   PreRequisiteViewComponent,
-   SkillsComponent,
-   SkillFormComponent,
-   SkillViewComponent,
-   AudiancesComponent,
-   AudianceViewComponent,
-   AudianceFormComponent,
-   VendorsComponent,
-   VendorViewComponent,
-   VendorFormComponent,
-   TopicsComponent,
-   TopicFormComponent,
-   TopicViewComponent,
-   DistributionMethodsComponent,
-   DistributionMethodFormComponent,
-   DistributionMethodViewComponent,
-   ServiceCategoryComponent,
-   ServiceCategoryFormComponent
+export const adminModuleRoutedComponents = [
+    ProductsComponent,
+    ProductFormComponent,
+    ProductTypesComponent,
+    ProductTypeFormComponent,
+    ProductTypeViewComponent,
+    PreRequisitesComponent,
+    PreRequisiteFormComponent,
+    PreRequisiteViewComponent,
+    SkillsComponent,
+    SkillFormComponent,
+    SkillViewComponent,
+    AudiancesComponent,
+    AudianceViewComponent,
+    AudianceFormComponent,
+    VendorsComponent,
+    VendorViewComponent,
+    VendorFormComponent,
+    TopicsComponent,
+    TopicFormComponent,
+    TopicViewComponent,
+    DistributionMethodsComponent,
+    DistributionMethodFormComponent,
+    DistributionMethodViewComponent,
+    ServiceCategoryComponent,
+    ServiceCategoryFormComponent,
+    AdminHomeComponent,
+    ServiceCategoryViewComponent,
+    ProductViewComponent, 
 ]

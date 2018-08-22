@@ -4,7 +4,8 @@
 }  
 
 export const ScriptStore: Scripts[] = [
-    {name: 'ckeditor-basic', src: '../../../assets/ckeditor-basic/ckeditor.js'},
+    {name: 'ckeditor-basic', src: '../../node_modules/ckeditor/ckeditor.js'},
+    {name: 'ckeditor-basic2', src: '../../../assets/ckeditor-basic/ckeditor.js'},
     {name: 'ckeditor-full', src: '../../../assets/ckeditor-full/ckeditor.js'},
     {name: 'jquery', src: '../../../assets/jquery/jquery.js'},
     {name: 'cdn-ckeditor-basic', src: 'https://cdn.ckeditor.com/4.8.0/basic/ckeditor.js'},

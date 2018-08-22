@@ -15,7 +15,7 @@
             </tr> </thead>
         <tr *ngFor="let distributionMethod of distributionMethods" >           
             <td>
-                <a [routerLink]="['/distributionmethods/', distributionMethod.id, 'view']" class="btn btn-link btn-danger">
+                <a [routerLink]="['./', distributionMethod.id, 'view']" class="btn btn-link btn-danger">
                     <i class="fa fa-eye" aria-hidden="true">{{distributionMethod.id}}</i>                
                 </a> 
             </td>
@@ -23,7 +23,7 @@
             <td>{{distributionMethod.modificationTime }}</td> 
             <td>{{distributionMethod.modifiedByUser}}</td> 
             <td> 
-                <a [routerLink]="['/admin/distributionmethods/', distributionMethod.id]"   class="btn btn-link btn-link-info">
+                <a [routerLink]="['./', distributionMethod.id]"   class="btn btn-link btn-link-info">
                     <i class="fa fa-edit" aria-hidden="true"> Edit</i>                
                 </a>  
                 <button (click)="deleteDistributionMethod(distributionMethod)" class="btn btn-link btn-link-danger">

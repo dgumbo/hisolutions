@@ -15,7 +15,7 @@
             </tr> </thead>
         <tr *ngFor="let preRequisite of preRequisites" >           
             <td>
-                <a [routerLink]="['/prerequisites/', preRequisite.id, 'view']" class="btn btn-link btn-danger">
+                <a [routerLink]="['./', preRequisite.id, 'view']" class="btn btn-link btn-danger">
                     <i class="fa fa-eye" aria-hidden="true">{{preRequisite.id}}</i>                
                 </a> 
             </td>
@@ -23,7 +23,7 @@
             <td>{{preRequisite.modificationTime }}</td> 
             <td>{{preRequisite.modifiedByUser}}</td> 
             <td> 
-                <a [routerLink]="['/admin/prerequisites/', preRequisite.id]"   class="btn btn-link btn-link-info">
+                <a [routerLink]="['./', preRequisite.id]"   class="btn btn-link btn-link-info">
                     <i class="fa fa-edit" aria-hidden="true"> Edit</i>                
                 </a>  
                 <button (click)="deletePreRequisite(preRequisite)" class="btn btn-link btn-link-danger">

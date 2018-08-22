@@ -14,9 +14,12 @@ import {ProductTypeService} from 'admin/services/rest/product-type.service';
 import {VendorService} from 'admin/services/rest/vendor.service';
 import {PreRequisiteService} from 'admin/services/rest/pre-requisite.service';
 import {SkillService} from 'admin/services/rest/skill.service';
-import {NotFoundError} from 'shared/components/error-pages/not-found-error';
-import {AppError} from 'shared/components/error-pages/app-error';
+import {NotFoundError} from 'shared/errors/not-found-error';
+import {AppError} from 'shared/errors/app-error';
 import {Globals} from 'app/globals';
+ 
+//import 'shared/services/ckeditor.loader';
+//import 'ckeditor';
  
 
 @Component({
@@ -37,13 +40,10 @@ export class ProductFormComponent implements OnInit {
     preRequisites: PreRequisite[];
     skills :  Skill[];
 
-    isNewForm: boolean = false;
-     
-    ckeditorContent: string = '';
+    isNewForm: boolean = false; 
 
     constructor(private route: ActivatedRoute
-        , private router: Router
-        , private scriptService: ScriptService
+        , private router: Router 
         , public globals: Globals
         , private _serviceCategoryService: ServiceCategoryService
         , private _productService: ProductService
@@ -54,16 +54,7 @@ export class ProductFormComponent implements OnInit {
 
         this.getDropDownListItems();
         this.id = this.route.snapshot.paramMap.get('id');
-        this.product = {
-            name: "",
-            description: "",
-            price: 0,
-            productType: {name: ""},
-            vendor: { name: ""},
-            preRequisites: [],
-            skillsToGain: [],
-            serviceCategory : {name:"" }
-        };
+        this.product   = { name: "" };
 
         if (this.id) {
             this.getProduct(this.id);
@@ -73,14 +64,7 @@ export class ProductFormComponent implements OnInit {
         }
     }
 
-    ngOnInit() {
-        if (!this.globals.isCkEditorJsLoaded){
-            this.scriptService.load('ckeditor-basic')
-                .then(data => { 
-                //console.log('script loaded : ', data[0].loaded); 
-                this.globals.isCkEditorJsLoaded = data[0].loaded;
-            }).catch(error => console.log(error) );
-        }
+    ngOnInit() {               
     }
 
     getDropDownListItems() {
@@ -149,8 +133,7 @@ export class ProductFormComponent implements OnInit {
         }
     }
 
-    deleteProduct(product) {
-
+    deleteProduct(product) { 
         this._productService.delete(product)
             .subscribe(() => {
                 //                const index = this.products.indexOf(product);

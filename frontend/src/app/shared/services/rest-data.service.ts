@@ -1,10 +1,7 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http'; 
-import {environment} from 'environments/environment'; 
-import {Injectable} from '@angular/core';
-   
-@Injectable () //({providedIn: 'root'})
-export class RestDataService {
-
+import {environment} from 'environments/environment';   
+    
+export abstract class RestDataService {
     private headers: HttpHeaders;
     private url: string
 

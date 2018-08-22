@@ -3,12 +3,12 @@ import {CommonModule} from '@angular/common';
 import {FooterComponent} from './components/footer/footer.component';
 import {NavComponent} from './components/nav/nav.component';
 import {RouterModule} from '@angular/router';
-import {NoAccessComponent} from './components/error-pages/no-access/no-access.component';
-import {RequestNotFoundComponent} from './components/error-pages/request-not-found/request-not-found.component';
 import {HttpClientModule} from '@angular/common/http';
-import {ErrorHandler} from '@angular/core';
-import {AppErrorHandler} from './components/error-pages/app-error-handler';  
-import {ViewsDataService} from 'shared/services/views-data.service';
+import {ErrorHandler} from '@angular/core'; 
+import {RestDataService, ViewsDataService, PreviousRouteService} from 'shared/services';
+import {RequestNotFoundComponent} from 'shared/errors/request-not-found/request-not-found.component';
+import {NoAccessComponent} from 'shared/errors/no-access/no-access.component';
+import {AppErrorHandler} from 'shared/errors/app-error-handler';
 
 @NgModule({
     imports: [
@@ -27,8 +27,9 @@ import {ViewsDataService} from 'shared/services/views-data.service';
         FooterComponent,
         CommonModule,
     ],
-    providers: [
+    providers: [ 
         ViewsDataService ,
+        PreviousRouteService,
         {provide: ErrorHandler, useClass: AppErrorHandler},
     ]
 })

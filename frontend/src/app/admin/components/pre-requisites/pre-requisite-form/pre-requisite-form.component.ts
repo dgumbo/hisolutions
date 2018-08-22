@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AppError } from 'shared/components/error-pages/app-error';
-import {NotFoundError } from 'shared/components/error-pages/not-found-error';
+import {AppError } from 'shared/errors/app-error';
+import {NotFoundError } from 'shared/errors/not-found-error';
 import {ActivatedRoute} from '@angular/router';
 import {PreRequisiteService} from 'admin/services/rest/pre-requisite.service';
 import {PreRequisite} from 'shared/models/pre-requisite';

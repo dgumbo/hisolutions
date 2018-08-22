@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core'; 
 import {Product} from 'shared/models/product'; 
-import {AppError} from 'shared/components/error-pages/app-error';
-import {NotFoundError} from 'shared/components/error-pages/not-found-error';
+import {AppError} from 'shared/errors/app-error';
+import {NotFoundError} from 'shared/errors/not-found-error';
 import {ProductService} from 'admin/services/rest/product.service';
 
 @Component({
