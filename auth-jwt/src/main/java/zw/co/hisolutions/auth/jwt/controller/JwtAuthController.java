@@ -1,5 +1,6 @@
 package zw.co.hisolutions.auth.jwt.controller;
  
+import io.jsonwebtoken.JwtException;
 import java.io.IOException;
 import java.security.SignatureException;
 import java.util.List;
@@ -22,8 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import org.springframework.web.bind.annotation.RestController;
-import zw.co.hisolutions.auth.entity.User;  
-import zw.co.hisolutions.auth.jwt.exceptions.JwtAuthenticationException;
+import zw.co.hisolutions.auth.entity.User;   
 import zw.co.hisolutions.auth.jwt.entity.JwtAuthenticationToken; 
 import zw.co.hisolutions.auth.jwt.util.JwtTokenUtil;
 import zw.co.hisolutions.auth.service.UsersService;
@@ -129,8 +129,8 @@ public class JwtAuthController {
 //        }
 //    }
 
-    @ExceptionHandler({JwtAuthenticationException.class})
-    public ResponseEntity<String> handleAuthenticationException(JwtAuthenticationException e) {
+    @ExceptionHandler({JwtException.class})
+    public ResponseEntity<String> handleAuthenticationException(JwtException e) {
         System.out.println("zw.co.hisolutions.auth.controllers.JwtAuthController.handleAuthenticationException()");
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
     }
@@ -155,12 +155,12 @@ public class JwtAuthController {
         try {
             Objects.requireNonNull(username);
         } catch (Exception e) {
-            throw new JwtAuthenticationException("Username cannot be null!", e);
+            throw new JwtException("Username cannot be null!", e);
         }
         try {
             Objects.requireNonNull(password);
         } catch (Exception e) {
-            throw new JwtAuthenticationException("Password cannot be null!", e);
+            throw new JwtException("Password cannot be null!", e);
         }
 
         try {
@@ -168,9 +168,9 @@ public class JwtAuthController {
             authenticationManager.authenticate(auth);
             SecurityContextHolder.getContext().setAuthentication(auth);
         } catch (DisabledException e) {
-            throw new JwtAuthenticationException("User is disabled!", e);
+            throw new JwtException("User is disabled!", e);
         } catch (BadCredentialsException e) {
-            throw new JwtAuthenticationException("Bad credentials!", e);
+            throw new JwtException("Bad credentials!", e);
         }
     }
 }

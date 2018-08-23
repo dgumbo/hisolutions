@@ -128,7 +128,7 @@ public class FileSystemStorageServiceImpl implements StorageService {
                 String mimeType = tika.detect(file.getBytes());
 
                 documentMetadata.setActiveStatus(true);
-                documentMetadata.setFilename(filename);
+                documentMetadata.setFilename("/storage/view/" + filename);
                 documentMetadata.setFilePath(this.rootLocation.resolve(filename).toString());
                 documentMetadata.setStatus(Status.Success);
                 documentMetadata.setMimeType(mimeType);

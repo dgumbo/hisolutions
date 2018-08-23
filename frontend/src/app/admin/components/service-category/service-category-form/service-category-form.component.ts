@@ -1,23 +1,24 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
- 
-import { FileUploadService } from 'shared/services/file-upload.service'; 
-import { ServiceCategory } from 'shared/models/service-category';
-import { ServiceCategoryService } from 'admin/services/rest/service-category.service';
-import { Globals } from 'app/globals';
- 
-//import 'shared/services/ckeditor.loader';
-//import 'ckeditor';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
-import {combineLatest} from 'rxjs'; 
+import {FileUploadService} from 'shared/services/file-upload.service';
+import {ServiceCategory} from 'shared/models/service-category';
+import {ServiceCategoryService} from 'admin/services/rest/service-category.service';
+import {Globals} from 'app/globals';
+
+import 'shared/services/ckeditor.loader';
+import 'ckeditor';
+
+import {combineLatest} from 'rxjs';
+import {PreviousRouteService} from 'shared/services';
 
 @Component({
     selector: 'app-service-category-form',
     templateUrl: './service-category-form.component.html',
-    styleUrls: ['./service-category-form.component.scss'] 
+    styleUrls: ['./service-category-form.component.scss']
 })
 export class ServiceCategoryFormComponent implements OnInit, OnDestroy {
-    id: String; 
+    id: String;
 
     ngOnDestroy(): void {
     }
@@ -76,15 +77,12 @@ export class ServiceCategoryFormComponent implements OnInit, OnDestroy {
     constructor(private _serviceCategoryService: ServiceCategoryService,
         //private scriptService: ScriptService,
         private activeRoute: ActivatedRoute,
-        private router: Router,
+        private previousRoute: PreviousRouteService,
         private _fileUploaderService: FileUploadService,
-        public globals: Globals) {
+        public globals: Globals
+    ) {
         this.id = this.activeRoute.snapshot.paramMap.get('id');
-        this.serviceCategory = {
-            name: "",
-            imageMetadata: {filename: ""},
-            thumbnailMetadata: {filename: ""}
-        };
+        this.serviceCategory = {name: ""};
 
         if (this.id) {
             this.getServiceCategory(this.id);
@@ -123,17 +121,13 @@ export class ServiceCategoryFormComponent implements OnInit, OnDestroy {
             if (this.isNewForm) {
                 this._serviceCategoryService.create(serviceCategory)
                     .subscribe(() => {
-                        //this.router.navigate(["/servicecategories");
-                        //$location.path("/servicecategories");
-                        //  document.location.reload() ;
-                        //this.router.navigate(['/servicecategories'], { relativeTo: this.activeRoute });
-                        this.router.navigate(["/admin/servicecategories"]);
+                        this.previousRoute.navigatePreviousUrl();
                     });
             }
             else {
                 this._serviceCategoryService.update(this.id, serviceCategory)
                     .subscribe(() => {
-                        this.router.navigate(["/admin/servicecategories"]);
+                        this.previousRoute.navigatePreviousUrl();
                     });
             }
         });

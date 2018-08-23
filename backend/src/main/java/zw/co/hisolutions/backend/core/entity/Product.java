@@ -29,21 +29,17 @@ public class Product extends BaseEntity implements EntityWithName, Serializable{
     
     //@Enumerated(EnumType.STRING)
     
-    @Column(unique = true)
-    @NotNull 
+    @Column(unique = true) 
     private String name;
     
-    @NotNull
-    @Column    
+    @NotNull    
     private String description;
-    
-    @Column
+     
     private double price;  
-    
-    @Column
+     
     private String  faIcon;
         
-    @Column(name="display_content",length = 5000)
+    @Column( length = 5000)
     @NotNull
     private String displayContent;   /*  display content . may contain html code  */
      
@@ -51,6 +47,8 @@ public class Product extends BaseEntity implements EntityWithName, Serializable{
     @ManyToOne(targetEntity = DocumentMetadata.class)
     @JoinColumn(name = "image_metadata_id", referencedColumnName = "id" )  
     private DocumentMetadata imageMetadata;
+     
+    private String imageUrl;
         
     @NotNull
     @ManyToOne(targetEntity = ServiceCategory.class)

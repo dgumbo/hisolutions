@@ -17,7 +17,7 @@ import {AuthModule} from '../auth/auth.module';
 import {HTTP_INTERCEPTORS} from '@angular/common/http'; 
 import {JwtInterceptor} from 'auth/interceptors'; 
 
-//import { CKEditorModule } from 'ng2-ckeditor';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 @NgModule({
     imports: [
@@ -29,7 +29,7 @@ import {JwtInterceptor} from 'auth/interceptors';
         SharedModule,
         
         AuthModule,
-//        CKEditorModule ,
+        CKEditorModule ,
     ],
     declarations: [
         ...adminModuleRoutedComponents

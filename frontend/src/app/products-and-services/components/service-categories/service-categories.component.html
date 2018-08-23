@@ -6,35 +6,35 @@
         <div class="hero-title ml-auto mr-auto">   
             <h1 class="hero-h1">{{serviceCategory.name}}</h1>
             <p  class="hero-p" [innerHTML]="serviceCategory.description"></p>
-            <a href="#products-section" class="btn-get-started"  >View More !</a>  
+            <a href="#products-section" class="btn-get-started" 
+               *ngIf="serviceCategoryProducts && serviceCategoryProducts.length >= 1" >View More !</a>  
         </div>
-         
+
         <div class="hero-facts d-none d-sm-block"   >     
             <div id="serviceCategoryCarousel" class="hero-services-carousel-slide carousel slide"  align="center" 
                  data-ride="carousel" 
                  > 
-                
+
                 <div class="hero-services-carousel-inner carousel-inner" > 
-                    
+
                     <div class="carousel-item active"  >
                         <div class="hero-services-carousel-caption carousel-caption d-none d-sm-block" >
                             <p class="hero-p"><i class="fa fa-dot-circle-o"></i>  We have expirience</p> 
                         </div>
                     </div> 
-                    
+
                     <div class="carousel-item "  >
                         <div class="hero-services-carousel-caption carousel-caption d-none d-sm-block" >
                             <p class="hero-p"><i class="fa fa-dot-circle-o"></i>  We have expirience</p> 
                         </div>
                     </div> 
-                    
+
                     <div class="carousel-item "  >
                         <div class="hero-services-carousel-caption carousel-caption d-none d-sm-block" >
                             <p class="hero-p"><i class="fa fa-dot-circle-o"></i>  We are proffesionals</p> 
                         </div>
                     </div> 
-                </div> 
- 
+                </div>  
             </div>
         </div>
     </div> 
@@ -50,70 +50,38 @@
         <div class="section-header">
             <h3 class="section-title">We are the best {{ serviceCategory.name }} service provider.</h3>
             <p class="section-description">With over 3 years of expirience, we will give you expert tailured solutions on these and related products.</p>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s"
-                 *ngFor="let pr of serviceCategoryProducts">
-                 <div class="box">
-                    <div class="icon"><a [routerLink]="'/products/'+pr.name"><i class="fa fa-desktop"></i></a></div>
-                    <h4 class="title"><a [routerLink]="'/products/'+pr.name" >{{pr.name}}</a></h4> 
-                    <p class="description" [innerHtml]="pr.shortDescription"></p>
-                </div>
-            </div> 
-        </div>
+        </div>  
+    </div> 
 
+
+    <div class="container product-section-products">
+        <div class="row product wow fadeInUp" data-wow-delay="0.2s"
+             *ngFor="let pr of serviceCategoryProducts">
+
+             <div class="img-col col col-md-5" *ngIf="pr.imageUrl && pr.imageUrl!=''" > 
+                <div class="card" >
+                    <img class="card-img-top" [src]="pr.imageUrl" alt="{{pr.name}}" > 
+                </div>
+            </div>
+            <div class="text-col col col-md-7">
+                <h3 routerLink="/services/product/{{pr.name}}">{{pr.name}}</h3>
+                <p>{{pr.description}}</p>
+                <a class="btn-more-info" routerLink="/services/product/{{pr.name}}" title="Browse {{pr.name}} for more infomation.">More Info</a>
+            </div>
+        </div>  
     </div>
+
 </section><!-- #products -->
 
- 
-<section id="why-choose-us-section">
-    <div class="container wow fadeIn">
-        <div class="row">
-            <div class="col-lg-9 text-center text-lg-left">
-                <h3 class="cta-title">Why Choose Us ?</h3>
-                <p class="cta-text"> If you are intrested in our service, you can contact us or you can get a free Quote.</p>
-            </div> 
-        </div> 
-        <ul>
-            <li>We have exorience</li>
-            <li>we have speed</li>
-            <li>we are good</li>
-        </ul>
-    </div>
-</section>
-<!-- #why-choose-us-section -->
- 
 
-<section id="service-category-portfolio-section">
-    <div class="container wow fadeIn">
-        <div class="row">
-            <div class="col-lg-9 text-center text-lg-left">
-                <h3 class="cta-title">We have delivered this service To ?</h3>
-                <p class="cta-text"> Here are some of our customers and previous work If you are intrested in our service, you can contact us or you can get a free Quote.</p>
-            </div> 
-        </div> 
-        <ul>
-            <li>PSMI</li>
-            <li>Delta</li>
-            <li>MSU</li>
-        </ul>
-    </div>
-</section>
-<!-- #folio port -->
 
 
 <!--==========================
 Call To Action Section
 ============================-->
 <section id="call-to-action-section">
-    <div class="container wow fadeIn">
-        <div class="row">
-            <div class="col-lg-9 text-center text-lg-left">
-                <h3 class="cta-title">Intrested ?</h3>
-                <p class="cta-text"> If you are intrested in our service, you can contact us or you can get a free Quote.</p>
-            </div> 
-        </div> 
+    <div class="hero-title ml-auto mr-auto wow fadeIn">
+        <h1 class="hero-h1">Intrested ?</h1>
+        <p  class="hero-p"> If you are intrested in our services, you can contact us and we will give you a free Quote.</p>          
     </div>
-</section><!-- #call-to-action-section -->
- 
-
+</section><!-- #call-to-action-section --> 

@@ -100,8 +100,8 @@
                         </goals>
                         <configuration>
                             <!--See https://nodejs.org/en/download/ for latest node and npm (lts) versions-->                              
-                            <nodeVersion>v10.8.0</nodeVersion>
-                            <npmVersion>6.3.0</npmVersion> 
+                            <nodeVersion>v10.9.0</nodeVersion>
+                            <npmVersion>6.4.0</npmVersion> 
                         </configuration>
                     </execution>
 

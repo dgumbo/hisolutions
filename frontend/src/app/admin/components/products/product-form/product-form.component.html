@@ -16,7 +16,12 @@
         <div  class="row form-group"> 
             <label class="col col-md-3" style="text-align: right;" for="serviceCategory.id" >Service Category : </label>
             <div class="col col-md-9">
-                <select class="selectpicker form-control"  type="text" id="serviceCategory.id" #serviceCategoryId="ngModel" name="serviceCategory.id" [(ngModel)]="product.serviceCategory.id" data-live-search="true"> 
+                <select class="selectpicker form-control" type="text" id="serviceCategory.id" 
+                        name="serviceCategory.id" 
+                        data-live-search="true"
+                        #serviceCategoryId="ngModel" 
+                        [(ngModel)]="product.serviceCategory.id" 
+                        > 
                     <option *ngFor="let sc of serviceCategories" [value]="sc.id" > {{sc.name}} </option>
                 </select>
             </div>
@@ -48,7 +53,10 @@
         <div  class="row form-group"> 
             <label class="col col-md-3" style="text-align: right;" for="productType.id" >Product Type : </label>
             <div class="col col-md-9">
-                <select class="selectpicker form-control"  type="text" id="productType.id" #productTypeId="ngModel" name="productType.id" [(ngModel)]="product.productType.id" data-live-search="true"> 
+                <select class="selectpicker form-control"  type="text" id="productType.id" name="productType.id" 
+                        data-live-search="true"
+                        #productTypeId="ngModel" 
+                        [(ngModel)]="product.productType.id" > 
                     <option *ngFor="let pt of productTypes" [value]="pt.id"> {{pt.name}} </option>
                 </select>
             </div>
@@ -56,13 +64,15 @@
         <div  class="row form-group"> 
             <label class="col col-md-3" style="text-align: right;" for="vendor.id" >Product Vendor : </label>
             <div class="col col-md-9">
-                <select class="selectpicker form-control"  type="text" id="vendor.id" name="vendor.id" [(ngModel)]="product.vendor.id" data-live-search="true"> 
+                <select class="selectpicker form-control"  type="text" id="vendor.id" name="vendor.id" 
+                        data-live-search="true"
+                        [(ngModel)]="product.vendor.id" 
+                        > 
                     <option *ngFor="let pv of productVendors" [value]="pv.id" selected="pv.id = product.vendor.id" >{{pv.name}}</option>
                 </select>
             </div>
         </div> 
         <div  class="row form-group" *ngIf="preRequisites"> 
-
             <label class="col col-md-3" style="text-align: right;" for="product.preRequisites" >Product Pre Requisites : </label>
             <div class="col col-md-9 form-check">   
                 <div class="form-check"  *ngFor="let preRequisite of preRequisites">
@@ -87,14 +97,24 @@
         <div  class="form-group row">  
             <label class="col col-md-3" style="text-align: right;" for="displayContent" >Display Content : </label> 
             <div class="col col-md-9">  
-<!--                <ckeditor name="displayContent" 
+                <ckeditor name="displayContent" 
                           [(ngModel)]="product.displayContent" 
                           [config]="{ extraPlugins: 'divarea', height: '320' }" >
-                </ckeditor>-->
+                </ckeditor>
             </div>
         </div>  
+        
+        <!-- Product Images-->
+        <div class="form-group row"> 
+            <label class="col col-md-3" style="text-align: right;" for="thumbnailImage"  >Image : </label> 
 
-        <!--[(ngModel)]="product.preRequisites"--> 
+            <div class="col col-md-9 "> 
+                    <img *ngIf="product.imageUrl&&product.imageUrl!=''" [src]="product.imageUrl" class="img-thumbnail rounded" style="width: 600px;">
+                    <input id="thumbnailImage" name="thumbnailImage" type="file"  #thumbnailImageInput (change)="readThumbnailUrl($event)"   accept="image/*" />                                    
+            </div>
+        </div> 
+
+        
         <div  class="row form-group">  
             <div class="col col-sm-5" align="right">
                 <button type="submit" class="btn btn-primary"  >
@@ -110,3 +130,7 @@
         </div> 
     </form>  
 </section>
+ 
+<img *ngIf="isSavingInProgress" src="/assets/images/please-wait.gif" />
+<img *ngIf="isUploadingInProgress" src="/assets/images/uploading.gif" />
+    

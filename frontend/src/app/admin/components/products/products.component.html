@@ -5,32 +5,34 @@
         
     <table class="table table-stripped">
         <thead>
-            <tr>
-                <th>&nbsp;</th>
+            <tr> 
                 <th>Name</th>
-                <th>Description</th>
+                <th class="tbl-th-description">Description</th>
+                <th>Thumb</th>
                 <th>Price</th>
                 <th>Type</th>
                 <th>Vendor</th>
                 <th>&nbsp;</th> 
             </tr> </thead>
-        <tr *ngFor="let product of products" >           
-            <td>
-                <a [routerLink]="['./', product.id, 'view']" class="btn btn-link btn-danger">
-                    <i class="fa fa-eye" aria-hidden="true">{{product.id}}</i>                
-                </a> 
-            </td>
+        <tr *ngFor="let product of products" >         
             <td>{{product.name}}</td>
             <td>{{product.description}}</td>
+            <td><div class="card" style="width:120px;">
+                    <img class="card-img-top" [src]="product.imageUrl" alt="{{product.name}} thumbnail" title="{{product.name}}" > 
+                </div></td>
             <td>{{product.price | currency:'USD':'symbol' }}</td> 
             <td>{{product.productType.name}}</td>
             <td>{{product.vendor.name}}</td>
-            <td> 
-                <a [routerLink]="['./', product.id]"   class="btn btn-link btn-link-info">
-                    <i class="fa fa-edit" aria-hidden="true"> Edit</i>                
-                </a>  
-                <button (click)="deleteProduct(product)" class="btn btn-link btn-link-danger">
-                    <i class="fa fa-minus" aria-hidden="true"> Delete</i></button> 
+            <td>    
+                <button [routerLink]="['./', product.id, 'view']" class="btn btn-link" title="Preview : {{product.name}}">
+                    <i class="fa fa-eye" aria-hidden="true"></i>                
+                </button>  
+                <button [routerLink]="['./', product.id]" class="btn btn-link" title="Edit : {{product.name}}">
+                    <i class="fa fa-edit" aria-hidden="true"></i>                
+                </button>  
+                <button (click)="deleteProduct(product)" class="btn btn-link" title="Delete : {{product.name}}">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </button> 
             </td>
         </tr>
     </table>

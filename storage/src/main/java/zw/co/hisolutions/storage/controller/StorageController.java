@@ -32,7 +32,7 @@ import zw.co.hisolutions.storage.service.StorageService;
  * @author dgumbo
  */
 @Controller
-@RequestMapping("storage")
+@RequestMapping("/storage")
 public class StorageController {
     @Value("${spring.profiles.active}")
     private String springProfilesActive ;
@@ -52,7 +52,7 @@ public class StorageController {
         return "<p>Storage Service Storage Location : " + storageService.getStorageLocation() + "</p>";
     }
     
-    @GetMapping("testUpload")
+    @GetMapping("/testUpload")
     @ResponseBody
     public DocumentMetadata TestUpload(){
         //new UploadObject().upload();

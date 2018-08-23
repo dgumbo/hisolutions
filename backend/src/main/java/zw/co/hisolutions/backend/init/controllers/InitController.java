@@ -12,6 +12,7 @@ import zw.co.hisolutions.backend.init.InitializeStartData;
  * @author dgumbo
  */
 @Controller 
+@RequestMapping("/init")
 public class InitController { 
 
     private final InitializeStartData initializeStartData;
@@ -21,7 +22,7 @@ public class InitController {
         this.initializeStartData = initializeStartData;
     }
     
-    @GetMapping("/init/services")
+    @GetMapping("/services")
     @ResponseBody
     public String initData(){
         initializeStartData.init();

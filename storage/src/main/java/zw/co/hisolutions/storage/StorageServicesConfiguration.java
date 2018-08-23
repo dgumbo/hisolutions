@@ -24,7 +24,10 @@ public class StorageServicesConfiguration {
     }
 
     @Bean
-    CommandLineRunner initStorage(StorageService storageService) {//, InitializeStartData initializeStartData ) {
+    CommandLineRunner initLocalStorage(StorageService storageService) {
+        //, InitializeStartData initializeStartData ) {
+        System.out.println("\n\nzw.co.hisolutions.storage.StorageServicesConfiguration.initLocalStorage()");
+        System.out.println("Initializing Local Storage !!!!! \n\n");
         return (args) -> {
             //storageService.deleteAll();
            storageService.init();

@@ -1,12 +1,12 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Product} from 'shared/models/product';
-import {ServiceCategory} from 'shared/models/service-category';
-import {ViewsDataService} from 'shared/services/views-data.service';
+import {ServiceCategory} from 'shared/models/service-category'; 
 import {Globals} from 'app/globals';
-import {ActivatedRoute, ParamMap} from '@angular/router';
+import {ActivatedRoute, ParamMap} from '@angular/router'; 
+import {ViewsDataService} from 'shared/services';
+import {environment} from 'environments/environment';
 
-declare var $: any
-declare var WOW: any
+declare var $: any 
 
 @Component({
     selector: 'app-service-categories',
@@ -24,7 +24,7 @@ export class ServiceCategoriesComponent implements OnInit, OnDestroy {
         public globals: Globals) {
 
         this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
-            $('.btn-get-started').addClass('d-none');
+           // $('.btn-get-started').addClass('d-none');
             this.serviceCategoryName = params.get('name');
 
             if (this.serviceCategoryName) {
@@ -103,10 +103,13 @@ export class ServiceCategoriesComponent implements OnInit, OnDestroy {
         this.viewsDataService.getViewByProperty("Product", "ServiceCategoryId", serviceCategoryID)
             .subscribe((result: Product[]) => {
                 this.serviceCategoryProducts = result;
-                if (this.serviceCategoryProducts && this.serviceCategoryProducts.length >= 1)
-                    $('.btn-get-started').removeClass('d-none');
-                //console.log("this.serviceCategoryProducts.length : ", this.serviceCategoryProducts.length);
-                // this.loadServiceCategoryImages(this.serviceCategory);
+                
+                /* For Dev Environment */
+                if (environment.production == false) {
+                    for (let product of this.serviceCategoryProducts) {
+                        product.imageUrl = environment.apiUrl + product.imageUrl;
+                    }
+                }
             });
     }
 }

@@ -5,7 +5,7 @@ import {NavComponent} from './components/nav/nav.component';
 import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {ErrorHandler} from '@angular/core'; 
-import {RestDataService, ViewsDataService, PreviousRouteService} from 'shared/services';
+import { ViewsDataService, PreviousRouteService} from 'shared/services';
 import {RequestNotFoundComponent} from 'shared/errors/request-not-found/request-not-found.component';
 import {NoAccessComponent} from 'shared/errors/no-access/no-access.component';
 import {AppErrorHandler} from 'shared/errors/app-error-handler';
@@ -27,9 +27,9 @@ import {AppErrorHandler} from 'shared/errors/app-error-handler';
         FooterComponent,
         CommonModule,
     ],
-    providers: [ 
-        ViewsDataService ,
+    providers: [  
         PreviousRouteService,
+        ViewsDataService, 
         {provide: ErrorHandler, useClass: AppErrorHandler},
     ]
 })

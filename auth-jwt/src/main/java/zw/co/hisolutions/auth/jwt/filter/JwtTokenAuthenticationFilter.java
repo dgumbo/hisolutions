@@ -1,5 +1,9 @@
 package zw.co.hisolutions.auth.jwt.filter;
- 
+
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.SignatureException;
 import org.springframework.security.authentication.AccountExpiredException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -23,36 +27,32 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
- 
-import static org.springframework.http.HttpHeaders.AUTHORIZATION; 
+
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 import org.springframework.stereotype.Component;
 import zw.co.hisolutions.auth.config.MATCHERS;
-import static zw.co.hisolutions.auth.entity.CONSTANTS.* ;
+import static zw.co.hisolutions.auth.entity.CONSTANTS.*;
 import zw.co.hisolutions.auth.entity.User;
 import zw.co.hisolutions.auth.jwt.entity.JwtAuthenticationToken;
-import zw.co.hisolutions.auth.jwt.util.JwtTokenUtil;
-import zw.co.hisolutions.auth.jwt.exceptions.JwtBadSignatureException;
-import zw.co.hisolutions.auth.jwt.exceptions.JwtExpirationException;
-import zw.co.hisolutions.auth.jwt.exceptions.MalformedJwtException; 
- 
+import zw.co.hisolutions.auth.jwt.util.JwtTokenUtil; 
+
 @Component
 public class JwtTokenAuthenticationFilter extends GenericFilterBean {
 
     private final JwtTokenUtil jwtUtils;
-      
-    private final List<RequestMatcher> requestMatchers; 
+    private final List<RequestMatcher> requestMatchers;
 
     @Autowired
-    public JwtTokenAuthenticationFilter(JwtTokenUtil jwtUtils ) {
+    public JwtTokenAuthenticationFilter(JwtTokenUtil jwtUtils) {
         this.jwtUtils = jwtUtils;
-        
-         List<RequestMatcher>  requestMatcherList = new ArrayList() ;
-         for(String matcher : MATCHERS.REST_PROTECTED){
+
+        List<RequestMatcher> requestMatcherList = new ArrayList();
+        for (String matcher : MATCHERS.REST_PROTECTED) {
             AntPathRequestMatcher requestMatcher = new AntPathRequestMatcher(matcher);
-             requestMatcherList.add(requestMatcher);
-         }
-         requestMatchers = requestMatcherList ;
-    } 
+            requestMatcherList.add(requestMatcher);
+        }
+        requestMatchers = requestMatcherList;
+    }
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
@@ -60,7 +60,7 @@ public class JwtTokenAuthenticationFilter extends GenericFilterBean {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
 
-        if(!requiresAuthentication(request)) {
+        if (!requiresAuthentication(request)) {
             /*
             if the URL requested doesn't match the URL handled by the filter, then we chain to the next filters.
              */
@@ -73,7 +73,7 @@ public class JwtTokenAuthenticationFilter extends GenericFilterBean {
             /*
             If there's not authentication information, then we chain to the next filters.
              The SecurityContext will be analyzed by the chained filter that will throw AuthenticationExceptions if necessary
-            */
+             */
             chain.doFilter(request, response);
             return;
         }
@@ -84,51 +84,55 @@ public class JwtTokenAuthenticationFilter extends GenericFilterBean {
             An Authentication is then created and registered in the SecurityContext.
             The SecurityContext will be analyzed by chained filters that will throw Exceptions if necessary
             (like if authorizations are incorrect).
-            */
+             */
             JwtAuthenticationToken jwtToken = extractAndDecodeJwt(request);
 //            System.out.println("\njwtToken : " + jwtToken.getToken() + "\n"); 
+
             checkAuthenticationAndValidity(jwtToken);
+
             Authentication auth = buildAuthenticationFromJwt(jwtToken, request);
             SecurityContextHolder.getContext().setAuthentication(auth);
 
             chain.doFilter(request, response);
 
-        } catch (JwtExpirationException ex) {
-            throw new AccountExpiredException("Token is not valid anymore");
-        } catch(JwtBadSignatureException | ParseException  ex) {
-            throw new MalformedJwtException("Token is malformed");
+        } catch ( JwtException ex) { 
+            System.out.println("\nJwtException : " + ex.getMessage() + "\n");
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);       
+            //response.sendError(HttpServletResponse.SC_UNAUTHORIZED, ex.getMessage());
+            chain.doFilter(request, response);
+            //throw new AccountExpiredException("Token is not valid anymore");
+        } catch ( ParseException ex) {
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            throw new JwtException("Token is malformed");
         }
 
         /* SecurityContext is then cleared since we are stateless.*/
         SecurityContextHolder.clearContext();
     }
 
-    private boolean requiresAuthentication(HttpServletRequest request) { 
+    private boolean requiresAuthentication(HttpServletRequest request) {
         return requestMatchers.stream().anyMatch(
-                (requestMatcher) -> (requestMatcher.matches(request))) ;
+                (requestMatcher) -> (requestMatcher.matches(request)));
     }
-
 
     private JwtAuthenticationToken extractAndDecodeJwt(HttpServletRequest request) throws ParseException {
-        String authHeader = request.getHeader(AUTHORIZATION); 
-        String token = authHeader.replace(TOKEN_PREFIX,""); 
-         
+        String authHeader = request.getHeader(AUTHORIZATION);
+        String token = authHeader.replace(TOKEN_PREFIX, "");
+
         JwtAuthenticationToken jwtToken = new JwtAuthenticationToken(token);
-        return jwtToken ;
+        return jwtToken;
     }
 
-    private void checkAuthenticationAndValidity(JwtAuthenticationToken jwt) throws ParseException {
+    private boolean checkAuthenticationAndValidity(JwtAuthenticationToken jwt) throws ExpiredJwtException {
 //        System.out.println("zw.co.hisolutions.auth.jwt.filter.JwtTokenAuthenticationFilter.checkAuthenticationAndValidity()");
-//        System.out.println("jwt.getToken() : " + jwt.getToken() + "\n");
-        
-        jwtUtils .assertNotExpired(jwt);
-        //jwtUtils.assertValidSignature(jwt, secretKey);
+//        System.out.println("jwt.getToken() : " + jwt.getToken() + "\n"); 
+        return jwtUtils.assertNotExpired(jwt);
     }
 
     private Authentication buildAuthenticationFromJwt(JwtAuthenticationToken jwt, HttpServletRequest request) throws ParseException {
-        String username = jwtUtils .getUsernameFromToken(jwt.getToken());
+        String username = jwtUtils.getUsernameFromToken(jwt.getToken());
         Collection<? extends GrantedAuthority> authorities = jwtUtils.getUserRoles(jwt.getToken());
-        Date creationDate = jwtUtils.getIssuedAtDateFromToken( jwt.getToken());
+        Date creationDate = jwtUtils.getIssuedAtDateFromToken(jwt.getToken());
         User userDetails = new User(username, creationDate, authorities);
 
         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, authorities);

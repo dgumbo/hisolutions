@@ -10,8 +10,7 @@ export class FileUploadService {
 
     constructor(private httpClient: HttpClient, private globals:Globals) {}
 
-    uploadFileToStorage(file: File): Observable<any> {
-        
+    uploadFileToStorage(file: File): Observable<any> {        
         let formdata: FormData = new FormData();
         formdata.append('file', file); 
 

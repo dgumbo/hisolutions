@@ -28,6 +28,9 @@ body{
     font-size: 20px;  
 } 
 
+/*section:nth-child(odd);*/
+/*section:nth-child(even);*/
+
 /* Back to top button */
 .back-to-top {
     position: fixed; 
@@ -694,3 +697,4 @@ header {
     transform: translateX(-45%);
     //transform: translateY(-45%);
 }
+

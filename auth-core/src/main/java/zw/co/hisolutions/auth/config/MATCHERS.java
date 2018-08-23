@@ -13,8 +13,8 @@ public class MATCHERS {
     public static final String[] PUBLIC_UNPROTECTED = { 
         "/init/**",
         "/users/**",
-        "/views/rest/**",
         "/storage/**",
+        "/views/rest/**",
         "/login",
         "/logout", 
         "/**.css",
@@ -35,11 +35,13 @@ public class MATCHERS {
     };
 
     public static final String[] REST_PROTECTED = {
-        "/rest/**"
+        "/rest/**",
+        "/storage/upload"
     };
 
     public static final String[] OTHER_PROTECTED = { 
-        "/admin/**"
+        "/admin/**",
+        "/storage/upload"
     };
     
     public static Map<HttpMethod, String>[] roleMenu;

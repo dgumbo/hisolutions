@@ -21,6 +21,13 @@ export class PreviousRouteService {
     }
 
     public navigatePreviousUrl() {
-        this.router.navigateByUrl(this.previousUrl);
+        if (this.previousUrl && this.previousUrl != this.currentUrl) {
+            console.log("Navigating Previous Url : ", this.previousUrl) ;
+            this.router.navigate([this.previousUrl]);
+        }
+        else {
+            console.log("Navigating Home - No Previous Url") ;
+            this.router.navigate(["../"]);
+        }
     }
 }

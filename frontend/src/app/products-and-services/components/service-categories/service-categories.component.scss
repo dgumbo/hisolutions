@@ -2,9 +2,83 @@
 
 section:first-child{
     min-height: 100vh ; 
-         
+
     background-color: $svg-background-color;
     background-image: url("/assets/images/jigsaw-2.svg");    
     background-attachment: fixed;
     background-size: contain;
+}
+
+.product-section-products{
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+
+    border: 1px solid $primary-color-dark; 
+    
+    background-image: 
+        linear-gradient(to bottom
+        , rgba(red($primary-color), green($primary-color), blue($primary-color), 0.10)
+        , rgba(red($primary-color), green($primary-color), blue($primary-color), 0.08)
+        , rgba(red($primary-color), green($primary-color), blue($primary-color), 0.05)
+        , rgba(red($primary-color), green($primary-color), blue($primary-color), 0.02)
+        , rgba(red($primary-color), green($primary-color), blue($primary-color), 0.01) 
+        , rgba(red($primary-color), green($primary-color), blue($primary-color), 0)
+        , rgba(red($primary-color), green($primary-color), blue($primary-color), 0.2)
+        );
+}
+
+.product-section-products .product{
+    margin-top: 30px;
+    padding-top: 30px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    min-height: 300px;
+    border-bottom: 0.5px solid $primary-color-dark; 
+    
+} 
+
+.product-section-products .product:first-child{
+    margin-top: 30px;
+    padding-top: 0px;
+}
+
+.product-section-products .product:last-child{
+    margin-bottom: 30px;
+    padding-bottom: 0px;
+    border-bottom-style: none; 
+}
+
+.product-section-products .product:nth-child(even) .img-col {
+    order:2 ;
+}
+
+.product-section-products .product:nth-child(even) .text-col {
+    order:1 ;
+} 
+
+.product-section-products .product .text-col h3{
+    cursor: pointer ;
+}
+
+
+.btn-more-info:hover, 
+.btn-more-info:active{
+    background-color: $primary-color-light; 
+    border-color: $primary-color-dark; 
+    color: #fff;
+} 
+
+
+.btn-more-info { 
+    border: 2px solid $primary-color;
+    color: $primary-color;
+    background : transparent ; 
+    font-weight: 400;
+    font-size: 90%;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 6px 24px;
+    border-radius: 50px;
+    transition: 0.4s;  
+    text-decoration: none;
 }
