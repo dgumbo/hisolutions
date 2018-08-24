@@ -32,15 +32,15 @@
         font-size: 180%;   
         word-spacing: 4px; 
     }
- 
-/*    .hero-services-carousel-slide{  
-        width: 96vw;
-    }*/
+
+    /*    .hero-services-carousel-slide{  
+            width: 96vw;
+        }*/
 
     .hero-services-carousel-inner{ 
         width:85%;
     }
-    
+
     .carousel-control-prev, .carousel-control-next { 
         width: 9%; 
     }
@@ -49,7 +49,7 @@
     section{ 
         padding: 50px 0 ;
     }
-    
+
     #call-to-action-section .section-title { 
         font-weight: 420;
     }
@@ -89,7 +89,7 @@
     body{ font-size: 18px ; }
 
     section{  padding: 40px 0 ;   }
-    
+
     #call-to-action-section .section-title { 
         font-weight: 400;
     }
@@ -137,18 +137,22 @@
         min-height: 120px;
     }
 
-/*    .hero-services-carousel-slide{  
-        width: 96vw;
-    }*/
+    /*    .hero-services-carousel-slide{  
+            width: 96vw;
+        }*/
 
     .hero-services-carousel-inner{ 
         width:90%;
     }
-    
+
     .carousel-control-prev, .carousel-control-next { 
         width: 6%; 
     }
     /* End Header Components*/
+
+    .navbar-toggler  { 
+        margin-right: 8% ; 
+    }
 }
 
 /* big phones to small tablets : 481 to 767px */
@@ -168,7 +172,7 @@
         margin-left: auto;
         margin-right: auto; 
     }
-    
+
     #call-to-action-section .section-title { 
         font-weight: 390; 
         font-size: 175%;
@@ -183,7 +187,7 @@
         line-height: 115%;
         width: 460px; 
     }   
-    
+
     /* Header Components*/ 
     .hero-h1 { 
         margin-bottom: 12px; 
@@ -202,28 +206,79 @@
     }
 
     .hero-title{ 
-        padding-top : 15px;
+        padding-top : 12px;
     }
 
     .hero-p {  
         font-size: 100%;
         min-height: 100px;
     }
- 
+
     .hero-services-carousel-inner{ 
         width:94%;
     }
-    
+
     .carousel-control-prev, .carousel-control-next { 
         width: 5.5%; 
     }
     /* End Header Components*/
+
+    .navbar-toggler  { 
+        margin-right: 7% ; 
+    }
+
+    #services-hero-section  .hero-title   { 
+        padding-top: 0 ;
+        margin-bottom: 0;
+    }
+
+    #services-hero-section  .hero-title .hero-p  { 
+        margin-bottom: 0;
+    }
+
+    #ServiceCatchCarousel{
+        margin-top: 0;
+    }
+
+    #ServiceCatchCarousel .carousel-caption {
+        padding-top: 0 ;
+    } 
+
+    #ServiceCatchCarousel {
+        margin-top: 2%;  
+    }
+
+    #ServiceCatchCarousel .services-catchy-phrases{
+        margin-left : 8%;
+    } 
+
+    .product-section-products .product .img-col {
+        order:2 ;
+    }
+
+    .product-section-products .product .text-col {
+        order:1 ;
+        margin-bottom: 20px;
+    } 
+
+    .product-section-products .product{ 
+        padding-top: 0px;   
+    } 
+
+    .product-section-products .product:first-child{
+        //margin-top: 0px;
+    }
+
+    .product-section-products .product:last-child{
+        margin-top: 0px; 
+        margin-bottom: 20px; 
+    }
 }
 
 /* small phones : 0 to 480px */
 @media only screen and (max-width: 479px){ 
     section {  padding: 10px 0;   } 
-    
+
     #call-to-action-section .section-title { 
         font-size: 160%;
     }
@@ -252,11 +307,11 @@
     #facts-section .counters p { 
         margin-bottom: 5px;
     }
-    
+
     /* Header Components*/
     .hero-h1 { 
         margin-bottom: 19.5px; 
-        font-size: 235%;   
+        //font-size: 235%;   
         word-spacing: 4.5px; 
     }
 
@@ -277,18 +332,39 @@
     .hero-services-carousel-inner{ 
         width:97%;
     }
-    
+
     .carousel-control-prev, .carousel-control-next { 
         width: 5%; 
     }
     /* End Header Components*/
+
+    .navbar-toggler  { 
+        margin-right: 6% ; 
+    }
 }
 
 
 @media only screen and (max-width: 575px){ 
+
+    section .section-title { 
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
     #footer {  
-            margin-top: 0px; 
-            position: absolute; 
-            font-size: 500%;
+        margin-top: 0px; 
+        position: absolute; 
+        font-size: 500%;
+    }
+
+    .navbar-toggler  { 
+        margin-right: 5% ; 
+    }
+
+    #services-hero-section  .hero-title .hero-p  { 
+        margin-top: 5%;
+        margin-bottom: 10%;
+        margin-left: 2%;
+        margin-right: 8%;
     }
 }

@@ -1,5 +1,6 @@
 import {BasicInterface} from "./interfaces"; 
 import {DocumentMetadata} from "./document-metadata"; 
+import {CatchPhrase} from "shared/models/catch-phrase";
 
 /* 
  * To change this license header, choose License Headers in Project Properties.
@@ -15,5 +16,6 @@ export interface ServiceCategory extends BasicInterface {
     imageMetadata?: DocumentMetadata;
     thumbnailMetadata?: DocumentMetadata; 
     faIcon?: string; 
+    catchPhrases?:CatchPhrase[];
 }
 

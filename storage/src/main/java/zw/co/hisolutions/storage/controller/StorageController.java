@@ -50,19 +50,7 @@ public class StorageController {
     public String StorageIndexHandler() {
         System.out.println("zw.co.hisolutions.storage.controllers.StorageController.StorageIndexHandler()");
         return "<p>Storage Service Storage Location : " + storageService.getStorageLocation() + "</p>";
-    }
-    
-    @GetMapping("/testUpload")
-    @ResponseBody
-    public DocumentMetadata TestUpload(){
-        //new UploadObject().upload();
-        
-        System.out.println("\n\n\n\n\n\nspringProfilesActive : " + springProfilesActive + "\n\n\n\n\n\n\n\n\n\n");
-        
-        File file = new File("/home/dgumbo/Desktop/world-cup-bracket-2018.jpg") ;
-        DocumentMetadata dm = storageService.store(file);        
-        return dm;
-    }
+    } 
 
     @PostMapping(value="/upload")//, produces = {MediaType.APPLICATION_JSON_UTF8_VALUE, "application/hal+json"})
     public ResponseEntity<DocumentMetadata> handleFileUpload(@RequestParam("file") MultipartFile file) {

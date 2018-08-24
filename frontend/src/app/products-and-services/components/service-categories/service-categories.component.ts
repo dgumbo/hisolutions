@@ -16,7 +16,7 @@ declare var $: any
 export class ServiceCategoriesComponent implements OnInit, OnDestroy {
 
     serviceCategoryName: string;
-    serviceCategory: ServiceCategory = {name: ""};
+    serviceCategory: ServiceCategory = { name: ""  };
     serviceCategoryProducts: Product[] = [];
 
     constructor(private viewsDataService: ViewsDataService,
@@ -24,7 +24,6 @@ export class ServiceCategoriesComponent implements OnInit, OnDestroy {
         public globals: Globals) {
 
         this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
-           // $('.btn-get-started').addClass('d-none');
             this.serviceCategoryName = params.get('name');
 
             if (this.serviceCategoryName) {
@@ -34,17 +33,13 @@ export class ServiceCategoriesComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        // $('.nav-container').addClass('nav-container-fixed');
         $('.nav-container').addClass('nav-container-bg');
         $('.nav-container').removeClass('nav-container-scrolled');
     }
 
     ngOnInit() {
-        //  $('.nav-container').addClass('nav-container-fixed');
         $('.nav-container').removeClass('nav-container-bg');
-        $('.nav-container').removeClass('nav-container-scrolled');
-
-        $('.btn-get-started').addClass('d-none');
+        $('.nav-container').removeClass('nav-container-scrolled'); 
 
         // jQuery counterUp
         $('[data-toggle="counter-up"]').counterUp({
@@ -54,7 +49,7 @@ export class ServiceCategoriesComponent implements OnInit, OnDestroy {
 
         // Smoth scroll on page hash links
         $('a[href*="#"]:not([href="#"],[href*="#/"],[href*="Carousel"])').on('click', function () {
-            //console.log("this.hash : ", this.hash);
+//            console.log("this.hash : ", this.hash);
             if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
                 var target = $(this.hash); 
 
@@ -103,6 +98,11 @@ export class ServiceCategoriesComponent implements OnInit, OnDestroy {
         this.viewsDataService.getViewByProperty("Product", "ServiceCategoryId", serviceCategoryID)
             .subscribe((result: Product[]) => {
                 this.serviceCategoryProducts = result;
+                
+                //<!-- Used D-None So That Components HASH Ref can be initialized onNgInit 
+                if (this.serviceCategoryProducts && this.serviceCategoryProducts.length >= 1){
+                    $('section#services-hero-section .hero-title .btn-get-started.d-none').removeClass("d-none");
+                }
                 
                 /* For Dev Environment */
                 if (environment.production == false) {

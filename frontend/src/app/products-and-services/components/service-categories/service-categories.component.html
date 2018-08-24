@@ -6,38 +6,26 @@
         <div class="hero-title ml-auto mr-auto">   
             <h1 class="hero-h1">{{serviceCategory.name}}</h1>
             <p  class="hero-p" [innerHTML]="serviceCategory.description"></p>
-            <a href="#products-section" class="btn-get-started" 
-               *ngIf="serviceCategoryProducts && serviceCategoryProducts.length >= 1" >View More !</a>  
+            <!--            Used D-None So That Components HASH Ref can be initialized onNgInit-->
+            <a href="#products-section" class="btn-get-started d-none" >View More !</a>  
         </div>
 
-        <div class="hero-facts d-none d-sm-block"   >     
-            <div id="serviceCategoryCarousel" class="hero-services-carousel-slide carousel slide"  align="center" 
-                 data-ride="carousel" 
-                 > 
-
-                <div class="hero-services-carousel-inner carousel-inner" > 
-
-                    <div class="carousel-item active"  >
-                        <div class="hero-services-carousel-caption carousel-caption d-none d-sm-block" >
-                            <p class="hero-p"><i class="fa fa-dot-circle-o"></i>  We have expirience</p> 
-                        </div>
-                    </div> 
-
-                    <div class="carousel-item "  >
-                        <div class="hero-services-carousel-caption carousel-caption d-none d-sm-block" >
-                            <p class="hero-p"><i class="fa fa-dot-circle-o"></i>  We have expirience</p> 
-                        </div>
-                    </div> 
-
-                    <div class="carousel-item "  >
-                        <div class="hero-services-carousel-caption carousel-caption d-none d-sm-block" >
-                            <p class="hero-p"><i class="fa fa-dot-circle-o"></i>  We are proffesionals</p> 
-                        </div>
-                    </div> 
-                </div>  
-            </div>
+        <div id="ServiceCatchCarousel" data-ride="carousel" 
+             class="hero-services-carousel-slide carousel slide d-none d-sm-block" 
+             *ngIf="serviceCategory.catchPhrases && serviceCategory.catchPhrases.length >= 1" 
+            >  
+            <div class="carousel-inner" >  
+                <div  *ngFor="let catchPhrase of serviceCategory.catchPhrases; let i = index" 
+                       
+                        class="carousel-item {{ i==0 ? 'active' : '' }}" >
+                     <div class="services-catchy-carousel-caption carousel-caption d-none d-sm-block" >
+                        <p class="services-catchy-phrases"><i class="fa fa-dot-circle-o"></i> {{ catchPhrase ? catchPhrase.phrase : "" }} </p> 
+                    </div>
+                </div>   
+            </div>  
         </div>
-    </div> 
+    </div>
+
 </section>
 <!-- #hero --> 
 
@@ -45,25 +33,23 @@
 <!--==========================
   Products Section
 ============================-->
-<section id="products-section"  *ngIf="serviceCategoryProducts && serviceCategoryProducts.length >= 1"  >
+<section id="products-section" *ngIf="serviceCategoryProducts && serviceCategoryProducts.length >= 1">
     <div class="container wow fadeIn">
         <div class="section-header">
             <h3 class="section-title">We are the best {{ serviceCategory.name }} service provider.</h3>
             <p class="section-description">With over 3 years of expirience, we will give you expert tailured solutions on these and related products.</p>
         </div>  
-    </div> 
-
+    </div>  
 
     <div class="container product-section-products">
         <div class="row product wow fadeInUp" data-wow-delay="0.2s"
-             *ngFor="let pr of serviceCategoryProducts">
-
-             <div class="img-col col col-md-5" *ngIf="pr.imageUrl && pr.imageUrl!=''" > 
-                <div class="card" >
+             *ngFor="let pr of serviceCategoryProducts"> 
+             <div class="img-col   col-sm-12 col-md-5" *ngIf="pr.imageUrl && pr.imageUrl!=''" > 
+             <div class="card" >
                     <img class="card-img-top" [src]="pr.imageUrl" alt="{{pr.name}}" > 
                 </div>
             </div>
-            <div class="text-col col col-md-7">
+            <div class="text-col   col-sm-12 col-md-7">
                 <h3 routerLink="/services/product/{{pr.name}}">{{pr.name}}</h3>
                 <p>{{pr.description}}</p>
                 <a class="btn-more-info" routerLink="/services/product/{{pr.name}}" title="Browse {{pr.name}} for more infomation.">More Info</a>
@@ -85,3 +71,6 @@ Call To Action Section
         <p  class="hero-p"> If you are intrested in our services, you can contact us and we will give you a free Quote.</p>          
     </div>
 </section><!-- #call-to-action-section --> 
+
+
+{{ serviceCategory.catchPhrases | json }}

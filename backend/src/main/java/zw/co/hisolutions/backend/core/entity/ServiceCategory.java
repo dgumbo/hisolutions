@@ -1,10 +1,14 @@
  package zw.co.hisolutions.backend.core.entity;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderColumn;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -36,6 +40,10 @@ public class ServiceCategory extends BaseEntity implements EntityWithName, Seria
     
     @Column
     private String faIcon;
+    
+    @OneToMany(targetEntity=CatchPhrase.class, cascade=CascadeType.ALL )
+    @OrderColumn
+    private List<CatchPhrase> catchPhrases ;
     
     @Column(name="display_content",length = 5000)
     @NotNull

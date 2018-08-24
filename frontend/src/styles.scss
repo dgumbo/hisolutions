@@ -693,8 +693,50 @@ header {
 
 #services-hero-section .hero-container {
     left: 45%;
-    top: 25%;
+    top: 20%;
     transform: translateX(-45%);
     //transform: translateY(-45%);
+} 
+
+#services-hero-section  .hero-title .hero-p  { 
+    margin-bottom: 5%;
+}
+ 
+#ServiceCatchCarousel {
+    margin-top: 10%; 
+    font-size: 150% ;
+}
+ 
+#ServiceCatchCarousel .services-catchy-phrases{
+    margin-left : 15%;
 }
 
+
+
+.product-section-products .product{
+    margin-top: 30px;
+    padding-top: 30px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    min-height: 300px;
+    border-bottom: 0.5px solid $primary-color-dark;  
+} 
+
+.product-section-products .product:first-child{
+    margin-top: 30px;
+    padding-top: 0px;
+}
+
+.product-section-products .product:last-child{
+    margin-bottom: 30px;
+    padding-bottom: 0px;
+    border-bottom-style: none; 
+}
+
+.product-section-products .product:nth-child(even) .img-col {
+    order:2 ;
+}
+
+.product-section-products .product:nth-child(even) .text-col {
+    order:1 ;
+} 

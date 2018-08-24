@@ -3,10 +3,10 @@
 section:first-child{
     min-height: 100vh ; 
 
-    background-color: $svg-background-color;
-    background-image: url("/assets/images/jigsaw-2.svg");    
-    background-attachment: fixed;
-    background-size: contain;
+    background-color: $svg-background-color ;
+    background-image: url("/assets/images/jigsaw.svg") ;    
+    background-attachment: fixed ;
+    background-size: auto ;
 }
 
 .product-section-products{
@@ -27,40 +27,10 @@ section:first-child{
         );
 }
 
-.product-section-products .product{
-    margin-top: 30px;
-    padding-top: 30px;
-    margin-bottom: 30px;
-    padding-bottom: 30px;
-    min-height: 300px;
-    border-bottom: 0.5px solid $primary-color-dark; 
-    
-} 
-
-.product-section-products .product:first-child{
-    margin-top: 30px;
-    padding-top: 0px;
-}
-
-.product-section-products .product:last-child{
-    margin-bottom: 30px;
-    padding-bottom: 0px;
-    border-bottom-style: none; 
-}
-
-.product-section-products .product:nth-child(even) .img-col {
-    order:2 ;
-}
-
-.product-section-products .product:nth-child(even) .text-col {
-    order:1 ;
-} 
-
 .product-section-products .product .text-col h3{
     cursor: pointer ;
 }
-
-
+ 
 .btn-more-info:hover, 
 .btn-more-info:active{
     background-color: $primary-color-light; 
@@ -81,4 +51,13 @@ section:first-child{
     border-radius: 50px;
     transition: 0.4s;  
     text-decoration: none;
+}
+
+.services-catchy-carousel-caption{
+    position:static;
+    text-align: left;
+}
+
+ .hero-title   {
+    font-weight: 400;
 }

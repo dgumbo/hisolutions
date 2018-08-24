@@ -144,13 +144,18 @@
     height: 50px;
 }
 
-@media (max-width: 768px) {
+.my-nav{z-index: 200; background-color: transparent;}
+
+@media (max-width: 767px) {
     #header #logo h1 {
         font-size: 26px;
     }
     #header #logo img {
         max-height: 40px;
     }
+    
+    .navbar-brand  {
+        width: 120px; 
+    }
 }
 
-.my-nav{z-index: 200; background-color: transparent;}
