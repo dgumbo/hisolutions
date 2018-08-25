@@ -1,1 +1,54 @@
-/*@import '~quill/dist/quill.snow.css' ;*/
+@import "src/styles-theme.scss" ; 
+
+.ui-tag-name span,
+.ui-tag-name .ui-tag-name-add{
+    background-image: 
+        linear-gradient(to bottom
+        , rgba(red($primary-color-light), green($primary-color-light), blue($primary-color-light), 0.6)
+        , rgba(red($primary-color-light), green($primary-color-light), blue($primary-color-light), 0.48)
+        , rgba(red($primary-color-light), green($primary-color-light), blue($primary-color-light), 0.25)
+        , rgba(red($primary-color-light), green($primary-color-light), blue($primary-color-light), 0.12)
+        , rgba(red($primary-color-light), green($primary-color-light), blue($primary-color-light), 0.3) 
+        , rgba(red($primary-color-light), green($primary-color-light), blue($primary-color-light), 0)
+        , rgba(red($primary-color-light), green($primary-color-light), blue($primary-color-light), 0.8)
+        );
+    
+    color: $primary-color-dark; 
+    margin: 0px;
+    padding: 2px 8px;
+    //padding-right: 10px;
+    border-radius: 5px;
+    font-size: 80%;
+}
+
+
+.ui-tag-name i,
+.ui-tag-name-add i,
+.ui-tag-name-edit,
+.ui-tag-name-remove{ 
+    background: transparent;
+    border: none;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 8px; 
+    //padding-right: 8px; 
+    cursor: pointer ;
+}
+
+.ui-tag-name .ui-tag-name-add{ 
+    background-color: $primary-color-light ;
+    border: 3px solid $primary-color-dark;
+    color: #fff;
+    font-weight: 800 ;
+    cursor: pointer ;
+}
+
+.ui-tag-name .ui-tag-name-add:hover{ 
+    background-color: #fff ;
+    border-color: $primary-color-dark;
+    color: $primary-color-light;
+    font-weight: 800 ;
+    cursor: pointer ;
+}
+
+ 

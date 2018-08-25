@@ -19,6 +19,10 @@ $fa-font-path: "~font-awesome/fonts" ;
     box-sizing: border-box;
 }
 
+html{
+   // max-width: 98vw;    
+}
+
 body{
     //background-color: #fff;
     background: #f7f7f7; 
@@ -691,6 +695,12 @@ header {
     color: $primary-color-dark;
 }
 
+#services-hero-section{
+    min-height: 100vh; 
+    height: 620px; 
+    max-width: 98vw;
+}
+
 #services-hero-section .hero-container {
     left: 45%;
     top: 20%;
@@ -699,18 +709,17 @@ header {
 } 
 
 #services-hero-section  .hero-title .hero-p  { 
-    margin-bottom: 5%;
+    margin-bottom: 2%;
 }
  
 #ServiceCatchCarousel {
-    margin-top: 10%; 
+    margin-top: 5%; 
     font-size: 150% ;
 }
  
 #ServiceCatchCarousel .services-catchy-phrases{
     margin-left : 15%;
 }
-
 
 
 .product-section-products .product{

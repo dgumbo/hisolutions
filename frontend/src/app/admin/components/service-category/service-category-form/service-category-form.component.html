@@ -61,23 +61,67 @@
                 <ckeditor name="displayContent" 
                           [(ngModel)]="serviceCategory.displayContent" 
                           [config]="{ extraPlugins: 'divarea', height: '320' }" >
-                </ckeditor>
-            </div>
-        </div> 
+            </ckeditor>
+        </div>
+    </div> 
 
-        <div class="form-group row">
-            <div class="col col-md-6" align="right" >
-                <button type="submit" class="btn btn-primary"  >
-                    <i *ngIf="isNewForm" class="fa fa-plus" aria-hidden="true"> | Save</i>
-                    <i *ngIf="!isNewForm" class="fa fa-edit" aria-hidden="true"> | Update</i>
-                </button>  
+    <div class="form-group row"> 
+        <label class="col col-md-3" style="text-align: right;" for="serviceCategoryType.catchPhrases" >Catch Phrases : </label> 
+        <div class="col col-md-9"> 
+            <div class="ui-tag-name" >
+                <button type="button" class="ui-tag-name-add" data-toggle="modal" data-target="#CatchPhraseModal" title=""> 
+                    Add A Catch Phrase
+                    <i class="fa fa-plus"></i> 
+                </button> 
             </div>
-            <div class="col col-md-6">
-                <a routerLink="/admin/servicecategories" class="btn btn-warning "  >
-                    <i class="fa fa-times" aria-hidden="true"> | Cancel</i>
-                </a> 
+            <div class="ui-tag-name" *ngFor="let catchPhrase of serviceCategory.catchPhrases">
+                 <span>
+                    {{ catchPhrase ? catchPhrase.phrase : "" }}
+                    <button class="ui-tag-name-edit fa fa-pencil" data-toggle="modal" data-target="#CatchPhraseModal"  title="{{ 'Modify : ' + (catchPhrase ? catchPhrase.phrase : '') }}" data-value="{{catchPhrase|json}}" type="button"></button> 
+                    <button type="button" class="fa fa-times ui-tag-name-remove" (click)="removeCatchPhrase($event);" data-value="{{catchPhrase|json}}" title="{{ 'Remove : ' + (catchPhrase ? catchPhrase.phrase : '') }}"></button>
+                </span> 
             </div>
-        </div> 
-    </form>     
+            
+            <!-- Modal -->
+            <div class="modal fade" id="CatchPhraseModal" tabindex="-1" role="dialog" aria-labelledby="CatchPhraseModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="CatchPhraseModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body"> 
+                        <div class="form-group">
+                          <input type="text" class="form-control" id="catch-phrase">
+                        </div> 
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="update_button" type="button" class="btn btn-primary" (click)="updateCatchPhrase()" data-value="">Update Catch Phrase</button>
+                    <button id="add_button" type="button" class="btn btn-primary" (click)="addCatchPhrase();">Add Catch Phrase</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div> 
+
+    <div class="form-group row">
+        <div class="col col-md-6" align="right" >
+            <button type="submit" class="btn btn-primary"  >
+                <i *ngIf="isNewForm" class="fa fa-plus" aria-hidden="true"> | Save</i>
+                <i *ngIf="!isNewForm" class="fa fa-edit" aria-hidden="true"> | Update</i>
+            </button>  
+        </div>
+        <div class="col col-md-6">
+            <a routerLink="/admin/servicecategories" class="btn btn-warning "  >
+                <i class="fa fa-times" aria-hidden="true"> | Cancel</i>
+            </a> 
+        </div>
+    </div> 
+</form>     
 <!--</div>-->        
-</section>      
+</section>       
+ 

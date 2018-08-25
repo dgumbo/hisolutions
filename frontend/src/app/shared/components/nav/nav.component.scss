@@ -7,7 +7,8 @@
 
 .navbar{
     padding: 0px;
-    height: 65px;
+    height: 65px; 
+    max-width: 98vw;
 }
 
 .nav-container-scrolled .navbar{
@@ -15,6 +16,7 @@
 }
 
 .nav-container{
+    max-width: 98vw;
     padding: 8px 16px; 
     left: 0;
     top: 0;
