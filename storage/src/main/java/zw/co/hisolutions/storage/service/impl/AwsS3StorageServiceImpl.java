@@ -55,9 +55,11 @@ public class AwsS3StorageServiceImpl implements StorageService {
     private final String STORAGE_FOLDER = "Uploaded/";
     private final Path rootLocation = Paths.get(STORAGE_FOLDER);
     private final TransferManager transferManager;
+    private final String awsRegion;
 
     public AwsS3StorageServiceImpl(TransferManager transferManager, StorageProperties storageProperties, DocumentMetadataService documentMetadataService) {
         this.s3BucketName = storageProperties.getAwsS3BucketName();
+        this.awsRegion = storageProperties.getAwsRegion();
         this.documentMetadataService = documentMetadataService;
         this.transferManager = transferManager;
     }
@@ -122,9 +124,11 @@ public class AwsS3StorageServiceImpl implements StorageService {
                 String uploadedFilename = upload(file, filename);
 
                 String mimeType = getMimeType(file.getBytes());
+                
+                String documentMetadataFilename = "https://s3-"+awsRegion+".amazonaws.com/"+s3BucketName+"/" + uploadedFilename;
 
                 documentMetadata.setActiveStatus(true);
-                documentMetadata.setFilename("/storage/view?filename=" + uploadedFilename);
+                documentMetadata.setFilename(documentMetadataFilename);
                 documentMetadata.setFilePath(STORAGE_FOLDER + filename);
                 documentMetadata.setStatus(Status.Success);
                 documentMetadata.setMimeType(mimeType);
@@ -181,7 +185,8 @@ public class AwsS3StorageServiceImpl implements StorageService {
                 String mimeType = getMimeType(file);
 
                 documentMetadata.setActiveStatus(true);
-                documentMetadata.setFilename("/storage/view?filename=" + uploadedFilename);
+                String documentMetadataFilename = "https://s3-"+awsRegion+".amazonaws.com/"+s3BucketName+"/" + uploadedFilename;
+                documentMetadata.setFilename(documentMetadataFilename);
                 documentMetadata.setFilePath(STORAGE_FOLDER + filename);
                 documentMetadata.setStatus(Status.Success);
                 documentMetadata.setMimeType(mimeType);
