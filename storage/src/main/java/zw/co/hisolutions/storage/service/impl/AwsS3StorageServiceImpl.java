@@ -15,7 +15,10 @@ import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.amazonaws.services.s3.transfer.Download;
 import com.amazonaws.services.s3.transfer.TransferManager;
 import com.amazonaws.services.s3.transfer.Upload;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -116,12 +119,12 @@ public class AwsS3StorageServiceImpl implements StorageService {
 
                 System.out.println("this.rootLocation.resolve(filename) : " + STORAGE_FOLDER + filename);
 
-                upload(file, filename);
+                String uploadedFilename = upload(file, filename);
 
                 String mimeType = getMimeType(file.getBytes());
 
                 documentMetadata.setActiveStatus(true);
-                documentMetadata.setFilename(filename);
+                documentMetadata.setFilename("/storage/view?filename=" + uploadedFilename);
                 documentMetadata.setFilePath(STORAGE_FOLDER + filename);
                 documentMetadata.setStatus(Status.Success);
                 documentMetadata.setMimeType(mimeType);
@@ -173,12 +176,12 @@ public class AwsS3StorageServiceImpl implements StorageService {
 
                 System.out.println("this.rootLocation.resolve(filename) : " + STORAGE_FOLDER + filename);
 
-                upload(file, filename);
+                String uploadedFilename = upload(file, filename);
 
                 String mimeType = getMimeType(file);
 
                 documentMetadata.setActiveStatus(true);
-                documentMetadata.setFilename(filename);
+                documentMetadata.setFilename("/storage/view?filename=" + uploadedFilename);
                 documentMetadata.setFilePath(STORAGE_FOLDER + filename);
                 documentMetadata.setStatus(Status.Success);
                 documentMetadata.setMimeType(mimeType);
@@ -209,7 +212,7 @@ public class AwsS3StorageServiceImpl implements StorageService {
         return documentMetadata;
     }
 
-    public void upload(MultipartFile file, String filename) throws IOException, AmazonClientException, InterruptedException {
+    public String upload(MultipartFile file, String filename) throws IOException, AmazonClientException, InterruptedException {
         // TransferManager processes all transfers asynchronously, 
         // so this call returns immediately. 
         ObjectMetadata objectMetadata = new ObjectMetadata();
@@ -222,15 +225,18 @@ public class AwsS3StorageServiceImpl implements StorageService {
         // Optionally, wait for the upload to finish before continuing. 
         upload.waitForCompletion();
         System.out.println("Object upload complete");
+        return filename;
     }
 
-    public void upload(File file, String filename) throws AmazonClientException, InterruptedException {
+    public String upload(File file, String filename) throws AmazonClientException, InterruptedException {
+        
         Upload upload = transferManager.upload(s3BucketName, filename, file);
 
         System.out.println("Object upload started");
         // Optionally, wait for the upload to finish before continuing. 
         upload.waitForCompletion();
         System.out.println("Object upload complete");
+        return filename;
     }
  
 
