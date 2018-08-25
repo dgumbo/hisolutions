@@ -67,8 +67,8 @@ export class ServiceCategoryFormComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
     }
 
-    updateCatchPhrase(event) {
-        let phrase_id = $("#update_button").attr(        "value");
+    updateCatchPhrase() {
+        let phrase_id = $("#update_button").attr("value");
 //        console.log("phrase_id : ", phrase_id) ;
 
         let phrase = $('#catch-phrase').val();
