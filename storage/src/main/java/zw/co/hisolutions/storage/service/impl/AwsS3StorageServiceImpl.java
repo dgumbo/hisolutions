@@ -65,7 +65,7 @@ public class AwsS3StorageServiceImpl implements StorageService {
     @Override
     public Resource loadAsResource(String filename) {
         try {
-            System.out.println("Downloading an object");
+            System.out.println("Downloading an object. With filename : " + filename);
 
             File file = null;
             Download download = transferManager.download(s3BucketName, filename, file);
