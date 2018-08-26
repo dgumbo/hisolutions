@@ -9,5 +9,6 @@ export * from './rest-data.service';
 export * from './script.service';
 export * from './file-upload.service'; 
 export * from './views-data.service'; 
+export * from './scroll-to-top.service'; 
 
 
