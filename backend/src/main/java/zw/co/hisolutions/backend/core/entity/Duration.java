@@ -1,4 +1,4 @@
- package zw.co.hisolutions.backend.core.entity;
+package zw.co.hisolutions.backend.core.entity;
 
 import java.io.Serializable;
 import javax.persistence.Column;

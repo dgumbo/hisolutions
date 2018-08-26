@@ -7,6 +7,7 @@ import {Skill} from "./skill";
 import {Audiance} from "./audiance";
 import {Vendor} from "./vendor";
 import {ServiceCategory} from "./service-category";
+import {Benefit} from "shared/models/benefit";
 
 
 /* 
@@ -25,6 +26,7 @@ export interface Product extends BasicInterface {
     vendor?: Vendor;
     audiances?: Audiance[];
     skillsToGain?: Skill[];
+    benefits?: Benefit[];
     preRequisites?: PreRequisite[];
     courseTopics?: Topic[];
     distributionMethods?: DistributionMethod[];

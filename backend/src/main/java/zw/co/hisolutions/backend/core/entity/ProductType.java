@@ -6,8 +6,7 @@ import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Proxy;
+import lombok.NoArgsConstructor; 
 import zw.co.hisolutions.common.entity.BaseEntity;
 
 /**

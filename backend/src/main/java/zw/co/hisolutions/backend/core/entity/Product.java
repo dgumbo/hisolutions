@@ -2,12 +2,14 @@ package zw.co.hisolutions.backend.core.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OrderColumn;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -42,6 +44,10 @@ public class Product extends BaseEntity implements EntityWithName, Serializable{
     @Column( length = 5000)
     @NotNull
     private String displayContent;   /*  display content . may contain html code  */
+    
+    @OneToMany(targetEntity=Benefit.class, cascade=CascadeType.ALL )
+    @OrderColumn
+    private List<Benefit> benefits ;
      
     //@NotNull
     @ManyToOne(targetEntity = DocumentMetadata.class)

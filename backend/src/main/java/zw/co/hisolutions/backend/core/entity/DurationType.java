@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package zw.co.hisolutions.backend.core.entity;
 
 import java.io.Serializable;
@@ -21,8 +16,7 @@ import zw.co.hisolutions.common.entity.BaseEntity;
 @Entity
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
-//@Proxy(lazy = false)
+@NoArgsConstructor 
 public class DurationType extends BaseEntity implements Serializable{
     
     @NotNull

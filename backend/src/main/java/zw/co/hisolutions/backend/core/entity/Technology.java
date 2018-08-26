@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package zw.co.hisolutions.backend.core.entity;
 
 import java.io.Serializable;
@@ -12,8 +7,7 @@ import javax.persistence.JoinColumn;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Proxy;
+import lombok.NoArgsConstructor; 
 import zw.co.hisolutions.common.entity.BaseEntity;
 
 /**
@@ -23,15 +17,13 @@ import zw.co.hisolutions.common.entity.BaseEntity;
 @Entity 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
-@Proxy(lazy = false)
+@NoArgsConstructor 
 public class Technology extends BaseEntity implements Serializable{
     
     @Column(unique = true)
     @NotNull 
     private String name;
-    
-    @NotNull
-    @JoinColumn(name = "duration_type", referencedColumnName = "id" )    
+     
+    @JoinColumn(name = "duration_type_id", referencedColumnName = "id" )    
     private DurationType type;    
 }

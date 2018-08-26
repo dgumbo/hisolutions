@@ -265,12 +265,13 @@ public class AwsS3StorageServiceImpl implements StorageService {
 
                     String filename = objectSummary.getKey();
                     String contentType = "";
-                    DocumentMetadata documentMetadata = getDocumentMetadata(filename);
+                    String documentMetadataFilename = "https://s3-"+awsRegion+".amazonaws.com/"+s3BucketName+"/" + filename;
+                
+                    DocumentMetadata documentMetadata = getDocumentMetadata(documentMetadataFilename);
                     if (documentMetadata == null) {
-
                         documentMetadata = new DocumentMetadata();
                         documentMetadata.setActiveStatus(true);
-                        documentMetadata.setFilename(filename);
+                        documentMetadata.setFilename(documentMetadataFilename);
                         documentMetadata.setFilePath(filename);
                         documentMetadata.setStatus(Status.Success);
                         documentMetadata.setMimeType(contentType);
@@ -358,3 +359,4 @@ public class AwsS3StorageServiceImpl implements StorageService {
     }
 
 }
+  

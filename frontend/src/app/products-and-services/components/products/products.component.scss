@@ -1,0 +1,10 @@
+@import "src/styles-theme.scss" ;   
+
+section:first-child{
+    min-height: 100vh ; 
+
+    background-color: $svg-background-color ;
+    background-image: url("/assets/images/skulls.svg") ;    
+    background-attachment: fixed ;
+    background-size: auto ;
+}

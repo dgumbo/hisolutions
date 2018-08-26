@@ -1,13 +1,11 @@
- package zw.co.hisolutions.backend.core.entity;
+package zw.co.hisolutions.backend.core.entity;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Proxy;
 import zw.co.hisolutions.common.entity.BaseEntity;
 
 /**
@@ -17,8 +15,7 @@ import zw.co.hisolutions.common.entity.BaseEntity;
 @Entity
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
-@Proxy(lazy = false)
+@NoArgsConstructor 
 public class CatchPhrase extends BaseEntity implements Serializable{  
     @NotNull 
     private String phrase;     

@@ -1,3 +1,32 @@
-<p>
-  products works!
-</p>
+<!--==========================
+  Hero Section
+============================--> 
+<section id="services-hero-section"  >
+    <div class="hero-container align-middle container"  >    
+        <div class="hero-title ml-auto mr-auto">   
+            <h1 class="hero-h1">{{product.name}}</h1>
+            <p  class="hero-p" [innerHTML]="product.description"></p>
+            <!--            Used D-None So That Components HASH Ref can be initialized onNgInit-->
+            <a href="#products-section" class="btn-get-started d-none" >View More !</a>  
+        </div>
+
+        <div id="ServiceCatchCarousel" data-ride="carousel" 
+             class="hero-services-carousel-slide carousel slide d-none d-sm-block" 
+             *ngIf="product.benefits && product.benefits.length >= 1" 
+            >  
+            <div class="carousel-inner" >  
+                <div  *ngFor="let benefit of product.benefits; let i = index" 
+                       
+                        class="carousel-item {{ i==0 ? 'active' : '' }}" >
+                     <div class="services-catchy-carousel-caption carousel-caption d-none d-sm-block" >
+                        <p class="services-catchy-phrases"><i class="fa fa-dot-circle-o"></i> {{ benefit ? benefit.name : "" }} </p> 
+                    </div>
+                </div>   
+            </div>  
+        </div>
+    </div>
+
+</section>
+<!-- #hero --> 
+
+ 
