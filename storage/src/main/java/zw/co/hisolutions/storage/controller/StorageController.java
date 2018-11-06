@@ -1,6 +1,5 @@
 package zw.co.hisolutions.storage.controller;
-
-import java.io.File;
+ 
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
@@ -8,8 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -34,8 +32,8 @@ import zw.co.hisolutions.storage.service.StorageService;
 @Controller
 @RequestMapping("/storage")
 public class StorageController {
-    @Value("${spring.profiles.active}")
-    private String springProfilesActive ;
+//    @Value("${spring.profiles.active}")
+//    private String springProfilesActive ;
 
     StorageService storageService; 
 

@@ -30,7 +30,7 @@ import {AppErrorHandler} from 'shared/errors/app-error-handler';
     providers: [  
         ScrollToTopService,
         PreviousRouteService,
-        ViewsDataService, 
+        ViewsDataService,  
         {provide: ErrorHandler, useClass: AppErrorHandler},
     ]
 })
