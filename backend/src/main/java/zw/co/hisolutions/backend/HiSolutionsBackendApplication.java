@@ -5,13 +5,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;  
-import zw.co.hisolutions.backend.init.InitializeStartData;
-import zw.co.hisolutions.storage.StorageServicesComponent;
+import zw.co.hisolutions.backend.init.InitializeStartData; 
 import zw.co.hisolutions.auth.jwt.JwtAuthModuleComponent;
 
 @SpringBootApplication(scanBasePackages = {"zw.co.hisolutions"})
 @JwtAuthModuleComponent
-@StorageServicesComponent
+//@StorageServicesComponent
 public class HiSolutionsBackendApplication {
     //@SuppressWarnings("resource")
     public static void main(String[] args) {

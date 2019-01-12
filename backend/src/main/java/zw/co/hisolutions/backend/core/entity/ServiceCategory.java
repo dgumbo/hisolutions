@@ -13,8 +13,7 @@ import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor; 
-import zw.co.hisolutions.common.entity.BaseEntity; 
-import zw.co.hisolutions.storage.entity.DocumentMetadata;
+import zw.co.hisolutions.common.entity.BaseEntity;  
 import zw.co.hisolutions.common.entity.EntityWithName;
 
 /**
@@ -49,14 +48,14 @@ public class ServiceCategory extends BaseEntity implements EntityWithName, Seria
     @NotNull
     private String displayContent;   /*  display content describing service. may contain html code  */
     
-    @ManyToOne(targetEntity = DocumentMetadata.class)
-    @JoinColumn(name = "image_metadata_id", referencedColumnName = "id" )  
-    private DocumentMetadata imageMetadata;   /*  image path  */
-    
-    
-    @ManyToOne(targetEntity = DocumentMetadata.class)
-    @JoinColumn(name = "thumbnail_metadata_id", referencedColumnName = "id" )  
-    private DocumentMetadata thumbnailMetadata;
+//    @ManyToOne(targetEntity = DocumentMetadata.class)
+//    @JoinColumn(name = "image_metadata_id", referencedColumnName = "id" )  
+//    private DocumentMetadata imageMetadata;   /*  image path  */
+//    
+//    
+//    @ManyToOne(targetEntity = DocumentMetadata.class)
+//    @JoinColumn(name = "thumbnail_metadata_id", referencedColumnName = "id" )  
+//    private DocumentMetadata thumbnailMetadata;
     
 //    @OneToMany(mappedBy = "serviceCategory")
 //    @OrderColumn

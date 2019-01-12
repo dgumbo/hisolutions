@@ -15,8 +15,7 @@ import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import zw.co.hisolutions.common.entity.BaseEntity; 
-import zw.co.hisolutions.storage.entity.DocumentMetadata;
+import zw.co.hisolutions.common.entity.BaseEntity;  
 import zw.co.hisolutions.common.entity.EntityWithName;
 
 /**
@@ -48,11 +47,10 @@ public class Product extends BaseEntity implements EntityWithName, Serializable{
     @OneToMany(targetEntity=Benefit.class, cascade=CascadeType.ALL )
     @OrderColumn
     private List<Benefit> benefits ;
-     
-    //@NotNull
-    @ManyToOne(targetEntity = DocumentMetadata.class)
-    @JoinColumn(name = "image_metadata_id", referencedColumnName = "id" )  
-    private DocumentMetadata imageMetadata;
+      
+//    @ManyToOne(targetEntity = DocumentMetadata.class)
+//    @JoinColumn(name = "image_metadata_id", referencedColumnName = "id" )  
+//    private DocumentMetadata imageMetadata;
      
     private String imageUrl;
         

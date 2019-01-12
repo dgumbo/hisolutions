@@ -27,8 +27,7 @@ import zw.co.hisolutions.backend.core.service.ProductTypeService;
 import zw.co.hisolutions.backend.core.service.ServiceCategoryService;
 import zw.co.hisolutions.backend.core.service.SkillService;
 import zw.co.hisolutions.backend.core.service.VendorService;
-import zw.co.hisolutions.backend.core.service.TopicService;
-import zw.co.hisolutions.storage.entity.DocumentMetadata;
+import zw.co.hisolutions.backend.core.service.TopicService; 
 
 /**
  *
@@ -88,16 +87,16 @@ public class InitializeStartData {
     private ServiceCategory serviceCategory1;
     private ServiceCategory serviceCategory2;
     private ServiceCategory serviceCategory3;
-    private DocumentMetadata documenMetadata1;
-    private DocumentMetadata documenMetadata2;
-    private DocumentMetadata documenMetadata3;
-    private DocumentMetadata documenMetadata4;
-    private DocumentMetadata documenMetadata5;
-    private List<DocumentMetadata> docs;
+//    private DocumentMetadata documenMetadata1;
+//    private DocumentMetadata documenMetadata2;
+//    private DocumentMetadata documenMetadata3;
+//    private DocumentMetadata documenMetadata4;
+//    private DocumentMetadata documenMetadata5;
+//    private List<DocumentMetadata> docs;
 
     public void init() {
         if (serviceCategoryService.findAll().size() <= 1) {
-            scanFileServerDirectory();
+            //scanFileServerDirectory();
             initDurationType();
             initDuration();
             initDistributionMethod();
@@ -125,7 +124,7 @@ public class InitializeStartData {
     }
 
     private void initServiceCategories() {
-        InitServiceCategories initSC = new InitServiceCategories(serviceCategoryService, docs);
+        InitServiceCategories initSC = new InitServiceCategories(serviceCategoryService/*, docs*/);
 
         List<ServiceCategory> serviceCategories = initSC.init();
 
@@ -134,25 +133,25 @@ public class InitializeStartData {
         this.serviceCategory3 = serviceCategories.get(2);
     }
 
-    private void scanFileServerDirectory() {
-        if (docs != null) {
-            if (docs.size() >= 1) {
-                documenMetadata1 = docs.get(0);
-            }
-            if (docs.size() >= 2) {
-                documenMetadata2 = docs.get(1);
-            }
-            if (docs.size() >= 3) {
-                documenMetadata3 = docs.get(2);
-            }
-            if (docs.size() >= 4) {
-                documenMetadata4 = docs.get(3);
-            }
-            if (docs.size() >= 5) {
-                documenMetadata5 = docs.get(4);
-            }
-        }
-    }
+//    private void scanFileServerDirectory() {
+//        if (docs != null) {
+//            if (docs.size() >= 1) {
+//                documenMetadata1 = docs.get(0);
+//            }
+//            if (docs.size() >= 2) {
+//                documenMetadata2 = docs.get(1);
+//            }
+//            if (docs.size() >= 3) {
+//                documenMetadata3 = docs.get(2);
+//            }
+//            if (docs.size() >= 4) {
+//                documenMetadata4 = docs.get(3);
+//            }
+//            if (docs.size() >= 5) {
+//                documenMetadata5 = docs.get(4);
+//            }
+//        }
+//    }
 
     private void initDurationType() {
 
@@ -399,15 +398,15 @@ public class InitializeStartData {
         String product1Name = "Web Development";
         this.product1 = productService.findByName(product1Name);
         if (product1 == null) {
-            DocumentMetadata d1 = null;
-            if (docs != null && docs.stream().anyMatch(p -> p.getFilename().contains("css3"))) {
-                d1 = docs.stream().filter(p -> p.getFilename().contains("css3")).findAny().get();
-            } else {
-                d1 = documenMetadata1;
-            }
+//            DocumentMetadata d1 = null;
+//            if (docs != null && docs.stream().anyMatch(p -> p.getFilename().contains("css3"))) {
+//                d1 = docs.stream().filter(p -> p.getFilename().contains("css3")).findAny().get();
+//            } else {
+//                d1 = documenMetadata1;
+//            }
             product1 = new Product();
             product1.setName(product1Name);
-            product1.setImageMetadata(d1);
+            //product1.setImageMetadata(d1);
             product1.setProductType(productType1);
             product1.setDisplayContent("<p>" + product1Name + "</p>" + "<p>Lorem ipsum dolor sit amet, te mea aperiam deleniti antiopam, ridens maluisset molestiae cu eos. Malis laoreet fabellas eum ei, mel ei prima deserunt democritum. Vis saperet adipisci eu. Eu est natum debitis, et autem delectus iracundia his. Elit persequeris usu ei, at ignota impetus blandit nam, saperet offendit id nam. Duo ex impetus consequat. Mucius maluisset cu sit, case cotidieque eum ut.</p>\n"
                     + "<p>Nec at mutat comprehensam. Blandit postulant ocurreret qui et, melius complectitur cu sea, eripuit alienum intellegat no sit. Ius nibh habeo atqui te, pri phaedrum perpetua ne. In est verterem incorrupte dissentiet, congue causae convenire mei et. Ad vim vero lorem persius, est an soluta sanctus. Eos an liber zril decore. Quis animal corrumpit an nam, quo ne dicit legimus periculis.</p>");
@@ -431,16 +430,16 @@ public class InitializeStartData {
         String product2Name = "Office Suite";
         this.product2 = productService.findByName(product2Name);
         if (product2 == null) {
-            DocumentMetadata d2 = null;
-            if (docs != null && docs.stream().anyMatch(p -> p.getFilename().contains("html5"))) {
-                d2 = docs.stream().filter(p -> p.getFilename().contains("html5")).findAny().get();
-            } else {
-                d2 = documenMetadata2;
-            }
+//            DocumentMetadata d2 = null;
+//            if (docs != null && docs.stream().anyMatch(p -> p.getFilename().contains("html5"))) {
+//                d2 = docs.stream().filter(p -> p.getFilename().contains("html5")).findAny().get();
+//            } else {
+//                d2 = documenMetadata2;
+//            }
 
             product2 = new Product();
             product2.setName(product2Name);
-            product2.setImageMetadata(d2);
+//            product2.setImageMetadata(d2);
             product2.setDisplayContent("<p>" + product2Name + "</p>" + "<p>Lorem ipsum dolor sit amet, te mea aperiam deleniti antiopam, ridens maluisset molestiae cu eos. Malis laoreet fabellas eum ei, mel ei prima deserunt democritum. Vis saperet adipisci eu. Eu est natum debitis, et autem delectus iracundia his. Elit persequeris usu ei, at ignota impetus blandit nam, saperet offendit id nam. Duo ex impetus consequat. Mucius maluisset cu sit, case cotidieque eum ut.</p>\n"
                     + "<p>Nec at mutat comprehensam. Blandit postulant ocurreret qui et, melius complectitur cu sea, eripuit alienum intellegat no sit. Ius nibh habeo atqui te, pri phaedrum perpetua ne. In est verterem incorrupte dissentiet, congue causae convenire mei et. Ad vim vero lorem persius, est an soluta sanctus. Eos an liber zril decore. Quis animal corrumpit an nam, quo ne dicit legimus periculis.</p>");
             product2.setServiceCategory(serviceCategory2);
@@ -464,16 +463,16 @@ public class InitializeStartData {
         String product3Name = "Web Hosting";
         this.product3 = productService.findByName(product3Name);
         if (product3 == null) {
-            DocumentMetadata d2 = null;
-            if (docs != null && docs.stream().anyMatch(p -> p.getFilename().contains("html5"))) {
-                d2 = docs.stream().filter(p -> p.getFilename().contains("html5")).findAny().get();
-            } else {
-                d2 = documenMetadata2;
-            }
+//            DocumentMetadata d2 = null;
+//            if (docs != null && docs.stream().anyMatch(p -> p.getFilename().contains("html5"))) {
+//                d2 = docs.stream().filter(p -> p.getFilename().contains("html5")).findAny().get();
+//            } else {
+//                d2 = documenMetadata2;
+//            }
 
             product3 = new Product();
             product3.setName(product3Name);
-            product3.setImageMetadata(d2);
+//            product3.setImageMetadata(d2);
             product3.setDisplayContent("<p>" + product3Name + "</p>" + "<p>Lorem ipsum dolor sit amet, te mea aperiam deleniti antiopam, ridens maluisset molestiae cu eos. Malis laoreet fabellas eum ei, mel ei prima deserunt democritum. Vis saperet adipisci eu. Eu est natum debitis, et autem delectus iracundia his. Elit persequeris usu ei, at ignota impetus blandit nam, saperet offendit id nam. Duo ex impetus consequat. Mucius maluisset cu sit, case cotidieque eum ut.</p>\n"
                     + "<p>Nec at mutat comprehensam. Blandit postulant ocurreret qui et, melius complectitur cu sea, eripuit alienum intellegat no sit. Ius nibh habeo atqui te, pri phaedrum perpetua ne. In est verterem incorrupte dissentiet, congue causae convenire mei et. Ad vim vero lorem persius, est an soluta sanctus. Eos an liber zril decore. Quis animal corrumpit an nam, quo ne dicit legimus periculis.</p>");
             product3.setServiceCategory(serviceCategory1);
