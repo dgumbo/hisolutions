@@ -21,6 +21,8 @@ public class HiSolutionsBackendApplication {
     @Bean
     CommandLineRunner testForEnvironmentVariables(Environment environment) {
         com.microsoft.sqlserver.jdbc.SQLServerDriver sqlDriver;
+        com.mysql.cj.jdbc.Driver mySqlDriver;
+        
         return (args) -> {
             System.out.println("\n\n"); 
             System.out.println("SPRING_PROFILES_ACTIVE-: " + environment.getProperty("SPRING_PROFILES_ACTIVE"));
