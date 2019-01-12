@@ -20,6 +20,8 @@ import static org.springframework.http.HttpHeaders.*;
 import static org.springframework.http.HttpMethod.*;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 import zw.co.hisolutions.auth.config.MATCHERS;
+import zw.co.hisolutions.auth.jwt.entrypoints.SecurityAuthenticationEntryPoint;
+import zw.co.hisolutions.auth.jwt.handlers.RestAccessDeniedHandler;
 
 @Configuration
 @EnableWebSecurity 
