@@ -14,7 +14,7 @@
     <version>1.0.0</version>
     <packaging>pom</packaging>
     
-    <name>hisolutions-reactor-parent</name>
+    <name>hisolutions-reactor</name>
     <description>HiSolutions - Spring Boot / Angular Project</description>
 
     <modules>
