@@ -1,17 +1,17 @@
-import {Component, OnInit, OnDestroy, Input} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import {FileUploadService} from 'shared/services/file-upload.service';
-import {ServiceCategory} from 'shared/models/service-category';
-import {ServiceCategoryService} from 'admin/services/rest/service-category.service';
-import {Globals} from 'app/globals';
+import { FileUploadService } from 'shared/services/file-upload.service';
+import { ServiceCategory } from 'shared/models/service-category';
+import { ServiceCategoryService } from 'admin/services/rest/service-category.service';
+import { Globals } from 'app/globals';
 
 import 'shared/services/ckeditor.loader';
 import 'ckeditor';
 
-import {combineLatest} from 'rxjs';
-import {PreviousRouteService} from 'shared/services';
-import {CatchPhrase} from 'shared/models/catch-phrase';
+import { combineLatest } from 'rxjs';
+import { PreviousRouteService } from 'shared/services';
+import { CatchPhrase } from 'shared/models/catch-phrase';
 
 declare var $: any;
 
@@ -54,12 +54,11 @@ export class ServiceCategoryFormComponent implements OnInit, OnDestroy {
         public globals: Globals
     ) {
         this.id = this.activeRoute.snapshot.paramMap.get('id');
-        this.serviceCategory = {name: ""};
+        this.serviceCategory = { name: '' };
 
         if (this.id) {
             this.getServiceCategory(this.id);
-        }
-        else {
+        } else {
             this.isNewForm = true;
         }
     }
@@ -68,19 +67,19 @@ export class ServiceCategoryFormComponent implements OnInit, OnDestroy {
     }
 
     updateCatchPhrase() {
-        let phrase_id = $("#update_button").attr("value");
-//        console.log("phrase_id : ", phrase_id) ;
+        let phrase_id = $('#update_button').attr('value');
+        //        console.log('phrase_id : ', phrase_id) ;
 
         let phrase = $('#catch-phrase').val();
 
         let catchPhrase: CatchPhrase = this.serviceCategory.catchPhrases
             .filter(cp => cp != null)
-            .find(s => s.id == phrase_id);
+            .find(s => s.id === phrase_id);
 
         if (catchPhrase)
             catchPhrase.phrase = phrase;
 
-        //this.serviceCategory.catchPhrases.push({phrase: phrase})
+        // this.serviceCategory.catchPhrases.push({phrase: phrase})
         var modal = $('#CatchPhraseModal');
 
         modal.modal('toggle');
@@ -89,7 +88,7 @@ export class ServiceCategoryFormComponent implements OnInit, OnDestroy {
 
     addCatchPhrase() {
         let phrase = $('#catch-phrase').val();
-        let newPhrase: CatchPhrase = {phrase: phrase};
+        let newPhrase: CatchPhrase = { phrase: phrase };
 
         this.serviceCategory.catchPhrases.push(newPhrase)
 
@@ -98,45 +97,45 @@ export class ServiceCategoryFormComponent implements OnInit, OnDestroy {
         modal.modal('toggle');
         modal.find('#update_button').removeClass('d-none');
     }
-    
-    removeCatchPhrase(event){ 
-            var button = $(event.target) ;
-            // console.log(button) ;  
-            
-            var titleAttr = button.attr("value");
-            var phrase: CatchPhrase = titleAttr ? JSON.parse(titleAttr) : null;
 
-            let catchPhrase: CatchPhrase = this.serviceCategory.catchPhrases
-                .filter(cp => cp != null)
-                .find(s => s.id == phrase.id);
-           
+    removeCatchPhrase(event) {
+        var button = $(event.target);
+        // console.log(button) ;  
+
+        var titleAttr = button.attr('value');
+        var phrase: CatchPhrase = titleAttr ? JSON.parse(titleAttr) : null;
+
+        let catchPhrase: CatchPhrase = this.serviceCategory.catchPhrases
+            .filter(cp => cp != null)
+            .find(s => s.id == phrase.id);
+
         let index = this.serviceCategory.catchPhrases.indexOf(catchPhrase);
-        this.serviceCategory.catchPhrases.splice(index, 1);             
+        this.serviceCategory.catchPhrases.splice(index, 1);
     }
 
     ngOnInit() {
-        
+
         $('#CatchPhraseModal').on('show.bs.modal', function (event) {
             var modal = $(this);
             var button = $(event.relatedTarget) // Button that triggered the modal
             //
-            var titleAttr = button.attr("value");
+            var titleAttr = button.attr('value');
             var catchPhrase: CatchPhrase = titleAttr ? JSON.parse(titleAttr) : null;
 
 
             if (catchPhrase) {
                 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
                 // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                var phrase = catchPhrase.phrase ? catchPhrase.phrase : "";
+                var phrase = catchPhrase.phrase ? catchPhrase.phrase : '';
                 var phrase_id = catchPhrase.phrase ? catchPhrase.id : 0;
                 modal.find('.modal-title').text('Modify Catch Phrase : ');
                 modal.find('.modal-body input').val(phrase);
                 modal.find('#add_button').addClass('d-none');
-                modal.find('#update_button').attr("value", phrase_id);
+                modal.find('#update_button').attr('value', phrase_id);
             }
             else {
                 modal.find('.modal-title').text('Add New Catch Phrase to Service Category : ');
-                modal.find('.modal-body input').val("");
+                modal.find('.modal-body input').val('');
                 modal.find('#update_button').addClass('d-none');
             }
         });
@@ -183,41 +182,40 @@ export class ServiceCategoryFormComponent implements OnInit, OnDestroy {
         if (this.backgroundImagePicChanged && this.backgroundImagePicFile) {
             backgroundImageSubscription = this._fileUploaderService.uploadFileToStorage(this.backgroundImagePicFile);
         }
-        //console.log("Now Working With Observables");
+        //console.log('Now Working With Observables');
 
-        if (this.thumbnailPicChanged && this.backgroundImagePicChanged){
-        let finalSub = combineLatest(thumbnailSubscription, backgroundImageSubscription, (thumbnail: any, background: any) => {        
-            console.log("Now Starting Upload of Files");
-            return {thumb: thumbnail, back: background}
-        });
-            finalSub.subscribe(result => {
-                serviceCategory.thumbnailMetadata = JSON.parse(result.thumb);//result[0];                
-                serviceCategory.imageMetadata = JSON.parse(result.back);//result[1]; 
-                
-                this.doSave(serviceCategory) ;
+        if (this.thumbnailPicChanged && this.backgroundImagePicChanged) {
+            let finalSub = combineLatest(thumbnailSubscription, backgroundImageSubscription, (thumbnail: any, background: any) => {
+                console.log('Now Starting Upload of Files');
+                return { thumb: thumbnail, back: background }
             });
-        }
-        else{
-                this.doSave(serviceCategory) ;
+            finalSub.subscribe(result => {
+                serviceCategory.thumbnailMetadata = JSON.parse(result.thumb);// result[0];                
+                serviceCategory.imageMetadata = JSON.parse(result.back);// result[1]; 
+
+                this.doSave(serviceCategory);
+            });
+        }        else {
+            this.doSave(serviceCategory);
         }
 
         this.showSpinner = false;
     }
-    
-    doSave(serviceCategory : ServiceCategory){
-        //console.log("\n\n" + JSON.stringify(serviceCategory) + "\n\n");
-                if (this.isNewForm) {
-                    this._serviceCategoryService.create(serviceCategory)
-                        .subscribe(() => {
-                            this.previousRoute.navigatePreviousUrl();
-                        });
-                }
-                else {
-                    this._serviceCategoryService.update(this.id, serviceCategory)
-                        .subscribe(() => {
-                            this.previousRoute.navigatePreviousUrl();
-                        });
-                }
+
+    doSave(serviceCategory: ServiceCategory) {
+        //console.log('\n\n' + JSON.stringify(serviceCategory) + '\n\n');
+        if (this.isNewForm) {
+            this._serviceCategoryService.create(serviceCategory)
+                .subscribe(() => {
+                    this.previousRoute.navigatePreviousUrl();
+                });
+        }
+        else {
+            this._serviceCategoryService.update(this.id, serviceCategory)
+                .subscribe(() => {
+                    this.previousRoute.navigatePreviousUrl();
+                });
+        }
     }
 
     getServiceCategory(id: any) {
@@ -262,7 +260,7 @@ export class ServiceCategoryFormComponent implements OnInit, OnDestroy {
             var reader = new FileReader();
             reader.onload = (event: any) => {
                 let data = event.target.result;
-                //console.log("event.target.result : " + data); 
+                //console.log('event.target.result : ' + data); 
                 this.thumbnailPicDisplay = data;
             }
 

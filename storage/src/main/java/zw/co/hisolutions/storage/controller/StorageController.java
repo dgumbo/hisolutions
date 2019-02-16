@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import zw.co.hisolutions.storage.entity.DocumentMetadata;
+import zw.co.hisolutions.storage.enums.ContentDisposalType;
 import zw.co.hisolutions.storage.service.StorageService; 
 
 /**

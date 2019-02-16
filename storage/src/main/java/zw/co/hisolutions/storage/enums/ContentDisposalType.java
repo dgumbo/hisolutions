@@ -1,4 +1,4 @@
-package zw.co.hisolutions.storage.controller;
+package zw.co.hisolutions.storage.enums;
 
 /**
  *
